@@ -1,0 +1,32 @@
+.billing {
+  display: flex;
+  flex-direction: column;
+  width: 1200px;
+  margin: 40px 0 80px;
+
+  &_title {
+    margin-bottom: 60px;
+    background: linear-gradient(88.43deg, #53CDEF 0%, #467CD7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 46px;
+    font-weight: 700;
+  }
+
+  &_text {
+    font-size: 18px;
+    text-align: justify;
+    color: #005395;
+  }
+
+  &_wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+}

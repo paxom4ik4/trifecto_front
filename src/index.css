@@ -1,4 +1,10 @@
+@font-face {
+    font-size: 'aqum';
+    src: url("assets/font/aqum-2-classic.otf");
+}
+
 body {
+    background: #FAFBFD;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +16,14 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+button:hover {
+     cursor: pointer;
+     opacity: 0.8;
 }

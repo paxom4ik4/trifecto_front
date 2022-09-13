@@ -1,0 +1,109 @@
+.login {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 900px;
+  height: auto;
+  background: #13162C;
+  box-shadow: 0 0 150px rgba(19, 22, 44, 0.7);
+  border-radius: 50px;
+  padding: 80px 200px 60px;
+
+  &_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    input {
+      width: 24% !important;
+    }
+  }
+
+  &_footer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    input.referal {
+      background: linear-gradient(92.97deg, #0F2467 0%, #1D5CAC 100%);
+      width: 48%;
+      padding: 16px;
+      font-size: 14px;
+      height: 12px;
+      color: #fff;
+      margin: 0;
+    }
+
+    select {
+      background: linear-gradient(92.97deg, #0F2467 0%, #1D5CAC 100%);
+      border-radius: 10px;
+      border: none;
+      padding: 12px;
+      width: 40%;
+      height: 48px;
+      color: #fff;
+    }
+  }
+
+  &_trifecta {
+    margin-top: 30px;
+  }
+
+  &_btn {
+    margin-top: 20px;
+    background: linear-gradient(92.97deg, #0F2467 0%, #1D5CAC 100%);
+    border-radius: 32px;
+    color: #fff;
+    padding: 12px 36px;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 18px;
+    width: 100%;
+  }
+
+  .google-btn {
+    text-transform: initial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #252C40;
+
+    img {
+      margin: 0 12px 3px;
+    }
+  }
+
+  input {
+    background: #FAFCFD;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding: 12px 36px;
+    margin-bottom: 20px;
+    width: calc(100% - 72px);
+    font-size: 16px;
+  }
+
+  &_title {
+    color: #FFFFFF;
+    font-size: 30px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+  }
+
+  &_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    background: linear-gradient(127.61deg, #6C90D7 0%, #A9F0FF 87.38%);
+  }
+}

@@ -1,0 +1,85 @@
+.about {
+  width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &_pros {
+    margin: 80px 0 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &-item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-weight: 700;
+      font-size: 30px;
+      color: #005395;
+      line-height: 30px;
+      margin: 25px 0;
+
+      img {
+        width: 48px;
+        margin-right: 50px;
+      }
+    }
+  }
+
+  &_pros-image {
+    width: 30%;
+  }
+
+  &_why {
+    text-transform: uppercase;
+    font-size: 120px;
+    font-weight: 700;
+    background: linear-gradient(88.43deg, #53CDEF 0%, #467CD7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &_logo {
+    margin-top: 120px;
+    z-index: 10;
+  }
+
+  &_logo-text {
+    margin-top: 32px;
+  }
+
+  &_partners {
+    text-transform: uppercase;
+    font-size: 24px;
+    background: linear-gradient(92.97deg, #0F2467 0%, #1D5CAC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 72px;
+  }
+
+  &_wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &_background {
+    position: absolute;
+    left: 0;
+    top: 60px;
+    width: 45%;
+    height: auto;
+  }
+
+  &_alfa {
+    margin: 40px 0 80px;
+    width: calc(100vw - 17px);
+    overflow: hidden;
+  }
+}

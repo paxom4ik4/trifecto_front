@@ -1,0 +1,90 @@
+button {
+  outline: none;
+  border: none;
+}
+
+.header-register-btn {
+  background: linear-gradient(91.97deg, #049CE4 0.3%, #80ECDF 99.83%);
+  /* Ps3D */
+
+  box-shadow: 4px 4px 4px rgba(0, 33, 74, 0.25), inset -4px -4px 4px rgba(0, 33, 74, 0.25), inset 4px 4px 4px rgba(255, 255, 255, 0.25);
+  border-radius: 100px
+}
+
+.header-login-btn {
+  background: linear-gradient(87.57deg, #FF82F4 0%, #4C44CF 94.44%);
+  /* Ps3D */
+
+  box-shadow: 4px 4px 4px rgba(0, 33, 74, 0.25), inset -4px -4px 4px rgba(0, 33, 74, 0.25), inset 4px 4px 4px rgba(255, 255, 255, 0.25);
+  border-radius: 100px;
+}
+
+.header {
+  font-family: 'aqum';
+  width: 1200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  z-index: 10;
+
+  &_logo-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  &_menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 48px;
+
+    &-item {
+      color: #005395;
+      font-weight: 700;
+      margin: 0 12px;
+      font-size: 21px;
+      text-transform: uppercase;
+      transition: .3s;
+
+      &:hover {
+        cursor: pointer;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  &_controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+      padding: 8px 16px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 12px;
+      font-size: 14px;
+      color: #fff;
+      transition: .3s;
+
+      span {
+        margin-left: 10px;
+      }
+    }
+  }
+}

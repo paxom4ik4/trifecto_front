@@ -15,11 +15,14 @@ import { Link } from 'react-router-dom';
 
 const DEFAULT_CLASSNAME = 'footer';
 
-export const Footer = ({ isLoginPage }) => {
+export const Footer = () => {
+    const pathExclude = ['/login', '/app'];
+    const showFooter = pathExclude.includes(window.location.pathname);
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
 
-    return (!isLoginPage &&
+    return (!showFooter &&
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             <div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_header`}>

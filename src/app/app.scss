@@ -1,0 +1,283 @@
+.trifecta-app {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(127.61deg, #5889E7 0%, #A9F0FF 87.38%);
+
+  .level {
+    background: linear-gradient(87.57deg, #3F87F6 0%, #4CE9C1 94.44%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &_side-menu {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    color: #7897FA;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: fit-content;
+    background: #171A2F;
+    border-radius: 50px 0 0 50px;
+    padding: 75px 60px;
+
+    &_logo {
+      margin: 0 auto 50px;
+      width: fit-content;
+    }
+
+    &_item {
+      display: flex;
+      flex-direction: column;
+
+      &-sub-item.active {
+        color: #ffffff;
+        font-weight: 700;
+      }
+
+      &-sub-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 12px 0;
+        cursor: pointer;
+
+        img {
+          margin-right: 12px;
+        }
+      }
+
+      &-title {
+        font-size: 36px;
+        font-weight: 500;
+        color: #fff;
+        margin: 60px 0 20px;
+      }
+    }
+
+    &_profile {
+      display: flex;
+      flex-direction: row;
+      margin: 0 auto;
+      align-items: flex-start;
+      justify-content: flex-start;
+      width: 100%;
+      color: #ffffff;
+
+      &_text {
+        margin-left: 12px;
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+
+  &_level {
+    &-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      &_overall {
+        position: relative;
+        color: #ffffff;
+        border: 25px solid transparent;
+        border-radius: 50%;
+        background: #212735;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 24px;
+        font-weight: 500;
+        z-index: 10;
+
+        &-container {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          background: #313751;;
+          border-radius: 50%;
+          padding: 76px 50px;
+        }
+
+        &:before {
+          z-index: -10;
+          content: '';
+          position: absolute;
+          top: 0; right: 0; bottom: 0; left: 0;
+          margin: -25px; /* !importanté */
+          border-radius: inherit; /* !importanté */
+          background: conic-gradient(from 180deg at 50% 50%, #48C5D6 0deg, #28AEB7 31.88deg, rgba(148, 115, 220, 0.994565) 114.38deg, rgba(57, 79, 194, 0.994565) 193.12deg, rgba(81, 103, 215, 0) 240deg, rgba(33, 39, 53, 0) 359.96deg, #478C88 360deg, #48C5D6 360deg);
+        }
+
+        &_title {
+          margin: 24px 0;
+          font-size: 36px;
+          font-weight: 500;
+        }
+      }
+
+      &_next {
+        width: 240px;
+        height: 100px;
+        color: #ffffff;
+        margin-top: 50px;
+        padding: 25px 50px;
+        background: #252C40;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &_percent {
+          font-size: 36px;
+          text-align: right;
+          font-weight: 500;
+        }
+
+        &_title {
+          margin-bottom: 16px;
+          background: linear-gradient(87.57deg, #3F87F6 0%, #4CE9C1 94.44%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+    }
+  }
+
+  &_package {
+    padding: 25px;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #252C40;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 24px;
+    color: #ffffff;
+    margin-right: 40px;
+
+    img {
+      width: 120px;
+      height: 120px;
+    }
+  }
+
+  &_withdraw_card {
+    width: fit-content;
+    height: 120px;
+    background: #252C40;
+    padding: 24px 48px;
+    border-radius: 30px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 500;
+
+    &_title {
+      margin: 0 0 12px;
+      background: linear-gradient(87.57deg, #3F87F6 0%, #4CE9C1 94.44%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    &_sub-amount {
+      font-size: 14px;
+    }
+
+    &_withdraw {
+      margin-top: 16px;
+      padding: 4px 16px;
+      width: fit-content;
+      border-radius: 40px;
+      background: #313751;
+      color: #FAFCFD;
+      margin-left: auto;
+    }
+  }
+
+  &_content {
+    font-family: 'Arimo', sans-serif;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 50px 50px 50px 0;
+    background: #13162C;
+    box-shadow: 0px 0px 150px rgba(19, 22, 44, 0.7);
+    border-radius: 50px;
+    max-width: 1440px;
+    width: 100%;
+    margin: 50px 0 25px;
+
+    &_cabinet {
+      width: 70%;
+      margin-left: 30%;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+
+      &_level {
+        padding: 50px 70px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 25px 0;
+        background: #171A2F;
+        border-radius: 30px;
+
+        &-item {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+
+          &_overall {
+            color: #ffffff;
+            border: 25px solid #48C5D6;
+            background: #313751;
+          }
+        }
+      }
+
+      &_packages {
+        padding: 25px 60px;
+        border-radius: 30px;
+        background: #171A2F;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      &_withdraw {
+        padding: 25px;
+        border-radius: 30px;
+        background: #171A2F;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  }
+}

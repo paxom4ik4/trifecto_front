@@ -10,21 +10,23 @@ const DEFAULT_CLASSNAME = 'header';
 
 const MENU_ITEMS = [{title: 'О Компании', link: '/about'}, {title: "Продукты", link: "/products"}, {title: 'Контакты', link: '/contacts'}];
 
-export const Header = ({ isLoginPage, setIsLoginPage, setIsRegisterMode }) => {
+export const Header = ({ setIsRegisterMode }) => {
     const navigate = useNavigate();
 
+    const pathExclude = ['/login', '/app'];
+    const showHeader = pathExclude.includes(window.location.pathname);
+
     const handleRegister = () => {
-        setIsLoginPage(true);
         setIsRegisterMode(true);
-        navigate("/login");
+        navigate("/login")
     }
 
     const handleLogin = () => {
-        setIsLoginPage(true);
+        setIsRegisterMode(false);
         navigate("/login");
     }
 
-    return (!isLoginPage && <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
+    return (!showHeader && <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
         <div className={DEFAULT_CLASSNAME}>
             <div className={`${DEFAULT_CLASSNAME}_logo-menu`}>
                 <Link to={'/'}><div className={`${DEFAULT_CLASSNAME}_logo`}><img src={logo} alt={'logo'}/></div></Link>

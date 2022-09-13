@@ -12,16 +12,12 @@ import diamond from '../../assets/diamond.png';
 // import bag from '../../assets/packeges/bag.png'
 // import lite from '../../assets/packeges/fire.png';
 
-import ModelViewer from 'react-model-viewer';
-
 import cardBag from '../../assets/cards/bag.png';
 import group from '../../assets/cards/group.png';
 import money from '../../assets/cards/money.png';
 
 // import events from '../../assets/packeges/events.png';
 // import travel from '../../assets/packeges/travel.png';
-
-import diamond3D from './diamond.obj';
 
 import { Goal } from "../../common/goal/goal";
 

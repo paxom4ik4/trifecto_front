@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import './footer.scss';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 import logo from '../../assets/logo.png'
 
@@ -11,18 +11,22 @@ import telegram from './telegram.png';
 import instagram from './inst.png';
 import twitter from './twitter.png';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const DEFAULT_CLASSNAME = 'footer';
 
 export const Footer = () => {
+    const navigate = useNavigate();
+
+    useEffect(() => {}, [navigate])
+
     const pathExclude = ['/login', '/app'];
-    const showFooter = pathExclude.includes(window.location.pathname);
+    const showHeader = pathExclude.filter(elem => !!(window.location.pathname.startsWith(elem)));
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
 
-    return (!showFooter &&
+    return (!showHeader.length &&
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             <div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_header`}>
@@ -57,14 +61,15 @@ export const Footer = () => {
                         <div className={`${DEFAULT_CLASSNAME}_content_navigation-header`}>{"Навигация"}</div>
                         <Link to={'/'} className={`${DEFAULT_CLASSNAME}_content_navigation-item`}>{"Главная"}</Link>
                         <Link to={'/about'} className={`${DEFAULT_CLASSNAME}_content_navigation-item`}>{"О компании"}</Link>
+                        <Link to={'/products'} className={`${DEFAULT_CLASSNAME}_content_navigation-item`}>{"Продукты"}</Link>
                         <Link to={'/contacts'} className={`${DEFAULT_CLASSNAME}_content_navigation-item`}>{"Контакты"}</Link>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_content_navigation`}>
                         <div className={`${DEFAULT_CLASSNAME}_content_navigation-header`}>{"Контакты"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_content_navigation-item`}>{"Телефоны"}</div>
-                        <div className={`${DEFAULT_CLASSNAME}_content_navigation-item`}><span>{"+375(44) 999-99-99"}</span><span>{"+375(44) 999-99-99"}</span></div>
+                        <div className={`${DEFAULT_CLASSNAME}_content_navigation-item`}><span>{"+375(25) 533-80-26"}</span><span>{"+375(29) 519-09-88"}</span></div>
                         <div className={`${DEFAULT_CLASSNAME}_content_navigation-item`}>{"E-mail"}</div>
-                        <div className={`${DEFAULT_CLASSNAME}_content_navigation-item`}>{"qwertyqwerty@gmail.com"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_content_navigation-item`}>{"trifectacompany@mail.ru"}</div>
                     </div>
                 </div>
 

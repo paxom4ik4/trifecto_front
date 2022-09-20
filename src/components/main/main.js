@@ -12,6 +12,9 @@ import diamond from '../../assets/diamond.png';
 // import bag from '../../assets/packeges/bag.png'
 // import lite from '../../assets/packeges/fire.png';
 
+import arrow from '../../assets/arrow.png';
+import arrows from '../../assets/arrows.png';
+
 import cardBag from '../../assets/cards/bag.png';
 import group from '../../assets/cards/group.png';
 import money from '../../assets/cards/money.png';
@@ -31,7 +34,15 @@ export const Main = () => {
             <div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_content`}>
                     <div className={`${DEFAULT_CLASSNAME}_left`}>
-                        <div className={`${DEFAULT_CLASSNAME}_title`}>{'Красивые'} <br /> {'пару слов'} <br /> {'о компании'}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_title`}>
+                            <span className={'first-grad'}>{'Добро'}
+                                <br /> {'пожаловать'}
+                            </span>
+                            <br />
+                            <span className={'second-grad'}>
+                                {'в сообщество'}
+                            </span>
+                        </div>
                         <div className={`${DEFAULT_CLASSNAME}_text`}>
                             {'Длинный, но понятный SEO-слоган для лучшего продвижения сайта который я пока не придумал'}
                         </div>
@@ -74,20 +85,23 @@ export const Main = () => {
                             <div className={'how-it-work-card-title'}>{'Используй'}</div>
                             <div className={'how-it-work-card-text'}>{'Получай уникальные знания и возможности'}</div>
                         </div>
-                        <div className={'how-it-work-card-line'}>{'>'}</div>
+                        <img className={'how-it-work-card-line'} src={arrow} />
                         <div className={'how-it-work-card'}>
                             <img src={group} alt={'work-card'} />
                             <div className={'how-it-work-card-title'}>{'Масштабируй'}</div>
                             <div className={'how-it-work-card-text'}>{'Рекомендуй другим и строй свое комьюнити'}</div>
                         </div>
-                        <div className={'how-it-work-card-line'}>{'>'}</div>
+                        <img className={'how-it-work-card-line'} src={arrow} />
                         <div className={'how-it-work-card'}>
                             <img src={money} alt={'work-card'} />
                             <div className={'how-it-work-card-title'}>{'Будь счаслив!'}</div>
                             <div className={'how-it-work-card-text'}>{'Получи от жизни всё с Trifecto Company!'}</div>
                         </div>
                     </div>
-                    <div className={`${DEFAULT_CLASSNAME}_works_more`}>{'Подробнее >>>'}</div>
+                    <div className={`${DEFAULT_CLASSNAME}_works_more`}>
+                        <div>{'Подробнее'}</div>
+                        <img src={arrows} />
+                    </div>
                 </div>
             </div>
             <Goal />

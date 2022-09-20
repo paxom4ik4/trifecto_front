@@ -12,6 +12,8 @@ import twitter from '../../../common/footer/twitter.png';
 const DEFAULT_CLASSNAME = 'trifecta-app-footer';
 
 export const TrifectaFooter = () => {
+    // const navigate = useNavigate();
+
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             <div className={DEFAULT_CLASSNAME}>
@@ -22,13 +24,13 @@ export const TrifectaFooter = () => {
                     <div className={`${DEFAULT_CLASSNAME}_content_mg`}>{"Зарегистрированы Минским горисполкомом 21.07.2014"}</div>
                     <div className={`${DEFAULT_CLASSNAME}_content_links`}>
                         <div className={`${DEFAULT_CLASSNAME}_content_links_item`}>
-                            <img src={inst} />
+                            <img src={inst} alt={"img"} />
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_content_links_item`}>
-                            <img src={tg} />
+                            <img src={tg} alt={"img"} />
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_content_links_item`}>
-                            <img src={twitter} />
+                            <img src={twitter} alt={"img"} />
                         </div>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_content_text`}>

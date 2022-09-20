@@ -1,3 +1,17 @@
+.first-grad {
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  background: linear-gradient(88.43deg, #53CDEF 0%, #467CD7 100%);
+}
+
+.second-grad {
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  background: linear-gradient(65.77deg, #F458E8 0%, #824CE9 107.38%);
+}
+
 .main {
   margin: 80px 0 0;
   width: 1200px;
@@ -68,6 +82,10 @@
     align-items: center;
 
     &_more {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
       background: linear-gradient(92.97deg, #0F2467 0%, #1D5CAC 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -78,6 +96,11 @@
       bottom: -80px;
       right: -60px;
       transition: .3s;
+
+      img {
+        margin-left: 24px;
+        height: 21px;
+      }
 
       &:hover {
         cursor: pointer;
@@ -93,10 +116,8 @@
       color: #005395;
 
       &-line {
-        font-size: 100px;
-        background: linear-gradient(90deg, #00ABFF -0.06%, #05A6FC 29.9%, #1299F2 64.05%, #2983E2 99.88%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        height: 80px;
+        margin: 0 16px;
       }
 
       &-title {
@@ -122,11 +143,13 @@
     }
 
     &_title {
+      margin-bottom: 70px;
+      font-weight: 700;
       background: linear-gradient(88.43deg, #53CDEF 0%, #467CD7 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-transform: uppercase;
-      font-size: 120px;
+      font-size: 110px;
     }
   }
 
@@ -197,7 +220,7 @@
     text-transform: uppercase;
     font-size: 16px;
     width: fit-content;
-    padding: 12px 32px;
+    padding: 16px 32px;
     background: linear-gradient(91.97deg, #049CE4 0.3%, #80ECDF 99.83%);
     box-shadow: 6px 6px 10px rgba(0, 33, 74, 0.25), inset -6px -6px 10px rgba(0, 33, 74, 0.25), inset 6px 6px 10px rgba(255, 255, 255, 0.4);
     border-radius: 100px;

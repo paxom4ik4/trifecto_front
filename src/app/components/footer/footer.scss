@@ -71,6 +71,12 @@
       span {
         font-size: 14px;
         margin-right: 24px;
+        transition: 0.3s;
+
+        &:hover {
+          cursor: pointer;
+          opacity: 0.8;
+        }
       }
     }
 

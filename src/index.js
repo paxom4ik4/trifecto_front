@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { Header } from "./common/header/header";
 import { Main } from "./components/main/main";
-import {BrowserRouter, Navigate, useLocation, useNavigate} from "react-router-dom";
+import { BrowserRouter, Navigate, useLocation } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import { About } from "./components/about/about";
 import { Footer } from "./common/footer/footer";
@@ -38,7 +38,7 @@ const App = () => {
                     <Route path="contacts" element={<Contacts />} />
                     <Route path="docs" element={<Docs />} />
                     <Route path="billing" element={<Billing />} />
-                    <Route path="app" element={<TrifectaApp />} />
+                    <Route path="app/*" element={<TrifectaApp />} />
                     <Route
                         path="*"
                         element={<Navigate to="/" replace />}

@@ -1,0 +1,45 @@
+.newbie {
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
+
+  &_item {
+    padding: 50px;
+    margin-bottom: 50px;
+    background: #171A2F;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &_title {
+      background: linear-gradient(87.57deg, #3F87F6 0%, #4CE9C1 94.44%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      font-size: 28px;
+    }
+
+    &_text {
+      color: #FFFFFF;
+      margin-left: 50px;
+
+      &_content {
+        margin-top: 25px;
+        font-weight: 700;
+        font-size: 16px;
+      }
+    }
+  }
+
+  &_wrapper {
+    margin: 0 0 50px 30%;
+    height: 100%;
+    width: calc(100% - 460px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+  }
+}

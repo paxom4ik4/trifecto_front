@@ -1,0 +1,96 @@
+.marketing {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &_wrapper {
+    width: 70%;
+    margin: 50px 0 50px 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+
+  &_item {
+    margin-bottom: 50px;
+    z-index: 10;
+    background: #171A2F;
+    border-radius: 30px;
+    position: relative;
+    padding: 75px 0 100px 75px;
+    height: 390px;
+
+    &_price {
+      margin-left: 50px;
+      font-weight: 700;
+      font-size: 36px;
+    }
+
+    &_buy {
+      padding: 18px 36px;
+      font-size: 24px;
+      font-weight: 700;
+      background: linear-gradient(91.97deg, #049CE4 0.3%, #80ECDF 99.83%);
+      box-shadow: 4px 4px 4px rgba(0, 33, 74, 0.25), inset -4px -4px 4px rgba(0, 33, 74, 0.25), inset 4px 4px 4px rgba(255, 255, 255, 0.25);
+      border-radius: 100px;
+      transition: 0.3s;
+
+      &:hover {
+        cursor: pointer;
+        opacity: 0.8
+      }
+    }
+
+    &_footer {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    &_content {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: #ffffff;
+      z-index: 10;
+    }
+
+    &_title {
+      background: linear-gradient(88.43deg, #53CDEF 0%, #467CD7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 36px;
+      font-weight: 700;
+      z-index: 5;
+    }
+
+    &_description {
+      font-size: 20px;
+      font-weight: 700;
+      z-index: 5;
+
+      &-item {
+        margin-bottom: 12px;
+      }
+    }
+
+    &_image {
+      width: 400px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+
+    &_background {
+      width: calc(100% - 50px);
+      z-index: -1;
+      position: absolute;
+      top: 25px;
+      left: 25px;
+    }
+  }
+}

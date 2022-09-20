@@ -34,7 +34,7 @@ const LoginContent = () => {
         }).then(res => res.json()).then(data => {
             if (data.success && data.accessToken) {
                 sessionStorage.setItem('accessToken', data.accessToken)
-                navigate('/app');
+                navigate('/app/');
             } else {
                 console.log(data);
             }

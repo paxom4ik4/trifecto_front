@@ -14,7 +14,7 @@ export const Header = ({ setIsRegisterMode }) => {
     const navigate = useNavigate();
 
     const pathExclude = ['/login', '/app'];
-    const showHeader = pathExclude.includes(window.location.pathname);
+    const showHeader = pathExclude.filter(elem => !!(window.location.pathname.startsWith(elem)));
 
     const handleRegister = () => {
         setIsRegisterMode(true);
@@ -26,7 +26,7 @@ export const Header = ({ setIsRegisterMode }) => {
         navigate("/login");
     }
 
-    return (!showHeader && <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
+    return (!showHeader.length && <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
         <div className={DEFAULT_CLASSNAME}>
             <div className={`${DEFAULT_CLASSNAME}_logo-menu`}>
                 <Link to={'/'}><div className={`${DEFAULT_CLASSNAME}_logo`}><img src={logo} alt={'logo'}/></div></Link>

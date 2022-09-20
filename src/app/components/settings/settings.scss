@@ -1,4 +1,17 @@
 .settings {
+  .upload-photo-input {
+    position: absolute;
+    height: 230px;
+    width: 360px;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  select option {
+    background: #0f2467 !important;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 1) !important;
+  }
+
   &_documents {
     display: flex;
     flex-direction: column;
@@ -165,16 +178,25 @@
       border-radius: 20px;
 
       &_item {
+        margin: 30px 0;
         width: 90%;
         color: #fff;
         display: grid;
         grid-template-columns: 10% 40% 30% 30%;
         height: fit-content;
         align-items: center;
-        gap: 20px;
+        gap: 10px;
 
         div {
-          align-self: flex-end;
+          display: flex;
+          align-self: flex-end !important;
+          margin: 0 auto;
+        }
+
+        img {
+          display: flex;
+          align-self: flex-end !important;
+          margin: 0 auto;
         }
       }
 

@@ -8,11 +8,12 @@ import logo from '../../../assets/logo.png';
 import inst from '../../../common/footer/inst.png';
 import tg from '../../../common/footer/telegram.png';
 import twitter from '../../../common/footer/twitter.png';
+import {useNavigate} from "react-router-dom";
 
 const DEFAULT_CLASSNAME = 'trifecta-app-footer';
 
 export const TrifectaFooter = () => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
@@ -34,7 +35,7 @@ export const TrifectaFooter = () => {
                         </div>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_content_text`}>
-                        <span>{"Cookie-файлы"}</span>
+                        <span onClick={() => navigate('/app/cookie')}>{"Cookie-файлы"}</span>
                         <span>{"Юридичекие документы"}</span>
                     </div>
                 </div>

@@ -6,6 +6,9 @@ import {TrifectaFooter} from "./components/footer/footer";
 
 import trifecta from '../assets/trifecta.png';
 
+import closeIcon from '../closeIcon/close_big.png';
+import cookieIcon from './cookie.png';
+
 //menu-icons
 import mc from './assets/mc.png';
 import wd from './assets/wd.png';
@@ -28,10 +31,28 @@ import {Withdraw} from "./components/withdraw/withdraw";
 import {Help} from "./components/help/help";
 import {Newbie} from "./components/newbie/newbie";
 import {Settings} from "./components/settings/settings";
+import {Cookie} from "./components/cookie/cookie";
+import {Structure} from "./components/structure/structure";
 
 const DEFAULT_CLASSNAME = 'trifecta-app';
 
+const CookieApp = ({ setCookieConfirmed }) => {
+    return (
+        <div className={'cookie-app'}>
+            <div className={'cookie-app-close'} onClick={() => setCookieConfirmed(true)}>
+                <img src={closeIcon} alt={'close-cookie'} />
+            </div>
+            <img className={'cookie-app-back'} src={cookieIcon} alt={'cookie'} />
+            <div className={'cookie-app-title'}>{"Мы используем Cookie"}</div>
+            <div className={'cookie-app-text'}>{"Наш сайт использует файлы cookie для вашего максимального удобства. Пользуясь сайтом, вы соглашаетесь с нашими условиями использования cookie."}</div>
+            <div className={'cookie-app-btn'} onClick={() => setCookieConfirmed(true)}>{"Принять"}</div>
+        </div>
+    )
+}
+
 export const TrifectaApp = () => {
+    const [cookieConfirmed, setCookieConfirmed] = useState(false);
+
     const [userInfo, setUserInfo] = useState(null);
 
     useEffect(() => {
@@ -56,6 +77,9 @@ export const TrifectaApp = () => {
 
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
+
+            {!cookieConfirmed && <CookieApp setCookieConfirmed={setCookieConfirmed} />}
+
             <div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_content`}>
                     <div className={`${DEFAULT_CLASSNAME}_side-menu`}>
@@ -71,11 +95,11 @@ export const TrifectaApp = () => {
                             <div className={`${DEFAULT_CLASSNAME}_side-menu_item-title`}>{"Меню"}</div>
                             <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/'}><img src={mc} alt={'icon'}/> {"Мой кабинет"}</NavLink>
                             <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/withdraw'}><img src={wd} alt={'icon'}/> {"Вывод средств"}</NavLink>
-                            <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item disabled`} to={'#'}><img src={nch} alt={'icon'}/> {"Мои начисления"}</NavLink>
+                            <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/charges'}><img src={nch} alt={'icon'}/> {"Мои начисления"}</NavLink>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_side-menu_item`}>
                             <div className={`${DEFAULT_CLASSNAME}_side-menu_item-title`}>{"Trifecta"}</div>
-                            <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item disabled`} to={'#'}><img src={st} alt={'icon'}/> {"Структура"}</NavLink>
+                            <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/structure'}><img src={st} alt={'icon'}/> {"Структура"}</NavLink>
                             <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item disabled`} to={'#'}><img src={pc} alt={'icon'}/> {"Прогресс"}</NavLink>
                             <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/marketing'}><img src={mt} alt={'icon'}/> {"Маркетинг план"}</NavLink>
                             <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/newbie'}><img src={lNew} alt={'icon'}/> {"Запуск новичка"}</NavLink>
@@ -93,9 +117,12 @@ export const TrifectaApp = () => {
                         <Route path={'/marketing'} element={<Marketing />} />
                         <Route path={'/newbie'} element={<Newbie />} />
                         <Route path={'/withdraw'} element={<Withdraw />} />
+                        <Route path={'/charges'} element={<Withdraw />} />
+                        <Route path={'/structure'} element={<Structure />} />
                         <Route path={'/info'} element={<Info />} />
                         <Route path={'/settings'} element={<Settings />} />
                         <Route path={'/help'} element={<Help />} />
+                        <Route path={'/cookie'} element={<Cookie />} />
                     </Routes>
                 </div>
                 <TrifectaFooter />

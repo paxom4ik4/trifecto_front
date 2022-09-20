@@ -1,3 +1,86 @@
+@keyframes cookie {
+  0% {
+    bottom: -100%;
+    opacity: 0;
+  }
+
+  100% {
+    bottom: 20px;
+    opacity: 1;
+  }
+}
+
+.cookie-app {
+  animation: cookie 0.75s ease-in-out;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 300px;
+  height: fit-content;
+  background: linear-gradient(285.18deg, #0D0B16 0%, #242E4C 100%);
+  border-radius: 20px;
+  padding: 50px 25px 20px;
+  box-shadow: 5px 5px 1px 1px rgba(31, 31, 31, 0.05);
+
+  &-back {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 300px;
+    border-top-right-radius: 20px;
+  }
+
+  &-close {
+    width: fit-content;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    transition: 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
+
+  &-title {
+    margin-top: 80px;
+    font-size: 20px;
+    font-weight: 700;
+    background: linear-gradient(88.43deg, #53CDEF 0%, #467CD7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent
+  }
+
+  &-text {
+    margin: 30px 0;
+    font-weight: 400;
+    font-size: 14px;
+    color: #FAFCFD;
+  }
+
+  &-btn {
+    align-self: center;
+    width: fit-content;
+    padding: 15px 50px;
+    font-weight: 500;
+    font-size: 16px;
+    background: linear-gradient(92.97deg, #0F2467 0%, #1D5CAC 100%);
+    border-radius: 50px;
+    color: #FAFCFD;
+    transition: 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
+}
+
 .trifecta-app {
   box-sizing: border-box;
   display: flex;
@@ -21,7 +104,7 @@
     color: #7897FA;
     display: flex;
     flex-direction: column;
-    width: fit-content;
+    width: 320px;
     background: #171A2F;
     border-radius: 50px 0 0 50px;
     padding: 75px 60px;

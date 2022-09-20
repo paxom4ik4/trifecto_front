@@ -8,6 +8,22 @@
   background: #171A2F;
   border-radius: 30px;
 
+  &_content_links_item {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #fafbfd;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+
+    img {
+      height: 22px !important;
+      width: 24px !important;
+    }
+  }
+
   .closed {
     opacity: 0;
     padding: 30px 38px 50px 20px;

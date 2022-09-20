@@ -6,7 +6,7 @@ import info from './info.png';
 import help from './help.png';
 import pointer from './pointer.png';
 
-import tg from '../../../components/contacts/assets/telegram.png';
+import tg from '../../../common/footer/telegram.png';
 import {useState} from "react";
 
 const DEFAULT_CLASSNAME = 'help';
@@ -27,8 +27,8 @@ export const Help = () => {
                             <div className={`${DEFAULT_CLASSNAME}_card_text_item`}>{"+375(29) 519-09-88"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_card_text_title`}>{"E-mail"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_card_text_item`}>{"trifectacompany@mail.ru"}</div>
-                            <div>
-                                <img className={`${DEFAULT_CLASSNAME}_card_tg_img`} src={tg} />
+                            <div className={`${DEFAULT_CLASSNAME}_content_links_item`}>
+                                <img src={tg} alt={"img"} />
                             </div>
                             <img className={`${DEFAULT_CLASSNAME}_back`} src={help} alt={'help'} />
                         </div>

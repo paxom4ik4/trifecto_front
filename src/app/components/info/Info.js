@@ -3,27 +3,44 @@ import * as React from 'react';
 import './info.scss';
 
 import doc from './file.png';
+import {useEffect, useState} from "react";
 
 const DEFAULT_CLASSNAME ='info'
 
 export const Info = () => {
+
+    const [docs, setDocs] = useState([]);
+
+    useEffect(() => {
+        const TOKEN = sessionStorage.getItem('accessToken');
+
+        fetch('https://trifecta-web-api.herokuapp.com/api/Info/GetThumbnails?userId=31703f65-5a6d-400e-ab87-d0d93981f34f', {
+            headers: {
+                'Accept': '*/*',
+                'Authorization': `Bearer ${TOKEN}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setDocs(data));
+    }, []);
+
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             <div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_title`}>{"Инфо"}</div>
                 <div className={`${DEFAULT_CLASSNAME}_docs`}>
-                    <div className={`${DEFAULT_CLASSNAME}_docs_item`}>
+                    <a className={`${DEFAULT_CLASSNAME}_docs_item`} target={"_blank"} href={docs[0]?.thumbnailFullPath} download={docs[0]?.thumbnailName}>
                         <img src={doc} alt={'doc'} />
                         <div className={`${DEFAULT_CLASSNAME}_docs_item_text`}>{"Информационная программа пакетов"}</div>
-                    </div>
-                    <div className={`${DEFAULT_CLASSNAME}_docs_item`}>
+                    </a>
+                    <a className={`${DEFAULT_CLASSNAME}_docs_item`} target={"_blank"} href={docs[1]?.thumbnailFullPath} download={docs[1]?.thumbnailName}>
                         <img src={doc} alt={'doc'} />
                         <div className={`${DEFAULT_CLASSNAME}_docs_item_text`}>{"Кодекс партнёра"}</div>
-                    </div>
-                    <div className={`${DEFAULT_CLASSNAME}_docs_item`}>
+                    </a>
+                    <a className={`${DEFAULT_CLASSNAME}_docs_item`} target={"_blank"} href={docs[2]?.thumbnailFullPath} download={docs[2]?.thumbnailName}>
                         <img src={doc} alt={'doc'} />
                         <div className={`${DEFAULT_CLASSNAME}_docs_item_text`}>{"Партнерское соглашение"}</div>
-                    </div>
+                    </a>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_text`}>
                     <div className={`${DEFAULT_CLASSNAME}_text_title`}>{"Навигация в кабинете:"}</div>

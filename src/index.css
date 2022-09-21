@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;700&family=Lato:wght@300;400;700&display=swap');
 @font-face {
-    font-size: 'aqum';
-    src: url("assets/font/aqum-2-small-caps.otf");
+    font-family: 'aqum';
+    src: url("./assets/font/aqum-2-small-caps.otf");
+}
+
+::-webkit-scrollbar {
+    width: 0;
 }
 
 body {

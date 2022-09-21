@@ -17,18 +17,21 @@
 
 .person-card {
   box-sizing: border-box !important;
-  width: 300px;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 25px 80px 25px 50px;
+  padding: 25px 40px 25px 25px;
   background: #252C40;
   border-radius: 20px;
   font-weight: 700;
-  margin: 20px 10px;
+  margin: 20px 0;
   transition: 0.5s;
   animation: loyal 0.5 ease-in-out;
+
+  &_wrapper {
+    width: 280px;
+  }
 
   &_additional {
     box-sizing: border-box !important;
@@ -55,7 +58,7 @@
 
   &_expand {
     position: absolute;
-    right: 30px;
+    right: 12px;
     top: 50%;
     transform: translateY(-50%);
     transition: 0.3s;

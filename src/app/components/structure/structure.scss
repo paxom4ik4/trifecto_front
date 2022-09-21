@@ -38,6 +38,7 @@
   }
 
   &_row {
+    justify-content: space-between;
     animation: loyal 0.5 ease-in-out;
     display: flex;
     flex-direction: row;

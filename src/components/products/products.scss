@@ -66,11 +66,33 @@
       }
 
       &_more {
-        margin-top: 36px;
+        font-family: 'aqum';
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-self: flex-end;
+        margin-top: 30px;
         text-align: right;
         font-size: 28px;
         font-weight: 700;
         text-transform: uppercase;
+
+        span {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 27px !important;
+          padding-bottom: 2px;
+        }
+
+        img {
+          margin-left: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 27px !important;
+          width: 50px !important;
+        }
       }
     }
 

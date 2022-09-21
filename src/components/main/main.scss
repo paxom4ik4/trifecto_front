@@ -74,6 +74,7 @@
   }
 
   &_works {
+    font-family: 'aqum';
     margin: 160px 0;
     position: relative;
     display: flex;
@@ -143,6 +144,7 @@
     }
 
     &_title {
+      font-family: "Lato", sans-serif;
       margin-bottom: 70px;
       font-weight: 700;
       background: linear-gradient(88.43deg, #53CDEF 0%, #467CD7 100%);
@@ -190,19 +192,20 @@
   &_left {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 75%;
   }
 
   &_title {
-    line-height: 78px;
-    font-size: 78px;
-    font-weight: 500;
+    line-height: 101px;
+    font-size: 84px;
+    font-weight: 700;
     background: -webkit-linear-gradient(88.43deg, #FF82F4 0%, #53CDEF 100%);;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   &_text {
+    font-weight: 700;
     margin: 32px 0 64px;
     font-size: 20px;
     background: -webkit-linear-gradient(88.43deg, #53CDEF 0%, #467CD7 100%);
@@ -211,7 +214,7 @@
   }
 
   &_btn {
-    font-family: 'Arimo', sans-serif;
+    font-family: 'aqum', sans-serif;
     font-weight: 500;
     display: flex;
     justify-content: center;

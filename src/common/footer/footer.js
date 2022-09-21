@@ -44,7 +44,7 @@ export const Footer = () => {
                         <div className={`${DEFAULT_CLASSNAME}_content_left-logo`}>
                             <img src={logo} alt={'logo'} />
                         </div>
-                        <div className={`${DEFAULT_CLASSNAME}_content_left-text`}>{"Специалисты в области партнёрского маркетинга и сетевого бизнеса"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_content_left-text`}>{"Специалисты в области партнёрского маркетинга"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_content_left-links`}>
                             <div className={`${DEFAULT_CLASSNAME}_link`}>
                                 <img src={instagram} alt={'footer-link'}/>

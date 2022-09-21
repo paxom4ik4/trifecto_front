@@ -57,7 +57,7 @@ button {
       font-size: 21px;
       text-transform: uppercase;
       transition: .3s;
-      font-family: 'Arimo', sans-serif;
+      font-family: 'aqum', sans-serif;
 
       &:hover {
         cursor: pointer;
@@ -85,7 +85,9 @@ button {
       font-family: 'aqum', sans-serif;
 
       span {
+        box-sizing: border-box;
         margin-left: 10px;
+        padding-bottom: 4px;
       }
     }
   }

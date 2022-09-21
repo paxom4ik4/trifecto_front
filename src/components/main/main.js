@@ -44,7 +44,7 @@ export const Main = () => {
                             </span>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_text`}>
-                            {'Длинный, но понятный SEO-слоган для лучшего продвижения сайта который я пока не придумал'}
+                            {'Развивайся и зарабатывай'}
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_btn`}>{'присоединиться'}</div>
                     </div>

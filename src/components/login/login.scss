@@ -1,3 +1,15 @@
+@keyframes loyalLog {
+  0% {
+    opacity: 0;
+    bottom: -100%;
+  }
+
+  100% {
+    opacity: 1;
+    bottom: 0;
+  }
+}
+
 .login {
   box-sizing: border-box;
   display: flex;
@@ -98,6 +110,10 @@
   }
 
   &_wrapper {
+    animation: loyalLog 0.75s;
+    position: absolute;
+    bottom: 0;
+    left: 0;
     display: flex;
     justify-content: center;
     align-items: center;

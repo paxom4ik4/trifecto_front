@@ -71,7 +71,7 @@ export const Withdraw = () => {
                             <div>{item.cardCode}</div>
                             <div>{item.status}</div>
                             <div>{item.amount}</div>
-                            <div>{item.dateTime}</div>
+                            <div>{item.dateTime.slice(0, 10)}</div>
                         </div>
                     ))}
                     {withdraws.map(item => (
@@ -79,7 +79,7 @@ export const Withdraw = () => {
                             <div>{item.cardCode}</div>
                             <div>{item.status}</div>
                             <div>{item.amount}</div>
-                            <div>{item.dateTime}</div>
+                            <div>{item.dateTime.slice(0, 10)}</div>
                         </div>
                     ))}
                     {withdraws.map(item => (
@@ -87,7 +87,7 @@ export const Withdraw = () => {
                             <div>{item.cardCode}</div>
                             <div>{item.status}</div>
                             <div>{item.amount}</div>
-                            <div>{item.dateTime}</div>
+                            <div>{item.dateTime.slice(0, 10)}</div>
                         </div>
                     ))}
                     {withdraws.map(item => (
@@ -95,7 +95,7 @@ export const Withdraw = () => {
                             <div>{item.cardCode}</div>
                             <div>{item.status}</div>
                             <div>{item.amount}</div>
-                            <div>{item.dateTime}</div>
+                            <div>{item.dateTime.slice(0, 10)}</div>
                         </div>
                     ))}
                 </div>

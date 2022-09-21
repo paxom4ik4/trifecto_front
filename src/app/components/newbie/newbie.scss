@@ -12,6 +12,10 @@
     flex-direction: row;
     justify-content: space-between;
 
+    img {
+      height: 200px;
+    }
+
     &_title {
       background: linear-gradient(87.57deg, #3F87F6 0%, #4CE9C1 94.44%);
       -webkit-background-clip: text;
@@ -33,7 +37,7 @@
   }
 
   &_wrapper {
-    margin: 0 0 50px 30%;
+    margin: 0 0 50px 26%;
     height: 100%;
     width: calc(100% - 460px);
     display: flex;

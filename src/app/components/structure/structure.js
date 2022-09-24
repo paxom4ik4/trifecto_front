@@ -13,7 +13,7 @@ export const Structure = () => {
     useEffect(() => {
         const TOKEN = sessionStorage.getItem('accessToken');
 
-        fetch('https://trifecta-web-api.herokuapp.com/api/Info/GetThumbnails?userId=31703f65-5a6d-400e-ab87-d0d93981f34f', {
+        fetch(`https://trifecta-web-api.herokuapp.com/api/ReferralStructure/GetUserReferralGroup`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -25,17 +25,19 @@ export const Structure = () => {
 
     const setCurrentLevelHandler = () => setCurrentLevel(currentLevel + 1);
 
+    const userId = sessionStorage.getItem("userId");
+
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             <div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_title`}>{"Структура"}</div>
                 <div className={`${DEFAULT_CLASSNAME}_row`}>
-                    <PersonCard expanded={currentLevel > 0} setCurrentLevelHandler={setCurrentLevelHandler} id={"176d64e0-4f8c-4aea-ade1-783dabd1bbc6"} />
+                    <PersonCard expanded={currentLevel > 0} setCurrentLevelHandler={setCurrentLevelHandler} id={userId} />
                 </div>
                 {Array.from(Array(currentLevel)).map(() => (
                     <div className={`${DEFAULT_CLASSNAME}_row`}>
-                        {currentStructure?.map(item => (
-                            <PersonCard id={"176d64e0-4f8c-4aea-ade1-783dabd1bbc6"} />
+                        {currentStructure.partnersGroups?.map(item => (
+                            <PersonCard id={item.id} />
                         ))}
                     </div>
                 ))}

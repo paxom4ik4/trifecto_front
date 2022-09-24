@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 1200px;
-  margin: 40px 0 80px;
+  margin: 40px 0 40px;
 
   .block-right {
     margin-left: auto;
@@ -71,6 +71,7 @@
     background: linear-gradient(157.26deg, rgba(37, 59, 121, 0.8) 10.6%, #4486EB 91.3%);
     box-shadow: 10px 10px 10px rgba(19, 22, 44, 0.5), inset -5px -5px 5px rgba(224, 235, 239, 0.25);
     border-radius: 50px;
+    margin-top: 20px;
 
     &-btn {
       margin-top: 40px;

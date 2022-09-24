@@ -8,8 +8,10 @@ import { useNavigate } from "react-router-dom";
 
 const DEFAULT_CLASSNAME = 'trifecta-app';
 
-export const Cabinet = () => {
+export const Cabinet = ({ currentPackage }) => {
     const navigate = useNavigate();
+
+    console.log(currentPackage);
 
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
@@ -62,18 +64,18 @@ export const Cabinet = () => {
                     </div>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_content_cabinet_packages`}>
-                    <div className={`${DEFAULT_CLASSNAME}_package`} onClick={() => navigate("/app/marketing")}>
+                    {currentPackage?.name === "Start" && <div className={`${DEFAULT_CLASSNAME}_package`} onClick={() => navigate("/app/marketing")}>
                         <img src={bag} alt={"img"} />
-                        <div>{"Стартовый"}</div>
-                    </div>
-                    <div className={`${DEFAULT_CLASSNAME}_package`} onClick={() => navigate("/app/marketing")}>
+                        <div>{"Пробный"}</div>
+                    </div>}
+                    {currentPackage?.name === "Classic" && <div className={`${DEFAULT_CLASSNAME}_package`} onClick={() => navigate("/app/marketing")}>
                         <img src={fire} alt={"img"} />
                         <div>{"Классик"}</div>
-                    </div>
-                    <div className={`${DEFAULT_CLASSNAME}_package`} onClick={() => navigate("/app/marketing")}>
+                    </div>}
+                    {currentPackage?.name === "Premium" && <div className={`${DEFAULT_CLASSNAME}_package`} onClick={() => navigate("/app/marketing")}>
                         <img src={crown} alt={"img"} />
                         <div>{"Премиум"}</div>
-                    </div>
+                    </div>}
                 </div>
             </div>
         </div>

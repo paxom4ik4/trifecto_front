@@ -27,9 +27,9 @@ export const PersonCard = ({expanded, id, setCurrentLevelHandler}) => {
         <div className={`${DEFAULT_CLASSNAME}_wrapper ${expanded && 'expanded'}`}>
             <div className={`${DEFAULT_CLASSNAME} loyal-card expanded`}>
                 <div>
-                    <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Alex Ferrari"}</div>
-                    <div className={`${DEFAULT_CLASSNAME}_text`}>{"alex.ferrari@gmail.com"}</div>
-                    <div className={`${DEFAULT_CLASSNAME}_text`}>{+375296853605}</div>
+                    <div className={`${DEFAULT_CLASSNAME}_text colored`}>{personData?.firstName + " " + personData?.lastName}</div>
+                    <div className={`${DEFAULT_CLASSNAME}_text`}>{personData?.email}</div>
+                    <div className={`${DEFAULT_CLASSNAME}_text`}>{personData?.phoneNumber}</div>
                 </div>
                 {
                     expanded &&

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import './contacts.scss';
-import map from './assets/map.png'
+import background from './assets/background.png';
 
 import hash from './assets/hash.png';
 import email from './assets/email.png';
@@ -12,19 +12,13 @@ import twitter from './assets/twitter.png';
 
 import sally from './assets/sally.png';
 
-import trif from './assets/trif.png';
-import vect from './assets/vector.png';
-
 const DEFAULT_CLASSNAME = 'contacts';
 
 export const Contacts = () => {
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             <img src={sally} className={`${DEFAULT_CLASSNAME}_sally`} alt={'background-sally'} />
-            <img src={map} className={`${DEFAULT_CLASSNAME}_background`} alt={'background-map'} />
-
-            <img src={trif} className={`${DEFAULT_CLASSNAME}_trif`} />
-            <img src={vect} className={`${DEFAULT_CLASSNAME}_vect`} />
+            <img src={background} className={`${DEFAULT_CLASSNAME}_background`} alt={'background-map'} />
             <div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_block`}>
                     <img src={hash} className={`${DEFAULT_CLASSNAME}_hash-image`}/>
@@ -45,7 +39,7 @@ export const Contacts = () => {
                 <div className={`${DEFAULT_CLASSNAME}_block block-right`}>
                     <div className={`${DEFAULT_CLASSNAME}_block-title-center`}>{"Где нас найти?"}</div>
 
-                    <div className={`${DEFAULT_CLASSNAME}_block-text`}>{"Республика Беларусь, г. Минск, ул. Тимирязева 72к2, 11 этаж, офис 907"}</div>
+                    <div className={`${DEFAULT_CLASSNAME}_block-text`}>{"Республика Беларусь, г. Минск, ул. Тимирязева 72к2"}</div>
 
                     <div className={`${DEFAULT_CLASSNAME}_block-links`}>
                         <img src={instagram} alt={'contacts-link'}/>

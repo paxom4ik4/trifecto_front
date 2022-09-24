@@ -33,6 +33,7 @@ import {Newbie} from "./components/newbie/newbie";
 import {Settings} from "./components/settings/settings";
 import {Cookie} from "./components/cookie/cookie";
 import {Structure} from "./components/structure/structure";
+import {Charges} from "./components/charges/charges";
 
 const DEFAULT_CLASSNAME = 'trifecta-app';
 
@@ -51,14 +52,19 @@ const CookieApp = ({ setCookieConfirmed }) => {
 }
 
 export const TrifectaApp = () => {
+    const navigate = useNavigate();
+
     const [cookieConfirmed, setCookieConfirmed] = useState(false);
 
     const [userInfo, setUserInfo] = useState(null);
+    const [userReferral, setUserReferral] = useState('');
+    const [currentPackage, setCurrentPackage] = useState(null);
 
     useEffect(() => {
+        const USER_ID = sessionStorage.getItem('userId');
         const TOKEN = sessionStorage.getItem('accessToken');
 
-        fetch('https://trifecta-web-api.herokuapp.com/api/UserProfile/GetProfileInfo?userId=176d64e0-4f8c-4aea-ade1-783dabd1bbc6', {
+        fetch(`https://trifecta-web-api.herokuapp.com/api/UserProfile/GetProfileInfo?userId=${USER_ID}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -66,20 +72,43 @@ export const TrifectaApp = () => {
         })
             .then(res => res.json())
             .then(data => setUserInfo(data));
-    }, [])
 
-    const navigate = useNavigate();
+        fetch(`https://trifecta-web-api.herokuapp.com/api/Packages/GetUserPackage?userId=${USER_ID}`, {
+            headers: {
+                'Accept': '*/*',
+                'Authorization': `Bearer ${TOKEN}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setCurrentPackage(data));
+
+
+        fetch(`https://trifecta-web-api.herokuapp.com/api/Home/GetReferralLink?userId=${USER_ID}`, {
+            headers: {
+                'Accept': '*/*',
+                'Authorization': `Bearer ${TOKEN}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setUserReferral(data));
+    }, [navigate])
+
+    useEffect(() => {
+        if (!!userReferral) {
+            sessionStorage.setItem('userReferral', userReferral);
+        }
+    }, [userReferral])
 
     const logOutHandler = () => {
         sessionStorage.removeItem('accessToken');
+        sessionStorage.removeItem('userReferral');
+        sessionStorage.removeItem('userId');
         navigate('/');
     }
 
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
-
             {!cookieConfirmed && <CookieApp setCookieConfirmed={setCookieConfirmed} />}
-
             <div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_content`}>
                     <div className={`${DEFAULT_CLASSNAME}_side-menu`}>
@@ -91,6 +120,20 @@ export const TrifectaApp = () => {
                                 <div className={'level'}>{"6 уровень"}</div>
                             </div>
                         </div>
+                        {
+                            currentPackage?.name ?
+                                <div
+                                    className={`${DEFAULT_CLASSNAME}_side-menu_partner`}
+                                    onClick={() => navigator.clipboard.writeText(userInfo?.personalReferral)}
+                                >{"Ссылка реферала"}
+                                </div> :
+                                <div
+                                    className={`${DEFAULT_CLASSNAME}_side-menu_partner`}
+                                    onClick={() => navigate('/app/marketing')}
+                                >
+                                    {"Стать партнером"}
+                                </div>
+                        }
                         <div className={`${DEFAULT_CLASSNAME}_side-menu_item`}>
                             <div className={`${DEFAULT_CLASSNAME}_side-menu_item-title`}>{"Меню"}</div>
                             <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/'}><img src={mc} alt={'icon'}/> {"Мой кабинет"}</NavLink>
@@ -113,14 +156,14 @@ export const TrifectaApp = () => {
                         </div>
                     </div>
                     <Routes>
-                        <Route path={'/'} element={<Cabinet />} />
+                        <Route path={'/'} element={<Cabinet currentPackage={currentPackage} />} />
                         <Route path={'/marketing'} element={<Marketing />} />
                         <Route path={'/newbie'} element={<Newbie />} />
                         <Route path={'/withdraw'} element={<Withdraw />} />
-                        <Route path={'/charges'} element={<Withdraw />} />
+                        <Route path={'/charges'} element={<Charges />} />
                         <Route path={'/structure'} element={<Structure />} />
                         <Route path={'/info'} element={<Info />} />
-                        <Route path={'/settings'} element={<Settings />} />
+                        <Route path={'/settings'} element={<Settings userInfo={userInfo} />} />
                         <Route path={'/help'} element={<Help />} />
                         <Route path={'/cookie'} element={<Cookie />} />
                     </Routes>

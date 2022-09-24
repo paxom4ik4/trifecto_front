@@ -4,6 +4,7 @@ import './settings.scss';
 
 import noPhoto from './noPhoto.png';
 import password from './password.png';
+import noMatch from './notMatch.png';
 
 import photoUpload from './photoUpload.png';
 
@@ -13,7 +14,7 @@ import {useState} from "react";
 
 const DEFAULT_CLASSNAME = 'settings';
 
-export const Settings = () => {
+export const Settings = ({ userInfo }) => {
 
     const [activeSection, setActiveSection] = useState("Профиль");
 
@@ -26,25 +27,25 @@ export const Settings = () => {
                     <img src={noPhoto} alt={""}/>
                     <div className={`${DEFAULT_CLASSNAME}_profile_referral`}>
                         <label htmlFor={'referral-link'}>{"Ссылка партнера"}</label>
-                        <input type={'text'} id={'referral-link'} />
+                        <input disabled={true} value={userInfo?.personalReferral} type={'text'} id={'referral-link'} />
                     </div>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_profile_right`}>
                     <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
                         <label htmlFor={'lastName'}>{"Фамилия"}</label>
-                        <input type={"text"} id={"lastName"} />
+                        <input disabled={true} value={userInfo?.lastName} type={"text"} id={"lastName"} />
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
                         <label htmlFor={'firstName'}>{"Имя"}</label>
-                        <input type={"text"} id={"firstName"} />
+                        <input disabled={true} value={userInfo?.firstName} type={"text"} id={"firstName"} />
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
                         <label htmlFor={'patronymic'}>{"Отчество"}</label>
-                        <input type={"text"} id={"patronymic"} />
+                        <input disabled={true} value={userInfo?.patronymic} type={"text"} id={"patronymic"} />
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
-                        <label htmlFor={'birthDate'}>{"Дата рождения"}</label>
-                        <input type={"text"} id={"birthDate"} />
+                        <label htmlFor={'birthDate'}>{"Дата Рождения"}</label>
+                        <input disabled={true} value={new Date(userInfo?.dateOfBirth)} type={"text"} id={"birthDate"} />
                     </div>
                 </div>
             </div>
@@ -52,6 +53,22 @@ export const Settings = () => {
     }
 
     const Security = () => {
+        const [currentPassword, setCurrentPassword] = useState('');
+        const [newPassword, setNewPassword] = useState('');
+        const [newPasswordMatch, setNewPasswordMatch] = useState('');
+
+        const currentHandler = (value) => {
+            setCurrentPassword(value)
+        }
+
+        const newHandler = (value) => {
+            setNewPassword(value)
+        }
+
+        const newMatchHandler = (value) => {
+            setNewPasswordMatch(value)
+        }
+
         return (
             <div className={`${DEFAULT_CLASSNAME}_security`}>
                 <div className={`${DEFAULT_CLASSNAME}_security_password`}>
@@ -59,21 +76,21 @@ export const Settings = () => {
                         <div className={`${DEFAULT_CLASSNAME}_security_password_title`}>{"Смена пароля"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
                             <label htmlFor={'password'}>{"Текущий пароль"}</label>
-                            <input type={"password"} id={"password"} placeholder={'Введите текущий пароль...'} />
+                            <input value={currentPassword} onChange={(e) => currentHandler(e.currentTarget.value)} type={"password"} id={"password"} placeholder={'Введите текущий пароль...'} />
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
                             <label htmlFor={'newPassword'}>{"Новый пароль"}</label>
-                            <input type={"password"} id={"newPassword"} placeholder={"Введите новый пароль..."} />
+                            <input value={newPassword} onChange={(e) => newHandler(e.currentTarget.value)} type={"password"} id={"newPassword"} placeholder={"Введите новый пароль..."} />
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
                             <label htmlFor={'confirmPassword'}>{"Подтверждение пароля"}</label>
-                            <input type={"password"} id={"confirmPassword"} placeholder={"Повторите новый пароль..."} />
+                            <input value={newPasswordMatch} onChange={(e) => newMatchHandler(e.currentTarget.value)} type={"password"} id={"confirmPassword"} placeholder={"Повторите новый пароль..."} />
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_btn`}>{"Сменить пароль"}</div>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_security_password_right`}>
-                        <img src={password} alt={'password'} />
-                        <div>{"Отличный пароль"}</div>
+                        {newPassword.length >= 8 && newPasswordMatch.length >= 8 && (newPassword !== newPasswordMatch) && <img src={noMatch} alt={'noMatch'} /> || <img src={password} alt={'password'} />}
+                        {newPassword.length >= 8 && newPasswordMatch.length >= 8 && (newPassword !== newPasswordMatch) && <div>{"Пароли не совпадают"}</div> || newPassword.length >= 8 && <div>{"Хороший пароль"}</div>}
                     </div>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_security_contacts`}>
@@ -101,8 +118,16 @@ export const Settings = () => {
         )
     }
 
-    const Docs = () => {
+    const [bankRegion, setBankRegion] = useState('');
+    const [bankLocality, setBankLocality] = useState('');
+    const [bankStreet, setBankStreet] = useState('');
+    const [bankHouseNumber, setBankHouseNumber] = useState('');
+    const [beneficiaryBankName, setBeneficiaryBankName] = useState('');
+    const [checkingAccount, setCheckingAccount] = useState('');
+    const [swift, setSwift] = useState('');
 
+
+    const Docs = () => {
         const DocsBankInfo = () => (
             <div className={`${DEFAULT_CLASSNAME}_documents_item`}>
                 <div className={`${DEFAULT_CLASSNAME}_documents_title`}>{"Банковские реквизиты"}</div>
@@ -348,6 +373,56 @@ export const Settings = () => {
         </>)
 
         const [currentType, setCurrentType] = useState('Физическое лицо');
+
+        const USER_ID = sessionStorage.getItem('userId');
+
+        const docsForVerification = {
+            userId: USER_ID,
+            country: 1,
+            employmentType: 1,
+            documentVerificationModels: {
+                legalDataModel: {
+                    legalEntityFullName: "string",
+                    headFullName: "string",
+                    legalEntityAbbreviatedName: "string",
+                    headPosition: "string",
+                    unp: "string",
+                    baseOrganization: "string",
+                    accountantName: "string"
+                },
+                witnessDataModel: {
+                    certificateNumber: "string",
+                    registrationAuthority: "string",
+                    certificateDateIssue: "2022-09-24T15:00:20.743Z"
+                },
+                bankRequestModel: {
+                    bankRegion: "string",
+                    bankLocality: "string",
+                    bankStreet: "string",
+                    bankHouseNumber: "string",
+                    beneficiaryBankName: "string",
+                    checkingAccount: "string",
+                    swift: "string"
+                },
+                legallyAddressModel: {
+                    region: "string",
+                    locality: "string",
+                    index: "string",
+                    street: "string",
+                    houseNumber: "string",
+                    location: 1,
+                    roomNumber: "string"
+                },
+                personalAddressModel: {
+                    district: "string",
+                    city: "string",
+                    index: "string",
+                    street: "string",
+                    houseNumber: "string",
+                    flat: "string"
+                }
+            }
+        };
 
         return (
             <div className={`${DEFAULT_CLASSNAME}_documents`}>

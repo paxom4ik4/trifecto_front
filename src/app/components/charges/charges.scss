@@ -1,0 +1,21 @@
+.charges_table_header {
+  font-size: 14px;
+  display: grid;
+  grid-template-columns: 20% 18% 5% 10% 12% 12% 10% !important;
+  gap: 16px;
+  color: #898B96;
+  margin: 20px 0;
+}
+
+.charges_table_item {
+  flex-direction: row;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 20% 18% 5% 10% 12% 12% 12% !important;
+  font-size: 14px;
+  margin: 16px 0;
+
+  div {
+    align-self: flex-end;
+  }
+}

@@ -6,6 +6,8 @@ import trifecta from './assets/trifecto.png';
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
+import selectArrow from '../../assets/selectArrow.png';
+
 const DEFAULT_CLASSNAME = 'login';
 
 const LoginContent = () => {
@@ -34,6 +36,7 @@ const LoginContent = () => {
         }).then(res => res.json()).then(data => {
             if (data.success && data.accessToken) {
                 sessionStorage.setItem('accessToken', data.accessToken)
+                sessionStorage.setItem('userId', data.userId)
                 navigate('/app/');
             } else {
                 console.log(data);
@@ -112,7 +115,7 @@ const RegisterContent = ({ setIsRegisterMode }) => {
             <input type={"password"} placeholder={"Подтвердите пароль*"} value={registerPasswordRep} onChange={(e) => setRegisterPasswordRep(e.currentTarget.value)} />
 
             <div className={`${DEFAULT_CLASSNAME}_footer`}>
-                <select placeholder={"Страна"} onChange={(e) => setSelectedCountry(e.currentTarget.value)}>
+                <select style={{ backgroundImage: `url(${selectArrow})` }} placeholder={"Страна"} onChange={(e) => setSelectedCountry(e.currentTarget.value)}>
                     <option defaultValue={true}>Беларусь</option>
                     <option>Россия</option>
                     <option>Казахстан</option>

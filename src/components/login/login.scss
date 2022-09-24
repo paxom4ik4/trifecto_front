@@ -10,6 +10,12 @@
   }
 }
 
+select {
+  appearance: none;
+  background-repeat: no-repeat !important;
+  background-position: 100% 100%;
+}
+
 .login {
   box-sizing: border-box;
   display: flex;
@@ -52,13 +58,16 @@
     }
 
     select {
-      background: linear-gradient(92.97deg, #0F2467 0%, #1D5CAC 100%);
+      background-color: #0F2467;
       border-radius: 10px;
       border: none;
       padding: 12px;
       width: 40%;
       height: 48px;
       color: #fff;
+      background-size: 14px 8px;
+      background-position-y: calc(50% + 1px);
+      background-position-x: calc(100% - 14px);
     }
   }
 

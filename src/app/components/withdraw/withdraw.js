@@ -10,8 +10,9 @@ export const Withdraw = () => {
 
     useEffect(() => {
         const TOKEN = sessionStorage.getItem('accessToken');
+        const USER_ID = sessionStorage.getItem('userId');
 
-        fetch('https://trifecta-web-api.herokuapp.com/api/Withdraw/GetWithdrawHistory?id=176d64e0-4f8c-4aea-ade1-783dabd1bbc6', {
+        fetch(`https://trifecta-web-api.herokuapp.com/api/Withdraw/GetWithdrawHistory?id=${USER_ID}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -66,30 +67,6 @@ export const Withdraw = () => {
                         <div>{"СУММА"}</div>
                         <div>{"ДАТА и время"}</div>
                     </div>
-                    {withdraws.map(item => (
-                        <div className={`${DEFAULT_CLASSNAME}_table_item`}>
-                            <div>{item.cardCode}</div>
-                            <div>{item.status}</div>
-                            <div>{item.amount}</div>
-                            <div>{item.dateTime.slice(0, 10)}</div>
-                        </div>
-                    ))}
-                    {withdraws.map(item => (
-                        <div className={`${DEFAULT_CLASSNAME}_table_item`}>
-                            <div>{item.cardCode}</div>
-                            <div>{item.status}</div>
-                            <div>{item.amount}</div>
-                            <div>{item.dateTime.slice(0, 10)}</div>
-                        </div>
-                    ))}
-                    {withdraws.map(item => (
-                        <div className={`${DEFAULT_CLASSNAME}_table_item`}>
-                            <div>{item.cardCode}</div>
-                            <div>{item.status}</div>
-                            <div>{item.amount}</div>
-                            <div>{item.dateTime.slice(0, 10)}</div>
-                        </div>
-                    ))}
                     {withdraws.map(item => (
                         <div className={`${DEFAULT_CLASSNAME}_table_item`}>
                             <div>{item.cardCode}</div>

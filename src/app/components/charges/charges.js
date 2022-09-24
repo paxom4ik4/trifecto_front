@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import '../withdraw/withdraw.scss';
+import './charges.scss';
 import {useEffect, useState} from "react";
 
 const DEFAULT_CLASSNAME = 'withdraw';
@@ -10,8 +11,9 @@ export const Charges = () => {
 
     useEffect(() => {
         const TOKEN = sessionStorage.getItem('accessToken');
+        const USER_ID = sessionStorage.getItem('userId');
 
-        fetch('https://trifecta-web-api.herokuapp.com/api/Withdraw/GetWithdrawHistory?id=176d64e0-4f8c-4aea-ade1-783dabd1bbc6', {
+        fetch(`https://trifecta-web-api.herokuapp.com/api/Withdraw/GetAccuralHistory?id=${USER_ID}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -43,7 +45,7 @@ export const Charges = () => {
             </div>
             <div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_header`}>
-                    <div className={`${DEFAULT_CLASSNAME}_header_title`}>{"Выводы"}</div>
+                    <div className={`${DEFAULT_CLASSNAME}_header_title`}>{"История начислений"}</div>
                     <div className={`${DEFAULT_CLASSNAME}_header_controls`}>
                         <div>
                             <label htmlFor={'period'}>{"Период"}</label>
@@ -60,42 +62,24 @@ export const Charges = () => {
                     </div>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_table`}>
-                    <div className={`${DEFAULT_CLASSNAME}_table_header`}>
-                        <div>{"Счёт на который производился вывод средств"}</div>
+                    <div className={`charges_table_header`}>
+                        <div>{"Название начисления"}</div>
+                        <div>{"ЗА КОГО"}</div>
+                        <div>{"%"}</div>
                         <div>{"СТАТУС"}</div>
-                        <div>{"СУММА"}</div>
-                        <div>{"ДАТА и время"}</div>
+                        <div>{"ИСХОДНАЯ СУММА"}</div>
+                        <div>{"К НАЧИСЛЕНИЮ"}</div>
+                        <div>{"ДАТА"}</div>
                     </div>
                     {withdraws.map(item => (
-                        <div className={`${DEFAULT_CLASSNAME}_table_item`}>
-                            <div>{item.cardCode}</div>
-                            <div>{item.status}</div>
-                            <div>{item.amount}</div>
-                            <div>{item.dateTime}</div>
-                        </div>
-                    ))}
-                    {withdraws.map(item => (
-                        <div className={`${DEFAULT_CLASSNAME}_table_item`}>
-                            <div>{item.cardCode}</div>
-                            <div>{item.status}</div>
-                            <div>{item.amount}</div>
-                            <div>{item.dateTime}</div>
-                        </div>
-                    ))}
-                    {withdraws.map(item => (
-                        <div className={`${DEFAULT_CLASSNAME}_table_item`}>
-                            <div>{item.cardCode}</div>
-                            <div>{item.status}</div>
-                            <div>{item.amount}</div>
-                            <div>{item.dateTime}</div>
-                        </div>
-                    ))}
-                    {withdraws.map(item => (
-                        <div className={`${DEFAULT_CLASSNAME}_table_item`}>
-                            <div>{item.cardCode}</div>
-                            <div>{item.status}</div>
-                            <div>{item.amount}</div>
-                            <div>{item.dateTime}</div>
+                        <div className={`charges_table_item`}>
+                            <div>{item.accuralName}</div>
+                            <div>{item.referralName}</div>
+                            <div>{item.accuralPercent}</div>
+                            <div>{item.transactionStatus}</div>
+                            <div>{item.initialAmount}</div>
+                            <div>{item.accuralAmount}</div>
+                            <div>{item.accuralDate.slice(0, 10)}</div>
                         </div>
                     ))}
                 </div>

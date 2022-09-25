@@ -4,13 +4,14 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 
 import './main.scss';
-import { Canvas } from '@react-three/fiber';
 import arrow from '../../assets/arrow.png';
 import arrows from '../../assets/arrows.png';
 
 import cardBag from '../../assets/cards/bag.png';
 import group from '../../assets/cards/group.png';
 import money from '../../assets/cards/money.png';
+
+import diamond from '../../assets/diamond.png';
 
 import { Goal } from "../../common/goal/goal";
 
@@ -37,7 +38,7 @@ export const Main = () => {
                         <div className={`${DEFAULT_CLASSNAME}_btn`}>{'присоединиться'}</div>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_right`}>
-                        <Canvas></Canvas>
+                        <img src={diamond} alt={'diamond'} />
                     </div>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_works`}>

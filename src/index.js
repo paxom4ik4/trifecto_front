@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { Header } from "./common/header/header";
@@ -56,7 +56,9 @@ root.render(
     <React.StrictMode>
         <BrowserRouter>
             <Wrapper>
-                <App />
+                <Suspense>
+                    <App />
+                </Suspense>
             </Wrapper>
         </BrowserRouter>
     </React.StrictMode>

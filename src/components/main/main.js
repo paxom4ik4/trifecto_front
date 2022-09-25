@@ -4,14 +4,7 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 
 import './main.scss';
-import diamond from '../../assets/diamond.png';
-// import { Swiper, SwiperSlide } from "swiper/react";
-// import {PackageCard} from "../../common/package-card/packageCard";
-//
-// import crown from '../../assets/packeges/crown.png';
-// import bag from '../../assets/packeges/bag.png'
-// import lite from '../../assets/packeges/fire.png';
-
+import { Canvas } from '@react-three/fiber';
 import arrow from '../../assets/arrow.png';
 import arrows from '../../assets/arrows.png';
 
@@ -19,12 +12,7 @@ import cardBag from '../../assets/cards/bag.png';
 import group from '../../assets/cards/group.png';
 import money from '../../assets/cards/money.png';
 
-// import events from '../../assets/packeges/events.png';
-// import travel from '../../assets/packeges/travel.png';
-
 import { Goal } from "../../common/goal/goal";
-
-// import { Scrollbar } from "swiper";
 
 const DEFAULT_CLASSNAME = 'main';
 
@@ -49,34 +37,9 @@ export const Main = () => {
                         <div className={`${DEFAULT_CLASSNAME}_btn`}>{'присоединиться'}</div>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_right`}>
-                        <img src={diamond} alt={'diamond'} />
+                        <Canvas></Canvas>
                     </div>
                 </div>
-                {/*<div className={`${DEFAULT_CLASSNAME}_packages`}>*/}
-                {/*    <Swiper*/}
-                {/*        scrollbar={{*/}
-                {/*            hide: true,*/}
-                {/*        }}*/}
-                {/*        modules={[Scrollbar]}*/}
-                {/*        spaceBetween={0}*/}
-                {/*        slidesPerView={2}*/}
-                {/*        className="mySwiper"*/}
-                {/*    >*/}
-                {/*        <SwiperSlide>*/}
-                {/*            <PackageCard title={'Улётные ПУТЕШЕСТВИЯ'} image={travel} />*/}
-                {/*        </SwiperSlide>*/}
-                {/*        <SwiperSlide>*/}
-                {/*            <PackageCard title={'Lite'} image={lite} />*/}
-                {/*        </SwiperSlide>*/}
-                {/*        <SwiperSlide>*/}
-                {/*            <PackageCard title={'Classic'} image={bag} />*/}
-                {/*        </SwiperSlide>*/}
-                {/*        <SwiperSlide>*/}
-                {/*            <PackageCard title={'Premium'} image={crown} />*/}
-                {/*        </SwiperSlide>*/}
-                {/*    </Swiper>*/}
-                {/*    <div className={`${DEFAULT_CLASSNAME}_packages-title`}>{"Пакеты"}</div>*/}
-                {/*</div>*/}
                 <div className={`${DEFAULT_CLASSNAME}_works`}>
                     <div className={`${DEFAULT_CLASSNAME}_works_title`}>{'Как это работает?'}</div>
                     <div className={`${DEFAULT_CLASSNAME}_works_cards`}>

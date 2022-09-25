@@ -30,12 +30,12 @@
   }
 
   &_background {
-    z-index: -2;
+    z-index: -10;
     top: -100px;
     left: 0;
     width: 100%;
     position: absolute;
-    opacity: 0.5;
+    opacity: 1;
   }
   
   &_trif {

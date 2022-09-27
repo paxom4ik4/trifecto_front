@@ -7,8 +7,9 @@ import expand from './expand.png';
 
 const DEFAULT_CLASSNAME = 'person-card';
 
-export const PersonCard = ({expanded, id, setCurrentLevelHandler}) => {
+export const PersonCard = ({structureLevel = 0, id, setCurrentLevelHandler}) => {
     const [personData, setPersonData] = useState(null);
+    const [expanded, setExpanded] = useState(false);
 
     useEffect(() => {
         const TOKEN = sessionStorage.getItem('accessToken');
@@ -23,9 +24,14 @@ export const PersonCard = ({expanded, id, setCurrentLevelHandler}) => {
             .then(data => setPersonData(data));
     }, [])
 
+    const clickHandler = () => {
+        setExpanded(true);
+        setCurrentLevelHandler(structureLevel);
+    }
+
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper ${expanded && 'expanded'}`}>
-            <div className={`${DEFAULT_CLASSNAME} loyal-card expanded`}>
+            {personData ? <div className={`${DEFAULT_CLASSNAME} loyal-card expanded`}>
                 <div>
                     <div className={`${DEFAULT_CLASSNAME}_text colored`}>{personData?.firstName + " " + personData?.lastName}</div>
                     <div className={`${DEFAULT_CLASSNAME}_text`}>{personData?.email}</div>
@@ -56,8 +62,8 @@ export const PersonCard = ({expanded, id, setCurrentLevelHandler}) => {
                         </div>
                     </div>
                 }
-                <div className={`${DEFAULT_CLASSNAME}_expand expanded`} onClick={() => setCurrentLevelHandler()}><img src={expand} /></div>
-            </div>
+                <div className={`${DEFAULT_CLASSNAME}_expand expanded`} onClick={() => clickHandler()}><img src={expand} /></div>
+            </div> : <div className={`${DEFAULT_CLASSNAME}_loading`}>{"Loading..."}</div>}
         </div>
     )
 }

@@ -1,4 +1,13 @@
 .settings {
+  button:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
   .upload-photo-input {
     position: absolute;
     height: 230px;
@@ -186,6 +195,12 @@
         height: fit-content;
         align-items: center;
         gap: 10px;
+
+        button {
+          display: flex;
+          align-self: flex-end !important;
+          margin: 0 auto;
+        }
 
         div {
           display: flex;

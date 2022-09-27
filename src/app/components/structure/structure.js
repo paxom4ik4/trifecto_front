@@ -23,7 +23,11 @@ export const Structure = () => {
             .then(data => setCurrentStructure(data));
     }, []);
 
-    const setCurrentLevelHandler = () => setCurrentLevel(currentLevel + 1);
+    const setCurrentLevelHandler = (structureLevel) => {
+        if (structureLevel < currentLevel) return
+
+        setCurrentLevel(structureLevel);
+    };
 
     const userId = sessionStorage.getItem("userId");
 
@@ -32,12 +36,12 @@ export const Structure = () => {
             <div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_title`}>{"Структура"}</div>
                 <div className={`${DEFAULT_CLASSNAME}_row`}>
-                    <PersonCard expanded={currentLevel > 0} setCurrentLevelHandler={setCurrentLevelHandler} id={userId} />
+                    <PersonCard structureLevel={1} setCurrentLevelHandler={setCurrentLevelHandler} id={userId} />
                 </div>
                 {Array.from(Array(currentLevel)).map(() => (
                     <div className={`${DEFAULT_CLASSNAME}_row`}>
                         {currentStructure.partnersGroups?.map(item => (
-                            <PersonCard id={item.id} />
+                            <PersonCard id={item.groupOwner.userId} />
                         ))}
                     </div>
                 ))}

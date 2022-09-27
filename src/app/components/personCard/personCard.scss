@@ -25,9 +25,13 @@
   background: #252C40;
   border-radius: 20px;
   font-weight: 700;
-  margin: 20px 0;
   transition: 0.5s;
   animation: loyal 0.5 ease-in-out;
+  margin: 20px 20px 20px 0;
+
+  &_loading {
+    color: #FFFFFF;
+  }
 
   &_wrapper {
     width: 280px;

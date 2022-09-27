@@ -4,7 +4,7 @@ import './products.scss';
 
 import travel from './assets/travel.png';
 import event from './assets/event.png';
-import beauty from './assets/beauty.jpg';
+import beauty from './assets/beauty.png';
 import eventBack from './assets/event_back.png'
 import marketplace from './assets/marketplace.png';
 

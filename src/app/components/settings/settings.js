@@ -74,7 +74,7 @@ export const Settings = ({ userInfo }) => {
         const TOKEN = sessionStorage.getItem('accessToken');
 
         const changePasswordHandler = () => {
-            fetch(`https://trifecta-web-api.herokuapp.com/api/UserProfile/ChangePassword`, {
+            fetch(`http://trifecta.by:5000/api/UserProfile/ChangePassword`, {
                 headers: {
                     'Accept': '*/*',
                     'Content-Type': 'application/json',
@@ -105,7 +105,7 @@ export const Settings = ({ userInfo }) => {
         const [newEmail, setNewEmail] = useState("");
 
         const changePhoneHandler = () => {
-            fetch(`https://trifecta-web-api.herokuapp.com/api/UserProfile/UploadPhoneNumber`, {
+            fetch(`http://trifecta.by:5000/api/UserProfile/UploadPhoneNumber`, {
                 headers: {
                     'Accept': '*/*',
                     'Content-Type': 'application/json',
@@ -129,7 +129,7 @@ export const Settings = ({ userInfo }) => {
         }
 
         const changeEmailHandler = () => {
-            fetch(`https://trifecta-web-api.herokuapp.com/api/UserProfile/ChangeEmailAdress`, {
+            fetch(`http://trifecta.by:5000/api/UserProfile/ChangeEmailAdress`, {
                 headers: {
                     'Accept': '*/*',
                     'Content-Type': 'application/json',
@@ -201,50 +201,51 @@ export const Settings = ({ userInfo }) => {
         )
     }
 
-    const [bankRegion, setBankRegion] = useState('');
-    const [bankLocality, setBankLocality] = useState('');
-    const [bankStreet, setBankStreet] = useState('');
-    const [bankHouseNumber, setBankHouseNumber] = useState('');
-    const [beneficiaryBankName, setBeneficiaryBankName] = useState('');
-    const [checkingAccount, setCheckingAccount] = useState('');
-    const [swift, setSwift] = useState('');
-
-    const [liveObl, setLiveObl] = useState('');
-    const [liveUlb, setLiveUlb] = useState('');
-    const [liveNameB, setLiveNameB] = useState('');
-    const [liveCity, setLiveCity] = useState('');
-    const [liveDomB, setLiveDomB] = useState('');
-    const [liveKV, setLiveKV] = useState('');
-
-    const [legalEntityFullName, setLegalEntityFullName] = useState("")
-    const [headFullName, setHeadFullName] = useState("")
-    const [legalEntityAbbreviatedName, setLegalEntityAbbreviatedName] = useState("")
-    const [headPosition, setHeadPosition] = useState("")
-    const [unp, setUnp] = useState("")
-    const [baseOrganization, setBaseOrganization] = useState("")
-    const [accountantName, setAccountantName] = useState("")
-
-    const [region, setRegion] = useState("");
-    const [locality, setLocality] = useState("");
-    const [index, setIndex] = useState("");
-    const [street, setStreet] = useState("");
-    const [houseNumber, setHouseNumber] = useState("");
-    const [location, setLocation] = useState("");
-    const [roomNumber, setRoomNumber] = useState("");
-
-    const [eLegalEntityFullName, setELegalEntityFullName] = useState("")
-    const [eHeadFullName, setEHeadFullName] = useState("")
-    const [eLegalEntityAbbreviatedName, setELegalEntityAbbreviatedName] = useState("")
-    const [eHeadPosition, setEHeadPosition] = useState("")
-    const [eUnp, setEUnp] = useState("")
-    const [eBaseOrganization, setEBaseOrganization] = useState("")
-    const [eAccountantName, setEAccountantName] = useState("")
-
-    const [certificateNumber, setCertificateNumber] = useState("");
-    const [registrationAuthority, setRegistrationAuthority] = useState("");
-    const [certificateDateIssue, setCertificateDateIssue] = useState("");
-
     const Docs = () => {
+        const [bankRegion, setBankRegion] = useState('');
+        const [bankLocality, setBankLocality] = useState('');
+        const [bankStreet, setBankStreet] = useState('');
+        const [bankHouseNumber, setBankHouseNumber] = useState('');
+        const [beneficiaryBankName, setBeneficiaryBankName] = useState('');
+        const [checkingAccount, setCheckingAccount] = useState('');
+        const [swift, setSwift] = useState('');
+
+        const [liveObl, setLiveObl] = useState('');
+        const [liveUlb, setLiveUlb] = useState('');
+        const [liveNameB, setLiveNameB] = useState('');
+        const [liveCity, setLiveCity] = useState('');
+        const [liveDomB, setLiveDomB] = useState('');
+        const [liveKV, setLiveKV] = useState('');
+
+        const [legalEntityFullName, setLegalEntityFullName] = useState("")
+        const [headFullName, setHeadFullName] = useState("")
+        const [legalEntityAbbreviatedName, setLegalEntityAbbreviatedName] = useState("")
+        const [headPosition, setHeadPosition] = useState("")
+        const [unp, setUnp] = useState("")
+        const [baseOrganization, setBaseOrganization] = useState("")
+        const [accountantName, setAccountantName] = useState("")
+
+        const [region, setRegion] = useState("");
+        const [locality, setLocality] = useState("");
+        const [index, setIndex] = useState("");
+        const [street, setStreet] = useState("");
+        const [houseNumber, setHouseNumber] = useState("");
+        const [location, setLocation] = useState("");
+        const [roomNumber, setRoomNumber] = useState("");
+
+        const [eLegalEntityFullName, setELegalEntityFullName] = useState("")
+        const [eHeadFullName, setEHeadFullName] = useState("")
+        const [eLegalEntityAbbreviatedName, setELegalEntityAbbreviatedName] = useState("")
+        const [eHeadPosition, setEHeadPosition] = useState("")
+        const [eUnp, setEUnp] = useState("")
+        const [eBaseOrganization, setEBaseOrganization] = useState("")
+        const [eAccountantName, setEAccountantName] = useState("")
+
+        const [certificateNumber, setCertificateNumber] = useState("");
+        const [registrationAuthority, setRegistrationAuthority] = useState("");
+        const [certificateDateIssue, setCertificateDateIssue] = useState("");
+
+
         const docsBankInfo = <>
             <div className={`${DEFAULT_CLASSNAME}_documents_item`}>
                 <div className={`${DEFAULT_CLASSNAME}_documents_title`}>{"Банковские реквизиты"}</div>
@@ -544,7 +545,7 @@ export const Settings = ({ userInfo }) => {
         const verifyHandler = () => {
             const TOKEN = sessionStorage.getItem('accessToken');
 
-            fetch('https://trifecta-web-api.herokuapp.com/api/UserDocument/SendDataForVerification', {
+            fetch('http://trifecta.by:5000/api/UserDocument/SendDataForVerification', {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, *cors, same-origin
                 cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -579,8 +580,6 @@ export const Settings = ({ userInfo }) => {
         )
     }
 
-    const MemoDocs = memo(Docs);
-
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             <div className={DEFAULT_CLASSNAME}>
@@ -597,7 +596,7 @@ export const Settings = ({ userInfo }) => {
                 </div>
                 {activeSection === "Профиль" && <Profile />}
                 {activeSection === "Безопасность и вход" && <Security />}
-                {activeSection === "Проверка документов" && <MemoDocs />}
+                {activeSection === "Проверка документов" && <Docs />}
             </div>
         </div>
     )

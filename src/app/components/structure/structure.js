@@ -13,7 +13,7 @@ export const Structure = () => {
     useEffect(() => {
         const TOKEN = sessionStorage.getItem('accessToken');
 
-        fetch(`https://trifecta-web-api.herokuapp.com/api/ReferralStructure/GetUserReferralGroup`, {
+        fetch(`http://trifecta.by:5000/api/ReferralStructure/GetUserReferralGroup`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`

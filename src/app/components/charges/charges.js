@@ -15,7 +15,7 @@ export const Charges = () => {
         const TOKEN = sessionStorage.getItem('accessToken');
         const USER_ID = sessionStorage.getItem('userId');
 
-        fetch(`https://trifecta-web-api.herokuapp.com/api/Withdraw/GetAccuralHistory?id=${USER_ID}`, {
+        fetch(`http://trifecta.by:5000/api/Withdraw/GetAccuralHistory?id=${USER_ID}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -31,7 +31,7 @@ export const Charges = () => {
         const USER_ID = sessionStorage.getItem('userId');
         const TOKEN = sessionStorage.getItem('accessToken');
 
-        fetch(`https://trifecta-web-api.herokuapp.com/api/Home/GetPersonalPageInfo?userId=${USER_ID}`, {
+        fetch(`http://trifecta.by:5000/api/Home/GetPersonalPageInfo?userId=${USER_ID}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`

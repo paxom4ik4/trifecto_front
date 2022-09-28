@@ -16,7 +16,7 @@ export const PersonCard = ({structureLevel = 0, id, setCurrentLevelHandler, grou
     const TOKEN = sessionStorage.getItem('accessToken');
 
     useEffect(() => {
-        fetch(`https://trifecta-web-api.herokuapp.com/api/UserProfile/GetProfileInfo?userId=${id}`, {
+        fetch(`http://trifecta.by:5000/api/UserProfile/GetProfileInfo?userId=${id}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -33,7 +33,7 @@ export const PersonCard = ({structureLevel = 0, id, setCurrentLevelHandler, grou
     }
 
     const loadNextGroup = () => {
-        fetch(`https://trifecta-web-api.herokuapp.com/api/UserProfile/GetPartnersReferralGroups?groupId=${groupId}`, {
+        fetch(`http://trifecta.by:5000/api/UserProfile/GetPartnersReferralGroups?groupId=${groupId}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`

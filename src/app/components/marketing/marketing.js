@@ -20,7 +20,7 @@ export const Marketing = () => {
         const TOKEN = sessionStorage.getItem('accessToken');
 
         if (packageToBuy.price && packageToBuy.name && packageToBuy.id) {
-            fetch(`https://trifecta-web-api.herokuapp.com/api/Packages/BuyPackage`, {
+            fetch(`http://trifecta.by:5000/api/Packages/BuyPackage`, {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, *cors, same-origin
                 cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

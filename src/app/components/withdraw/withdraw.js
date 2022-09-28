@@ -90,14 +90,14 @@ export const Withdraw = () => {
                             <div>{"СУММА"}</div>
                             <div>{"ДАТА и время"}</div>
                         </div>
-                        {withdraws.map(item => (
+                        {withdraws.length ? withdraws.map(item => (
                             <div className={`${DEFAULT_CLASSNAME}_table_item`}>
                                 <div>{item.cardCode}</div>
                                 <div>{item.status}</div>
                                 <div>{item.amount}</div>
                                 <div>{item.dateTime.slice(0, 10)}</div>
                             </div>
-                        ))}
+                        )) : <div className={`${DEFAULT_CLASSNAME}_table-empty`}>{"Выводов не совершалось"}</div>}
                     </div>
                 </div>
             </> : <div className={`trifecta-app_loading`}>{"Loading..."}</div>

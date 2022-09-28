@@ -6,6 +6,10 @@
   background: #171A2F;
   border-radius: 30px;
 
+  &_table-empty {
+    width: 100%;
+  }
+
   &_table {
     padding: 25px 50px;
     display: flex;

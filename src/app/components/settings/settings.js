@@ -246,6 +246,8 @@ export const Settings = ({ userInfo }) => {
         const [certificateDateIssue, setCertificateDateIssue] = useState("");
 
 
+        const [error, setError] = useState(null);
+
         const docsBankInfo = <>
             <div className={`${DEFAULT_CLASSNAME}_documents_item`}>
                 <div className={`${DEFAULT_CLASSNAME}_documents_title`}>{"Банковские реквизиты"}</div>
@@ -274,7 +276,7 @@ export const Settings = ({ userInfo }) => {
                             <input value={bankLocality} onChange={(e) => setBankLocality(e.currentTarget.value)} type={"text"} id={"city"}/>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
-                            <labe>{"Дом (банка)"}</labe>
+                            <label>{"Дом (банка)"}</label>
                             <input value={bankHouseNumber} onChange={(e) => setBankHouseNumber(e.currentTarget.value)} type={"text"} id={"domB"}/>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
@@ -496,8 +498,8 @@ export const Settings = ({ userInfo }) => {
 
         const docsForVerification = {
             userId: USER_ID,
-            country: 1,
-            employmentType: 1,
+            country: '1',
+            employmentType: '1',
             documentVerificationModels: {
                 legalDataModel: {
                     legalEntityFullName: eLegalEntityFullName || legalEntityFullName,
@@ -545,6 +547,64 @@ export const Settings = ({ userInfo }) => {
         const verifyHandler = () => {
             const TOKEN = sessionStorage.getItem('accessToken');
 
+            if (currentType === "Физическое лицо") {
+                if (!liveObl.length || !liveCity.length || !liveUlb.length || !liveDomB.length || !liveNameB.length || !liveKV.length) {
+                    setError('Заполните Адресс Проживания.');
+                    return;
+                }
+
+                if (!bankRegion.length || !bankLocality.length || !bankStreet.length || !bankHouseNumber.length || !beneficiaryBankName.length || !checkingAccount.length || !swift.length) {
+                    setError('Заполните Банковские реквезиты');
+                    return;
+                }
+            }
+
+            if (currentType === "ИП") {
+                if (!legalEntityFullName.length || !headFullName.length || !legalEntityAbbreviatedName.length || !headPosition.length || !unp.length || !baseOrganization.length || !accountantName.length) {
+                    setError('Заполните Юридические данные.');
+                    return;
+                }
+
+                if (!certificateNumber.length || !registrationAuthority.length || !certificateDateIssue.length) {
+                    setError('Заполните данные свидетельства.');
+                    return;
+                }
+
+                if (!region.length || !locality.length || !index.length || !street.length || !houseNumber.length || roomNumber.length) {
+                    setError('Заполните юридический адресс.');
+                    return;
+                }
+
+                if (!bankRegion.length || !bankLocality.length || !bankStreet.length || !bankHouseNumber.length || !beneficiaryBankName.length || !checkingAccount.length || !swift.length) {
+                    setError('Заполните Банковские реквезиты');
+                    return;
+                }
+            }
+
+            if (currentType === "Юридическое лицо") {
+                if (!eLegalEntityFullName.length || !eHeadFullName.length || !eLegalEntityAbbreviatedName.length || !eHeadPosition.length || !eUnp.length || !eBaseOrganization.length || !eAccountantName.length) {
+                    setError('Заполните Юридические данные.');
+                    return;
+                }
+
+                if (!certificateNumber.length || !registrationAuthority.length || !certificateDateIssue.length) {
+                    setError('Заполните данные свидетельства.');
+                    return;
+                }
+
+                if (!region.length || !locality.length || !index.length || !street.length || !houseNumber.length || roomNumber.length) {
+                    setError('Заполните юридический адресс.');
+                    return;
+                }
+
+                if (!bankRegion.length || !bankLocality.length || !bankStreet.length || !bankHouseNumber.length || !beneficiaryBankName.length || !checkingAccount.length || !swift.length) {
+                    setError('Заполните Банковские реквезиты');
+                    return;
+                }
+            }
+
+            setError(null);
+
             fetch('http://trifecta.by:5000/api/UserDocument/SendDataForVerification', {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, *cors, same-origin
@@ -572,6 +632,7 @@ export const Settings = ({ userInfo }) => {
                         <option defaultChecked={true}>Беларусь</option>
                     </select>
                 </div>
+                <div>{error}</div>
                 {currentType === "Физическое лицо" && individual}
                 {currentType === "ИП" && individualEntrepreneur}
                 {currentType === "Юридическое лицо" && legalEntity}

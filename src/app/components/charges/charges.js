@@ -90,7 +90,7 @@ export const Charges = () => {
                         <div>{"К НАЧИСЛЕНИЮ"}</div>
                         <div>{"ДАТА"}</div>
                     </div>
-                    {withdraws.map(item => (
+                    {withdraws.length ? withdraws.map(item => (
                         <div className={`charges_table_item`}>
                             <div>{item.accuralName}</div>
                             <div>{item.referralName}</div>
@@ -100,7 +100,7 @@ export const Charges = () => {
                             <div>{item.accuralAmount}</div>
                             <div>{item.accuralDate.slice(0, 10)}</div>
                         </div>
-                    ))}
+                    )): <div className={`${DEFAULT_CLASSNAME}_table-empty`}>{"Начислений не совершалось"}</div>}
                 </div>
             </div> </> : <div className={`trifecta-app_loading`}>{"Loading..."}</div>}
         </div>

@@ -7,7 +7,7 @@ import expand from './expand.png';
 
 const DEFAULT_CLASSNAME = 'person-card';
 
-export const PersonCard = ({structureLevel = 0, id, setCurrentLevelHandler, groupId, userPackage, turnover, firstTurnover, groupTurnover, baseLevel}) => {
+export const PersonCard = ({setCurrentLevel, currentLevel, structureLevel = 0, id, setCurrentLevelHandler, groupId, userPackage, turnover, firstTurnover, groupTurnover, baseLevel}) => {
     const [personData, setPersonData] = useState(null);
     const [expanded, setExpanded] = useState(false);
 
@@ -25,6 +25,12 @@ export const PersonCard = ({structureLevel = 0, id, setCurrentLevelHandler, grou
             .then(res => res.json())
             .then(data => setPersonData(data));
     }, [])
+
+    useEffect(() => {
+        if (currentLevel === 0) {
+            setExpanded(false);
+        }
+    }, [currentLevel])
 
     const clickHandler = () => {
         loadNextGroup()

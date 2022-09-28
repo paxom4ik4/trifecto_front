@@ -34,9 +34,13 @@ export const Structure = () => {
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             <div className={DEFAULT_CLASSNAME}>
-                <div className={`${DEFAULT_CLASSNAME}_title`}>{"Структура"}</div>
+                <div className={`${DEFAULT_CLASSNAME}_titleRow`}>
+                    <div className={`${DEFAULT_CLASSNAME}_title`}>{"Структура"}</div>
+                    {currentLevel !== 0 && <div onClick={() => setCurrentLevel(0)} className={`${DEFAULT_CLASSNAME}_close`}>{"Свернуть"}</div>}
+                </div>
                 <div className={`${DEFAULT_CLASSNAME}_row`}>
                     <PersonCard
+                        currentLevel={currentLevel}
                         structureLevel={1}
                         setCurrentLevelHandler={setCurrentLevelHandler}
                         id={userId}
@@ -59,6 +63,8 @@ export const Structure = () => {
                                     firstTurnover={item?.groupOwner.firstLineTurnover}
                                     groupTurnover={item?.groupOwner.groupTurnover}
                                     baseLevel={item?.groupOwner.baseLevel}
+                                    currentLevel={currentLevel}
+                                    setCurrentLevel={setCurrentLevel}
                                 />
                             )
                         })}

@@ -36,13 +36,32 @@ export const Structure = () => {
             <div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_title`}>{"Структура"}</div>
                 <div className={`${DEFAULT_CLASSNAME}_row`}>
-                    <PersonCard structureLevel={1} setCurrentLevelHandler={setCurrentLevelHandler} id={userId} />
+                    <PersonCard
+                        structureLevel={1}
+                        setCurrentLevelHandler={setCurrentLevelHandler}
+                        id={userId}
+                        userPackage={currentStructure?.groupOwner.packageType}
+                        turnover={currentStructure?.groupOwner.personalTurnover}
+                        firstTurnover={currentStructure?.groupOwner.firstLineTurnover}
+                        groupTurnover={currentStructure?.groupOwner.groupTurnover}
+                        baseLevel={currentStructure?.groupOwner.baseLevel}
+                    />
                 </div>
                 {Array.from(Array(currentLevel)).map(() => (
                     <div className={`${DEFAULT_CLASSNAME}_row`}>
-                        {currentStructure.partnersGroups?.map(item => (
-                            <PersonCard id={item.groupOwner.userId} />
-                        ))}
+                        {currentStructure.partnersGroups?.map(item => {
+                            return (
+                                <PersonCard
+                                    id={item.groupOwner.userId}
+                                    groupId={item.id}
+                                    userPackage={item?.groupOwner.packageType}
+                                    turnover={item?.groupOwner.personalTurnover}
+                                    firstTurnover={item?.groupOwner.firstLineTurnover}
+                                    groupTurnover={item?.groupOwner.groupTurnover}
+                                    baseLevel={item?.groupOwner.baseLevel}
+                                />
+                            )
+                        })}
                     </div>
                 ))}
             </div>

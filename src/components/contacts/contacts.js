@@ -27,12 +27,12 @@ export const Contacts = () => {
                     <div className={`${DEFAULT_CLASSNAME}_block-title`}>{"Контакты"}</div>
 
                     <div className={`${DEFAULT_CLASSNAME}_block-phones`}>{"Телефоны:"}</div>
-                    <span>{"+375 (44) 999-99-99"}</span>
-                    <span>{"+375 (44) 999-99-99"}</span>
+                    <span>{"+375 (25) 533-80-26"}</span>
+                    <span>{"+375 (29) 519-09-88"}</span>
 
                     <div className={`${DEFAULT_CLASSNAME}_block-email`}>
                         <div>{'E-mail:'}</div>
-                        <div>{"trifecto@gmail.com"}</div>
+                        <div>{"trifectacompany@mail.ru"}</div>
                     </div>
                 </div>
 
@@ -47,7 +47,7 @@ export const Contacts = () => {
                         <img src={twitter} alt={'contacts-link'}/>
                     </div>
 
-                    <div className={`${DEFAULT_CLASSNAME}_block-btn`}>{"Показать на карте"}</div>
+                    <a href={"https://goo.gl/maps/4Ut8DYajKsuEYfFf9"} target={"_blank"} className={`${DEFAULT_CLASSNAME}_block-btn`}>{"Показать на карте"}</a>
                 </div>
             </div>
         </div>

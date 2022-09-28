@@ -26,7 +26,7 @@ export const Header = ({ setIsRegisterMode }) => {
         navigate("/login");
     }
 
-    return (!showHeader.length && <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
+    return (!showHeader.length && <div className={`${DEFAULT_CLASSNAME}_wrapper`} style={{ boxShadow: window.location.pathname.startsWith("/contacts") && "0 0 5px 5px rgba(0, 0, 0, 0.02)"}}>
         <div className={DEFAULT_CLASSNAME}>
             <div className={`${DEFAULT_CLASSNAME}_logo-menu`}>
                 <Link to={'/'}><div className={`${DEFAULT_CLASSNAME}_logo`}><img src={logo} alt={'logo'}/></div></Link>

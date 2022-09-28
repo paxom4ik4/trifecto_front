@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { memo } from 'react';
 
 import './settings.scss';
 
@@ -10,7 +11,7 @@ import photoUpload from './photoUpload.png';
 
 import phone from './phone.png';
 import email from './email.png';
-import {useState} from "react";
+import {useMemo, useState} from "react";
 
 const DEFAULT_CLASSNAME = 'settings';
 
@@ -244,14 +245,14 @@ export const Settings = ({ userInfo }) => {
     const [certificateDateIssue, setCertificateDateIssue] = useState("");
 
     const Docs = () => {
-        const DocsBankInfo = () => (
+        const docsBankInfo = <>
             <div className={`${DEFAULT_CLASSNAME}_documents_item`}>
                 <div className={`${DEFAULT_CLASSNAME}_documents_title`}>{"Банковские реквизиты"}</div>
                 <div className={`${DEFAULT_CLASSNAME}_documents_content`}>
                     <div className={`${DEFAULT_CLASSNAME}_documents_item_left`}>
                         <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
                             <label>{"Область"}</label>
-                            <input value={bankRegion} onChange={(e) => setBankRegion(e.currentTarget.value)} type={"text"} id={"obl"}/>
+                            <input value={bankRegion} onChange={(e) => setBankRegion(e.currentTarget.value)} type={"text"} id={"obl"} />
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
                             <label>{"Улица (банка)"}</label>
@@ -282,9 +283,9 @@ export const Settings = ({ userInfo }) => {
                     </div>
                 </div>
             </div>
-        )
+        </>
 
-        const LiveAddress = () => (
+        const liveAddress = <>
             <div className={`${DEFAULT_CLASSNAME}_documents_item`}>
                 <div className={`${DEFAULT_CLASSNAME}_documents_title`}>{"Адрес проживания"}</div>
                 <div className={`${DEFAULT_CLASSNAME}_documents_content`}>
@@ -318,9 +319,9 @@ export const Settings = ({ userInfo }) => {
                     </div>
                 </div>
             </div>
-        )
+        </>
 
-        const LegalData = () => (
+        const legalData = <>
             <div className={`${DEFAULT_CLASSNAME}_documents_item`}>
                 <div className={`${DEFAULT_CLASSNAME}_documents_title`}>{"Юридические данные"}</div>
                 <div className={`${DEFAULT_CLASSNAME}_documents_content`}>
@@ -358,9 +359,9 @@ export const Settings = ({ userInfo }) => {
                     </div>
                 </div>
             </div>
-        )
+        </>
 
-        const EvidenceData = () => (
+        const evidenceData = <>
             <div className={`${DEFAULT_CLASSNAME}_documents_item`}>
                 <div className={`${DEFAULT_CLASSNAME}_documents_title`}>{"Данные свидетельства"}</div>
                 <div className={`${DEFAULT_CLASSNAME}_documents_content`}>
@@ -387,9 +388,9 @@ export const Settings = ({ userInfo }) => {
                     </div>
                 </div>
             </div>
-        )
+        </>
 
-        const LegalAddress = () => (
+        const legalAddress = <>
             <div className={`${DEFAULT_CLASSNAME}_documents_item`}>
                 <div className={`${DEFAULT_CLASSNAME}_documents_title`}>{"Юридический адресс"}</div>
                 <div className={`${DEFAULT_CLASSNAME}_documents_content`}>
@@ -427,9 +428,9 @@ export const Settings = ({ userInfo }) => {
                     </div>
                 </div>
             </div>
-        )
+        </>
 
-        const EvidenceDataEvi = () => (
+        const evidenceDataEvi = <>
             <div className={`${DEFAULT_CLASSNAME}_documents_item`}>
                 <div className={`${DEFAULT_CLASSNAME}_documents_title`}>{"Юридические данные"}</div>
                 <div className={`${DEFAULT_CLASSNAME}_documents_content`}>
@@ -467,26 +468,26 @@ export const Settings = ({ userInfo }) => {
                     </div>
                 </div>
             </div>
-        )
+        </>
 
-        const individual = (<>
-            <DocsBankInfo />
-            <LiveAddress />
-        </>)
+        const individual = <>
+            {docsBankInfo}
+            {liveAddress}
+        </>
 
-        const individualEntrepreneur = (<>
-            <LegalData />
-            <EvidenceData />
-            <DocsBankInfo />
-            <LegalAddress />
-        </>)
+        const individualEntrepreneur = <>
+            {legalData}
+            {evidenceData}
+            {docsBankInfo}
+            {legalAddress}
+        </>
 
-        const legalEntity = (<>
-            <EvidenceDataEvi />
-            <EvidenceData />
-            <DocsBankInfo />
-            <LegalAddress />
-        </>)
+        const legalEntity = <>
+            {evidenceDataEvi}
+            {evidenceData}
+            {docsBankInfo}
+            {legalAddress}
+        </>
 
         const [currentType, setCurrentType] = useState('Физическое лицо');
 
@@ -578,6 +579,8 @@ export const Settings = ({ userInfo }) => {
         )
     }
 
+    const MemoDocs = memo(Docs);
+
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             <div className={DEFAULT_CLASSNAME}>
@@ -594,7 +597,7 @@ export const Settings = ({ userInfo }) => {
                 </div>
                 {activeSection === "Профиль" && <Profile />}
                 {activeSection === "Безопасность и вход" && <Security />}
-                {activeSection === "Проверка документов" && <Docs />}
+                {activeSection === "Проверка документов" && <MemoDocs />}
             </div>
         </div>
     )

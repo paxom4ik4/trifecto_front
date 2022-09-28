@@ -7,13 +7,15 @@ import expand from './expand.png';
 
 const DEFAULT_CLASSNAME = 'person-card';
 
-export const PersonCard = ({structureLevel = 0, id, setCurrentLevelHandler}) => {
+export const PersonCard = ({structureLevel = 0, id, setCurrentLevelHandler, groupId, userPackage, turnover, firstTurnover, groupTurnover, baseLevel}) => {
     const [personData, setPersonData] = useState(null);
     const [expanded, setExpanded] = useState(false);
 
-    useEffect(() => {
-        const TOKEN = sessionStorage.getItem('accessToken');
+    const [groupData, setGroupData] = useState(null);
 
+    const TOKEN = sessionStorage.getItem('accessToken');
+
+    useEffect(() => {
         fetch(`https://trifecta-web-api.herokuapp.com/api/UserProfile/GetProfileInfo?userId=${id}`, {
             headers: {
                 'Accept': '*/*',
@@ -25,8 +27,20 @@ export const PersonCard = ({structureLevel = 0, id, setCurrentLevelHandler}) => 
     }, [])
 
     const clickHandler = () => {
-        setExpanded(true);
+        loadNextGroup()
+        setExpanded(!expanded);
         setCurrentLevelHandler(structureLevel);
+    }
+
+    const loadNextGroup = () => {
+        fetch(`https://trifecta-web-api.herokuapp.com/api/UserProfile/GetPartnersReferralGroups?groupId=${groupId}`, {
+            headers: {
+                'Accept': '*/*',
+                'Authorization': `Bearer ${TOKEN}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setGroupData(data));
     }
 
     return (
@@ -42,27 +56,27 @@ export const PersonCard = ({structureLevel = 0, id, setCurrentLevelHandler}) => 
                     <div className={`${DEFAULT_CLASSNAME}_additional`}>
                         <div className={`${DEFAULT_CLASSNAME}_additional_info`}>
                             <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Вид пакета"}</div>
-                            <div>{"Premium"}</div>
+                            <div>{userPackage}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_additional_info`}>
                             <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Личный оборот"}</div>
-                            <div>{"3.109,2"}</div>
+                            <div>{turnover + ".00$"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_additional_info`}>
                             <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Оборот первой линии, $"}</div>
-                            <div>{"13.351,66"}</div>
+                            <div>{firstTurnover + ".00$"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_additional_info`}>
                             <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Групповой оборот, $"}</div>
-                            <div>{"237.125,38"}</div>
+                            <div>{groupTurnover + ".00$"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_additional_info`}>
                             <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Базовый уровень"}</div>
-                            <div>{"6"}</div>
+                            <div>{baseLevel}</div>
                         </div>
                     </div>
                 }
-                <div className={`${DEFAULT_CLASSNAME}_expand expanded`} onClick={() => clickHandler()}><img src={expand} /></div>
+                <div className={`${DEFAULT_CLASSNAME}_expand ${expanded && "expanded"}`} onClick={() => clickHandler()}><img src={expand} /></div>
             </div> : <div className={`${DEFAULT_CLASSNAME}_loading`}>{"Loading..."}</div>}
         </div>
     )

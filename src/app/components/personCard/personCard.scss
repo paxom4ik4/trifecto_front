@@ -29,6 +29,10 @@
   animation: loyal 0.5 ease-in-out;
   margin: 20px 20px 20px 0;
 
+  &_expand.expanded {
+    transform: rotate(180deg);
+  }
+
   &_loading {
     color: #FFFFFF;
   }

@@ -14,10 +14,13 @@ import money from '../../assets/cards/money.png';
 import diamond from '../../assets/diamond.png';
 
 import { Goal } from "../../common/goal/goal";
+import {useNavigate} from "react-router-dom";
 
 const DEFAULT_CLASSNAME = 'main';
 
 export const Main = () => {
+    const navigate = useNavigate();
+
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             <div className={DEFAULT_CLASSNAME}>
@@ -35,7 +38,7 @@ export const Main = () => {
                         <div className={`${DEFAULT_CLASSNAME}_text`}>
                             {'Развивайся и зарабатывай'}
                         </div>
-                        <div className={`${DEFAULT_CLASSNAME}_btn`}>{'присоединиться'}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_btn`} onClick={() => navigate('/login')}>{'присоединиться'}</div>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_right`}>
                         <img src={diamond} alt={'diamond'} />
@@ -62,7 +65,7 @@ export const Main = () => {
                             <div className={'how-it-work-card-text'}>{'Получи от жизни всё с Trifecto Company!'}</div>
                         </div>
                     </div>
-                    <div className={`${DEFAULT_CLASSNAME}_works_more`}>
+                    <div className={`${DEFAULT_CLASSNAME}_works_more`} onClick={() => navigate('/about')}>
                         <div>{'Подробнее'}</div>
                         <img src={arrows} />
                     </div>

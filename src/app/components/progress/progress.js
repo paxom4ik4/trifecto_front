@@ -68,10 +68,10 @@ export const Progress = () => {
                                     className={`${DEFAULT_CLASSNAME}_bar_title`}>{`Рефералов ${userData?.baseLevelInfo.currentLevel.name.slice(0, 2)}уровня`}</div>
                                 <div className={`${DEFAULT_CLASSNAME}_bar_content`}>
                                     <div className={`${DEFAULT_CLASSNAME}_bar_content_progress`}
-                                         style={{width: "66%"}}/>
+                                         style={{width: `${userData?.partnersCurrentLevelCount / userData?.nextBasicLevelRequirements.partnersRequirementCount * 100}%`}}/>
                                 </div>
                                 <div
-                                    className={`${DEFAULT_CLASSNAME}_bar_subtitle`}>{`2 / ${userData?.nextBasicLevelRequirements.partnersRequirementCount}`}</div>
+                                    className={`${DEFAULT_CLASSNAME}_bar_subtitle`}>{`${userData?.partnersCurrentLevelCount} / ${userData?.nextBasicLevelRequirements.partnersRequirementCount}`}</div>
                             </div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_content_item`}>
@@ -83,7 +83,7 @@ export const Progress = () => {
                                          style={{width: `${userData?.mounthlyLevelInfo.currentTurnover / userData?.nextBasicLevelRequirements.groupTurnover * 100}%`}}/>
                                 </div>
                                 <div
-                                    className={`${DEFAULT_CLASSNAME}_bar_subtitle`}>{`${userData?.mounthlyLevelInfo.currentTurnover}.00$ / ${userData?.nextBasicLevelRequirements.groupTurnover}.00$`}</div>
+                                    className={`${DEFAULT_CLASSNAME}_bar_subtitle`}>{`${userData?.mounthlyLevelInfo.currentTurnover}.00$ / ${userData?.nextMounthlyLevelRequirement}.00$`}</div>
                             </div>
                         </div>
                     </div>

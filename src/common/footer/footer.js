@@ -67,7 +67,7 @@ export const Footer = () => {
                     <div className={`${DEFAULT_CLASSNAME}_content_navigation`}>
                         <div className={`${DEFAULT_CLASSNAME}_content_navigation-header`}>{"Контакты"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_content_navigation-item`}>{"Телефоны"}</div>
-                        <div className={`${DEFAULT_CLASSNAME}_content_navigation-item`}><span>{"+375(25) 533-80-26"}</span><span>{"+375(29) 519-09-88"}</span></div>
+                        <div className={`${DEFAULT_CLASSNAME}_content_navigation-item`}><span>{"+375 (25) 533-80-26"}</span><span>{"+375 (29) 519-09-88"}</span></div>
                         <div className={`${DEFAULT_CLASSNAME}_content_navigation-item`}>{"E-mail"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_content_navigation-item`}>{"trifectacompany@mail.ru"}</div>
                     </div>

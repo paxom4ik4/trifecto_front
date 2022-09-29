@@ -7,13 +7,14 @@ import {PersonCard} from "../personCard/personCard";
 const DEFAULT_CLASSNAME = 'structure';
 
 export const Structure = () => {
+    const userId = sessionStorage.getItem("userId");
+    const TOKEN = sessionStorage.getItem('accessToken');
+
     const [currentLevel, setCurrentLevel] = useState(0);
     const [currentStructure, setCurrentStructure] = useState(null);
 
     useEffect(() => {
-        const TOKEN = sessionStorage.getItem('accessToken');
-
-        fetch(`http://trifecta.by:5000/api/ReferralStructure/GetUserReferralGroup`, {
+        fetch(`https://trifecta-web-api.herokuapp.com/api/ReferralStructure/GetUserReferralGroup`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -28,8 +29,6 @@ export const Structure = () => {
 
         setCurrentLevel(structureLevel);
     };
-
-    const userId = sessionStorage.getItem("userId");
 
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>

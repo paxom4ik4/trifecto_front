@@ -7,16 +7,14 @@ import expand from './expand.png';
 
 const DEFAULT_CLASSNAME = 'person-card';
 
-export const PersonCard = ({setCurrentLevel, currentLevel, structureLevel = 0, id, setCurrentLevelHandler, groupId, userPackage, turnover, firstTurnover, groupTurnover, baseLevel}) => {
+export const PersonCard = ({setCurrentGroupId, setCurrentLevelHandler, currentLevel, structureLevel = 0, id, setCurrentLevel, groupId, userPackage, turnover, firstTurnover, groupTurnover, baseLevel}) => {
     const [personData, setPersonData] = useState(null);
     const [expanded, setExpanded] = useState(false);
-
-    const [groupData, setGroupData] = useState(null);
 
     const TOKEN = sessionStorage.getItem('accessToken');
 
     useEffect(() => {
-        fetch(`http://trifecta.by:5000/api/UserProfile/GetProfileInfo?userId=${id}`, {
+        fetch(`https://trifecta-web-api.herokuapp.com/api/UserProfile/GetProfileInfo?userId=${id}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -33,20 +31,13 @@ export const PersonCard = ({setCurrentLevel, currentLevel, structureLevel = 0, i
     }, [currentLevel])
 
     const clickHandler = () => {
-        loadNextGroup()
         setExpanded(!expanded);
         setCurrentLevelHandler(structureLevel);
-    }
 
-    const loadNextGroup = () => {
-        fetch(`http://trifecta.by:5000/api/UserProfile/GetPartnersReferralGroups?groupId=${groupId}`, {
-            headers: {
-                'Accept': '*/*',
-                'Authorization': `Bearer ${TOKEN}`
-            }
-        })
-            .then(res => res.json())
-            .then(data => setGroupData(data));
+        if(structureLevel === 2) {
+            setCurrentLevelHandler(0);
+            setCurrentGroupId(groupId);
+        }
     }
 
     return (

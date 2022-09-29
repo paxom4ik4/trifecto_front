@@ -70,7 +70,7 @@ export const TrifectaApp = () => {
         const USER_ID = sessionStorage.getItem('userId');
         const TOKEN = sessionStorage.getItem('accessToken');
 
-        fetch(`http://trifecta.by:5000/api/UserProfile/GetProfileInfo?userId=${USER_ID}`, {
+        fetch(`https://trifecta-web-api.herokuapp.com/api/UserProfile/GetProfileInfo?userId=${USER_ID}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -82,7 +82,7 @@ export const TrifectaApp = () => {
                 sessionStorage.setItem('isAuthorized', data.isVerifiedUser)
             });
 
-        fetch(`http://trifecta.by:5000/api/Packages/GetUserPackage?userId=${USER_ID}`, {
+        fetch(`https://trifecta-web-api.herokuapp.com/api/Packages/GetUserPackage?userId=${USER_ID}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -92,7 +92,7 @@ export const TrifectaApp = () => {
             .then(data => setCurrentPackage(data));
 
 
-        fetch(`http://trifecta.by:5000/api/Home/GetReferralLink?userId=${USER_ID}`, {
+        fetch(`https://trifecta-web-api.herokuapp.com/api/Home/GetReferralLink?userId=${USER_ID}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`

@@ -14,7 +14,7 @@ export const PersonCard = ({setCurrentGroupId, setCurrentLevelHandler, currentLe
     const TOKEN = sessionStorage.getItem('accessToken');
 
     useEffect(() => {
-        fetch(`https://trifecta-web-api.herokuapp.com/api/UserProfile/GetProfileInfo?userId=${id}`, {
+        fetch(`http://trifecta.by:5000/api/UserProfile/GetProfileInfo?userId=${id}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`

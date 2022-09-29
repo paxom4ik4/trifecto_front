@@ -14,7 +14,7 @@ export const Structure = () => {
     const [currentStructure, setCurrentStructure] = useState(null);
 
     useEffect(() => {
-        fetch(`https://trifecta-web-api.herokuapp.com/api/ReferralStructure/GetUserReferralGroup`, {
+        fetch(`http://trifecta.by:5000/api/ReferralStructure/GetUserReferralGroup`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`

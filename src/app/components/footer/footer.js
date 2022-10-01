@@ -30,9 +30,6 @@ export const TrifectaFooter = () => {
                         <div className={`${DEFAULT_CLASSNAME}_content_links_item`}>
                             <img src={tg} alt={"img"} />
                         </div>
-                        <div className={`${DEFAULT_CLASSNAME}_content_links_item`}>
-                            <img src={twitter} alt={"img"} />
-                        </div>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_content_text`}>
                         <span onClick={() => navigate('/app/cookie')}>{"Cookie-файлы"}</span>

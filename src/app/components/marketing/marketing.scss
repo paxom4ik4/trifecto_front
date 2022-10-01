@@ -31,6 +31,19 @@
     border-radius: 20px;
     box-sizing: border-box !important;
 
+    &_close {
+      position: absolute;
+      right: 32px;
+      top: 24px;
+      font-size: 18px;
+      transition: 0.3s;
+
+      &:hover {
+        cursor: pointer;
+        opacity: 0.8;
+      }
+    }
+
     img {
       position: absolute;
       bottom: 16px;

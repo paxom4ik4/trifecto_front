@@ -24,7 +24,6 @@ export const Help = () => {
                         <div className={`${DEFAULT_CLASSNAME}_card_text`}>
                             <div className={`${DEFAULT_CLASSNAME}_card_text_title`}>{"Телефоны"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_card_text_item`}>{"+375(25) 533-80-26"}</div>
-                            <div className={`${DEFAULT_CLASSNAME}_card_text_item`}>{"+375(29) 519-09-88"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_card_text_title`}>{"E-mail"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_card_text_item`}>{"trifectacompany@mail.ru"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_content_links_item`}>

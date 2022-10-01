@@ -17,9 +17,8 @@ const LoginContent = () => {
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
 
-
     const handleLogin = () => {
-        fetch('http://trifecta.by:5000/api/Authentication/Login', {
+        fetch('https://trifecta-web-api.herokuapp.com/api/Authentication/Login', {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -47,8 +46,8 @@ const LoginContent = () => {
 
     return (
         <>
-            <input type={"text"} placeholder={"E-mail*"} value={loginEmail} onChange={(e) => setLoginEmail(e.currentTarget.value)} />
-            <input type={"password"} placeholder={"Введите пароль*"} value={loginPassword} onChange={(e) => setLoginPassword(e.currentTarget.value)} />
+            <input type={"text"} placeholder={"E-mail"} value={loginEmail} onChange={(e) => setLoginEmail(e.currentTarget.value)} />
+            <input type={"password"} placeholder={"Введите пароль"} value={loginPassword} onChange={(e) => setLoginPassword(e.currentTarget.value)} />
 
             <button onClick={() => handleLogin()} className={`${DEFAULT_CLASSNAME}_btn`}>{"Войти"}</button>
         </>
@@ -65,6 +64,7 @@ const RegisterContent = ({ setIsRegisterMode }) => {
 
     const [registerSecondName, setRegisterSecondName] = useState('');
     const [registerFirstName, setRegisterFirstName] = useState('');
+    const [registerPatronymic, setRegisterPatronymic] = useState('');
     const [registerEmail, setRegisterEmail] = useState('');
     const [registerPassword, setRegisterPassword] = useState('');
     const [registerPasswordRep, setRegisterPasswordRep] = useState('');
@@ -87,6 +87,7 @@ const RegisterContent = ({ setIsRegisterMode }) => {
             body: JSON.stringify({
                 "firstName": registerFirstName,
                 "lastName": registerSecondName,
+                "patronymic": registerPatronymic,
                 "email": registerEmail,
                 "password": registerPassword,
                 "confirmPassword": registerPasswordRep,
@@ -106,13 +107,14 @@ const RegisterContent = ({ setIsRegisterMode }) => {
     return (
         <>
             <div className={`${DEFAULT_CLASSNAME}_header`}>
-                <input type={"text"} placeholder={"Фамилия*"} value={registerSecondName} onChange={(e) => setRegisterSecondName(e.currentTarget.value)} />
-                <input type={"text"} placeholder={"Имя*"} value={registerFirstName} onChange={(e) => setRegisterFirstName(e.currentTarget.value)} />
+                <input type={"text"} placeholder={"Фамилия"} value={registerSecondName} onChange={(e) => setRegisterSecondName(e.currentTarget.value)} />
+                <input type={"text"} placeholder={"Имя"} value={registerFirstName} onChange={(e) => setRegisterFirstName(e.currentTarget.value)} />
+                <input type={"text"} placeholder={"Отвечтво"} value={registerPatronymic} onChange={(e) => setRegisterPatronymic(e.currentTarget.value)} />
             </div>
 
-            <input type={"text"} placeholder={"E-mail*"} value={registerEmail} onChange={(e) => setRegisterEmail(e.currentTarget.value)} />
-            <input type={"password"} placeholder={"Придумайте пароль (мин. 8 символов)*"} value={registerPassword} onChange={(e) => setRegisterPassword(e.currentTarget.value)} />
-            <input type={"password"} placeholder={"Подтвердите пароль*"} value={registerPasswordRep} onChange={(e) => setRegisterPasswordRep(e.currentTarget.value)} />
+            <input type={"text"} placeholder={"E-mail"} value={registerEmail} onChange={(e) => setRegisterEmail(e.currentTarget.value)} />
+            <input type={"password"} placeholder={"Придумайте пароль (мин. 8 символов)"} value={registerPassword} onChange={(e) => setRegisterPassword(e.currentTarget.value)} />
+            <input type={"password"} placeholder={"Подтвердите пароль"} value={registerPasswordRep} onChange={(e) => setRegisterPasswordRep(e.currentTarget.value)} />
 
             <div className={`${DEFAULT_CLASSNAME}_footer`}>
                 <select style={{ backgroundImage: `url(${selectArrow})` }} placeholder={"Страна"} onChange={(e) => setSelectedCountry(e.currentTarget.value)}>

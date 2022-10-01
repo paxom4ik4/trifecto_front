@@ -16,10 +16,12 @@ const DEFAULT_CLASSNAME = 'marketing';
 export const Marketing = () => {
     const [packageToBuy, setPackageToBuy] = useState(null);
 
+    const [agreement, setAgreement] = useState(false);
+
     const buyPackageHandler = () => {
         const TOKEN = sessionStorage.getItem('accessToken');
 
-        if (packageToBuy.price && packageToBuy.name && packageToBuy.id) {
+        if (agreement && packageToBuy.price && packageToBuy.name && packageToBuy.id) {
             fetch(`http://trifecta.by:5000/api/Packages/BuyPackage`, {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, *cors, same-origin
@@ -33,26 +35,23 @@ export const Marketing = () => {
                 },
                 body: JSON.stringify({ packageId: packageToBuy.id })
             })
-                .then(res => res.json())
-                .then(data => console.log(data));
+                .finally(() => setPackageToBuy(null))
         }
-
-        setPackageToBuy(null);
     }
 
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
-
             {
                 packageToBuy &&
                 <div className={`${DEFAULT_CLASSNAME}_modal_wrapper`}>
                     <div className={`${DEFAULT_CLASSNAME}_modal`}>
+                        <div className={`${DEFAULT_CLASSNAME}_modal_close`} onClick={() => setPackageToBuy(null)}>{"x"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_modal_title`}>{"Оформление заказа"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_modal_text`}>{"Сумма заказа:"} <span>{packageToBuy.price}</span> {"бел. руб."}</div>
                         <div className={`${DEFAULT_CLASSNAME}_modal_text`}>{"Товар:"} <span>{packageToBuy.name}</span></div>
 
                         <div className={`${DEFAULT_CLASSNAME}_modal_agreement`}>
-                            <input type={"checkbox"} id={'agreement'} />
+                            <input checked={agreement} onClick={() => setAgreement(!agreement)} type={"checkbox"} id={'agreement'} />
                             <label htmlFor={'agreement'}>{"Я ознакомился с Кодексом партнёра и Партнёрским соглашением и согласен со всеми условиями"}</label>
                         </div>
 

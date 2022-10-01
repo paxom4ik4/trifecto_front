@@ -38,6 +38,7 @@ import {Cookie} from "./components/cookie/cookie";
 import {Structure} from "./components/structure/structure";
 import {Charges} from "./components/charges/charges";
 import {Progress} from "./components/progress/progress";
+import {Admin} from "./admin/admin";
 
 const DEFAULT_CLASSNAME = 'trifecta-app';
 
@@ -115,6 +116,8 @@ export const TrifectaApp = () => {
         navigate('/');
     }
 
+    const isAdmin = true;
+
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             {!cookieConfirmed && <CookieApp setCookieConfirmed={setCookieConfirmed} />}
@@ -124,50 +127,67 @@ export const TrifectaApp = () => {
                         <img className={`${DEFAULT_CLASSNAME}_side-menu_logo`} src={trifecta} alt={'logo'} />
                         <div className={`${DEFAULT_CLASSNAME}_side-menu_profile`}>
                             <img src={noPhoto} alt={"img"} />
-                            <div className={`${DEFAULT_CLASSNAME}_side-menu_profile_text`}>
+                            {!isAdmin ? <div className={`${DEFAULT_CLASSNAME}_side-menu_profile_text`}>
                                 <div>{userInfo?.firstName + " " + userInfo?.lastName}</div>
                                 <div className={'level'}>{"6 уровень"}</div>
-                            </div>
+                            </div> : <div className={`${DEFAULT_CLASSNAME}_side-menu_profile_text`}>
+                                <div>{"Панель Администратора"}</div>
+                            </div>}
                         </div>
-                        {
-                            currentPackage?.name ?
-                                <div
-                                    className={`${DEFAULT_CLASSNAME}_side-menu_partner`}
-                                    onClick={() => navigator.clipboard.writeText(userInfo?.personalReferral)}
-                                >{"Ссылка реферала"}
-                                </div> :
-                                <div
-                                    className={`${DEFAULT_CLASSNAME}_side-menu_partner`}
-                                    onClick={() => navigate('/app/marketing')}
-                                >
-                                    {"Стать партнером"}
-                                </div>
+                        {!isAdmin && <>
+                            {
+                                currentPackage?.name ?
+                                    <div
+                                        className={`${DEFAULT_CLASSNAME}_side-menu_partner`}
+                                        onClick={() => navigator.clipboard.writeText(userInfo?.personalReferral)}
+                                    >{"Ссылка реферала"}
+                                    </div> :
+                                    <div
+                                        className={`${DEFAULT_CLASSNAME}_side-menu_partner`}
+                                        onClick={() => navigate('/app/marketing')}
+                                    >
+                                        {"Стать партнером"}
+                                    </div>
+                            }
+                            </>
                         }
-                        <div className={`${DEFAULT_CLASSNAME}_side-menu_item`}>
-                            <div className={`${DEFAULT_CLASSNAME}_side-menu_item-title`}>{"Меню"}</div>
-                            <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/'}><img src={mc} alt={'icon'}/> {"Мой кабинет"}</NavLink>
-                            <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!IS_VERIFIED && 'disabled'}`} to={'/app/withdraw'}><img src={wd} alt={'icon'}/> {"Вывод средств"}</NavLink>
-                            <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!IS_VERIFIED && 'disabled'}`} to={'/app/charges'}><img src={nch} alt={'icon'}/> {"Мои начисления"}</NavLink>
-                        </div>
-                        <div className={`${DEFAULT_CLASSNAME}_side-menu_item`}>
-                            <div className={`${DEFAULT_CLASSNAME}_side-menu_item-title`}>{"Trifecta"}</div>
-                            <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!IS_VERIFIED && 'disabled'}`} to={'/app/structure'}><img src={st} alt={'icon'}/> {"Структура"}</NavLink>
-                            <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!IS_VERIFIED && 'disabled'}`} to={'/app/progress'}><img src={pc} alt={'icon'}/> {"Прогресс"}</NavLink>
-                            <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/marketing'}><img src={mt} alt={'icon'}/> {"Маркетинг план"}</NavLink>
-                            <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/newbie'}><img src={lNew} alt={'icon'}/> {"Запуск новичка"}</NavLink>
-                            <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/info'}><img src={inf} alt={'icon'}/> {"Инфо"}</NavLink>
-                        </div>
-                        <div className={`${DEFAULT_CLASSNAME}_side-menu_item`}>
-                            <div className={`${DEFAULT_CLASSNAME}_side-menu_item-title`}>{"Управление"}</div>
-                            <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/settings'}><img src={sett} alt={'icon'}/> {"Настройки"}</NavLink>
-                            <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/help'}><img src={help} alt={'icon'}/> {"Помощь"}</NavLink>
-                            <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} onClick={() => logOutHandler()}><img src={exit} alt={'icon'}/> {"Выйти"}</div>
-                        </div>
+                        {
+                            isAdmin ? <>
+                                <div className={`${DEFAULT_CLASSNAME}_side-menu_item`}>
+                                    <div className={`${DEFAULT_CLASSNAME}_side-menu_item-title`}>{"Меню"}</div>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/verification'}><img src={mc} alt={'icon'}/> {"Верификация"}</NavLink>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/withdraw'}><img src={wd} alt={'icon'}/> {"Вывод средств"}</NavLink>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!IS_VERIFIED && 'disabled'}`} to={'/app/charges'}><img src={nch} alt={'icon'}/> {"Контактные данные"}</NavLink>
+                                    <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} onClick={() => logOutHandler()}><img src={exit} alt={'icon'}/> {"Выйти"}</div>
+                                </div>
+                            </> : <>
+                                <div className={`${DEFAULT_CLASSNAME}_side-menu_item`}>
+                                    <div className={`${DEFAULT_CLASSNAME}_side-menu_item-title`}>{"Меню"}</div>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/'}><img src={mc} alt={'icon'}/> {"Мой кабинет"}</NavLink>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!IS_VERIFIED && 'disabled'}`} to={'/app/withdraw'}><img src={wd} alt={'icon'}/> {"Вывод средств"}</NavLink>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!IS_VERIFIED && 'disabled'}`} to={'/app/charges'}><img src={nch} alt={'icon'}/> {"Мои начисления"}</NavLink>
+                                </div>
+                                <div className={`${DEFAULT_CLASSNAME}_side-menu_item`}>
+                                    <div className={`${DEFAULT_CLASSNAME}_side-menu_item-title`}>{"Trifecta"}</div>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!IS_VERIFIED && 'disabled'}`} to={'/app/structure'}><img src={st} alt={'icon'}/> {"Структура"}</NavLink>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!IS_VERIFIED && 'disabled'}`} to={'/app/progress'}><img src={pc} alt={'icon'}/> {"Прогресс"}</NavLink>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!IS_VERIFIED && 'disabled'}`} to={'/app/marketing'}><img src={mt} alt={'icon'}/> {currentPackage ? "Улучшить пакет" : "Маркетинг план"}</NavLink>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!IS_VERIFIED && 'disabled'}`} to={'/app/newbie'}><img src={lNew} alt={'icon'}/> {"Запуск новичка"}</NavLink>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/info'}><img src={inf} alt={'icon'}/> {"Инфо"}</NavLink>
+                                </div>
+                                <div className={`${DEFAULT_CLASSNAME}_side-menu_item`}>
+                                    <div className={`${DEFAULT_CLASSNAME}_side-menu_item-title`}>{"Управление"}</div>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/settings'}><img src={sett} alt={'icon'}/> {"Настройки"}</NavLink>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/help'}><img src={help} alt={'icon'}/> {"Помощь"}</NavLink>
+                                    <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} onClick={() => logOutHandler()}><img src={exit} alt={'icon'}/> {"Выйти"}</div>
+                                </div>
+                            </>
+                        }
                     </div>
                     <Routes>
                         <Route path={'/'} element={<Cabinet currentPackage={currentPackage} />} />
                         <Route path={'/marketing'} element={<Marketing />} />
-                        <Route path={'/newbie'} element={<Newbie />} />
+                        <Route path={!IS_VERIFIED ? '#' : '/newbie'} element={<Newbie />} />
                         <Route path={!IS_VERIFIED ? '#' : '/withdraw'} element={<Withdraw />} />
                         <Route path={!IS_VERIFIED ? '#' : '/charges'} element={<Charges />} />
                         <Route path={!IS_VERIFIED ? '#' : '/structure'} element={<Structure />} />
@@ -176,6 +196,8 @@ export const TrifectaApp = () => {
                         <Route path={'/settings'} element={<Settings userInfo={userInfo} />} />
                         <Route path={'/help'} element={<Help />} />
                         <Route path={'/cookie'} element={<Cookie />} />
+
+                        <Route path={'/admin/*'} element={<Admin />} />
                     </Routes>
                 </div>
                 <TrifectaFooter />

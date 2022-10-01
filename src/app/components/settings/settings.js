@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { memo } from 'react';
+import {memo, useEffect} from 'react';
 
 import './settings.scss';
 
@@ -11,7 +11,7 @@ import photoUpload from './photoUpload.png';
 
 import phone from './phone.png';
 import email from './email.png';
-import {useMemo, useState} from "react";
+import { useState } from "react";
 
 const DEFAULT_CLASSNAME = 'settings';
 
@@ -54,9 +54,27 @@ export const Settings = ({ userInfo }) => {
     }
 
     const Security = () => {
+        const USER_ID = sessionStorage.getItem('userId');
+        const TOKEN = sessionStorage.getItem('accessToken');
+
         const [currentPassword, setCurrentPassword] = useState('');
         const [newPassword, setNewPassword] = useState('');
         const [newPasswordMatch, setNewPasswordMatch] = useState('');
+
+        const [currentUserData, setCurrentUserData] = useState(null);
+
+        useEffect(() => {
+            fetch(`https://trifecta-web-api.herokuapp.com/api/UserProfile/GetProfileInfo?userId=${USER_ID}`, {
+                headers: {
+                    'Accept': '*/*',
+                    'Authorization': `Bearer ${TOKEN}`
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    setCurrentUserData(data)
+                });
+        }, []);
 
         const currentHandler = (value) => {
             setCurrentPassword(value)
@@ -69,9 +87,6 @@ export const Settings = ({ userInfo }) => {
         const newMatchHandler = (value) => {
             setNewPasswordMatch(value)
         }
-
-        const USER_ID = sessionStorage.getItem('userId');
-        const TOKEN = sessionStorage.getItem('accessToken');
 
         const changePasswordHandler = () => {
             fetch(`http://trifecta.by:5000/api/UserProfile/ChangePassword`, {
@@ -191,7 +206,7 @@ export const Settings = ({ userInfo }) => {
                         <img src={email} alt={'email'} />
                         <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
                             <label htmlFor={'email'}>{"Электронный адрес"}</label>
-                            <input value={newEmail} onChange={(e) => setNewEmail(e.currentTarget.value)} placeholder={"qwerty@gmail.com"} type={"email"} id={"email"} />
+                            <input value={newEmail} onChange={(e) => setNewEmail(e.currentTarget.value)} placeholder={currentUserData?.email} type={"email"} id={"email"} />
                         </div>
                         <button onClick={() => changeEmailHandler()} disabled={!newEmail.includes('@')} className={`${DEFAULT_CLASSNAME}_security_btn`}>{"Сменить E-male"}</button>
                         <div>{"После прохождения модерации данные будут изменены."}</div>
@@ -493,12 +508,21 @@ export const Settings = ({ userInfo }) => {
         </>
 
         const [currentType, setCurrentType] = useState('Физическое лицо');
+        const [currentCountry, setCurrentCountry] = useState('Беларусь');
 
         const USER_ID = sessionStorage.getItem('userId');
 
+        const getCurrentCountryCode = () => {
+            switch(currentCountry) {
+                case "Беларусь": return '1';
+                case "Россия": return '2';
+                case "Казахстан": return '3';
+            }
+        }
+
         const docsForVerification = {
             userId: USER_ID,
-            country: '1',
+            country: getCurrentCountryCode(),
             employmentType: '1',
             documentVerificationModels: {
                 legalDataModel: {
@@ -628,8 +652,10 @@ export const Settings = ({ userInfo }) => {
                         <option>ИП</option>
                         <option>Юридическое лицо</option>
                     </select>
-                    <select disabled={true}>
+                    <select onChange={(e) => setCurrentCountry(e.currentTarget.value)}>
                         <option defaultChecked={true}>Беларусь</option>
+                        <option>Россия</option>
+                        <option>Казахстан</option>
                     </select>
                 </div>
                 <div>{error}</div>

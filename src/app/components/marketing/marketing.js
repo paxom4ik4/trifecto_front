@@ -25,7 +25,7 @@ export const Marketing = ({ currentPackage }) => {
         const TOKEN = sessionStorage.getItem('accessToken');
 
         if (agreement && packageToBuy.price && packageToBuy.name && packageToBuy.id) {
-            fetch(`http://trifecta.by:5000/api/Packages/BuyPackage`, {
+            fetch(`https://trifecta.by:5000/api/Packages/BuyPackage`, {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, *cors, same-origin
                 cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

@@ -14,7 +14,7 @@ export const Info = () => {
     useEffect(() => {
         const TOKEN = sessionStorage.getItem('accessToken');
 
-        fetch('http://trifecta.by:5000/api/Info/GetThumbnails?userId=31703f65-5a6d-400e-ab87-d0d93981f34f', {
+        fetch('https://trifecta.by:5000/api/Info/GetThumbnails?userId=31703f65-5a6d-400e-ab87-d0d93981f34f', {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`

@@ -24,7 +24,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "serve": "PORT=3000 serve -s build",
-    "serve-win": "set PORT=3000 && serve -s build",
+    "serve-win": "set PORT=3000 && serve -s build"
   },
   "engines": {
     "npm": "=8.17.0",

@@ -13,7 +13,7 @@ export const ContactInfo = () => {
     const TOKEN = sessionStorage.getItem("accessToken");
 
     useEffect(() => {
-        fetch(`http://trifecta.by:5000/api/Administrator/GetUserContactsVerivicationList`, {
+        fetch(`https://trifecta.by:5000/api/Administrator/GetUserContactsVerivicationList`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -24,7 +24,7 @@ export const ContactInfo = () => {
     }, [dataChanged])
 
     const verifyChange = (requestId, userId) => {
-        fetch(`http://trifecta.by:5000/api/Administrator/AcceptUserContactVerification?requestId=${requestId}&userId=${userId}`, {
+        fetch(`https://trifecta.by:5000/api/Administrator/AcceptUserContactVerification?requestId=${requestId}&userId=${userId}`, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -44,7 +44,7 @@ export const ContactInfo = () => {
     }
 
     const rejectChange = (requestId, userId) => {
-        fetch(`http://trifecta.by:5000/api/Administrator/RejectUserContactVerification?requestId=${requestId}&userId=${userId}`, {
+        fetch(`https://trifecta.by:5000/api/Administrator/RejectUserContactVerification?requestId=${requestId}&userId=${userId}`, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

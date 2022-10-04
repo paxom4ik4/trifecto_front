@@ -34,7 +34,7 @@ export const Settings = ({ userInfo }) => {
         if (uploadedFile) {
             file.append('ProfilePhoto', uploadedFile);
 
-            fetch('http://trifecta.by:5000/api/UserProfile/UploadProfilePhoto', {
+            fetch('https://trifecta.by:5000/api/UserProfile/UploadProfilePhoto', {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, *cors, same-origin
                 cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -102,7 +102,7 @@ export const Settings = ({ userInfo }) => {
         const [currentUserData, setCurrentUserData] = useState(null);
 
         useEffect(() => {
-            fetch(`http://trifecta.by:5000/api/UserProfile/GetProfileInfo?userId=${USER_ID}`, {
+            fetch(`https://trifecta.by:5000/api/UserProfile/GetProfileInfo?userId=${USER_ID}`, {
                 headers: {
                     'Accept': '*/*',
                     'Authorization': `Bearer ${TOKEN}`
@@ -127,7 +127,7 @@ export const Settings = ({ userInfo }) => {
         }
 
         const changePasswordHandler = () => {
-            fetch(`http://trifecta.by:5000/api/UserProfile/ChangePassword`, {
+            fetch(`https://trifecta.by:5000/api/UserProfile/ChangePassword`, {
                 headers: {
                     'Accept': '*/*',
                     'Content-Type': 'application/json',
@@ -165,7 +165,7 @@ export const Settings = ({ userInfo }) => {
         const [newEmail, setNewEmail] = useState("");
 
         const changePhoneHandler = () => {
-            fetch(`http://trifecta.by:5000/api/UserProfile/UploadPhoneNumber`, {
+            fetch(`https://trifecta.by:5000/api/UserProfile/UploadPhoneNumber`, {
                 headers: {
                     'Accept': '*/*',
                     'Content-Type': 'application/json',
@@ -190,7 +190,7 @@ export const Settings = ({ userInfo }) => {
         }
 
         const changeEmailHandler = () => {
-            fetch(`http://trifecta.by:5000/api/UserProfile/ChangeEmailAdress`, {
+            fetch(`https://trifecta.by:5000/api/UserProfile/ChangeEmailAdress`, {
                 headers: {
                     'Accept': '*/*',
                     'Content-Type': 'application/json',
@@ -314,7 +314,7 @@ export const Settings = ({ userInfo }) => {
         const TOKEN = sessionStorage.getItem('accessToken');
 
         useEffect(() => {
-            fetch(`http://trifecta.by:5000/api/UserDocument/GetVerifiedData?userId=${USER_ID}`, {
+            fetch(`https://trifecta.by:5000/api/UserDocument/GetVerifiedData?userId=${USER_ID}`, {
                 headers: {
                     'Accept': '*/*',
                     'Content-Type': 'application/json',
@@ -704,7 +704,7 @@ export const Settings = ({ userInfo }) => {
                 }
             }
 
-            fetch('http://trifecta.by:5000/api/UserDocument/SendDataForVerification', {
+            fetch('https://trifecta.by:5000/api/UserDocument/SendDataForVerification', {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, *cors, same-origin
                 cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

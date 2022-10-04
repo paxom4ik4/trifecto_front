@@ -16,7 +16,7 @@ export const Structure = () => {
     const [structureExpanded, setStructureExpanded] = useState(false);
 
     useEffect(() => {
-        fetch(`http://trifecta.by:5000/api/ReferralStructure/GetTree?userId=${structureIds[structureIds.length - 1]}`, {
+        fetch(`https://trifecta.by:5000/api/ReferralStructure/GetTree?userId=${structureIds[structureIds.length - 1]}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`

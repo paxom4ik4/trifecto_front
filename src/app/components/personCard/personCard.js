@@ -7,7 +7,7 @@ import expand from './expand.png';
 
 const DEFAULT_CLASSNAME = 'person-card';
 
-export const PersonCard = ({setStructureExpanded, setStructureIds, structureIds, parentStructureIds, currentLevel, id, userPackage, turnover, firstTurnover, groupTurnover, baseLevel}) => {
+export const PersonCard = ({setStructureExpanded, setStructureIds, structureIds, parentStructureIds, currentLevel, id, userPackage, turnover, groupTurnover, baseLevel}) => {
     const [personData, setPersonData] = useState(null);
     const [expanded, setExpanded] = useState(false);
 
@@ -70,10 +70,10 @@ export const PersonCard = ({setStructureExpanded, setStructureIds, structureIds,
                             <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Личный оборот"}</div>
                             <div>{turnover + ".00$"}</div>
                         </div>
-                        <div className={`${DEFAULT_CLASSNAME}_additional_info`}>
-                            <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Оборот первой линии, $"}</div>
-                            <div>{firstTurnover + ".00$"}</div>
-                        </div>
+                        {/*<div className={`${DEFAULT_CLASSNAME}_additional_info`}>*/}
+                        {/*    <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Оборот первой линии, $"}</div>*/}
+                        {/*    <div>{firstTurnover + ".00$"}</div>*/}
+                        {/*</div>*/}
                         <div className={`${DEFAULT_CLASSNAME}_additional_info`}>
                             <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Групповой оборот, $"}</div>
                             <div>{groupTurnover + ".00$"}</div>
@@ -84,7 +84,7 @@ export const PersonCard = ({setStructureExpanded, setStructureIds, structureIds,
                         </div>
                     </div>
                 }
-                <div className={`${DEFAULT_CLASSNAME}_expand ${expanded && "expanded"}`} onClick={() => clickHandler()}><img src={expand} /></div>
+                <div className={`${DEFAULT_CLASSNAME}_expand ${expanded && "expanded"}`} onClick={() => clickHandler()}><img src={expand} alt={'expand'} /></div>
             </div> : <div className={`${DEFAULT_CLASSNAME}_loading`}>{"Loading..."}</div>}
         </div>
     )

@@ -1,6 +1,8 @@
 import React, { useState, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Header } from "./common/header/header";
 import { Main } from "./components/main/main";
 import { BrowserRouter, Navigate, useLocation } from "react-router-dom";
@@ -28,6 +30,7 @@ const App = () => {
 
     return (
         <>
+            <ToastContainer />
             <Header setIsRegisterMode={setIsRegisterMode} />
             <div className="trifecta">
                 <Routes>

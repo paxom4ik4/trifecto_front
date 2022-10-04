@@ -39,6 +39,7 @@ import {Structure} from "./components/structure/structure";
 import {Charges} from "./components/charges/charges";
 import {Progress} from "./components/progress/progress";
 import {Admin} from "./admin/admin";
+import {Docs} from "./components/docs/docs";
 
 const DEFAULT_CLASSNAME = 'trifecta-app';
 
@@ -65,13 +66,13 @@ export const TrifectaApp = () => {
     const [userReferral, setUserReferral] = useState('');
     const [currentPackage, setCurrentPackage] = useState(null);
 
-    const IS_VERIFIED = sessionStorage.getItem('isAuthorized');
+    const [IS_VERIFIED, setIsVerified] = useState(false);
 
     useEffect(() => {
         const USER_ID = sessionStorage.getItem('userId');
         const TOKEN = sessionStorage.getItem('accessToken');
 
-        fetch(`http://trifecta.by:5000/api/UserProfile/GetProfileInfo?userId=${USER_ID}`, {
+        fetch(`https://trifecta-web-api.herokuapp.com/api/UserProfile/GetProfileInfo?userId=${USER_ID}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -80,10 +81,14 @@ export const TrifectaApp = () => {
             .then(res => res.json())
             .then(data => {
                 setUserInfo(data)
+                setIsVerified(data.isVerifiedUser);
+                if (data.isVerifiedUser) {
+                    setCookieConfirmed(true);
+                }
                 sessionStorage.setItem('isAuthorized', data.isVerifiedUser)
             });
 
-        fetch(`http://trifecta.by:5000/api/Packages/GetUserPackage?userId=${USER_ID}`, {
+        fetch(`https://trifecta-web-api.herokuapp.com/api/Packages/GetUserPackage?userId=${USER_ID}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -93,7 +98,7 @@ export const TrifectaApp = () => {
             .then(data => setCurrentPackage(data));
 
 
-        fetch(`http://trifecta.by:5000/api/Home/GetReferralLink?userId=${USER_ID}`, {
+        fetch(`https://trifecta-web-api.herokuapp.com/api/Home/GetReferralLink?userId=${USER_ID}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -116,7 +121,13 @@ export const TrifectaApp = () => {
         navigate('/');
     }
 
-    const isAdmin = true;
+    const isAdmin = userInfo?.role === 'Admin';
+
+    useEffect(() => {
+        if (isAdmin) {
+            navigate('/app/admin/verification');
+        }
+    }, [isAdmin])
 
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
@@ -129,7 +140,7 @@ export const TrifectaApp = () => {
                             <img src={noPhoto} alt={"img"} />
                             {!isAdmin ? <div className={`${DEFAULT_CLASSNAME}_side-menu_profile_text`}>
                                 <div>{userInfo?.firstName + " " + userInfo?.lastName}</div>
-                                <div className={'level'}>{"6 уровень"}</div>
+                                <div className={'level'}>{userInfo?.level}</div>
                             </div> : <div className={`${DEFAULT_CLASSNAME}_side-menu_profile_text`}>
                                 <div>{"Панель Администратора"}</div>
                             </div>}
@@ -157,7 +168,7 @@ export const TrifectaApp = () => {
                                     <div className={`${DEFAULT_CLASSNAME}_side-menu_item-title`}>{"Меню"}</div>
                                     <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/verification'}><img src={mc} alt={'icon'}/> {"Верификация"}</NavLink>
                                     <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/withdraw'}><img src={wd} alt={'icon'}/> {"Вывод средств"}</NavLink>
-                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!IS_VERIFIED && 'disabled'}`} to={'/app/charges'}><img src={nch} alt={'icon'}/> {"Контактные данные"}</NavLink>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/contact-info'}><img src={nch} alt={'icon'}/> {"Контактные данные"}</NavLink>
                                     <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} onClick={() => logOutHandler()}><img src={exit} alt={'icon'}/> {"Выйти"}</div>
                                 </div>
                             </> : <>
@@ -186,7 +197,7 @@ export const TrifectaApp = () => {
                     </div>
                     <Routes>
                         <Route path={'/'} element={<Cabinet currentPackage={currentPackage} />} />
-                        <Route path={'/marketing'} element={<Marketing />} />
+                        <Route path={!IS_VERIFIED ? '#' : '/marketing'} element={<Marketing currentPackage={currentPackage} />} />
                         <Route path={!IS_VERIFIED ? '#' : '/newbie'} element={<Newbie />} />
                         <Route path={!IS_VERIFIED ? '#' : '/withdraw'} element={<Withdraw />} />
                         <Route path={!IS_VERIFIED ? '#' : '/charges'} element={<Charges />} />
@@ -196,6 +207,7 @@ export const TrifectaApp = () => {
                         <Route path={'/settings'} element={<Settings userInfo={userInfo} />} />
                         <Route path={'/help'} element={<Help />} />
                         <Route path={'/cookie'} element={<Cookie />} />
+                        <Route path={'/docs'} element={<Docs />} />
 
                         <Route path={'/admin/*'} element={<Admin />} />
                     </Routes>

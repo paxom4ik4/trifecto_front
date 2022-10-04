@@ -127,6 +127,11 @@
       border-radius: 100px;
       transition: 0.3s;
 
+      :disabled {
+        cursor: not-allowed;
+        opacity: 0.8;
+      }
+
       &:hover {
         cursor: pointer;
         opacity: 0.8

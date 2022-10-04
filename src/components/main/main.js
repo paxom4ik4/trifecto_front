@@ -11,15 +11,20 @@ import cardBag from '../../assets/cards/bag.png';
 import group from '../../assets/cards/group.png';
 import money from '../../assets/cards/money.png';
 
-import diamond from '../../assets/diamond.png';
-
 import { Goal } from "../../common/goal/goal";
 import {useNavigate} from "react-router-dom";
+
+import { Suspense, useRef } from 'react'
+import { OrbitControls, Stage } from '@react-three/drei'
+import { Canvas } from '@react-three/fiber';
+import {Diamond} from "../../diamond";
 
 const DEFAULT_CLASSNAME = 'main';
 
 export const Main = () => {
     const navigate = useNavigate();
+
+    const ref = useRef()
 
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
@@ -41,7 +46,16 @@ export const Main = () => {
                         <div className={`${DEFAULT_CLASSNAME}_btn`} onClick={() => navigate('/login')}>{'присоединиться'}</div>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_right`}>
-                        <img src={diamond} alt={'diamond'} />
+                        <Canvas style={{ width: "520px", height: "540px"}} shadows dpr={[1, 2]} camera={{ fov: 40 }}>
+                            <Suspense fallback={null}>
+                                <Stage controls={ref} preset="rembrandt" intensity={1} shadows={true}>
+                                    false
+                                    <Diamond />
+                                    false
+                                </Stage>
+                            </Suspense>
+                            <OrbitControls ref={ref} autoRotate enableZoom={false} />
+                        </Canvas>
                     </div>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_works`}>

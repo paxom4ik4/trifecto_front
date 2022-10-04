@@ -1,10 +1,11 @@
 import * as React from 'react';
 
 import './login.scss';
-import google from './assets/google.png'
+import yandex from './assets/yandex.png'
 import trifecta from './assets/trifecto.png';
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import { toast } from "react-toastify";
 
 import selectArrow from '../../assets/selectArrow.png';
 
@@ -38,7 +39,7 @@ const LoginContent = () => {
                 sessionStorage.setItem('userId', data.userId)
                 navigate('/app/');
             } else {
-                console.log(data);
+                toast.error(data.errors.join(','));
             }
         })
     }
@@ -68,13 +69,14 @@ const RegisterContent = ({ setIsRegisterMode }) => {
     const [registerEmail, setRegisterEmail] = useState('');
     const [registerPassword, setRegisterPassword] = useState('');
     const [registerPasswordRep, setRegisterPasswordRep] = useState('');
+    const [registerPhoneNumber, setRegisterPhoneNumber] = useState('');
 
     const [selectedCountry, setSelectedCountry] = useState('Беларусь');
 
     const [referral, setReferral] = useState('');
 
     const handleRegister = () => {
-        fetch('http://trifecta.by:5000/api/Authentication/Register', {
+        fetch('https://trifecta-web-api.herokuapp.com/api/Authentication/Register', {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -89,6 +91,7 @@ const RegisterContent = ({ setIsRegisterMode }) => {
                 "lastName": registerSecondName,
                 "patronymic": registerPatronymic,
                 "email": registerEmail,
+                "phoneNumber": registerPhoneNumber,
                 "password": registerPassword,
                 "confirmPassword": registerPasswordRep,
                 "referralCode": referral,
@@ -98,7 +101,7 @@ const RegisterContent = ({ setIsRegisterMode }) => {
             if (data.success) {
                 setIsRegisterMode(false)
             } else {
-                console.log(data);
+                toast.error(data.errors.join(','));
             }
         })
     }
@@ -111,6 +114,8 @@ const RegisterContent = ({ setIsRegisterMode }) => {
                 <input type={"text"} placeholder={"Имя"} value={registerFirstName} onChange={(e) => setRegisterFirstName(e.currentTarget.value)} />
                 <input type={"text"} placeholder={"Отвечтво"} value={registerPatronymic} onChange={(e) => setRegisterPatronymic(e.currentTarget.value)} />
             </div>
+
+            <input type={"tel"} placeholder={"Номер телефона"} value={registerPhoneNumber} onChange={(e) => setRegisterPhoneNumber(e.currentTarget.value)} />
 
             <input type={"text"} placeholder={"E-mail"} value={registerEmail} onChange={(e) => setRegisterEmail(e.currentTarget.value)} />
             <input type={"password"} placeholder={"Придумайте пароль (мин. 8 символов)"} value={registerPassword} onChange={(e) => setRegisterPassword(e.currentTarget.value)} />
@@ -125,7 +130,7 @@ const RegisterContent = ({ setIsRegisterMode }) => {
                 <input className={'referral'} type={"text"} placeholder={"Ссылка реферала"} value={referral} onChange={(e) => setReferral(e.currentTarget.value)}/>
             </div>
 
-            <button onClick={() => handleRegister()} className={`${DEFAULT_CLASSNAME}_btn`}>{"Зарегистрироваться"}</button>
+            <button disabled={!registerFirstName.length || !registerSecondName.length || !registerPatronymic.length || registerPassword.length < 8 || !registerPasswordRep.length || !registerPhoneNumber.length || !registerEmail.length || !referral.length} onClick={() => handleRegister()} className={`${DEFAULT_CLASSNAME}_btn`}>{"Зарегистрироваться"}</button>
         </>
     )
 }
@@ -139,7 +144,7 @@ export const Login = ({ setIsRegisterMode, isRegisterMode = true }) => {
                 {isRegisterMode ? <RegisterContent setIsRegisterMode={setIsRegisterMode} /> : <LoginContent />}
 
 
-                <button className={`${DEFAULT_CLASSNAME}_btn google-btn`}><img src={google} alt={'google-logo'} /> {"Войдите через Google"}</button>
+                <button className={`${DEFAULT_CLASSNAME}_btn google-btn`}><img src={yandex} alt={'google-logo'} /> {"Войдите через Yandex"}</button>
 
                 <img className={`${DEFAULT_CLASSNAME}_trifecta`} src={trifecta} alt={'trifecta'} />
             </div>

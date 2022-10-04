@@ -85,6 +85,11 @@ select {
     font-weight: 400;
     font-size: 18px;
     width: 100%;
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
   }
 
   .google-btn {

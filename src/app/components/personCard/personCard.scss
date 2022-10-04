@@ -28,6 +28,7 @@
   transition: 0.5s;
   animation: loyal 0.5 ease-in-out;
   margin: 20px 20px 20px 0;
+  height: 180px;
 
   &_expand.expanded {
     transform: rotate(180deg);

@@ -8,6 +8,27 @@
     }
   }
 
+  &_profile_photo {
+    position: relative;
+    height: 320px;
+    width: 320px;
+
+    img {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+    }
+
+    input {
+      opacity: 0;
+      height: 100%;
+      width: 120%;
+      border: none !important;
+      border-radius: 100% !important;
+      position: absolute;
+    }
+  }
+
   .upload-photo-input {
     position: absolute;
     height: 230px;

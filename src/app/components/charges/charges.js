@@ -3,6 +3,7 @@ import * as React from 'react';
 import '../withdraw/withdraw.scss';
 import './charges.scss';
 import {useEffect, useState} from "react";
+import {toast} from "react-toastify";
 
 const DEFAULT_CLASSNAME = 'withdraw';
 
@@ -15,7 +16,7 @@ export const Charges = () => {
         const TOKEN = sessionStorage.getItem('accessToken');
         const USER_ID = sessionStorage.getItem('userId');
 
-        fetch(`http://trifecta.by:5000/api/Withdraw/GetAccuralHistory?id=${USER_ID}`, {
+        fetch(`https://trifecta-web-api.herokuapp.com/api/Withdraw/GetAccuralHistory?userId=${USER_ID}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -31,7 +32,7 @@ export const Charges = () => {
         const USER_ID = sessionStorage.getItem('userId');
         const TOKEN = sessionStorage.getItem('accessToken');
 
-        fetch(`http://trifecta.by:5000/api/Home/GetPersonalPageInfo?userId=${USER_ID}`, {
+        fetch(`https://trifecta-web-api.herokuapp.com/api/Home/GetPersonalPageInfo?userId=${USER_ID}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -40,6 +41,47 @@ export const Charges = () => {
             .then(res => res.json())
             .then(data => setUserData(data));
     }, []);
+
+    const [selectedCharges, setSelectedCharges] = useState([]);
+
+    const chargeHandler = (item) => {
+        if (selectedCharges.includes(item.id)) {
+            const idx = selectedCharges.indexOf(item.id);
+            const idsToSet = [...selectedCharges.slice(0, idx), ...selectedCharges.slice(idx + 1)];
+            setSelectedCharges(idsToSet)
+        } else {
+            setSelectedCharges([...selectedCharges, item.id]);
+        }
+    }
+
+    const withdrawCharges = () => {
+        const USER_ID = sessionStorage.getItem('userId');
+        const TOKEN = sessionStorage.getItem('accessToken');
+
+        fetch('https://trifecta-web-api.herokuapp.com/api/Withdraw/MakeWithdraw', {
+            headers: {
+                'Accept': '*/*',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${TOKEN}`
+            },
+            method: "POST",
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'same-origin', // include, *same-origin, omit
+            redirect: 'follow', // manual, *follow, error
+            referrerPolicy: 'origin',
+            body: JSON.stringify({
+                userId: USER_ID,
+                accuralsId: selectedCharges,
+            })
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .finally(() => {
+                toast.success("Запрос на вывод средств создан");
+                setSelectedCharges([]);
+            })
+    }
 
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
@@ -82,6 +124,7 @@ export const Charges = () => {
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_table`}>
                     <div className={`charges_table_header`}>
+                        <div>{""}</div>
                         <div>{"Название начисления"}</div>
                         <div>{"ЗА КОГО"}</div>
                         <div>{"%"}</div>
@@ -92,6 +135,7 @@ export const Charges = () => {
                     </div>
                     {withdraws.length ? withdraws.map(item => (
                         <div className={`charges_table_item`}>
+                            <div className={`charges_table_item_select ${!!selectedCharges.includes(item.id) && 'selected'}`} onClick={() => chargeHandler(item)}/>
                             <div>{item.accuralName}</div>
                             <div>{item.referralName}</div>
                             <div>{item.accuralPercent}</div>
@@ -102,6 +146,7 @@ export const Charges = () => {
                         </div>
                     )): <div className={`${DEFAULT_CLASSNAME}_table-empty`}>{"Начислений не совершалось"}</div>}
                 </div>
+                {!!selectedCharges.length && <div onClick={() => withdrawCharges()} className={`charges_withdraw`}>{"Вывести выбранное"}</div>}
             </div> </> : <div className={`trifecta-app_loading`}>{"Loading..."}</div>}
         </div>
     )

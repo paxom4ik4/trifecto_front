@@ -20,7 +20,7 @@ export const Cabinet = ({ currentPackage }) => {
         const USER_ID = sessionStorage.getItem('userId');
         const TOKEN = sessionStorage.getItem('accessToken');
 
-        fetch(`http://trifecta.by:5000/api/Home/GetPersonalPageInfo?userId=${USER_ID}`, {
+        fetch(`https://trifecta-web-api.herokuapp.com/api/Home/GetPersonalPageInfo?userId=${USER_ID}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`

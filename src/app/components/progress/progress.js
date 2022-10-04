@@ -14,7 +14,7 @@ export const Progress = () => {
         const USER_ID = sessionStorage.getItem('userId');
         const TOKEN = sessionStorage.getItem('accessToken');
 
-        fetch(`http://trifecta.by:5000/api/Progress/GetUserProgress?userId=${USER_ID}`, {
+        fetch(`https://trifecta-web-api.herokuapp.com/api/Progress/GetUserProgress?userId=${USER_ID}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -53,37 +53,71 @@ export const Progress = () => {
                 <div className={DEFAULT_CLASSNAME}>
                     <div className={`${DEFAULT_CLASSNAME}_content`}>
                         <div className={`${DEFAULT_CLASSNAME}_content_item`}>
-                            <div className={`${DEFAULT_CLASSNAME}_content_item_title`}>{`Базовый - ${userData?.baseLevelInfo.currentLevel.name}`}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_content_item_title`}>{`Базовый - ${userData?.baseLevelProgress.baseLevel.name}`}</div>
                             <div className={`${DEFAULT_CLASSNAME}_bar`}>
                                 <div className={`${DEFAULT_CLASSNAME}_bar_title`}>{"Групповой оборот"}</div>
                                 <div className={`${DEFAULT_CLASSNAME}_bar_content`}>
                                     <div className={`${DEFAULT_CLASSNAME}_bar_content_progress`}
-                                         style={{width: `${userData?.baseLevelInfo.currentTurnover / userData?.nextBasicLevelRequirements.groupTurnover * 100}%`}}/>
+                                         style={{width: `${userData?.baseLevelProgress.currentCommonTurnover / userData?.baseLevelProgress.nextBasicLevelRequirements.groupTurnover * 100}%`}}/>
                                 </div>
                                 <div
-                                    className={`${DEFAULT_CLASSNAME}_bar_subtitle`}>{`${userData?.baseLevelInfo.currentTurnover}.00$ / ${userData?.nextBasicLevelRequirements.groupTurnover}.00$`}</div>
+                                    className={`${DEFAULT_CLASSNAME}_bar_subtitle`}>{`${userData?.baseLevelProgress.currentCommonTurnover}.00$ / ${userData?.baseLevelProgress.nextBasicLevelRequirements.groupTurnover}.00$`}</div>
                             </div>
                             <div className={`${DEFAULT_CLASSNAME}_bar`}>
                                 <div
-                                    className={`${DEFAULT_CLASSNAME}_bar_title`}>{`Рефералов ${userData?.baseLevelInfo.currentLevel.name.slice(0, 2)}уровня`}</div>
+                                    className={`${DEFAULT_CLASSNAME}_bar_title`}>{`Рефералов ${userData?.baseLevelProgress.baseLevel.name.slice(0, 2)}уровня`}</div>
                                 <div className={`${DEFAULT_CLASSNAME}_bar_content`}>
                                     <div className={`${DEFAULT_CLASSNAME}_bar_content_progress`}
-                                         style={{width: `${userData?.partnersCurrentLevelCount / userData?.nextBasicLevelRequirements.partnersRequirementCount * 100}%`}}/>
+                                         style={{width: `${userData?.baseLevelProgress.countOfRefferralRequiredFoNextLevel / userData?.baseLevelProgress.nextBasicLevelRequirements.partnersRequirementCount * 100}%`}}/>
                                 </div>
                                 <div
-                                    className={`${DEFAULT_CLASSNAME}_bar_subtitle`}>{`${userData?.partnersCurrentLevelCount} / ${userData?.nextBasicLevelRequirements.partnersRequirementCount}`}</div>
+                                    className={`${DEFAULT_CLASSNAME}_bar_subtitle`}>{`${userData?.baseLevelProgress.countOfRefferralRequiredFoNextLevel} / ${userData?.baseLevelProgress.nextBasicLevelRequirements.partnersRequirementCount}`}</div>
                             </div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_content_item`}>
-                            <div className={`${DEFAULT_CLASSNAME}_content_item_title`}>{`Структурный - ${userData?.mounthlyLevelInfo.currentLevel.name}`}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_content_item_title`}>{`Структурный - ${userData?.structuralLevelProgress.currentLevel.name}`}</div>
                             <div className={`${DEFAULT_CLASSNAME}_bar`}>
                                 <div className={`${DEFAULT_CLASSNAME}_bar_title`}>{"Оборот текущего месяца"}</div>
                                 <div className={`${DEFAULT_CLASSNAME}_bar_content`}>
                                     <div className={`${DEFAULT_CLASSNAME}_bar_content_progress`}
-                                         style={{width: `${userData?.mounthlyLevelInfo.currentTurnover / userData?.nextBasicLevelRequirements.groupTurnover * 100}%`}}/>
+                                         style={{width: `${userData?.structuralLevelProgress?.currentMonthlyTurnover / userData?.structuralLevelProgress.requiredMonthlyTurnoverToNextLevel * 100}%`}}/>
                                 </div>
                                 <div
-                                    className={`${DEFAULT_CLASSNAME}_bar_subtitle`}>{`${userData?.mounthlyLevelInfo.currentTurnover}.00$ / ${userData?.nextMounthlyLevelRequirement}.00$`}</div>
+                                    className={`${DEFAULT_CLASSNAME}_bar_subtitle`}>{`${userData?.structuralLevelProgress?.currentMonthlyTurnover}.00$ / ${userData?.structuralLevelProgress.requiredMonthlyTurnoverToNextLevel}.00$`}</div>
+                            </div>
+                        </div>
+                        <div className={`${DEFAULT_CLASSNAME}_content_item`}>
+                            <div className={`${DEFAULT_CLASSNAME}_content_item_title`}>{`Auto`}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_bar`}>
+                                <div
+                                    className={`${DEFAULT_CLASSNAME}_bar_title`}>{"Базовый уровень"}</div>
+                                <div className={`${DEFAULT_CLASSNAME}_bar_content`}>
+                                    <div className={`${DEFAULT_CLASSNAME}_bar_content_progress`}
+                                         style={{width: `${userData?.autoBonusProgress.baseLevel.level / 10 * 100}%`}}/>
+                                </div>
+                                <div
+                                    className={`${DEFAULT_CLASSNAME}_bar_subtitle`}>{`${userData?.autoBonusProgress.baseLevel.level} / 10`}</div>
+                            </div>
+                            <div className={`${DEFAULT_CLASSNAME}_bar`}>
+                                <div className={`${DEFAULT_CLASSNAME}_bar_title`}>{"Оборот текущего месяца"}</div>
+                                <div className={`${DEFAULT_CLASSNAME}_bar_content`}>
+                                    <div className={`${DEFAULT_CLASSNAME}_bar_content_progress`}
+                                         style={{width: `${userData?.autoBonusProgress.currentMonthlyTurnover / userData?.autoBonusProgress.requiredMonthlyTurnoverToNextLevel * 100}%`}}/>
+                                </div>
+                                <div
+                                    className={`${DEFAULT_CLASSNAME}_bar_subtitle`}>{`${userData?.autoBonusProgress.currentMonthlyTurnover}.00$ / ${userData?.autoBonusProgress.requiredMonthlyTurnoverToNextLevel}.00$`}</div>
+                            </div>
+                        </div>
+                        <div className={`${DEFAULT_CLASSNAME}_content_item`}>
+                            <div className={`${DEFAULT_CLASSNAME}_content_item_title`}>{`Travel`}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_bar`}>
+                                <div className={`${DEFAULT_CLASSNAME}_bar_title`}>{"Личный оборот текущего месяца"}</div>
+                                <div className={`${DEFAULT_CLASSNAME}_bar_content`}>
+                                    <div className={`${DEFAULT_CLASSNAME}_bar_content_progress`}
+                                         style={{width: `${userData?.travelBonusInfo.userPersonalMonthlyTurnover / userData?.travelBonusInfo.travelBonusTurnover * 100}%`}}/>
+                                </div>
+                                <div
+                                    className={`${DEFAULT_CLASSNAME}_bar_subtitle`}>{`${userData?.travelBonusInfo.travelBonusTurnover}.00$ / ${userData?.travelBonusInfo.userPersonalMonthlyTurnover}.00$`}</div>
                             </div>
                         </div>
                     </div>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {memo, useEffect} from 'react';
+import { useEffect } from 'react';
 
 import './settings.scss';
 
@@ -12,6 +12,7 @@ import photoUpload from './photoUpload.png';
 import phone from './phone.png';
 import email from './email.png';
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const DEFAULT_CLASSNAME = 'settings';
 
@@ -19,13 +20,50 @@ export const Settings = ({ userInfo }) => {
 
     const [activeSection, setActiveSection] = useState("Профиль");
 
+    const [uploadedFile, setUploadedFile] = useState(null);
+    const [clearData, setClearData] = useState(0);
+
     const sections = ["Профиль", "Безопасность и вход", "Проверка документов"];
+
+    useEffect(() => {
+        const USER_ID = sessionStorage.getItem('userId');
+        const TOKEN = sessionStorage.getItem('accessToken');
+
+        const file = new FormData();
+        file.append('UserId', USER_ID);
+        if (uploadedFile) {
+            file.append('ProfilePhoto', uploadedFile);
+
+            fetch('https://trifecta-web-api.herokuapp.com/api/UserProfile/UploadProfilePhoto', {
+                method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                mode: 'cors', // no-cors, *cors, same-origin
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: 'same-origin', // include, *same-origin, omit
+                headers: {
+                    'Content-Type': 'multipart/form-data; boundary=something',
+                    'Authorization': `Bearer ${TOKEN}`
+                },
+                redirect: 'follow', // manual, *follow, error
+                referrerPolicy: 'origin', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                body: file,
+            })
+                .then(res => res.json())
+                .then(data => console.log(data));
+        }
+    }, [uploadedFile]);
+
+    const uploadUserPhoto = (event) => {
+        setUploadedFile(event.target.files[0]);
+    }
 
     const Profile = () => {
         return (
             <div className={`${DEFAULT_CLASSNAME}_profile`}>
                 <div className={`${DEFAULT_CLASSNAME}_profile_left`}>
-                    <img src={noPhoto} alt={""}/>
+                    <div className={`${DEFAULT_CLASSNAME}_profile_photo`}>
+                        <img src={noPhoto} alt={'no-photo'} />
+                        <input type={'file'} alt={'profile-info'} onChange={(event) => uploadUserPhoto(event)}/>
+                    </div>
                     <div className={`${DEFAULT_CLASSNAME}_profile_referral`}>
                         <label htmlFor={'referral-link'}>{"Ссылка партнера"}</label>
                         <input disabled={true} value={userInfo?.personalReferral} type={'text'} id={'referral-link'} />
@@ -89,7 +127,7 @@ export const Settings = ({ userInfo }) => {
         }
 
         const changePasswordHandler = () => {
-            fetch(`http://trifecta.by:5000/api/UserProfile/ChangePassword`, {
+            fetch(`https://trifecta-web-api.herokuapp.com/api/UserProfile/ChangePassword`, {
                 headers: {
                     'Accept': '*/*',
                     'Content-Type': 'application/json',
@@ -109,6 +147,13 @@ export const Settings = ({ userInfo }) => {
                 })
             })
                 .then(res => res.json())
+                .then(data => {
+                    if (data.oldPassword) {
+                        toast.info("Пароль успешно сменен");
+                    } else {
+                        toast.error("Попробуйте ещё раз!")
+                    }
+                })
                 .finally(() => {
                     setCurrentPassword('');
                     setNewPassword('');
@@ -120,7 +165,7 @@ export const Settings = ({ userInfo }) => {
         const [newEmail, setNewEmail] = useState("");
 
         const changePhoneHandler = () => {
-            fetch(`http://trifecta.by:5000/api/UserProfile/UploadPhoneNumber`, {
+            fetch(`https://trifecta-web-api.herokuapp.com/api/UserProfile/UploadPhoneNumber`, {
                 headers: {
                     'Accept': '*/*',
                     'Content-Type': 'application/json',
@@ -139,12 +184,13 @@ export const Settings = ({ userInfo }) => {
             })
                 .then(res => res.json())
                 .finally(() => {
+                    toast.info("Запрос на изменение телефона отправлен")
                     setNewPhoneNumber('');
                 })
         }
 
         const changeEmailHandler = () => {
-            fetch(`http://trifecta.by:5000/api/UserProfile/ChangeEmailAdress`, {
+            fetch(`https://trifecta-web-api.herokuapp.com/api/UserProfile/ChangeEmailAdress`, {
                 headers: {
                     'Accept': '*/*',
                     'Content-Type': 'application/json',
@@ -163,6 +209,7 @@ export const Settings = ({ userInfo }) => {
             })
                 .then(res => res.json())
                 .finally(() => {
+                    toast.info("Запрос на изменения почты отправлен")
                     setNewEmail('');
                 })
         }
@@ -188,7 +235,9 @@ export const Settings = ({ userInfo }) => {
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_security_password_right`}>
                         {newPassword.length >= 8 && newPasswordMatch.length >= 8 && (newPassword !== newPasswordMatch) && <img src={noMatch} alt={'noMatch'} /> || <img src={password} alt={'password'} />}
-                        {newPassword.length >= 8 && newPasswordMatch.length >= 8 && (newPassword !== newPasswordMatch) && <div>{"Пароли не совпадают"}</div> || newPassword.length >= 8 && <div>{"Хороший пароль"}</div>}
+                        {newPassword.length >= 8 && newPasswordMatch.length >= 8 && (newPassword !== newPasswordMatch) && <div>{"Пароли не совпадают"}</div>}
+                        {newPassword.length >= 8 && newPasswordMatch === newPassword && newPassword.match(/(?=.*[0-9])/g) && newPassword.match(/(?=.*[A-Z])/g) && !newPassword.match(/(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g) && <div>{"Хороший пароль"}</div>}
+                        {newPassword.length >= 8 && newPasswordMatch === newPassword && newPassword.match(/(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g) && <div>{"Отличный пароль"}</div>}
                     </div>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_security_contacts`}>
@@ -260,8 +309,24 @@ export const Settings = ({ userInfo }) => {
         const [registrationAuthority, setRegistrationAuthority] = useState("");
         const [certificateDateIssue, setCertificateDateIssue] = useState("");
 
+        const [userAlreadyUpload, setUserAlreadyUpload] = useState(false);
 
-        const [error, setError] = useState(null);
+        const TOKEN = sessionStorage.getItem('accessToken');
+
+        useEffect(() => {
+            fetch(`https://trifecta-web-api.herokuapp.com/api/UserDocument/GetVerifiedData?userId=${USER_ID}`, {
+                headers: {
+                    'Accept': '*/*',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${TOKEN}`
+                },
+            }).then(res => res.json())
+                .then(data => {
+                    if (!(data.success === false)) {
+                        setUserAlreadyUpload(true);
+                    }
+                });
+        }, [])
 
         const docsBankInfo = <>
             <div className={`${DEFAULT_CLASSNAME}_documents_item`}>
@@ -398,11 +463,11 @@ export const Settings = ({ userInfo }) => {
                             <label >{"Регистрирующий орган"}</label>
                             <input value={registrationAuthority} onChange={(e) => setRegistrationAuthority(e.currentTarget.value)} type={"text"} />
                         </div>
-                        <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
-                            <label >{"Фото свидетельства"}</label>
-                            <img src={photoUpload} alt={'upload-photo'} />
-                            <input className={'upload-photo-input'} type={"file"}/>
-                        </div>
+                        {/*<div className={`${DEFAULT_CLASSNAME}_profile_item`}>*/}
+                        {/*    <label >{"Фото свидетельства"}</label>*/}
+                        {/*    <img src={photoUpload} alt={'upload-photo'} />*/}
+                        {/*    <input className={'upload-photo-input'} type={"file"} />*/}
+                        {/*</div>*/}
                     </div>
                 </div>
             </div>
@@ -510,20 +575,32 @@ export const Settings = ({ userInfo }) => {
         const [currentType, setCurrentType] = useState('Физическое лицо');
         const [currentCountry, setCurrentCountry] = useState('Беларусь');
 
+        useEffect(() => {
+            setCurrentCountry(currentCountry);
+        }, [currentType]);
+
         const USER_ID = sessionStorage.getItem('userId');
 
         const getCurrentCountryCode = () => {
             switch(currentCountry) {
-                case "Беларусь": return '1';
-                case "Россия": return '2';
-                case "Казахстан": return '3';
+                case "Беларусь": return 1;
+                case "Россия": return 2;
+                case "Казахстан": return 3;
+            }
+        }
+
+        const getCurrentType = () => {
+            switch (currentType) {
+                case "Физическое лицо": return 1;
+                case "ИП": return 2;
+                case "Юридическое лицо": return 3;
             }
         }
 
         const docsForVerification = {
             userId: USER_ID,
             country: getCurrentCountryCode(),
-            employmentType: '1',
+            employmentType: getCurrentType(),
             documentVerificationModels: {
                 legalDataModel: {
                     legalEntityFullName: eLegalEntityFullName || legalEntityFullName,
@@ -554,7 +631,7 @@ export const Settings = ({ userInfo }) => {
                     index: index,
                     street: street,
                     houseNumber: houseNumber,
-                    location: 1,
+                    location: location,
                     roomNumber: roomNumber,
                 },
                 personalAddressModel: {
@@ -573,63 +650,61 @@ export const Settings = ({ userInfo }) => {
 
             if (currentType === "Физическое лицо") {
                 if (!liveObl.length || !liveCity.length || !liveUlb.length || !liveDomB.length || !liveNameB.length || !liveKV.length) {
-                    setError('Заполните Адресс Проживания.');
+                    toast.info('Заполните Адресс Проживания.');
                     return;
                 }
 
                 if (!bankRegion.length || !bankLocality.length || !bankStreet.length || !bankHouseNumber.length || !beneficiaryBankName.length || !checkingAccount.length || !swift.length) {
-                    setError('Заполните Банковские реквезиты');
+                    toast.info('Заполните Банковские реквезиты');
                     return;
                 }
             }
 
             if (currentType === "ИП") {
                 if (!legalEntityFullName.length || !headFullName.length || !legalEntityAbbreviatedName.length || !headPosition.length || !unp.length || !baseOrganization.length || !accountantName.length) {
-                    setError('Заполните Юридические данные.');
+                    toast.info('Заполните Юридические данные.');
                     return;
                 }
 
                 if (!certificateNumber.length || !registrationAuthority.length || !certificateDateIssue.length) {
-                    setError('Заполните данные свидетельства.');
+                    toast.info('Заполните данные свидетельства.');
                     return;
                 }
 
-                if (!region.length || !locality.length || !index.length || !street.length || !houseNumber.length || roomNumber.length) {
-                    setError('Заполните юридический адресс.');
+                if (!region.length || !locality.length || !index.length || !street.length || !houseNumber.length || !roomNumber.length) {
+                    toast.info('Заполните юридический адресс.');
                     return;
                 }
 
                 if (!bankRegion.length || !bankLocality.length || !bankStreet.length || !bankHouseNumber.length || !beneficiaryBankName.length || !checkingAccount.length || !swift.length) {
-                    setError('Заполните Банковские реквезиты');
+                    toast.info('Заполните Банковские реквезиты');
                     return;
                 }
             }
 
             if (currentType === "Юридическое лицо") {
                 if (!eLegalEntityFullName.length || !eHeadFullName.length || !eLegalEntityAbbreviatedName.length || !eHeadPosition.length || !eUnp.length || !eBaseOrganization.length || !eAccountantName.length) {
-                    setError('Заполните Юридические данные.');
+                    toast.info('Заполните Юридические данные.');
                     return;
                 }
 
                 if (!certificateNumber.length || !registrationAuthority.length || !certificateDateIssue.length) {
-                    setError('Заполните данные свидетельства.');
+                    toast.info('Заполните данные свидетельства.');
                     return;
                 }
 
-                if (!region.length || !locality.length || !index.length || !street.length || !houseNumber.length || roomNumber.length) {
-                    setError('Заполните юридический адресс.');
+                if (!region.length || !locality.length || !index.length || !street.length || !houseNumber.length || !roomNumber.length) {
+                    toast.info('Заполните юридический адресс.');
                     return;
                 }
 
                 if (!bankRegion.length || !bankLocality.length || !bankStreet.length || !bankHouseNumber.length || !beneficiaryBankName.length || !checkingAccount.length || !swift.length) {
-                    setError('Заполните Банковские реквезиты');
+                    toast.info('Заполните Банковские реквезиты');
                     return;
                 }
             }
 
-            setError(null);
-
-            fetch('http://trifecta.by:5000/api/UserDocument/SendDataForVerification', {
+            fetch('https://trifecta-web-api.herokuapp.com/api/UserDocument/SendDataForVerification', {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, *cors, same-origin
                 cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -641,7 +716,11 @@ export const Settings = ({ userInfo }) => {
                 redirect: 'follow', // manual, *follow, error
                 referrerPolicy: 'origin', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
                 body: JSON.stringify(docsForVerification)
-            }).then(res => res.json());
+            }).then(res => res.json())
+                .finally(() => {
+                    toast.success("Данные отправлены на верификацию!");
+                    setClearData(clearData + 1);
+                })
         }
 
         return (
@@ -658,11 +737,10 @@ export const Settings = ({ userInfo }) => {
                         <option>Казахстан</option>
                     </select>
                 </div>
-                <div>{error}</div>
                 {currentType === "Физическое лицо" && individual}
                 {currentType === "ИП" && individualEntrepreneur}
                 {currentType === "Юридическое лицо" && legalEntity}
-                <div className={`${DEFAULT_CLASSNAME}_btn`} onClick={() => verifyHandler()}>{"Отправить на верификацию"}</div>
+                <button disabled={userAlreadyUpload} className={`${DEFAULT_CLASSNAME}_btn`} onClick={() => verifyHandler()}>{userAlreadyUpload ? "Документы на верификации" : "Отправить на верификацию"}</button>
             </div>
         )
     }

@@ -4,17 +4,79 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 50px;
   color: #FAFCFD;
+
+  &_approve {
+    padding: 4px 16px;
+    color: #FAFCFD;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    background: linear-gradient(87.57deg, #3F87F6 0%, #4CE9C1 94.44%);
+    border-radius: 32px;
+    transition: 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
+
+  &_reject {
+    padding: 4px 16px;
+    color: #FAFCFD;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 12px;
+    background: linear-gradient(87.57deg, #3F87F6 0%, #E94C4C 94.44%);
+    border-radius: 32px;
+    transition: 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
+
+  &_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  &_item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 25px 50px;
+    background: #252C40;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  &_left {
+    width: 48%;
+    font-size: 14px;
+  }
+
+  &_right {
+    width: 48%;
+    font-size: 14px;
+  }
 
   &_title {
     font-weight: 700;
     font-size: 32px;
+    margin-bottom: 20px;
   }
 
   &_wrapper {
+    padding: 50px;
     width: 70%;
-    margin: 50px 0 50px 30%;
+    margin: 0 0 0 25%;
     display: flex;
     justify-content: center;
     align-items: center;

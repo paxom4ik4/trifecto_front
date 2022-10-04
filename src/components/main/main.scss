@@ -13,7 +13,7 @@
 }
 
 .main {
-  margin: 80px 0 0;
+  margin: 40px 0 0;
   width: 1200px;
   display: flex;
   flex-direction: column;
@@ -197,7 +197,7 @@
 
   &_title {
     line-height: 101px;
-    font-size: 84px;
+    font-size: 80px;
     font-weight: 700;
     background: -webkit-linear-gradient(88.43deg, #FF82F4 0%, #53CDEF 100%);;
     -webkit-background-clip: text;
@@ -236,12 +236,5 @@
 
   &_right {
     width: 50%;
-
-    img {
-      margin-left: 48px;
-      width: 100%;
-      background: radial-gradient(50% 50% at 50% 50%, #D9D9D9 0%, rgba(217, 217, 217, 0) 100%);
-      perspective: 3.5em
-    }
   }
 }

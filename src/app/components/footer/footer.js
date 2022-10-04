@@ -33,6 +33,7 @@ export const TrifectaFooter = () => {
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_content_text`}>
                         <span onClick={() => navigate('/app/cookie')}>{"Cookie-файлы"}</span>
+                        <span onClick={() => navigate('/app/docs')}>{"Юридические документы"}</span>
                     </div>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_partners`}>

@@ -9,7 +9,6 @@ import tg from './tg.svg';
 
 import telegram from './telegram.png';
 import instagram from './inst.png';
-import twitter from './twitter.png';
 
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -51,9 +50,6 @@ export const Footer = () => {
                             </div>
                             <div className={`${DEFAULT_CLASSNAME}_link`}>
                                 <img src={telegram} alt={'footer-link'}/>
-                            </div>
-                            <div className={`${DEFAULT_CLASSNAME}_link`}>
-                                <img src={twitter} alt={'footer-link'}/>
                             </div>
                         </div>
                     </div>

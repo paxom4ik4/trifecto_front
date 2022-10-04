@@ -7,14 +7,14 @@ import expand from './expand.png';
 
 const DEFAULT_CLASSNAME = 'person-card';
 
-export const PersonCard = ({setCurrentGroupId, setCurrentLevelHandler, currentLevel, structureLevel = 0, id, setCurrentLevel, groupId, userPackage, turnover, firstTurnover, groupTurnover, baseLevel}) => {
+export const PersonCard = ({setStructureExpanded, setStructureIds, structureIds, parentStructureIds, currentLevel, id, userPackage, turnover, firstTurnover, groupTurnover, baseLevel}) => {
     const [personData, setPersonData] = useState(null);
     const [expanded, setExpanded] = useState(false);
 
     const TOKEN = sessionStorage.getItem('accessToken');
 
     useEffect(() => {
-        fetch(`http://trifecta.by:5000/api/UserProfile/GetProfileInfo?userId=${id}`, {
+        fetch(`https://trifecta-web-api.herokuapp.com/api/UserProfile/GetProfileInfo?userId=${id}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -22,7 +22,7 @@ export const PersonCard = ({setCurrentGroupId, setCurrentLevelHandler, currentLe
         })
             .then(res => res.json())
             .then(data => setPersonData(data));
-    }, [])
+    }, [id])
 
     useEffect(() => {
         if (currentLevel === 0) {
@@ -32,11 +32,22 @@ export const PersonCard = ({setCurrentGroupId, setCurrentLevelHandler, currentLe
 
     const clickHandler = () => {
         setExpanded(!expanded);
-        setCurrentLevelHandler(structureLevel);
+        setStructureExpanded(!expanded);
 
-        if(structureLevel === 2) {
-            setCurrentLevelHandler(0);
-            setCurrentGroupId(groupId);
+        if (structureIds && id !== structureIds[structureIds.length - 1]) {
+            setStructureIds([...structureIds, id]);
+        }
+
+        if (parentStructureIds && expanded) {
+            if(parentStructureIds.length === 1) {
+                setExpanded(!expanded);
+                setStructureExpanded(!expanded);
+            } else {
+                const newIds = [...parentStructureIds].slice(0, -1);
+                setStructureIds(newIds);
+                setStructureExpanded(expanded);
+                setExpanded(expanded);
+            }
         }
     }
 

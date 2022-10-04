@@ -12,7 +12,7 @@ export const Withdraw = () => {
     const [dataChanges, setDataChanges] = useState(0);
 
     useEffect(() => {
-        fetch(`https://trifecta-web-api.herokuapp.com/api/Administrator/GetWithdrawRequestList`, {
+        fetch(`http://trifecta.by:5000/api/Administrator/GetWithdrawRequestList`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -23,7 +23,7 @@ export const Withdraw = () => {
     }, [dataChanges])
 
     const acceptTransaction = (id) => {
-        fetch('https://trifecta-web-api.herokuapp.com/api/Administrator/AcceptUserWithdraw', {
+        fetch('http://trifecta.by:5000/api/Administrator/AcceptUserWithdraw', {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -46,7 +46,7 @@ export const Withdraw = () => {
     }
 
     const rejectTransaction = (id) => {
-        fetch('https://trifecta-web-api.herokuapp.com/api/Administrator/RejectUserWithdraw', {
+        fetch('http://trifecta.by:5000/api/Administrator/RejectUserWithdraw', {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`

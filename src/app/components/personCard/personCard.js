@@ -14,7 +14,7 @@ export const PersonCard = ({setStructureExpanded, setStructureIds, structureIds,
     const TOKEN = sessionStorage.getItem('accessToken');
 
     useEffect(() => {
-        fetch(`https://trifecta.by:5000/api/UserProfile/GetProfileInfo?userId=${id}`, {
+        fetch(`http://trifecta.by:5000/api/UserProfile/GetProfileInfo?userId=${id}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`

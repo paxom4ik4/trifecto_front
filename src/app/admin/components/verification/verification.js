@@ -13,7 +13,7 @@ export const Verification = () => {
     const verifyPerson = (userId, requestId) => {
         const TOKEN = sessionStorage.getItem("accessToken");
 
-        fetch(`https://trifecta.by:5000/api/Administrator/AcceptUserVerification?requestId=${requestId}&userId=${userId}`, {
+        fetch(`http://trifecta.by:5000/api/Administrator/AcceptUserVerification?requestId=${requestId}&userId=${userId}`, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -35,7 +35,7 @@ export const Verification = () => {
     const rejectPerson = (userId, requestId) => {
         const TOKEN = sessionStorage.getItem("accessToken");
 
-        fetch(`https://trifecta.by:5000/api/Administrator/RejectUserVerification?requestId=${requestId}&userId=${userId}`, {
+        fetch(`http://trifecta.by:5000/api/Administrator/RejectUserVerification?requestId=${requestId}&userId=${userId}`, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -57,7 +57,7 @@ export const Verification = () => {
     useEffect(() => {
         const TOKEN = sessionStorage.getItem("accessToken");
 
-        fetch(`https://trifecta.by:5000/api/Administrator/GetDocumentVerificationList`, {
+        fetch(`http://trifecta.by:5000/api/Administrator/GetDocumentVerificationList`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -81,7 +81,7 @@ export const Verification = () => {
         const TOKEN = sessionStorage.getItem("accessToken");
 
         useEffect(() => {
-            fetch(`https://trifecta.by:5000/api/UserDocument/GetVerifiedData?userId=${user.userId}`, {
+            fetch(`http://trifecta.by:5000/api/UserDocument/GetVerifiedData?userId=${user.userId}`, {
                 headers: {
                     'Accept': '*/*',
                     'Authorization': `Bearer ${TOKEN}`

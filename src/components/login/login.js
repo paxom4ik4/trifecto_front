@@ -19,7 +19,7 @@ const LoginContent = () => {
     const [loginPassword, setLoginPassword] = useState('');
 
     const handleLogin = () => {
-        fetch('https://trifecta.by:5000/api/Authentication/Login', {
+        fetch('http://trifecta.by:5000/api/Authentication/Login', {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -76,7 +76,7 @@ const RegisterContent = ({ setIsRegisterMode }) => {
     const [referral, setReferral] = useState('');
 
     const handleRegister = () => {
-        fetch('https://trifecta.by:5000/api/Authentication/Register', {
+        fetch('http://trifecta.by:5000/api/Authentication/Register', {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached

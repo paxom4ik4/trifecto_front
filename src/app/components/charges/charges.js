@@ -16,7 +16,7 @@ export const Charges = () => {
         const TOKEN = sessionStorage.getItem('accessToken');
         const USER_ID = sessionStorage.getItem('userId');
 
-        fetch(`https://trifecta.by:5000/api/Withdraw/GetAccuralHistory?userId=${USER_ID}`, {
+        fetch(`http://trifecta.by:5000/api/Withdraw/GetAccuralHistory?userId=${USER_ID}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -32,7 +32,7 @@ export const Charges = () => {
         const USER_ID = sessionStorage.getItem('userId');
         const TOKEN = sessionStorage.getItem('accessToken');
 
-        fetch(`https://trifecta.by:5000/api/Home/GetPersonalPageInfo?userId=${USER_ID}`, {
+        fetch(`http://trifecta.by:5000/api/Home/GetPersonalPageInfo?userId=${USER_ID}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -58,7 +58,7 @@ export const Charges = () => {
         const USER_ID = sessionStorage.getItem('userId');
         const TOKEN = sessionStorage.getItem('accessToken');
 
-        fetch('https://trifecta.by:5000/api/Withdraw/MakeWithdraw', {
+        fetch('http://trifecta.by:5000/api/Withdraw/MakeWithdraw', {
             headers: {
                 'Accept': '*/*',
                 'Content-Type': 'application/json',

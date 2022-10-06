@@ -44,7 +44,6 @@ export const Contacts = () => {
                     <div className={`${DEFAULT_CLASSNAME}_block-links`}>
                         <img src={instagram} alt={'contacts-link'}/>
                         <img src={telegram} alt={'contacts-link'}/>
-                        <img src={twitter} alt={'contacts-link'}/>
                     </div>
 
                     <a href={"https://goo.gl/maps/4Ut8DYajKsuEYfFf9"} target={"_blank"} className={`${DEFAULT_CLASSNAME}_block-btn`}>{"Показать на карте"}</a>

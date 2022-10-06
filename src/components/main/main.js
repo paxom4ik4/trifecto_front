@@ -33,7 +33,7 @@ export const Main = () => {
                     <div className={`${DEFAULT_CLASSNAME}_left`}>
                         <div className={`${DEFAULT_CLASSNAME}_title`}>
                             <span className={'first-grad'}>{'Добро'}
-                                <br /> {'пожаловать'}
+                                <br /> <span className={'third-grad'}>{'пожаловать'}</span>
                             </span>
                             <br />
                             <span className={'second-grad'}>

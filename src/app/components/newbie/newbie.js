@@ -12,7 +12,7 @@ export const Newbie = () => {
 
     useEffect(() => {
         const TOKEN = sessionStorage.getItem('accessToken');
-        fetch('https://trifecta.by:5000/api/VideoTemplate/GetVideos', {
+        fetch('https://trifecta.by/api/VideoTemplate/GetVideos', {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`

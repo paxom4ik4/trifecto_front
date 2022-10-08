@@ -92,3 +92,74 @@ button {
     }
   }
 }
+
+@media(max-width: 1200px) {
+  .header {
+    width: 100%;
+
+    &_logo-menu {
+      flex-direction: column;
+    }
+
+    &_menu-item {
+      margin-top: 12px;
+      font-size: 16px;
+    }
+
+    &_controls {
+      button {
+        font-size: 16px;
+
+        span {
+          padding-bottom: 2px;
+        }
+
+        img {
+          width: 12px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .header {
+    flex-direction: column;
+
+    &_menu {
+      margin: 0;
+    }
+
+    &_controls {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      margin-top: 12px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header_wrapper {
+    box-shadow: none !important;
+  }
+}
+
+@media (max-width: 425px) {
+  .header {
+    padding: 20px 12px;
+
+    &_menu-item {
+      margin-top: 12px;
+      font-size: 12px;
+    }
+
+    &_controls {
+      button {
+        font-size: 14px;
+        padding: 8px 24px;
+      }
+    }
+  }
+}

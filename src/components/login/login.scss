@@ -137,3 +137,41 @@ select {
     background: linear-gradient(127.61deg, #6C90D7 0%, #A9F0FF 87.38%);
   }
 }
+
+@media (max-width: 1200px) {
+  .login {
+    width: 100%;
+
+    &_wrapper {
+      box-sizing: border-box;
+      padding: 0 16px;
+    }
+  }
+}
+
+
+@media (max-width: 768px) {
+  .login {
+    width: 100%;
+    padding: 24px 48px;
+
+    &_wrapper {
+      box-sizing: border-box;
+      padding: 0 16px;
+    }
+  }
+
+  .login_header {
+    padding: 0 48px !important;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .login_header input {
+    width: calc(100% - 72px) !important;
+  }
+
+  .login_btn {
+    font-size: 14px !important;
+  }
+}

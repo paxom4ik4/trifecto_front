@@ -30,3 +30,28 @@
     position: relative;
   }
 }
+
+@media (max-width: 1200px) {
+  .billing {
+    width: 100%;
+
+    &_wrapper {
+      box-sizing: border-box;
+      padding: 0 16px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .billing_title {
+    margin-bottom: 12px;
+  };
+}
+
+@media (max-width: 425px) {
+  .billing {
+    img {
+      margin: 12px 0;
+    }
+  }
+}

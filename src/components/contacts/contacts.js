@@ -8,7 +8,6 @@ import email from './assets/email.png';
 
 import instagram from './assets/instagram.png';
 import telegram from './assets/telegram.png';
-import twitter from './assets/twitter.png';
 
 import sally from './assets/sally.png';
 
@@ -16,9 +15,8 @@ const DEFAULT_CLASSNAME = 'contacts';
 
 export const Contacts = () => {
     return (
-        <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
+        <div className={`${DEFAULT_CLASSNAME}_wrapper`} style={{ backgroundImage: `url(${background})`}}>
             <img src={sally} className={`${DEFAULT_CLASSNAME}_sally`} alt={'background-sally'} />
-            <img src={background} className={`${DEFAULT_CLASSNAME}_background`} alt={'background-map'} />
             <div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_block`}>
                     <img src={hash} className={`${DEFAULT_CLASSNAME}_hash-image`}/>

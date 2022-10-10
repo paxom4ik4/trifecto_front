@@ -67,3 +67,15 @@
     z-index: 10;
   }
 }
+
+@media (max-width: 1400px) {
+  .info_wrapper {
+    margin: 0 0 50px 24px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .info_docs {
+    flex-direction: column;
+  }
+}

@@ -183,3 +183,9 @@
     z-index: 10;
   }
 }
+
+@media (max-width: 1400px) {
+  .help_wrapper {
+    margin: 50px 0 50px 48px;
+  }
+}

@@ -69,3 +69,9 @@
     overflow-x: scroll !important;
   }
 }
+
+@media (max-width: 1400px) {
+  .structure_wrapper {
+    margin: 0 0 0 82px;
+  }
+}

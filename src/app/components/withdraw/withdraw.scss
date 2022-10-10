@@ -77,7 +77,7 @@
   &_wrapper {
     margin: 0 0 50px 30%;
     height: 100%;
-    width: calc(100% - 460px);
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -89,5 +89,25 @@
       width: 105% !important;
     }
 
+  }
+}
+
+@media (max-width: 1400px) {
+  .withdraw_wrapper {
+    margin: 0 0 50px 72px;
+  }
+
+  .withdraw {
+    overflow: scroll;
+  }
+}
+
+@media (max-width: 600px) {
+  .withdraw {
+    font-size: 10px !important;
+  }
+
+  .withdraw_table_header {
+    font-size: 10px !important;
   }
 }

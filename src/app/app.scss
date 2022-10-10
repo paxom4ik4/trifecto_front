@@ -428,3 +428,55 @@
     }
   }
 }
+
+@media (max-width: 1400px) {
+  .trifecta-app {
+    width: 100%;
+  }
+
+  .trifecta-app_side-menu {
+    left: -320px;
+    transition: 0.3s;
+  }
+
+  .trifecta-app_content_cabinet {
+    margin: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .trifecta-app_content {
+    box-sizing: border-box !important;
+    justify-content: center;
+  }
+
+  .trifecta-app_content_cabinet_packages {
+    box-sizing: border-box;
+    width: 70%;
+    margin-left: 114px;
+  }
+
+  .trifecta-app_content_cabinet_withdraw {
+    box-sizing: border-box;
+    flex-direction: column;
+    width: 70%;
+    margin-left: 50px;
+    align-self: center;
+    justify-self: center;
+
+    .trifecta-app_withdraw_card {
+      margin: 20px 0;
+    }
+  }
+
+  .trifecta-app_content_cabinet_level {
+    box-sizing: border-box;
+    flex-direction: column;
+    width: 70%;
+    margin-left: 114px;
+
+    .trifecta-app_level-item {
+      margin: 20px 0;
+    }
+  }
+}

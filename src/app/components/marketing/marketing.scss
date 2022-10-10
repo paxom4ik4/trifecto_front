@@ -202,3 +202,20 @@
     }
   }
 }
+
+@media (max-width: 1400px) {
+  .marketing_wrapper {
+    margin: 0 0 50px 24px;
+  }
+
+  .marketing_item {
+
+    &_background {
+      display: none;
+    }
+
+    img {
+      width: 20%;
+    }
+  }
+}

@@ -92,3 +92,13 @@
     position: absolute;
   }
 }
+
+@media (max-width: 768px) {
+  .trifecta-app-footer_copyright {
+    display: none;
+  }
+
+  .trifecta-app-footer {
+    flex-direction: column;
+  }
+}

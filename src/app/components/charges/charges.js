@@ -4,12 +4,21 @@ import '../withdraw/withdraw.scss';
 import './charges.scss';
 import {useEffect, useState} from "react";
 import {toast} from "react-toastify";
+import {useNavigate} from "react-router-dom";
 
 const DEFAULT_CLASSNAME = 'withdraw';
 
 const CURRENT_CURRENCY = 2.5;
 
-export const Charges = () => {
+export const Charges = ({ isVerified }) => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isVerified) {
+            navigate('/app/settings');
+        }
+    }, [isVerified])
+
     const [withdraws, setWithdraws] = useState([]);
 
     useEffect(() => {

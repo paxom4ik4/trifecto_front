@@ -58,6 +58,15 @@ const CookieApp = ({ setCookieConfirmed }) => {
 }
 
 export const TrifectaApp = () => {
+    useEffect(() => {
+        const USER_ID = sessionStorage.getItem('userId');
+        const TOKEN = sessionStorage.getItem('accessToken');
+
+        if (!USER_ID || !TOKEN) {
+            navigate('/login');
+        }
+    }, []);
+
     const navigate = useNavigate();
 
     const [cookieConfirmed, setCookieConfirmed] = useState(false);
@@ -137,7 +146,7 @@ export const TrifectaApp = () => {
                     <div className={`${DEFAULT_CLASSNAME}_side-menu`}>
                         <img className={`${DEFAULT_CLASSNAME}_side-menu_logo`} src={trifecta} alt={'logo'} />
                         <div className={`${DEFAULT_CLASSNAME}_side-menu_profile`}>
-                            <img src={noPhoto} alt={"img"} />
+                            <img src={`https://trifecta.by${userInfo?.profilePhoto}`} alt={"img"} />
                             {!isAdmin ? <div className={`${DEFAULT_CLASSNAME}_side-menu_profile_text`}>
                                 <div>{userInfo?.firstName + " " + userInfo?.lastName}</div>
                                 <div className={'level'}>{userInfo?.level}</div>
@@ -169,6 +178,7 @@ export const TrifectaApp = () => {
                                     <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/verification'}><img src={mc} alt={'icon'}/> {"Верификация"}</NavLink>
                                     <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/withdraw'}><img src={wd} alt={'icon'}/> {"Вывод средств"}</NavLink>
                                     <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/contact-info'}><img src={nch} alt={'icon'}/> {"Контактные данные"}</NavLink>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/structure'}><img src={st} alt={'icon'}/> {"Структура"}</NavLink>
                                     <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} onClick={() => logOutHandler()}><img src={exit} alt={'icon'}/> {"Выйти"}</div>
                                 </div>
                             </> : <>
@@ -182,7 +192,7 @@ export const TrifectaApp = () => {
                                     <div className={`${DEFAULT_CLASSNAME}_side-menu_item-title`}>{"Trifecta"}</div>
                                     <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!IS_VERIFIED && 'disabled'}`} to={'/app/structure'}><img src={st} alt={'icon'}/> {"Структура"}</NavLink>
                                     <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!IS_VERIFIED && 'disabled'}`} to={'/app/progress'}><img src={pc} alt={'icon'}/> {"Прогресс"}</NavLink>
-                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!IS_VERIFIED && 'disabled'}`} to={'/app/marketing'}><img src={mt} alt={'icon'}/> {currentPackage ? "Улучшить пакет" : "Маркетинг план"}</NavLink>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/marketing'}><img src={mt} alt={'icon'}/> {currentPackage ? "Улучшить пакет" : "Маркетинг план"}</NavLink>
                                     <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!IS_VERIFIED && 'disabled'}`} to={'/app/newbie'}><img src={lNew} alt={'icon'}/> {"Запуск новичка"}</NavLink>
                                     <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/info'}><img src={inf} alt={'icon'}/> {"Инфо"}</NavLink>
                                 </div>
@@ -197,12 +207,12 @@ export const TrifectaApp = () => {
                     </div>
                     <Routes>
                         <Route path={'/'} element={<Cabinet currentPackage={currentPackage} />} />
-                        <Route path={!IS_VERIFIED ? '#' : '/marketing'} element={<Marketing currentPackage={currentPackage} />} />
-                        <Route path={!IS_VERIFIED ? '#' : '/newbie'} element={<Newbie />} />
-                        <Route path={!IS_VERIFIED ? '#' : '/withdraw'} element={<Withdraw />} />
-                        <Route path={!IS_VERIFIED ? '#' : '/charges'} element={<Charges />} />
-                        <Route path={!IS_VERIFIED ? '#' : '/structure'} element={<Structure />} />
-                        <Route path={!IS_VERIFIED ? '#' : '/progress'} element={<Progress/>} />
+                        <Route path={'/marketing'} element={<Marketing currentPackage={currentPackage} />} />
+                        <Route path={!IS_VERIFIED ? '#' : '/newbie'} element={<Newbie isVerified={IS_VERIFIED} />} />
+                        <Route path={!IS_VERIFIED ? '#' : '/withdraw'} element={<Withdraw isVerified={IS_VERIFIED} />} />
+                        <Route path={!IS_VERIFIED ? '#' : '/charges'} element={<Charges isVerified={IS_VERIFIED} />} />
+                        <Route path={!IS_VERIFIED ? '#' : '/structure'} element={<Structure isVerified={IS_VERIFIED} />} />
+                        <Route path={!IS_VERIFIED ? '#' : '/progress'} element={<Progress isVerified={IS_VERIFIED} />} />
                         <Route path={'/info'} element={<Info />} />
                         <Route path={'/settings'} element={<Settings userInfo={userInfo} />} />
                         <Route path={'/help'} element={<Help />} />

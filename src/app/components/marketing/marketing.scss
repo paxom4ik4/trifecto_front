@@ -84,6 +84,12 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      font-weight: 400;
+
+      a {
+        font-weight: 900;
+        font-size: 14px;
+      }
     }
 
     label {
@@ -95,8 +101,8 @@
   }
 
   &_wrapper {
-    width: 70%;
-    margin: 50px 0 50px 30%;
+    width: 75%;
+    margin: 50px 0 50px 360px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -119,6 +125,7 @@
     }
 
     &_buy {
+      color: #FAFCFD;
       padding: 18px 36px;
       font-size: 24px;
       font-weight: 700;
@@ -127,14 +134,21 @@
       border-radius: 100px;
       transition: 0.3s;
 
-      :disabled {
-        cursor: not-allowed;
-        opacity: 0.8;
-      }
-
       &:hover {
         cursor: pointer;
         opacity: 0.8
+      }
+
+      &:disabled {
+        color: #FAFCFD;
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+
+      &:disabled:hover {
+        color: #FAFCFD;
+        cursor: not-allowed;
+        opacity: 0.5;
       }
     }
 

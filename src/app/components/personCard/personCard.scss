@@ -79,7 +79,10 @@
   }
 
   &_text {
-    font-size: 16px;
+    width: 100%;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: #ffffff;
   }
 

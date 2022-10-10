@@ -2,19 +2,27 @@ import * as React from 'react';
 
 import './withdraw.scss';
 import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 const DEFAULT_CLASSNAME = 'withdraw';
 
 const CURRENT_CURRENCY = 2.5;
 
-export const Withdraw = () => {
+export const Withdraw = ({ isVerified }) => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isVerified) {
+            navigate('/app/settings');
+        }
+    }, [isVerified])
     const [withdraws, setWithdraws] = useState([]);
 
     useEffect(() => {
         const TOKEN = sessionStorage.getItem('accessToken');
         const USER_ID = sessionStorage.getItem('userId');
 
-        fetch(`https://trifecta.by/api/Withdraw/GetWithdrawHistory?id=${USER_ID}`, {
+        fetch(`https://trifecta.by/api/Withdraw/GetWithdrawHistory?userId=${USER_ID}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`

@@ -3,10 +3,19 @@ import * as React from 'react';
 import './structure.scss';
 import {useState, useEffect, useCallback} from "react";
 import {PersonCard} from "../personCard/personCard";
+import {useNavigate} from "react-router-dom";
 
 const DEFAULT_CLASSNAME = 'structure';
 
-export const Structure = () => {
+export const Structure = ({ isVerified, isAdmin }) => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isVerified) {
+            navigate('/app/settings');
+        }
+    }, [isVerified])
+
     const USER_ID = sessionStorage.getItem('userId');
     const TOKEN = sessionStorage.getItem('accessToken');
 
@@ -16,7 +25,7 @@ export const Structure = () => {
     const [structureExpanded, setStructureExpanded] = useState(false);
 
     useEffect(() => {
-        fetch(`https://trifecta.by/api/ReferralStructure/GetTree?userId=${structureIds[structureIds.length - 1]}`, {
+        fetch(`https://trifecta.by/api/${isAdmin ? 'Administrator/GetAdminTree' : 'ReferralStructure/GetTree'}?userId=${structureIds[structureIds.length - 1]}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`

@@ -2,12 +2,21 @@ import * as React from 'react';
 
 import './progress.scss';
 import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 const DEFAULT_CLASSNAME = 'progress';
 
 const CURRENT_CURRENCY = 2.5;
 
-export const Progress = () => {
+export const Progress = ({ isVerified }) => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isVerified) {
+            navigate('/app/settings');
+        }
+    }, [isVerified])
+
     const [userData, setUserData] = useState(null);
 
     useEffect(() => {
@@ -117,7 +126,7 @@ export const Progress = () => {
                                          style={{width: `${userData?.travelBonusInfo.userPersonalMonthlyTurnover / userData?.travelBonusInfo.travelBonusTurnover * 100}%`}}/>
                                 </div>
                                 <div
-                                    className={`${DEFAULT_CLASSNAME}_bar_subtitle`}>{`${userData?.travelBonusInfo.travelBonusTurnover}.00$ / ${userData?.travelBonusInfo.userPersonalMonthlyTurnover}.00$`}</div>
+                                    className={`${DEFAULT_CLASSNAME}_bar_subtitle`}>{`${userData?.travelBonusInfo.userPersonalMonthlyTurnover}.00$ / ${userData?.travelBonusInfo.travelBonusTurnover}.00$`}</div>
                             </div>
                         </div>
                     </div>

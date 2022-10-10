@@ -59,7 +59,9 @@ export const Marketing = ({ currentPackage }) => {
 
                         <div className={`${DEFAULT_CLASSNAME}_modal_agreement`}>
                             <input checked={agreement} onClick={() => setAgreement(!agreement)} type={"checkbox"} id={'agreement'} />
-                            <label htmlFor={'agreement'}>{"Я ознакомился с Кодексом партнёра и Партнёрским соглашением и согласен со всеми условиями"}</label>
+                            <label htmlFor={'agreement'}>
+                                <div>{"Я ознакомился с"} <a href={'/app/info'}>Кодексом партнёра</a> {"и"} <a href={'/app/info'}>Партнёрским соглашением</a> {"и согласен со всеми условиями"}</div>
+                            </label>
                         </div>
 
                         <div className={`${DEFAULT_CLASSNAME}_modal_btn`} onClick={() => buyPackageHandler()}>{"Приобрести"}</div>

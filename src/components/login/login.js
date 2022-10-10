@@ -70,6 +70,7 @@ const RegisterContent = ({ setIsRegisterMode }) => {
     const [registerPassword, setRegisterPassword] = useState('');
     const [registerPasswordRep, setRegisterPasswordRep] = useState('');
     const [registerPhoneNumber, setRegisterPhoneNumber] = useState('');
+    const [registerDateOfBirth, setRegisterDateOfBirth] = useState(null);
 
     const [selectedCountry, setSelectedCountry] = useState('Беларусь');
 
@@ -95,6 +96,7 @@ const RegisterContent = ({ setIsRegisterMode }) => {
                 "password": registerPassword,
                 "confirmPassword": registerPasswordRep,
                 "referralCode": referral,
+                "dateOfBirth": (registerDateOfBirth || ""),
                 "country": countries[selectedCountry]
             })
         }).then(res => res.json()).then(data => {
@@ -116,6 +118,7 @@ const RegisterContent = ({ setIsRegisterMode }) => {
             </div>
 
             <input type={"tel"} placeholder={"Номер телефона"} value={registerPhoneNumber} onChange={(e) => setRegisterPhoneNumber(e.currentTarget.value)} />
+            <input type={"date"} placeholder={"Дата рождения"} value={registerDateOfBirth} onChange={(e) => setRegisterDateOfBirth(e.currentTarget.value)} />
 
             <input type={"text"} placeholder={"E-mail"} value={registerEmail} onChange={(e) => setRegisterEmail(e.currentTarget.value)} />
             <input type={"password"} placeholder={"Придумайте пароль (мин. 8 символов)"} value={registerPassword} onChange={(e) => setRegisterPassword(e.currentTarget.value)} />
@@ -127,7 +130,7 @@ const RegisterContent = ({ setIsRegisterMode }) => {
                     <option>Россия</option>
                     <option>Казахстан</option>
                 </select>
-                <input className={'referral'} type={"text"} placeholder={"Ссылка реферала"} value={referral} onChange={(e) => setReferral(e.currentTarget.value)}/>
+                <input className={'referral'} type={"text"} placeholder={"Реферальная ссылка"} value={referral} onChange={(e) => setReferral(e.currentTarget.value)}/>
             </div>
 
             <button disabled={!registerFirstName.length || !registerSecondName.length || !registerPatronymic.length || registerPassword.length < 8 || !registerPasswordRep.length || !registerPhoneNumber.length || !registerEmail.length || !referral.length} onClick={() => handleRegister()} className={`${DEFAULT_CLASSNAME}_btn`}>{"Зарегистрироваться"}</button>

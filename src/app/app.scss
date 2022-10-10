@@ -100,7 +100,7 @@
     font-size: 32px;
     position: absolute;
     top: 30%;
-    left: calc(320px + 30%);
+    left: calc(340px + 30%);
     transform: translate(50%, -70%);
   }
 
@@ -208,6 +208,7 @@
 
   &_level {
     &-item {
+      position: relative;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -228,13 +229,20 @@
         z-index: 10;
 
         &-container {
+          box-sizing: border-box !important;
+          position: absolute;
+          width: 264px;
+          height: 264px;
+          top: 28px;
+          left: 38px;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           align-items: center;
           background: #313751;;
           border-radius: 50%;
-          padding: 76px 50px;
+          padding: 66px 40px;
+          color: #FAFCFD !important;
         }
 
         &:before {
@@ -244,17 +252,12 @@
           top: 0; right: 0; bottom: 0; left: 0;
           margin: -25px; /* !importanté */
           border-radius: inherit; /* !importanté */
-          background: conic-gradient(from 180deg at 50% 50%, #48C5D6 0deg, #28AEB7 31.88deg, rgba(148, 115, 220, 0.994565) 114.38deg, rgba(57, 79, 194, 0.994565) 193.12deg, #48C5D6 360deg);
+          background: conic-gradient(from 180deg at 50% 50%, #48C5D6 0deg, #28AEB7 45deg, rgba(148, 115, 220, 0.994565) 120deg, rgba(57, 79, 194, 0.994565) 270deg, rgba(81, 103, 215, 0) 360deg, rgba(33, 39, 53, 0) 360deg, #478C88 360deg, #48C5D6 0deg);
         }
-
-        //background: conic-gradient(from 180deg at 50% 50%, #48C5D6 0deg, #28AEB7 31.88deg, rgba(148, 115, 220, 0) 90.26deg, rgba(33, 39, 53, 0) 359.96deg, #478C88 360deg, #48C5D6 360deg);
-        //background: conic-gradient(from 180deg at 50% 50%, #48C5D6 0deg, #28AEB7 31.88deg, rgba(148, 115, 220, 0.994565) 114.38deg, rgba(57, 79, 194, 0) 181.48deg, rgba(33, 39, 53, 0) 359.96deg, #478C88 360deg, #48C5D6 360deg);
-        //background: conic-gradient(from 180deg at 50% 50%, #48C5D6 0deg, #28AEB7 31.88deg, rgba(148, 115, 220, 0.994565) 114.38deg, rgba(57, 79, 194, 0.994565) 198.75deg, rgba(81, 103, 215, 0) 270deg, rgba(33, 39, 53, 0) 359.96deg, #478C88 360deg, #48C5D6 360deg);
-        //background: conic-gradient(from 180deg at 50% 50%, #48C5D6 0deg, #28AEB7 31.88deg, rgba(148, 115, 220, 0.994565) 114.38deg, rgba(57, 79, 194, 0.994565) 193.12deg, #48C5D6 360deg);
 
         &_title {
           margin: 24px 0;
-          font-size: 36px;
+          font-size: 32px;
           font-weight: 500;
         }
       }

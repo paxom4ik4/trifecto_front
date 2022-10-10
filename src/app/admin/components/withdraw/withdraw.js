@@ -23,7 +23,7 @@ export const Withdraw = () => {
     }, [dataChanges])
 
     const acceptTransaction = (id) => {
-        fetch('https://trifecta.by/api/Administrator/AcceptUserWithdraw', {
+        fetch(`https://trifecta.by/api/Administrator/AcceptUserWithdraw?requestId=${id}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -34,9 +34,6 @@ export const Withdraw = () => {
             credentials: 'same-origin', // include, *same-origin, omit
             redirect: 'follow', // manual, *follow, error
             referrerPolicy: 'origin',
-            body: JSON.stringify({
-                requestId: id,
-            })
         })
             .then(res => res.json())
             .finally(() => {
@@ -46,7 +43,7 @@ export const Withdraw = () => {
     }
 
     const rejectTransaction = (id) => {
-        fetch('https://trifecta.by/api/Administrator/RejectUserWithdraw', {
+        fetch(`https://trifecta.by/api/Administrator/RejectUserWithdraw?requestId=${id}`, {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -57,9 +54,6 @@ export const Withdraw = () => {
             credentials: 'same-origin', // include, *same-origin, omit
             redirect: 'follow', // manual, *follow, error
             referrerPolicy: 'origin',
-            body: JSON.stringify({
-                requestId: id,
-            })
         })
             .then(res => res.json())
             .finally(() => {

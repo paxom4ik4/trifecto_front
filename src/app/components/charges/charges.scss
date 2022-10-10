@@ -23,9 +23,9 @@
 }
 
 .charges_table_header {
-  font-size: 14px;
+  font-size: 10px;
   display: grid;
-  grid-template-columns: 2% 20% 16% 5% 10% 12% 12% 10% !important;
+  grid-template-columns: 2% 14% 24% 5% 12% 10% 12% 10% !important;
   gap: 16px;
   color: #898B96;
   margin: 20px 0;
@@ -35,9 +35,10 @@
   flex-direction: row;
   display: grid;
   gap: 16px;
-  grid-template-columns: 2% 20% 16% 5% 10% 12% 12% 12% !important;
+  grid-template-columns: 2% 14% 24% 5% 12% 10% 12% 10% !important;
   font-size: 14px;
   margin: 16px 0;
+  text-overflow: ellipsis;
 
   &_select {
     border: 1px solid #467CD7;
@@ -70,5 +71,8 @@
 
   div {
     align-self: flex-end;
+    overflow: hidden;
+    font-size: 12px;
+    text-overflow: ellipsis !important;
   }
 }

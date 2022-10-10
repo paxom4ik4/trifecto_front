@@ -7,6 +7,7 @@ import crown from "../../../assets/packeges/crown.png";
 import { useNavigate } from "react-router-dom";
 import {useEffect, useState} from "react";
 
+import { GradientCircularProgress } from "react-circular-gradient-progress";
 const DEFAULT_CLASSNAME = 'trifecta-app';
 
 const CURRENT_CURRENCY = 2.5;
@@ -55,13 +56,20 @@ export const Cabinet = ({ currentPackage }) => {
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_content_cabinet_level`}>
                         <div className={`${DEFAULT_CLASSNAME}_level-item`}>
-                            <div className={`${DEFAULT_CLASSNAME}_level-item_overall`}>
+                            <GradientCircularProgress
+                                startColor={"#48C5D6"}
+                                middleColor={"#9473DC"}
+                                endColor={"#394FC2"}
+                                size={320}
+                                progress={userData?.baseLevelInfo.currentTurnover / userData?.nextBasicLevelRequirements.groupTurnover * 100}
+                                strokeWidth={5}
+                            >
                                 <div className={`${DEFAULT_CLASSNAME}_level-item_overall-container`}>
                                     <div className={`${DEFAULT_CLASSNAME}_level-item_overall_title`}>{userData?.baseLevelInfo.currentLevel.name}</div>
                                     <div>{"Групповой оборот"}</div>
                                     <div>{userData?.baseLevelInfo.currentTurnover + "$"}</div>
                                 </div>
-                            </div>
+                            </GradientCircularProgress>
                             <div className={`${DEFAULT_CLASSNAME}_level-item_next`}>
                                 <div className={`${DEFAULT_CLASSNAME}_level-item_next_title`}>{"Требуется для достижения следующего уровня"}</div>
                                 <div>{"Групповой оборот: "}{userData?.nextBasicLevelRequirements.groupTurnover} $</div>
@@ -69,13 +77,20 @@ export const Cabinet = ({ currentPackage }) => {
                             </div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_level-item`}>
-                            <div className={`${DEFAULT_CLASSNAME}_level-item_overall`}>
+                            <GradientCircularProgress
+                                startColor={"#48C5D6"}
+                                middleColor={"#9473DC"}
+                                endColor={"#394FC2"}
+                                size={320}
+                                progress={userData?.mounthlyLevelInfo.currentTurnover / (userData?.mounthlyLevelInfo.requiredMonthlyTurnoverToNextLevel || 9000) * 100}
+                                strokeWidth={5}
+                            >
                                 <div className={`${DEFAULT_CLASSNAME}_level-item_overall-container`}>
                                     <div className={`${DEFAULT_CLASSNAME}_level-item_overall_title`}>{userData?.mounthlyLevelInfo.currentLevel.name}</div>
                                     <div>{"Месячный оборот"}</div>
                                     <div>{userData?.mounthlyLevelInfo.currentTurnover + "$"}</div>
                                 </div>
-                            </div>
+                            </GradientCircularProgress>
                             <div className={`${DEFAULT_CLASSNAME}_level-item_next`}>
                                 <div className={`${DEFAULT_CLASSNAME}_level-item_next_title`}>{"Получаемый в этом месяце процент выплаты"}</div>
                                 <div className={`${DEFAULT_CLASSNAME}_level-item_next_percent`}>{userData?.receivedPayoutPercentage + "%"}</div>

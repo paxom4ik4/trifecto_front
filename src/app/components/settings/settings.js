@@ -26,34 +26,36 @@ export const Settings = ({ userInfo }) => {
     const sections = ["Профиль", "Безопасность и вход", "Проверка документов"];
 
     useEffect(() => {
-        const USER_ID = sessionStorage.getItem('userId');
         const TOKEN = sessionStorage.getItem('accessToken');
 
-        const file = new FormData();
-        file.append('UserId', USER_ID);
         if (uploadedFile) {
-            file.append('ProfilePhoto', uploadedFile);
-
             fetch('https://trifecta.by/api/UserProfile/UploadProfilePhoto', {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, *cors, same-origin
                 cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
                 credentials: 'same-origin', // include, *same-origin, omit
                 headers: {
-                    'Content-Type': 'multipart/form-data; boundary=something',
                     'Authorization': `Bearer ${TOKEN}`
                 },
                 redirect: 'follow', // manual, *follow, error
                 referrerPolicy: 'origin', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-                body: file,
+                body: uploadedFile,
             })
                 .then(res => res.json())
-                .then(data => console.log(data));
+                .then(data => console.log(data))
+                .finally(() => {
+                    setUploadedFile(null);
+                })
         }
     }, [uploadedFile]);
 
     const uploadUserPhoto = (event) => {
-        setUploadedFile(event.target.files[0]);
+        const USER_ID = sessionStorage.getItem('userId');
+
+        const formData = new FormData();
+        formData.append('ProfilePhoto', event.target.files[0]);
+        formData.append('UserId', USER_ID);
+        setUploadedFile(formData);
     }
 
     const Profile = () => {
@@ -61,12 +63,12 @@ export const Settings = ({ userInfo }) => {
             <div className={`${DEFAULT_CLASSNAME}_profile`}>
                 <div className={`${DEFAULT_CLASSNAME}_profile_left`}>
                     <div className={`${DEFAULT_CLASSNAME}_profile_photo`}>
-                        <img src={noPhoto} alt={'no-photo'} />
+                        <img src={`https://trifecta.by${userInfo?.profilePhoto}`} alt={'no-photo'} />
                         <input type={'file'} alt={'profile-info'} onChange={(event) => uploadUserPhoto(event)}/>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_profile_referral`}>
                         <label htmlFor={'referral-link'}>{"Ссылка партнера"}</label>
-                        <input disabled={true} value={userInfo?.personalReferral} type={'text'} id={'referral-link'} />
+                        <input disabled={true} value={userInfo?.personalReferral || ""} type={'text'} id={'referral-link'} />
                     </div>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_profile_right`}>
@@ -309,9 +311,38 @@ export const Settings = ({ userInfo }) => {
         const [registrationAuthority, setRegistrationAuthority] = useState("");
         const [certificateDateIssue, setCertificateDateIssue] = useState("");
 
+        const [passportNumber, setPassportNumber] = useState("");
+        const [passportIdentityNumber, setPassportIdentityNumber] = useState("");
+        const [passportRegistrationAuthority, setPassportRegistrationAuthority] = useState("");
+        const [passportCertificateDateIssue, setPassportCertificateDateIssue] = useState("");
+
         const [userAlreadyUpload, setUserAlreadyUpload] = useState(false);
 
         const TOKEN = sessionStorage.getItem('accessToken');
+
+        const uploadCertificate = (event) => {
+            const USER_ID = sessionStorage.getItem('userId');
+
+            const formData = new FormData();
+            formData.append('ProfilePhoto', event.target.files[0]);
+            formData.append('UserId', USER_ID);
+
+            fetch('https://trifecta.by/api/UserDocument/SendPhotoForVerification', {
+                method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                mode: 'cors', // no-cors, *cors, same-origin
+                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                credentials: 'same-origin', // include, *same-origin, omit
+                headers: {
+                    'Authorization': `Bearer ${TOKEN}`
+                },
+                redirect: 'follow', // manual, *follow, error
+                referrerPolicy: 'origin', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                body: formData,
+            })
+                .finally(() => {
+                    toast.info("Фото успешно загружено.")
+                })
+        }
 
         useEffect(() => {
             fetch(`https://trifecta.by/api/UserDocument/GetVerifiedData?userId=${USER_ID}`, {
@@ -327,6 +358,39 @@ export const Settings = ({ userInfo }) => {
                     }
                 });
         }, [])
+
+        const passportData = <>
+            <div className={`${DEFAULT_CLASSNAME}_documents_item`}>
+                <div className={`${DEFAULT_CLASSNAME}_documents_title`}>{"Пасспортные данные"}</div>
+                <div className={`${DEFAULT_CLASSNAME}_documents_content`}>
+                    <div className={`${DEFAULT_CLASSNAME}_documents_item_left`}>
+                        <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
+                            <label>{"Серия и номер пасспорта"}</label>
+                            <input value={passportNumber} onChange={(e) => setPassportNumber(e.currentTarget.value)} type={"text"} id={"obl"} />
+                        </div>
+                        <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
+                            <label>{"Идентификационный номер"}</label>
+                            <input value={passportIdentityNumber} onChange={(e) => setPassportIdentityNumber(e.currentTarget.value)} type={"text"} id={"obl"} />
+                        </div>
+                        <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
+                            <label >{"Фото паспорта"}</label>
+                            <img src={photoUpload} alt={'upload-photo'} />
+                            <input className={'upload-photo-input'} type={"file"} onChange={(e) => uploadCertificate(e)}/>
+                        </div>
+                    </div>
+                    <div className={`${DEFAULT_CLASSNAME}_documents_item_right`}>
+                        <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
+                            <label>{"Регистрационный орган"}</label>
+                            <input value={passportRegistrationAuthority} onChange={(e) => setPassportRegistrationAuthority(e.currentTarget.value)} type={"text"} id={"obl"} />
+                        </div>
+                        <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
+                            <label>{"Дата выдачи"}</label>
+                            <input value={passportCertificateDateIssue} onChange={(e) => setPassportCertificateDateIssue(e.currentTarget.value)} type={"text"} id={"obl"} />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
 
         const docsBankInfo = <>
             <div className={`${DEFAULT_CLASSNAME}_documents_item`}>
@@ -463,11 +527,11 @@ export const Settings = ({ userInfo }) => {
                             <label >{"Регистрирующий орган"}</label>
                             <input value={registrationAuthority} onChange={(e) => setRegistrationAuthority(e.currentTarget.value)} type={"text"} />
                         </div>
-                        {/*<div className={`${DEFAULT_CLASSNAME}_profile_item`}>*/}
-                        {/*    <label >{"Фото свидетельства"}</label>*/}
-                        {/*    <img src={photoUpload} alt={'upload-photo'} />*/}
-                        {/*    <input className={'upload-photo-input'} type={"file"} />*/}
-                        {/*</div>*/}
+                        <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
+                            <label >{"Фото свидетельства"}</label>
+                            <img src={photoUpload} alt={'upload-photo'} />
+                            <input className={'upload-photo-input'} type={"file"} onChange={(e) => uploadCertificate(e)}/>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -554,6 +618,7 @@ export const Settings = ({ userInfo }) => {
         </>
 
         const individual = <>
+            {passportData}
             {docsBankInfo}
             {liveAddress}
         </>
@@ -641,7 +706,13 @@ export const Settings = ({ userInfo }) => {
                     street: liveDomB,
                     houseNumber: liveNameB,
                     flat: liveKV,
-                }
+                },
+                passportDataModel: {
+                    number: passportNumber,
+                    identityNumber: passportIdentityNumber,
+                    registrationAuthority: passportRegistrationAuthority,
+                    certificateDateIssue: passportCertificateDateIssue,
+                },
             }
         };
 
@@ -649,6 +720,11 @@ export const Settings = ({ userInfo }) => {
             const TOKEN = sessionStorage.getItem('accessToken');
 
             if (currentType === "Физическое лицо") {
+                if (!passportNumber.length || !passportIdentityNumber.length || !passportRegistrationAuthority.length || !passportCertificateDateIssue.length) {
+                    toast.info('Заполните пасспортные данные.');
+                    return;
+                }
+
                 if (!liveObl.length || !liveCity.length || !liveUlb.length || !liveDomB.length || !liveNameB.length || !liveKV.length) {
                     toast.info('Заполните Адресс Проживания.');
                     return;

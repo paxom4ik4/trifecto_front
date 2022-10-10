@@ -4,11 +4,18 @@ import './newbie.scss';
 
 import newbie from './newbie.png';
 import { useEffect } from "react";
+import {useNavigate} from "react-router-dom";
 
 const DEFAULT_CLASSNAME = 'newbie';
 
-export const Newbie = () => {
-    // const [videos, setVideos] = useState([]);
+export const Newbie = ({ isVerified }) => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isVerified) {
+            navigate('/app/settings');
+        }
+    }, [isVerified])
 
     useEffect(() => {
         const TOKEN = sessionStorage.getItem('accessToken');

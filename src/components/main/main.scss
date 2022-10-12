@@ -318,13 +318,48 @@
 }
 
 @media (max-width: 600px) {
+  .goal_wrapper {
+    background-position: 0 100% !important;
+    background-size: 90% !important;
+  }
+
+  .how-it-work-card-line {
+    transform: rotate(90deg);
+  }
+
+  .goal_item:first-child {
+    flex-direction: column-reverse;
+  }
+
+  .goal_item:last-child {
+    margin-bottom: 340px !important;
+  }
+
   .main {
     box-sizing: border-box;
+
+    &_text {
+      display: none;
+    }
+
+    &_right {
+      margin-top: -100px;
+    }
+
+    &_left {
+      font-size: 16px;
+    }
+  }
+
+  .main_content {
+    flex-direction: column-reverse;
   }
 
   .main_title {
-    line-height: 48px;
-    font-size: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 24px;
+    margin: 0 0 40px;
   }
 
   .main_works {

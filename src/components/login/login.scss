@@ -27,7 +27,7 @@ select {
   background: #13162C;
   box-shadow: 0 0 150px rgba(19, 22, 44, 0.7);
   border-radius: 50px;
-  padding: 80px 200px 60px;
+  padding: 50px 200px;
 
   &_header {
     display: flex;
@@ -120,12 +120,12 @@ select {
     font-size: 30px;
     font-weight: 400;
     text-transform: uppercase;
-    margin-bottom: 50px;
+    margin-bottom: 12px;
   }
 
   &_wrapper {
     animation: loyalLog 0.75s;
-    position: absolute;
+    position: relative;
     bottom: 0;
     left: 0;
     display: flex;
@@ -133,7 +133,7 @@ select {
     align-items: center;
     width: 100%;
     min-height: 100vh;
-    height: 100%;
+    height: fit-content;
     background: linear-gradient(127.61deg, #6C90D7 0%, #A9F0FF 87.38%);
   }
 }

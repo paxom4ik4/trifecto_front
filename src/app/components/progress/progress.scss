@@ -1,5 +1,7 @@
 .progress {
+  box-sizing: border-box;
   margin-top: 50px;
+  margin-left: -50px;
   height: 100%;
   padding: 50px;
   width: 100%;
@@ -72,6 +74,10 @@
     align-items: center;
     z-index: 10;
   }
+
+  &_bar_content_progress {
+    max-width: 100% !important;
+  }
 }
 
 @media (max-width: 1400px) {
@@ -81,12 +87,20 @@
 }
 
 @media (max-width: 600px) {
+  .progress {
+    margin-left: -20px;
+  }
+
   .progress_content {
     font-size: 14px !important;
   }
 
   .progress_content_item_title {
     font-size: 24px;
+  }
+
+  .progress_bar_content {
+    width: 100%;
   }
 
   .progress_bar_subtitle {

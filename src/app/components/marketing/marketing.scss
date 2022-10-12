@@ -215,7 +215,43 @@
     }
 
     img {
-      width: 20%;
+      width: 40%;
     }
+  }
+}
+
+@media (max-width: 600px) {
+   .marketing {
+     width: 100%;
+     margin-left: -24px;
+   }
+
+  .marketing_item {
+    width: 100%;
+    padding: 24px;
+  }
+
+  .marketing_item_title {
+    margin-bottom: 32px;
+    font-size: 20px;
+  }
+
+  .marketing_item_description {
+    font-size: 14px;
+  }
+
+  .marketing_item_buy {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 12px;
+  }
+
+  .marketing_item_footer {
+    margin-top: 32px;
+    margin-bottom: 100px;
+  }
+
+  .marketing_item_price {
+    font-size: 20px;
   }
 }

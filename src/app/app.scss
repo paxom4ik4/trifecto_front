@@ -14,6 +14,14 @@
   height: 140px !important;
 }
 
+.trifecta-app_content_cabinet .trifecta-app_content_cabinet_withdraw {
+  width: 105% !important;
+}
+
+.trifecta-app_side-menu {
+  z-index: 100;
+}
+
 .cookie-app {
   animation: cookie 0.75s ease-in-out;
   position: fixed;
@@ -94,6 +102,19 @@
   flex-direction: column;
   min-height: 100vh;
   background: linear-gradient(127.61deg, #5889E7 0%, #A9F0FF 87.38%);
+
+
+  &_wrapper {
+    position: relative;
+  }
+
+  &_burger {
+    display: none;
+    top: 72px;
+    right: 28px;
+    z-index: 1000;
+    position: absolute;
+  }
 
   &_loading {
     color: #FFFFFF;
@@ -416,7 +437,7 @@
       }
 
       &_withdraw {
-        width: 105%;
+        width: 100%;
         padding: 25px;
         border-radius: 30px;
         background: #171A2F;
@@ -434,12 +455,9 @@
     width: 100%;
   }
 
-  .trifecta-app_side-menu {
-    left: -320px;
-    transition: 0.3s;
-  }
-
   .trifecta-app_content_cabinet {
+    box-sizing: border-box;
+    width: 100% !important;
     margin: 0;
   }
 }
@@ -479,4 +497,52 @@
       margin: 20px 0;
     }
   }
+}
+
+@media (max-width: 600px) {
+
+  .trifecta-app_content_cabinet .trifecta-app_content_cabinet_withdraw {
+    margin-left: 48px;
+  }
+
+  .trifecta-app_withdraw_card {
+    max-width: 190px !important;
+    padding-bottom: 48px;
+  }
+
+  .trifecta-app_wrapper {
+    width: 100%;
+  }
+
+  .trifecta-app_content {
+    width: 100%;
+    box-sizing: border-box !important;
+  }
+
+  .trifecta-app_content_cabinet_level {
+    width: 100%;
+    margin-left: 24px;
+  }
+
+  .trifecta-app_content_cabinet_packages {
+    width: 100%;
+    margin-left: 24px;
+  }
+
+  .trifecta-app_burger {
+    display: initial;
+  }
+
+  .trifecta-app_side-menu {
+    transition: 0.3s ease;
+    left: 0;
+    top: 0;
+    z-index: 100;
+  }
+}
+
+.menu_closed {
+  opacity: 0;
+  left: -320px;
+  transition: 0.3s;
 }

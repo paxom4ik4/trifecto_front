@@ -104,10 +104,37 @@
 
 @media (max-width: 600px) {
   .withdraw {
+    margin-left: -24px;
+    padding: 12px;
     font-size: 10px !important;
+  }
+
+  .withdraw_table {
+    padding: 12px 18px;
+    overflow: scroll;
   }
 
   .withdraw_table_header {
     font-size: 10px !important;
+  }
+
+  .withdraw_header_title {
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .withdraw_header_controls {
+    select {
+      width: 120px !important;
+    }
+  }
+
+  .withdraw_header_controls div {
+    margin: 0 4px !important;
+  }
+
+  .trifecta-app_content_cabinet_withdraw {
+    margin: 0 0 0 -24px;
+    width: 100%;
   }
 }

@@ -53,3 +53,17 @@
     margin: 0 0 50px 48px;
   }
 }
+
+@media (max-width: 600px) {
+  .newbie_item {
+    flex-direction: column;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .newbie_item_text {
+    margin: 32px 0 0;
+  }
+}

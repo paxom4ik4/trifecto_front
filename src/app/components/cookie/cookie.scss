@@ -60,3 +60,30 @@
     margin: 0 0 0 48px;
   }
 }
+
+@media (max-width: 600px) {
+  .cookie_wrapper {
+    padding: 28px;
+  }
+
+  .cookie_text {
+    font-size: 14px;
+  }
+
+  .cookie_text_title {
+    font-size: 20px;
+  }
+
+  .cookie_text.colored {
+    width: 100% !important;
+  }
+
+  .cookie {
+    box-sizing: border-box;
+    width: 100%;
+
+    img {
+      display: none;
+    }
+  }
+}

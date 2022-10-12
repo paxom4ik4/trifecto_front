@@ -79,3 +79,15 @@
     flex-direction: column;
   }
 }
+
+@media (max-width: 600px) {
+  .info_wrapper {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .info {
+    width: 108%;
+    box-sizing: border-box;
+  }
+}

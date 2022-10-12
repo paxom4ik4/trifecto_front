@@ -18,7 +18,7 @@ export const Help = () => {
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             <div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_header`}>
-                    <img src={info} alt={'info'} />
+                    <img className={`${DEFAULT_CLASSNAME}_header_info`} src={info} alt={'info'} />
                     <div className={`${DEFAULT_CLASSNAME}_card`}>
                         <div className={`${DEFAULT_CLASSNAME}_card_title`}>{"Связаться с технической поддержкой"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_card_text`}>

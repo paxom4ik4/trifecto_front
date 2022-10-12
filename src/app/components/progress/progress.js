@@ -123,7 +123,7 @@ export const Progress = ({ isVerified }) => {
                                 <div className={`${DEFAULT_CLASSNAME}_bar_title`}>{"Личный оборот текущего месяца"}</div>
                                 <div className={`${DEFAULT_CLASSNAME}_bar_content`}>
                                     <div className={`${DEFAULT_CLASSNAME}_bar_content_progress`}
-                                         style={{width: `${userData?.travelBonusInfo.userPersonalMonthlyTurnover / userData?.travelBonusInfo.travelBonusTurnover * 100}%`}}/>
+                                         style={{width: `${(userData?.travelBonusInfo.userPersonalMonthlyTurnover / userData?.travelBonusInfo.travelBonusTurnover * 100)}%`}}/>
                                 </div>
                                 <div
                                     className={`${DEFAULT_CLASSNAME}_bar_subtitle`}>{`${userData?.travelBonusInfo.userPersonalMonthlyTurnover}.00$ / ${userData?.travelBonusInfo.travelBonusTurnover}.00$`}</div>

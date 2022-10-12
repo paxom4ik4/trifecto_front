@@ -1,4 +1,6 @@
 .settings {
+  box-sizing: border-box;
+
   button:disabled {
     opacity: 0.8;
     cursor: not-allowed;
@@ -347,6 +349,10 @@
 
 @media (max-width: 600px) {
   .settings {
+    .hide-small {
+      display: none;
+    }
+
     box-sizing: border-box !important;
 
     .upload-photo-input {
@@ -354,10 +360,22 @@
     }
   }
 
-
-
   .settings_sections {
     flex-direction: column;
+    margin: 24px 0 48px;
+
+    div {
+      width: 80%;
+      margin: 12px 0;
+    }
+
+    div:first-child {
+      margin-top: 0;
+    }
+
+    div:last-child {
+      margin-bottom: 0;
+    }
   }
 
   .settings_documents_content {
@@ -374,5 +392,103 @@
     input {
       width: 100%;
     }
+  }
+
+  .settings {
+    width: 100%;
+  }
+
+  .settings_profile {
+    width: 110%;
+    margin-left: -32px;
+    padding: 20px;
+    flex-direction: column;
+  }
+
+  .settings_security {
+    width: 110%;
+    margin-left: -32px;
+    padding: 20px;
+    flex-direction: column;
+  }
+
+  .settings_security_password {
+    flex-direction: column
+  }
+
+  .settings_security_password_left {
+    width: 100% !important;
+    margin-bottom: 32px;
+  }
+
+  .settings_profile_right {
+    width: 100%;
+  }
+
+  .settings_profile_photo {
+    max-width: 320px;
+    max-height: 320px;
+  }
+
+  .settings_security_contacts_item {
+    margin: 24px 12px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .settings_security_btn {
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .settings_security_contacts {
+    padding: 24px;
+  }
+
+  .settings_documents_header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+
+    select {
+      margin: 0;
+      padding: 12px 24px;
+      font-size: 16px;
+    }
+
+    select:first-child {
+      margin: 0;
+      width: fit-content;
+    }
+
+    select:last-child {
+      width: fit-content;
+    }
+  }
+
+  .settings {
+    padding: 24px;
+  }
+
+  .settings_documents_content {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  .settings_documents_content input {
+    width: 90%;
+  }
+
+  .settings_documents_item {
+    width: 100%;
+    box-sizing: border-box !important;
+    padding: 16px;
   }
 }

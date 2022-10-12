@@ -9,6 +9,8 @@ import trifecta from '../assets/trifecta.png';
 import closeIcon from '../closeIcon/close_big.png';
 import cookieIcon from './cookie.png';
 
+import burger from './assets/burger.png';
+
 //menu-icons
 import mc from './assets/mc.png';
 import wd from './assets/wd.png';
@@ -77,6 +79,8 @@ export const TrifectaApp = () => {
 
     const [IS_VERIFIED, setIsVerified] = useState(false);
 
+    const [menuOpen, setMenuOpen] = useState(true);
+
     useEffect(() => {
         const USER_ID = sessionStorage.getItem('userId');
         const TOKEN = sessionStorage.getItem('accessToken');
@@ -115,6 +119,11 @@ export const TrifectaApp = () => {
         })
             .then(res => res.json())
             .then(data => setUserReferral(data));
+
+
+        if (document.documentElement.clientWidth < 600) {
+            setMenuOpen(false);
+        }
     }, [navigate])
 
     useEffect(() => {
@@ -140,10 +149,11 @@ export const TrifectaApp = () => {
 
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
+            <img className={`${DEFAULT_CLASSNAME}_burger`} onClick={() => setMenuOpen(!menuOpen)} src={burger} alt={'burger-menu'} />
             {!cookieConfirmed && <CookieApp setCookieConfirmed={setCookieConfirmed} />}
             <div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_content`}>
-                    <div className={`${DEFAULT_CLASSNAME}_side-menu`}>
+                    <div className={`${DEFAULT_CLASSNAME}_side-menu ${!menuOpen && 'menu_closed'}`}>
                         <img className={`${DEFAULT_CLASSNAME}_side-menu_logo`} src={trifecta} alt={'logo'} />
                         <div className={`${DEFAULT_CLASSNAME}_side-menu_profile`}>
                             <img src={`https://trifecta.by${userInfo?.profilePhoto}`} alt={"img"} />

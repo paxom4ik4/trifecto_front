@@ -75,3 +75,11 @@
     margin: 0 0 0 82px;
   }
 }
+
+@media (max-width: 600px) {
+ .structure_wrapper {
+   margin: 0 0 0 48px;
+   overflow: scroll;
+   padding: 18px;
+ }
+}

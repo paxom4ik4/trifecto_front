@@ -33,7 +33,7 @@ export const Main = () => {
                     <div className={`${DEFAULT_CLASSNAME}_left`}>
                         <div className={`${DEFAULT_CLASSNAME}_title`}>
                             <span className={'first-grad'}>{'Добро'}
-                                <br /> <span className={'third-grad'}>{'пожаловать'}</span>
+                                <span className={'third-grad'}>{' пожаловать'}</span>
                             </span>
                             <br />
                             <span className={'second-grad'}>
@@ -76,7 +76,7 @@ export const Main = () => {
                         <div className={'how-it-work-card'}>
                             <img src={money} alt={'work-card'} />
                             <div className={'how-it-work-card-title'}>{'Будь счаслив!'}</div>
-                            <div className={'how-it-work-card-text'}>{'Получи от жизни всё с Trifecto Company!'}</div>
+                            <div className={'how-it-work-card-text'}>{'Получи от жизни всё с Trifecta Company!'}</div>
                         </div>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_works_more`} onClick={() => navigate('/about')}>

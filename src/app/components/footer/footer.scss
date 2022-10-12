@@ -99,6 +99,39 @@
   }
 
   .trifecta-app-footer {
+    box-sizing: border-box;
     flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+ .trifecta-app-footer {
+   box-sizing: border-box;
+    padding: 24px;
+   width: 100%;
+   align-items: center;
+   flex-direction: column;
+ }
+
+  .trifecta-app-footer_content_links {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .trifecta-app-footer_content_text {
+    text-align: center;
+  }
+
+  .trifecta-app-footer_content_text span {
+    margin: 12px 0 32px !important;
+  }
+
+  .trifecta-app-footer_content {
+    width: 100% !important;
+  }
+
+  .trifecta-app-footer_partners {
+    margin-top: 32px;
   }
 }

@@ -13,12 +13,11 @@ const MENU_ITEMS = [{title: 'О Компании', link: '/about'}, {title: "П�
 export const Header = ({ setIsRegisterMode }) => {
     const navigate = useNavigate();
 
-    const pathExclude = ['/login', '/app'];
+    const pathExclude = ['/login', '/app', '/register'];
     const showHeader = pathExclude.filter(elem => !!(window.location.pathname.startsWith(elem)));
 
     const handleRegister = () => {
-        setIsRegisterMode(true);
-        navigate("/login")
+        navigate("/register")
     }
 
     const handleLogin = () => {

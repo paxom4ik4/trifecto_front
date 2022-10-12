@@ -245,22 +245,22 @@ export const Settings = ({ userInfo }) => {
                 <div className={`${DEFAULT_CLASSNAME}_security_contacts`}>
                     <div className={`${DEFAULT_CLASSNAME}_security_contacts_title`}>{"Контактные данные"}</div>
                     <div className={`${DEFAULT_CLASSNAME}_security_contacts_item`}>
-                        <img src={phone} alt={'phone'} />
+                        <img className={'hide-small'} src={phone} alt={'phone'} />
                         <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
                             <label htmlFor={'phone'}>{"Номер телефона"}</label>
                             <input value={newPhoneNumber} onChange={(e) => setNewPhoneNumber(e.currentTarget.value)} placeholder={"+375 (44) 999-99-99"} type={"phone"} id={"phone"} />
                         </div>
                         <button onClick={() => changePhoneHandler()} disabled={newPhoneNumber.length < 9} className={`${DEFAULT_CLASSNAME}_security_btn`}>{"Сменить номер"}</button>
-                        <div>{"Для смены контактных данных нажмите кнопку напротив данных требующих изменения и введите новые данные."}</div>
+                        <div className={'hide-small'}>{"Для смены контактных данных нажмите кнопку напротив данных требующих изменения и введите новые данные."}</div>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_security_contacts_item`}>
-                        <img src={email} alt={'email'} />
+                        <img className={'hide-small'} src={email} alt={'email'} />
                         <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
                             <label htmlFor={'email'}>{"Электронный адрес"}</label>
                             <input value={newEmail} onChange={(e) => setNewEmail(e.currentTarget.value)} placeholder={currentUserData?.email} type={"email"} id={"email"} />
                         </div>
                         <button onClick={() => changeEmailHandler()} disabled={!newEmail.includes('@')} className={`${DEFAULT_CLASSNAME}_security_btn`}>{"Сменить E-male"}</button>
-                        <div>{"После прохождения модерации данные будут изменены."}</div>
+                        <div className={'hide-small'}>{"После прохождения модерации данные будут изменены."}</div>
                     </div>
                 </div>
             </div>

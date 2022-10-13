@@ -16,16 +16,22 @@ export const Docs = () => {
                 <div className={`${DEFAULT_CLASSNAME}_title`}>{"Юридические документы"}</div>
                 <div className={`${DEFAULT_CLASSNAME}_items`}>
                     <div className={`${DEFAULT_CLASSNAME}_item`}>
-                        <img src={file} alt={'docs-item'} />
-                        <div className={`${DEFAULT_CLASSNAME}_item-text`}>{"Пользовательское соглашение"}</div>
+                        <a href={"https://trifecta.by/trifecto_Documents/Sogl.pdf"} target={"_blank"}>
+                            <img src={file} alt={'docs-item'} />
+                            <div className={`${DEFAULT_CLASSNAME}_item-text`}>{"Пользовательское соглашение"}</div>
+                        </a>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_item`}>
-                        <img src={file} alt={'docs-item'} />
-                        <div className={`${DEFAULT_CLASSNAME}_item-text`}>{"Политика обработки персональных данных"}</div>
+                        <a href={"https://trifecta.by/trifecto_Documents/Pers.pdf"} target={"_blank"}>
+                            <img src={file} alt={'docs-item'} />
+                            <div className={`${DEFAULT_CLASSNAME}_item-text`}>{"Политика обработки персональных данных"}</div>
+                        </a>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_item`}>
-                        <img src={file} alt={'docs-item'} />
-                        <div className={`${DEFAULT_CLASSNAME}_item-text`}>{"Политика конфиденциальности"}</div>
+                        <a href={"https://trifecta.by/trifecto_Documents/Conf.pdf"} target={"_blank"}>
+                            <img src={file} alt={'docs-item'} />
+                            <div className={`${DEFAULT_CLASSNAME}_item-text`}>{"Политика конфиденциальности"}</div>
+                        </a>
                     </div>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_text`}>

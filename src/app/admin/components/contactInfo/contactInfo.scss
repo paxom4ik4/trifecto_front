@@ -96,3 +96,9 @@
     border-radius: 30px;
   }
 }
+
+@media (max-width: 600px) {
+  .contact-info_wrapper {
+    margin: 0 8%;
+  }
+}

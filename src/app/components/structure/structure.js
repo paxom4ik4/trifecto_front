@@ -7,14 +7,14 @@ import {useNavigate} from "react-router-dom";
 
 const DEFAULT_CLASSNAME = 'structure';
 
-export const Structure = ({ isVerified, isAdmin }) => {
-    const navigate = useNavigate();
+export const Structure = ({ isAdmin }) => {
+    // const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!isVerified) {
-            navigate('/app/settings');
-        }
-    }, [isVerified])
+    // useEffect(() => {
+    //     if (!isVerified || !isAdmin) {
+    //         navigate('/app/settings');
+    //     }
+    // }, [isVerified, isAdmin])
 
     const USER_ID = sessionStorage.getItem('userId');
     const TOKEN = sessionStorage.getItem('accessToken');

@@ -457,7 +457,7 @@
 
     select {
       margin: 0;
-      padding: 12px 24px;
+      padding: 12px 12px;
       font-size: 16px;
     }
 
@@ -490,5 +490,25 @@
     width: 100%;
     box-sizing: border-box !important;
     padding: 16px;
+  }
+
+  .settings_sections_item {
+    font-size: 12px;
+  }
+
+  .settings_documents_header select {
+    font-size: 12px;
+  }
+
+  .settings_documents_title {
+    font-size: 18px !important;
+  }
+
+  .settings_documents_content label {
+    font-size: 12px !important;
+  }
+
+  .settings {
+    padding: 12px;
   }
 }

@@ -100,7 +100,7 @@
 
   .trifecta-app-footer {
     box-sizing: border-box;
-    flex-direction: column;
+    flex-direction: row;
   }
 }
 
@@ -110,7 +110,7 @@
     padding: 24px;
    width: 100%;
    align-items: center;
-   flex-direction: column;
+   flex-direction: row;
  }
 
   .trifecta-app-footer_content_links {
@@ -128,10 +128,24 @@
   }
 
   .trifecta-app-footer_content {
+    display: flex;
+    justify-content: center;
     width: 100% !important;
+    font-size: 12px;
+
+    img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-self: center;
+    }
   }
 
   .trifecta-app-footer_partners {
     margin-top: 32px;
+
+    img {
+      width: 100%;
+    }
   }
 }

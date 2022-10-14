@@ -29,15 +29,15 @@ export const Info = () => {
             <div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_title`}>{"Инфо"}</div>
                 <div className={`${DEFAULT_CLASSNAME}_docs`}>
-                    <a className={`${DEFAULT_CLASSNAME}_docs_item`} target={"_blank"} href={docs[0]?.thumbnailFullPath} download={docs[0]?.thumbnailName}>
+                    <a className={`${DEFAULT_CLASSNAME}_docs_item`} target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Marketing.pdf"}>
                         <img src={doc} alt={'doc'} />
                         <div className={`${DEFAULT_CLASSNAME}_docs_item_text`}>{"Информационная программа пакетов"}</div>
                     </a>
-                    <a className={`${DEFAULT_CLASSNAME}_docs_item`} target={"_blank"} href={docs[1]?.thumbnailFullPath} download={docs[1]?.thumbnailName}>
+                    <a className={`${DEFAULT_CLASSNAME}_docs_item`} target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Codex.pdf"}>
                         <img src={doc} alt={'doc'} />
                         <div className={`${DEFAULT_CLASSNAME}_docs_item_text`}>{"Кодекс партнёра"}</div>
                     </a>
-                    <a className={`${DEFAULT_CLASSNAME}_docs_item`} target={"_blank"} href={docs[2]?.thumbnailFullPath} download={docs[2]?.thumbnailName}>
+                    <a className={`${DEFAULT_CLASSNAME}_docs_item`} target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Sogl.pdf"}>
                         <img src={doc} alt={'doc'} />
                         <div className={`${DEFAULT_CLASSNAME}_docs_item_text`}>{"Партнерское соглашение"}</div>
                     </a>

@@ -5,6 +5,17 @@
   flex-direction: column;
   z-index: 10;
 
+  &_form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 462px;
+
+    div input:last-child {
+      margin-left: 12px;
+    }
+  }
+
   &_wrapper {
     width: 100%;
     display: flex;
@@ -271,9 +282,14 @@
   }
 
   .footer_form {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    div input:last-child {
+      margin-left: 0;
+    }
 
     input {
       height: 4px;

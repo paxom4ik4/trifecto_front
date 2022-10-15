@@ -46,6 +46,22 @@ export const Marketing = ({ currentPackage }) => {
         }
     }
 
+    const buyAlfaHandler = () => {
+        const TOKEN = sessionStorage.getItem("accessToken");
+
+        let body = "{\"amount\":\"100\",\"currency\":\"933\",\"language\":\"ru\",\"orderId\":\"e5b59d3d-746b-4828-9da4-06f126e01b68\"}"
+
+        fetch('https://developerhub.alfabank.by:8273/partner/3.0.0/rbs/rest/deposit.do', {
+            method: "POST",
+            url: "",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${TOKEN}`,
+            },
+            body: body,
+        })
+    }
+
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             {
@@ -64,7 +80,7 @@ export const Marketing = ({ currentPackage }) => {
                             </label>
                         </div>
 
-                        <div className={`${DEFAULT_CLASSNAME}_modal_btn`} onClick={() => buyPackageHandler()}>{"Приобрести"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_modal_btn`} onClick={() => buyAlfaHandler()}>{"Приобрести"}</div>
 
                         <img src={trifectaSmall} alt={'trifecta-buy'} />
                     </div>

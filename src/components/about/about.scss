@@ -102,7 +102,9 @@
 
 @media (max-width: 600px) {
   .about_why {
-    font-size: 60px;
+    margin-top: 64px;
+    font-size: 32px;
+    margin-bottom: -64px;
   }
 
   .about_pros {
@@ -118,10 +120,22 @@
     display: none;
   }
 
+  .about_logo-text {
+    display: flex;
+    justify-content: center;
+  }
+
+  .about_logo-text img {
+    display: flex;
+    width: 80%;
+    align-self: center;
+    justify-self: center;
+  }
+
   .about_pros-image {
     position: absolute;
     right: -60px;
-    height: 300px;
+    height: 240px;
     width: auto;
   }
 

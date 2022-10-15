@@ -192,7 +192,8 @@
 
 @media (max-width: 600px) {
   .help {
-    padding: 0 8px;
+    width: 100%;
+    padding: 64px 32px 0;
   }
 
   .help_header_info {
@@ -217,7 +218,7 @@
 
   .help_card {
     width: 100%;
-    padding: 32px;
+    padding: 24px 16px;
   }
 
   .help_card img {

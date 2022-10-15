@@ -112,6 +112,8 @@
   .withdraw_table {
     padding: 12px 18px;
     overflow: scroll;
+    width: calc(100% - 36px);
+    font-size: 8px;
   }
 
   .withdraw_table_header {
@@ -120,12 +122,12 @@
 
   .withdraw_header_title {
     padding: 12px;
-    font-size: 16px;
+    font-size: 8px;
   }
 
   .withdraw_header_controls {
     select {
-      width: 120px !important;
+      width: 80px !important;
     }
   }
 

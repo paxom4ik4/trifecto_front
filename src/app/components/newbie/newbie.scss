@@ -56,6 +56,7 @@
 
 @media (max-width: 600px) {
   .newbie_item {
+    padding: 24px 16px;
     flex-direction: column;
 
     img {
@@ -65,5 +66,13 @@
 
   .newbie_item_text {
     margin: 32px 0 0;
+  }
+
+  .newbie_item_title {
+    font-size: 16px;
+  }
+
+  .newbie_item_text_content {
+    font-size: 12px;
   }
 }

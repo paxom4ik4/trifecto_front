@@ -373,5 +373,45 @@
       max-width: 100%;
     }
   }
+
+  .footer_form div:last-child {
+    margin-top: 4px;
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .footer_info_links span {
+    font-size: 12px !important;
+  }
+
+  .footer_content_navigation-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer_content_left-text {
+    font-size: 12px !important;
+  }
+
+  .goal_item-text {
+    font-size: 18px !important;
+  }
+
+  .goal_item-title {
+    font-size: 20px !important;
+  }
+
+  .goal_item {
+    box-sizing: border-box;
+    font-size: 16px;
+    img {
+      width: 80%;
+    }
+    width: 100%;
+  }
+
+  .main_works_title {
+    font-size: 48px;
+  }
 }
 

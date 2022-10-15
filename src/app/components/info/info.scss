@@ -87,7 +87,16 @@
   }
 
   .info {
+    padding: 24px 16px;
     width: 108%;
     box-sizing: border-box;
+  }
+
+  .info_text_title {
+    font-size: 18px;
+  }
+
+  .info_text {
+    font-size: 12px;
   }
 }

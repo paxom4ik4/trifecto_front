@@ -78,8 +78,12 @@
 
 @media (max-width: 600px) {
  .structure_wrapper {
+   position: absolute;
+   left: 0;
+   width: calc(100% - 52px);
    margin: 0 8%;
    overflow: scroll;
    padding: 18px;
+   box-sizing: border-box;
  }
 }

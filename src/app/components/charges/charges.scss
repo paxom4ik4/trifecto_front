@@ -76,3 +76,9 @@
     text-overflow: ellipsis !important;
   }
 }
+
+@media (max-width: 600px) {
+  .charges_table_item div {
+    font-size: 8px !important;
+  }
+}

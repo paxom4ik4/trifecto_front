@@ -200,16 +200,18 @@
   }
 
   .products_item_box {
+    border-radius: 48px;
+    height: fit-content;
     padding: 50px;
   }
 
   .products_item_box_title {
-    font-size: 36px;
+    font-size: 24px;
   }
 
   .products_item_box_text {
-    font-size: 18px;
-    height: fit-content !important;
+    font-size: 16px;
+    height: 100%;
   }
 
   .products_item:nth-child(2n) {

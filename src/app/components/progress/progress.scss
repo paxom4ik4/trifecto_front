@@ -65,7 +65,7 @@
   }
 
   &_wrapper {
-    margin: 0 0 50px 30%;
+    margin: 0 0 50px 28%;
     height: 100%;
     width: 100%;
     display: flex;
@@ -88,15 +88,18 @@
 
 @media (max-width: 600px) {
   .progress {
+    padding: 24px 16px;
+    width: 100%;
     margin-left: -20px;
   }
 
   .progress_content {
+    width: 100%;
     font-size: 14px !important;
   }
 
   .progress_content_item_title {
-    font-size: 24px;
+    font-size: 16px;
   }
 
   .progress_bar_content {

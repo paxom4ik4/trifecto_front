@@ -361,8 +361,13 @@
   }
 
   .settings_sections {
+    width: 90%;
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    box-sizing: border-box;
     flex-direction: column;
-    margin: 24px 0 48px;
+    margin: 24px auto 48px;
 
     div {
       width: 80%;
@@ -399,8 +404,8 @@
   }
 
   .settings_profile {
-    width: 110%;
-    margin-left: -32px;
+    width: calc(100% - 40px);
+    margin-left: 0px;
     padding: 20px;
     flex-direction: column;
   }
@@ -426,8 +431,8 @@
   }
 
   .settings_profile_photo {
-    max-width: 320px;
-    max-height: 320px;
+    max-width: 280px;
+    max-height: 280px;
   }
 
   .settings_security_contacts_item {
@@ -483,7 +488,7 @@
   }
 
   .settings_documents_content input {
-    width: 90%;
+    width: 80% !important;
   }
 
   .settings_documents_item {
@@ -510,5 +515,9 @@
 
   .settings {
     padding: 12px;
+  }
+
+  .settings_security_password {
+    padding: 24px 16px;
   }
 }

@@ -60,7 +60,7 @@ export const Cabinet = ({ currentPackage }) => {
                                 startColor={"#48C5D6"}
                                 middleColor={"#9473DC"}
                                 endColor={"#394FC2"}
-                                size={320}
+                                size={280}
                                 progress={userData?.baseLevelInfo.currentTurnover / userData?.nextBasicLevelRequirements.groupTurnover * 100}
                                 strokeWidth={5}
                             >
@@ -81,7 +81,7 @@ export const Cabinet = ({ currentPackage }) => {
                                 startColor={"#48C5D6"}
                                 middleColor={"#9473DC"}
                                 endColor={"#394FC2"}
-                                size={320}
+                                size={280}
                                 progress={userData?.mounthlyLevelInfo.currentTurnover / (userData?.mounthlyLevelInfo.requiredMonthlyTurnoverToNextLevel || 9000) * 100}
                                 strokeWidth={5}
                             >

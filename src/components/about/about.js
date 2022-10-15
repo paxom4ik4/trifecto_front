@@ -6,7 +6,7 @@ import logo from './assets/logo.png';
 import logoText from './assets/logo-text.png';
 import background from './assets/background.png';
 import pros from './assets/pros.png';
-import plus from './assets/plus.png';
+import plus from './assets/tick.png';
 import {Goal} from "../../common/goal/goal";
 
 const DEFAULT_CLASSNAME = 'about';
@@ -27,7 +27,7 @@ export const About = () => {
                 <div className={`${DEFAULT_CLASSNAME}_why`}>{"C нами ты"}</div>
                 <div className={`${DEFAULT_CLASSNAME}_pros`}>
                     <div className={`${DEFAULT_CLASSNAME}_pros_items`}>
-                        {prosItems.map(item => <div className={`${DEFAULT_CLASSNAME}_pros-item`}>{item}</div>)}
+                        {prosItems.map(item => <div className={`${DEFAULT_CLASSNAME}_pros-item`}><img src={plus} /> {item}</div>)}
                     </div>
                     <img className={`${DEFAULT_CLASSNAME}_pros-image`} src={pros} alt={'pros'} />
                 </div>

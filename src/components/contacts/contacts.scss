@@ -28,18 +28,19 @@
     align-items: center;
     position: relative;
     overflow: hidden;
-    background-position: 0 0;
+    background-position: 100%;
     background-repeat: no-repeat;
     background-size: 100%;
+    object-fit: contain;
   }
 
   &_sally {
-    z-index: 1;
+    z-index: 0;
     position: absolute;
     bottom: 0;
-    transform: translateY(38%);
-    left: 14%;
-    width: 50%;
+    transform: translateY(40%);
+    left: 20%;
+    width: 700px;
   }
 
   &_block {
@@ -136,6 +137,7 @@
     width: 100%;
 
     &_wrapper {
+      background-position: 0%;
       box-sizing: border-box;
       padding: 0 20px;
     }
@@ -157,14 +159,13 @@
   }
 
   .contacts_sally {
-    width: 40%;
-    bottom: 80px;
+    width: 600px;
   }
 }
 
 @media (max-width: 1024px) {
   .contacts_block-title-center {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .contacts_block-text {
@@ -189,16 +190,22 @@
   }
 
   .contacts_block {
-    padding: 48px 48px 72px;
+    font-size: 14px;
+    padding: 48px 32px 72px;
   }
 }
 
 @media (max-width: 768px) {
+  .contacts_block-email {
+    font-size: 16px;
+  }
+
   .contacts .block-right {
     margin: 80px 0 !important;
   }
 
   .contacts {
+    padding: 0 12px;
     justify-content: center;
     align-items: center;
     flex-direction: column;

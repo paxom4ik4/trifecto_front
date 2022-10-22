@@ -22,6 +22,13 @@
   }
 }
 
+.alreadyWithdraw {
+  border-radius: 50% !important;
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
 .charges_table_header {
   font-size: 10px;
   display: grid;

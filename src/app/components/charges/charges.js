@@ -92,6 +92,28 @@ export const Charges = ({ isVerified }) => {
             })
     }
 
+    const [transactionStatus, setTransactionStatus] = useState(null);
+
+    useEffect(() => {
+        const TOKEN = sessionStorage.getItem('accessToken');
+        const USER_ID = sessionStorage.getItem('userId');
+
+        let urlToFetch = `https://trifecta.by/api/Withdraw/GetAccuralHistory?userId=${USER_ID}`
+
+        if (transactionStatus !== null) {
+            urlToFetch = `${urlToFetch}&transactionStatus=${transactionStatus}`
+        }
+
+        fetch(urlToFetch, {
+            headers: {
+                'Accept': '*/*',
+                'Authorization': `Bearer ${TOKEN}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setWithdraws(data));
+    }, [transactionStatus])
+
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             {userData ? <>
@@ -118,15 +140,12 @@ export const Charges = ({ isVerified }) => {
                     <div className={`${DEFAULT_CLASSNAME}_header_title`}>{"История начислений"}</div>
                     <div className={`${DEFAULT_CLASSNAME}_header_controls`}>
                         <div>
-                            <label htmlFor={'period'}>{"Период"}</label>
-                            <select id={"period"}>
-                                <option>{"Все"}</option>
-                            </select>
-                        </div>
-                        <div>
                             <label htmlFor={'status'}>{"Статус"}</label>
-                            <select id={"status"}>
+                            <select onChange={(e) => setTransactionStatus(e.currentTarget.value === "Все" ? null : e.currentTarget.value)} id={"status"}>
                                 <option>{"Все"}</option>
+                                <option value={1}>{"Accept"}</option>
+                                <option value={2}>{"Failed"}</option>
+                                <option value={4}>{"ReadyForWithdraw"}</option>
                             </select>
                         </div>
                     </div>
@@ -144,7 +163,7 @@ export const Charges = ({ isVerified }) => {
                     </div>
                     {withdraws.length ? withdraws.map(item => (
                         <div className={`charges_table_item`}>
-                            <div className={`charges_table_item_select ${!!selectedCharges.includes(item.id) && 'selected'}`} onClick={() => chargeHandler(item)}/>
+                            <div className={`charges_table_item_select ${!!selectedCharges.includes(item.id) && 'selected'} ${item.transactionStatus === 'Accept' && 'alreadyWithdraw selected'}`} onClick={() => chargeHandler(item)}/>
                             <div>{item.accuralName}</div>
                             <div>{item.referralName}</div>
                             <div>{item.accuralPercent}</div>

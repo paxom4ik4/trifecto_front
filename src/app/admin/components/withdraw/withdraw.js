@@ -3,6 +3,8 @@ import React, {useEffect, useState} from 'react';
 import './withdraw.scss';
 import {toast} from "react-toastify";
 
+import arrow from './arrow.png';
+
 const DEFAULT_CLASSNAME = 'admin-withdraw';
 
 export const Withdraw = () => {
@@ -62,6 +64,8 @@ export const Withdraw = () => {
             })
     }
 
+    const [cardExpanded, setCardExpanded] = useState(false);
+
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             <div className={DEFAULT_CLASSNAME}>
@@ -70,6 +74,18 @@ export const Withdraw = () => {
                     {withdraws.length ? withdraws.map(item => {
                         return (
                             <div className={`${DEFAULT_CLASSNAME}_item`}>
+                                <img onClick={() => setCardExpanded(!cardExpanded)} className={`${DEFAULT_CLASSNAME}_item_expand ${cardExpanded && "expanded"}`} src={arrow} />
+                                <div className={`${DEFAULT_CLASSNAME}_item_full ${!cardExpanded && 'hidden'}`}>
+                                    {item.accurals.map(accural => {
+                                        return (
+                                            <div>
+                                                <span>{accural.accuralName}</span>
+                                                <span>{item.email}</span>
+                                                <span>{accural.accuralAmount + " BYN"}</span>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
                                 <div className={`${DEFAULT_CLASSNAME}_left`}>
                                     <div>{item.name}</div>
                                     <div>{item.surname}</div>

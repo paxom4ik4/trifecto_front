@@ -46,22 +46,6 @@ export const Marketing = ({ currentPackage }) => {
         }
     }
 
-    const buyAlfaHandler = () => {
-        const TOKEN = sessionStorage.getItem("accessToken");
-
-        let body = "{\"amount\":\"100\",\"currency\":\"933\",\"language\":\"ru\",\"orderId\":\"e5b59d3d-746b-4828-9da4-06f126e01b68\"}"
-
-        fetch('https://developerhub.alfabank.by:8273/partner/3.0.0/rbs/rest/deposit.do', {
-            method: "POST",
-            url: "",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${TOKEN}`,
-            },
-            body: body,
-        })
-    }
-
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             {
@@ -80,7 +64,7 @@ export const Marketing = ({ currentPackage }) => {
                             </label>
                         </div>
 
-                        <div className={`${DEFAULT_CLASSNAME}_modal_btn`} onClick={() => buyAlfaHandler()}>{"Приобрести"}</div>
+                        <a href={"https://web.rbsuat.com/ab/shortlink/mdGmv4Vu"} className={`${DEFAULT_CLASSNAME}_modal_btn`} >{"Приобрести"}</a>
 
                         <img src={trifectaSmall} alt={'trifecta-buy'} />
                     </div>
@@ -91,9 +75,10 @@ export const Marketing = ({ currentPackage }) => {
                 <div className={`${DEFAULT_CLASSNAME}_item`}>
                     <img className={`${DEFAULT_CLASSNAME}_item_background`} src={back} alt={'back'} />
                     <div className={`${DEFAULT_CLASSNAME}_item_content`}>
-                        <div className={`${DEFAULT_CLASSNAME}_item_title`}>{"Пакет ПРОБНЫЙ"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_item_title`}>{"Пакет СТАРТОВЫЙ"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_item_description`}>
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Team Bonus"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Start Bonus"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Dynamic Bonus"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Travel Bonus"}</div>
                         </div>
@@ -111,6 +96,7 @@ export const Marketing = ({ currentPackage }) => {
                         <div className={`${DEFAULT_CLASSNAME}_item_description`}>
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Team Bonus"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Level Bonus 50%"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Start Bonus"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Dynamic Bonus"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Auto Bonus с 7 уровня"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Travel Bonus"}</div>
@@ -129,6 +115,7 @@ export const Marketing = ({ currentPackage }) => {
                         <div className={`${DEFAULT_CLASSNAME}_item_description`}>
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Team Bonus"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Level Bonus 100%"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Start Bonus"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Dynamic Bonus"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Auto Bonus с 5 уровня"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Travel Bonus"}</div>

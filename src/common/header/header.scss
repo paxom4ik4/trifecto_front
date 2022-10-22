@@ -148,11 +148,12 @@ button {
 
 @media (max-width: 425px) {
   .header {
+    box-sizing: border-box;
     padding: 20px 12px;
 
     &_menu-item {
       margin-top: 12px;
-      font-size: 12px;
+      font-size: 10px;
     }
 
     &_controls {

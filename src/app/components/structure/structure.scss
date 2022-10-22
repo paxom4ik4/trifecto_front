@@ -7,6 +7,27 @@
   }
 }
 
+
+
+.structure_row::-webkit-scrollbar-track {
+  padding: 2px 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.hide_scroll_bar::-webkit-scrollbar-track {
+  background: none;
+}
+
+.structure_row::-webkit-scrollbar {
+  width: 2px;
+}
+
+.structure_row::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background: linear-gradient(88.43deg, #53CDEF 0%, #467CD7 100%);
+}
+
 .structure {
   display: flex;
   flex-direction: column;
@@ -65,8 +86,9 @@
     animation: loyal 0.5 ease-in-out;
     display: flex;
     flex-direction: row;
-    max-width: 930px !important;
-    overflow-x: scroll !important;
+    width: 100%;
+    max-width: 920px;
+    overflow-x: scroll;
   }
 }
 

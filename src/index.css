@@ -4,10 +4,6 @@
     src: url("./assets/font/aqum-2-small-caps.otf");
 }
 
-::-webkit-scrollbar {
-    width: 1px;
-}
-
 body {
     background: #FAFBFD;
   margin: 0;

@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 
 import './settings.scss';
 
-import noPhoto from './noPhoto.png';
 import password from './password.png';
 import noMatch from './notMatch.png';
 

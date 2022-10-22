@@ -12,7 +12,7 @@
     width: 462px;
 
     div input:last-child {
-      margin-left: 12px;
+      margin-left: 6px;
     }
   }
 
@@ -87,7 +87,7 @@
       &-text {
         margin-top: 16px;
         color: #fff;
-        width: 370px;
+        width: 320px;
         font-size: 20px;
       }
 
@@ -308,6 +308,8 @@
   }
 
   .footer_content_left {
+    width: 100%;
+    max-width: 320px !important;
     justify-content: center;
     align-items: center;
 

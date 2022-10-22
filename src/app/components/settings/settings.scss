@@ -14,8 +14,10 @@
     position: relative;
     height: 360px;
     width: 360px;
+    object-fit: contain !important;
 
     img {
+      object-fit: contain !important;
       height: 100%;
       width: 100%;
       position: absolute;

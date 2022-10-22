@@ -4,4 +4,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  .structure_wrapper {
+    max-width: 1040px;
+  }
 }

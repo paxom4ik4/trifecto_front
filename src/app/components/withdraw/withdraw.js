@@ -32,6 +32,35 @@ export const Withdraw = ({ isVerified }) => {
             .then(data => setWithdraws(data));
     }, [])
 
+    const [transactionStatus, setTransactionStatus] = useState(null);
+    const [period, setPeriod] = useState(null);
+
+    useEffect(() => {
+        const TOKEN = sessionStorage.getItem('accessToken');
+        const USER_ID = sessionStorage.getItem('userId');
+
+        let urlToFetch = `https://trifecta.by/api/Withdraw/GetWithdrawHistory?userId=${USER_ID}`;
+
+        console.log(transactionStatus);
+
+        if (transactionStatus !== null) {
+            urlToFetch = `${urlToFetch}&transactionStatus=${transactionStatus}`;
+        }
+
+        if (period !== null) {
+            urlToFetch = `${urlToFetch}&period=${period}`
+        }
+
+        fetch(urlToFetch, {
+            headers: {
+                'Accept': '*/*',
+                'Authorization': `Bearer ${TOKEN}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setWithdraws(data));
+    }, [transactionStatus, period]);
+
     const [userData, setUserData] = useState(null);
 
     useEffect(() => {
@@ -78,15 +107,21 @@ export const Withdraw = ({ isVerified }) => {
                         <div className={`${DEFAULT_CLASSNAME}_header_title`}>{"Выводы"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_header_controls`}>
                             <div>
-                                <label htmlFor={'period'}>{"Период"}</label>
-                                <select id={"period"}>
-                                    <option>{"Все"}</option>
+                                <label htmlFor={'status'}>{"status"}</label>
+                                <select onChange={(e) => setTransactionStatus(e.currentTarget.value === "Все" ? null : e.currentTarget.value)} id={"status"}>
+                                    <option value={null}>{"Все"}</option>
+                                    <option value={1}>{"Accept"}</option>
+                                    <option value={2}>{"Failed"}</option>
                                 </select>
                             </div>
                             <div>
-                                <label htmlFor={'status'}>{"Статус"}</label>
-                                <select id={"status"}>
+                                <label htmlFor={'period'}>{"Период"}</label>
+                                <select onChange={(e) => setPeriod(e.currentTarget.value === "Все" ? null : e.currentTarget.value)} id={"period"}>
                                     <option>{"Все"}</option>
+                                    <option value={1}>{"День"}</option>
+                                    <option value={2}>{"Неделя"}</option>
+                                    <option value={3}>{"Месяц"}</option>
+                                    <option value={4}>{"3 Месяца"}</option>
                                 </select>
                             </div>
                         </div>

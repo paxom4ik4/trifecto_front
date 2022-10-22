@@ -3,19 +3,10 @@ import * as React from 'react';
 import './structure.scss';
 import {useState, useEffect, useCallback} from "react";
 import {PersonCard} from "../personCard/personCard";
-import {useNavigate} from "react-router-dom";
 
 const DEFAULT_CLASSNAME = 'structure';
 
 export const Structure = ({ isAdmin }) => {
-    // const navigate = useNavigate();
-
-    // useEffect(() => {
-    //     if (!isVerified || !isAdmin) {
-    //         navigate('/app/settings');
-    //     }
-    // }, [isVerified, isAdmin])
-
     const USER_ID = sessionStorage.getItem('userId');
     const TOKEN = sessionStorage.getItem('accessToken');
 
@@ -56,7 +47,7 @@ export const Structure = ({ isAdmin }) => {
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             <div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_title`}>{"Структура"}</div>
-                {!!currentStructure?.groupOwner && <div className={`${DEFAULT_CLASSNAME}_row`}>
+                {!!currentStructure?.groupOwner && <div className={`${DEFAULT_CLASSNAME}_row hide_scroll_bar`}>
                     { getBaseCard() }
                 </div>}
                 {structureExpanded && <div className={`${DEFAULT_CLASSNAME}_row`}>

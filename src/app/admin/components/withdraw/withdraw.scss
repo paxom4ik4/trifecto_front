@@ -1,3 +1,8 @@
+.admin-withdraw_item_expand.expanded {
+  transform: rotate(360deg) !important;
+  transition: 0.3s;
+}
+
 .admin-withdraw {
   width: 100%;
   height: 100%;
@@ -40,21 +45,66 @@
   }
 
   &_list {
+    min-height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
     flex-wrap: wrap;
   }
 
   &_item {
+    height: fit-content;
+    z-index: 1;
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 25px 50px;
+    padding: 25px 50px 65px;
     background: #252C40;
     border-radius: 20px;
     margin-bottom: 20px;
+
+    &_full.hidden {
+      top: 80%;
+      opacity: 0;
+      transition: 0.1s;
+    }
+
+
+    &_full {
+      position: absolute;
+      top: calc(100% - 50px);
+      z-index: -1;
+      background: #323B55;
+      border-radius: 20px;
+      padding: 25px;
+      left: 0;
+      width: calc(100% - 50px);
+      height: fit-content;
+      transition: 0.3s;
+
+      div {
+        margin: 8px 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+      }
+    }
+
+    &_expand {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      transform: rotate(180deg);
+      transition: 0.3s;
+
+      &:hover {
+        cursor: pointer;
+        opacity: 0.5;
+      }
+    }
   }
 
   &_left {

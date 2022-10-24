@@ -62,7 +62,7 @@ export const Settings = ({ userInfo }) => {
             <div className={`${DEFAULT_CLASSNAME}_profile`}>
                 <div className={`${DEFAULT_CLASSNAME}_profile_left`}>
                     <div className={`${DEFAULT_CLASSNAME}_profile_photo`}>
-                        <img src={`https://trifecta.by${userInfo?.profilePhoto}`} alt={'no-photo'} />
+                        <div style={{ backgroundImage: `url(https://trifecta.by${userInfo?.profilePhoto})` }} className={`${DEFAULT_CLASSNAME}_profile_photo_image`}></div>
                         <input type={'file'} alt={'profile-info'} onChange={(event) => uploadUserPhoto(event)}/>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_profile_referral`}>

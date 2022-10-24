@@ -236,6 +236,7 @@
   }
 
   .marketing_item_title {
+    height: 100%;
     margin-bottom: 32px;
     font-size: 20px;
   }
@@ -252,7 +253,11 @@
 
   .marketing_item_footer {
     margin-top: 32px;
-    margin-bottom: 120px;
+    margin-bottom: 90px;
+  }
+
+  .bigger-margin {
+    margin-bottom: 110px;
   }
 
   .marketing_item_price {

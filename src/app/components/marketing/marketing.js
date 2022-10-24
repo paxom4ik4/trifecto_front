@@ -122,7 +122,7 @@ export const Marketing = ({ currentPackage }) => {
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Bun Bonus"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Bonus Overall"}</div>
                         </div>
-                        <div className={`${DEFAULT_CLASSNAME}_item_footer`}>
+                        <div className={`${DEFAULT_CLASSNAME}_item_footer bigger-margin`}>
                             <button disabled={['Premium'].includes(currentPackage?.name)} className={`${DEFAULT_CLASSNAME}_item_buy`} onClick={() => setPackageToBuy({ price: "4к", name: "Премиум", id: "0ff93d94-077f-ea49-34f0-3214704f5dbf"})}>{['Premium'].includes(currentPackage?.name) ? "Приобритён" : "Приобрести"}</button>
                             <div className={`${DEFAULT_CLASSNAME}_item_price`}>{"1999$"}</div>
                         </div>

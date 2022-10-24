@@ -162,7 +162,7 @@ export const Charges = ({ isVerified }) => {
                         <div>{"ДАТА"}</div>
                     </div>
                     {withdraws.length ? withdraws.map(item => (
-                        <div className={`charges_table_item`}>
+                        <div className={`charges_table_item`} style={ !item.isAvailable && { pointerEvents: "none", opacity: '0.5'}}>
                             <div className={`charges_table_item_select ${!!selectedCharges.includes(item.id) && 'selected'} ${item.transactionStatus === 'Accept' && 'alreadyWithdraw selected'}`} onClick={() => chargeHandler(item)}/>
                             <div>{item.accuralName}</div>
                             <div>{item.referralName}</div>

@@ -156,7 +156,7 @@ export const TrifectaApp = () => {
                     <div className={`${DEFAULT_CLASSNAME}_side-menu ${!menuOpen && 'menu_closed'}`}>
                         <img className={`${DEFAULT_CLASSNAME}_side-menu_logo`} src={trifecta} alt={'logo'} />
                         <div className={`${DEFAULT_CLASSNAME}_side-menu_profile`}>
-                            <img src={`https://trifecta.by${userInfo?.profilePhoto}`} alt={"img"} />
+                            <div style={{ backgroundImage: `url(https://trifecta.by${userInfo?.profilePhoto})`}} className={`${DEFAULT_CLASSNAME}_side-menu_profile_image`}></div>
                             {!isAdmin ? <div className={`${DEFAULT_CLASSNAME}_side-menu_profile_text`}>
                                 <div>{userInfo?.firstName + " " + userInfo?.lastName}</div>
                                 <div className={'level'}>{userInfo?.level}</div>

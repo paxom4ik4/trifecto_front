@@ -137,7 +137,10 @@ export const Charges = ({ isVerified }) => {
             </div>
             <div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_header`}>
-                    <div className={`${DEFAULT_CLASSNAME}_header_title`}>{"История начислений"}</div>
+                    <div className={`${DEFAULT_CLASSNAME}_header_title`}>
+                        <div>{"История начислений"}</div>
+                        <p>{"Доступ к выводу начислений появляется через 14 дней*"}</p>
+                    </div>
                     <div className={`${DEFAULT_CLASSNAME}_header_controls`}>
                         <div>
                             <label htmlFor={'status'}>{"Статус"}</label>

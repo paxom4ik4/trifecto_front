@@ -108,6 +108,9 @@ const RegisterContent = ({ setIsRegisterMode }) => {
         })
     }
 
+    const [agreement1, setAgreement1] = useState(false)
+    const [agreement2, setAgreement2] = useState(false)
+
 
     return (
         <>
@@ -133,7 +136,18 @@ const RegisterContent = ({ setIsRegisterMode }) => {
                 <input className={'referral'} type={"text"} placeholder={"Реферальная ссылка"} value={referral} onChange={(e) => setReferral(e.currentTarget.value)}/>
             </div>
 
-            <button disabled={!registerFirstName.length || !registerSecondName.length || !registerPatronymic.length || registerPassword.length < 8 || !registerPasswordRep.length || !registerPhoneNumber.length || !registerEmail.length || !referral.length} onClick={() => handleRegister()} className={`${DEFAULT_CLASSNAME}_btn`}>{"Зарегистрироваться"}</button>
+            <div className={`${DEFAULT_CLASSNAME}_agreement`}>
+                <div className={`${DEFAULT_CLASSNAME}_agreement_item`}>
+                    <div><input value={agreement1} onChange={() => setAgreement1(!agreement1)} type={"checkbox"} /></div>
+                    <p>Я ознакомился с <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Pers.pdf"}>Политикой обработки данных</a> и <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Sogl.pdf"}>Пользовательским соглашением</a> и согласен с их условиями</p>
+                </div>
+                <div className={`${DEFAULT_CLASSNAME}_agreement_item`}>
+                    <div><input value={agreement2} onChange={() => setAgreement2(!agreement2)} type={"checkbox"} style={{ width: '16px', height: "16px" }}/></div>
+                    <p>Я ознакомился с <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Conf.pdf"}>Политикой конфиденциальности</a> компании</p>
+                </div>
+            </div>
+
+            <button disabled={!agreement1 || !agreement2 || !registerFirstName.length || !registerSecondName.length || !registerPatronymic.length || registerPassword.length < 8 || !registerPasswordRep.length || !registerPhoneNumber.length || !registerEmail.length || !referral.length} onClick={() => handleRegister()} className={`${DEFAULT_CLASSNAME}_btn`}>{"Зарегистрироваться"}</button>
         </>
     )
 }

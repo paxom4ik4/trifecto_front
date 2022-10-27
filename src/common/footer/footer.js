@@ -32,7 +32,7 @@ export const Footer = () => {
                 <div className={`${DEFAULT_CLASSNAME}_header`}>
                     <div className={`${DEFAULT_CLASSNAME}_header-text`}>{'Будем рады любым предложениям о сотрудничестве'}</div>
                     <div className={`${DEFAULT_CLASSNAME}_form`}>
-                        <div>
+                        <div className={`${DEFAULT_CLASSNAME}_form_item`}>
                             <input value={name} onChange={(e) => setName(e.currentTarget.value)} type={'text'} placeholder={'Имя*'} />
                             <input value={email} onChange={(e) => setEmail(e.currentTarget.value)} type={'text'} placeholder={'E-mail*'} />
                         </div>

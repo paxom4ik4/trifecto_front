@@ -31,7 +31,7 @@ export const Info = () => {
                 <div className={`${DEFAULT_CLASSNAME}_docs`}>
                     <a className={`${DEFAULT_CLASSNAME}_docs_item`} target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Marketing.pdf"}>
                         <img src={doc} alt={'doc'} />
-                        <div className={`${DEFAULT_CLASSNAME}_docs_item_text`}>{"Информационная программа пакетов"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_docs_item_text`}>{"Маркетинг план"}</div>
                     </a>
                     <a className={`${DEFAULT_CLASSNAME}_docs_item`} target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Codex.pdf"}>
                         <img src={doc} alt={'doc'} />

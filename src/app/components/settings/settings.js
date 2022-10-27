@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 
+import Moment from 'react-moment';
+import moment from 'moment';
+
 import './settings.scss';
 
 import password from './password.png';
@@ -12,6 +15,8 @@ import phone from './phone.png';
 import email from './email.png';
 import { useState } from "react";
 import { toast } from "react-toastify";
+
+import noPhoto from './noPhoto.png';
 
 const DEFAULT_CLASSNAME = 'settings';
 
@@ -58,17 +63,22 @@ export const Settings = ({ userInfo }) => {
     }
 
     const Profile = () => {
+        const dateOfBirth = moment(new Date(userInfo?.dateOfBirth)).format("DD / MM / YYYY");
+
         return (
             <div className={`${DEFAULT_CLASSNAME}_profile`}>
                 <div className={`${DEFAULT_CLASSNAME}_profile_left`}>
                     <div className={`${DEFAULT_CLASSNAME}_profile_photo`}>
-                        <div style={{ backgroundImage: `url(https://trifecta.by${userInfo?.profilePhoto})` }} className={`${DEFAULT_CLASSNAME}_profile_photo_image`}></div>
+                        <div style={{ backgroundImage: userInfo?.profilePhoto ? `url(https://trifecta.by${userInfo?.profilePhoto})` : `url(${noPhoto})` }} className={`${DEFAULT_CLASSNAME}_profile_photo_image`}></div>
                         <input type={'file'} alt={'profile-info'} onChange={(event) => uploadUserPhoto(event)}/>
                     </div>
-                    <div className={`${DEFAULT_CLASSNAME}_profile_referral`}>
-                        <label htmlFor={'referral-link'}>{"Ссылка партнера"}</label>
-                        <input disabled={true} value={userInfo?.personalReferral || ""} type={'text'} id={'referral-link'} />
-                    </div>
+                    {userInfo?.packageName &&
+                        <div className={`${DEFAULT_CLASSNAME}_profile_referral`}>
+                            <label htmlFor={'referral-link'}>{"Ссылка партнера"}</label>
+                            <input disabled={true} value={userInfo?.packageName ? userInfo?.personalReferral : ""}
+                                   type={'text'} id={'referral-link'}/>
+                        </div>
+                    }
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_profile_right`}>
                     <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
@@ -85,7 +95,7 @@ export const Settings = ({ userInfo }) => {
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
                         <label htmlFor={'birthDate'}>{"Дата Рождения"}</label>
-                        <input disabled={true} value={new Date(userInfo?.dateOfBirth)} type={"text"} id={"birthDate"} />
+                        <input disabled={true} value={dateOfBirth} type={"text"} id={"birthDate"} />
                     </div>
                 </div>
             </div>

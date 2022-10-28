@@ -6,10 +6,10 @@ import {useNavigate} from "react-router-dom";
 
 const DEFAULT_CLASSNAME = 'withdraw';
 
-const CURRENT_CURRENCY = 2.5;
-
 export const Withdraw = ({ isVerified }) => {
     const navigate = useNavigate();
+
+    const [CURRENT_CURRENCY, setCurrentCurrency] = useState(2.5);
 
     useEffect(() => {
         if (!isVerified) {
@@ -30,6 +30,10 @@ export const Withdraw = ({ isVerified }) => {
         })
             .then(res => res.json())
             .then(data => setWithdraws(data));
+
+        fetch("https://www.nbrb.by/api/exrates/rates/431")
+            .then(res => res.json())
+            .then(data => setCurrentCurrency(data.Cur_OfficialRate))
     }, [])
 
     const [transactionStatus, setTransactionStatus] = useState(null);
@@ -86,20 +90,20 @@ export const Withdraw = ({ isVerified }) => {
                         <div
                             className={`trifecta-app_withdraw_card_amount`}>{userData?.availableForWithdrawal + "$" || "0"}</div>
                         <div
-                            className={`trifecta-app_withdraw_card_sub-amount`}>{(userData?.availableForWithdrawal * CURRENT_CURRENCY) + " BYN" || "0"}</div>
+                            className={`trifecta-app_withdraw_card_sub-amount`}>{(userData?.availableForWithdrawal * CURRENT_CURRENCY).toFixed(2) + " BYN" || "0"}</div>
                         <div className={`trifecta-app_withdraw_card_withdraw`}>{"Вывести"}</div>
                     </div>
                     <div className={`trifecta-app_withdraw_card`}>
                         <div className={`trifecta-app_withdraw_card_title`}>{"Ожидает начисления"}</div>
                         <div className={`trifecta-app_withdraw_card_amount`}>{userData?.awaitingAccrual + "$"}</div>
                         <div
-                            className={`trifecta-app}_withdraw_card_sub-amount`}>{(userData?.awaitingAccrual * CURRENT_CURRENCY) + " BYN"}</div>
+                            className={`trifecta-app}_withdraw_card_sub-amount`}>{(userData?.awaitingAccrual * CURRENT_CURRENCY).toFixed(2) + " BYN"}</div>
                     </div>
                     <div className={`trifecta-app_withdraw_card`}>
                         <div className={`trifecta-app_withdraw_card_title`}>{"Доход за всё время"}</div>
                         <div className={`trifecta-app_withdraw_card_amount`}>{userData?.allTimeIncome + "$"}</div>
                         <div
-                            className={`trifecta-app_withdraw_card_sub-amount`}>{(userData?.allTimeIncome * CURRENT_CURRENCY) + " BYN"}</div>
+                            className={`trifecta-app_withdraw_card_sub-amount`}>{(userData?.allTimeIncome * CURRENT_CURRENCY).toFixed(2) + " BYN"}</div>
                     </div>
                 </div>
                 <div className={DEFAULT_CLASSNAME}>

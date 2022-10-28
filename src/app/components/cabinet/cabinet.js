@@ -10,12 +10,12 @@ import {useEffect, useState} from "react";
 import { GradientCircularProgress } from "react-circular-gradient-progress";
 const DEFAULT_CLASSNAME = 'trifecta-app';
 
-const CURRENT_CURRENCY = 2.5;
-
 export const Cabinet = ({ currentPackage }) => {
     const navigate = useNavigate();
 
     const [userData, setUserData] = useState(null);
+
+    const [CURRENT_CURRENCY, setCurrentCurrency] = useState(2.5);
 
     useEffect(() => {
         const USER_ID = sessionStorage.getItem('userId');
@@ -29,6 +29,10 @@ export const Cabinet = ({ currentPackage }) => {
         })
             .then(res => res.json())
             .then(data => setUserData(data));
+
+        fetch("https://www.nbrb.by/api/exrates/rates/431")
+            .then(res => res.json())
+            .then(data => setCurrentCurrency(data.Cur_OfficialRate))
     }, []);
 
     return (
@@ -40,18 +44,18 @@ export const Cabinet = ({ currentPackage }) => {
                         <div className={`${DEFAULT_CLASSNAME}_withdraw_card`}>
                             <div className={`${DEFAULT_CLASSNAME}_withdraw_card_title`}>{"Доступно к выводу"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_withdraw_card_amount`}>{userData?.availableForWithdrawal + "$" || "0"}</div>
-                            <div className={`${DEFAULT_CLASSNAME}_withdraw_card_sub-amount`}>{(userData?.availableForWithdrawal * CURRENT_CURRENCY) + " BYN" || "0"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_withdraw_card_sub-amount`}>{(userData?.availableForWithdrawal * CURRENT_CURRENCY).toFixed(2) + " BYN" || "0"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_withdraw_card_withdraw`} onClick={() => navigate('/app/withdraw')}>{"Вывести"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_withdraw_card`}>
                             <div className={`${DEFAULT_CLASSNAME}_withdraw_card_title`}>{"Ожидает начисления"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_withdraw_card_amount`}>{userData?.awaitingAccrual + "$"}</div>
-                            <div className={`${DEFAULT_CLASSNAME}_withdraw_card_sub-amount`}>{(userData?.awaitingAccrual * CURRENT_CURRENCY) + " BYN"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_withdraw_card_sub-amount`}>{(userData?.awaitingAccrual * CURRENT_CURRENCY).toFixed(2) + " BYN"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_withdraw_card`}>
                             <div className={`${DEFAULT_CLASSNAME}_withdraw_card_title`}>{"Доход за всё время"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_withdraw_card_amount`}>{userData?.allTimeIncome + "$"}</div>
-                            <div className={`${DEFAULT_CLASSNAME}_withdraw_card_sub-amount`}>{(userData?.allTimeIncome * CURRENT_CURRENCY) + " BYN"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_withdraw_card_sub-amount`}>{(userData?.allTimeIncome * CURRENT_CURRENCY).toFixed(2) + " BYN"}</div>
                         </div>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_content_cabinet_level`}>

@@ -64,7 +64,7 @@ export const Marketing = ({ currentPackage }) => {
                             </label>
                         </div>
 
-                        <a href={"https://web.rbsuat.com/ab/shortlink/mdGmv4Vu"} className={`${DEFAULT_CLASSNAME}_modal_btn`} >{"Приобрести"}</a>
+                        <button onClick={() => buyPackageHandler()} className={`${DEFAULT_CLASSNAME}_modal_btn`} >{"Приобрести"}</button>
 
                         <img src={trifectaSmall} alt={'trifecta-buy'} />
                     </div>

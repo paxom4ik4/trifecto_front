@@ -63,6 +63,8 @@ const countries = {
 
 const RegisterContent = ({ setIsRegisterMode }) => {
 
+    const navigate = useNavigate();
+
     const [registerSecondName, setRegisterSecondName] = useState('');
     const [registerFirstName, setRegisterFirstName] = useState('');
     const [registerPatronymic, setRegisterPatronymic] = useState('');
@@ -101,7 +103,8 @@ const RegisterContent = ({ setIsRegisterMode }) => {
             })
         }).then(res => res.json()).then(data => {
             if (data.success) {
-                setIsRegisterMode(false)
+                setIsRegisterMode(false);
+                navigate('/login')
             } else {
                 toast.error(data.errors.join(','));
             }

@@ -183,12 +183,27 @@
       }
 
       &-sub-item {
+        position: relative;
         color: #7897FA;
         display: flex;
         flex-direction: row;
         align-items: center;
         margin: 12px 0;
         cursor: pointer;
+
+        &_badge {
+          position: absolute;
+          background: #30387A;
+          color: #FAFCFD;
+          width: 12px;
+          text-align: center;
+          line-height: 12px;
+          border-radius: 50%;
+          padding: 5px;
+          height: 12px;
+          font-size: 12px;
+          right: 0;
+        }
 
         img {
           margin-right: 12px;
@@ -213,6 +228,7 @@
       color: #ffffff;
 
       &_text {
+        width: 50%;
         margin-left: 16px;
         font-size: 18px;
         font-weight: 500;
@@ -222,7 +238,7 @@
         background-size: 100% 100%;
         background-position: center center;
         border-radius: 50%;
-        width: 56px;
+        width: 48px;
         height: 48px;
 
         img {
@@ -388,7 +404,7 @@
 
   &_content {
     font-family: 'aqum';
-    position: relative;
+    position: relative !important;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -546,6 +562,7 @@
   }
 
   .trifecta-app_side-menu {
+    width: 100%;
     transition: 0.3s ease;
     left: 0;
     top: 0;

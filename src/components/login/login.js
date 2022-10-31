@@ -7,6 +7,9 @@ import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import { toast } from "react-toastify";
 
+import eye from './eye.png';
+import eyeClose from './eyeClose.png';
+
 import selectArrow from '../../assets/selectArrow.png';
 
 const DEFAULT_CLASSNAME = 'login';
@@ -17,6 +20,8 @@ const LoginContent = () => {
 
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
+
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleLogin = () => {
         fetch('https://trifecta.by/api/Authentication/Login', {
@@ -48,7 +53,10 @@ const LoginContent = () => {
     return (
         <>
             <input type={"text"} placeholder={"E-mail"} value={loginEmail} onChange={(e) => setLoginEmail(e.currentTarget.value)} />
-            <input type={"password"} placeholder={"Введите пароль"} value={loginPassword} onChange={(e) => setLoginPassword(e.currentTarget.value)} />
+            <div className={`${DEFAULT_CLASSNAME}_login-container`}>
+                <input type={!showPassword ? "password" : "text"} placeholder={"Введите пароль"} value={loginPassword} onChange={(e) => setLoginPassword(e.currentTarget.value)} />
+                <img src={!showPassword ? eye : eyeClose} onClick={() => setShowPassword(!showPassword)} />
+            </div>
 
             <button onClick={() => handleLogin()} className={`${DEFAULT_CLASSNAME}_btn`}>{"Войти"}</button>
         </>
@@ -64,6 +72,8 @@ const countries = {
 const RegisterContent = ({ setIsRegisterMode }) => {
 
     const navigate = useNavigate();
+
+    const [showPasswordRegister, setShowPasswordRegister] = useState(false);
 
     const [registerSecondName, setRegisterSecondName] = useState('');
     const [registerFirstName, setRegisterFirstName] = useState('');
@@ -103,8 +113,9 @@ const RegisterContent = ({ setIsRegisterMode }) => {
             })
         }).then(res => res.json()).then(data => {
             if (data.success) {
-                setIsRegisterMode(false);
-                navigate('/login')
+                sessionStorage.setItem('accessToken', data.accessToken)
+                sessionStorage.setItem('userId', data.userId)
+                navigate('/app/');
             } else {
                 toast.error(data.errors.join(','));
             }
@@ -127,7 +138,10 @@ const RegisterContent = ({ setIsRegisterMode }) => {
             <input type={"date"} placeholder={"Дата рождения"} value={registerDateOfBirth} onChange={(e) => setRegisterDateOfBirth(e.currentTarget.value)} />
 
             <input type={"text"} placeholder={"E-mail"} value={registerEmail} onChange={(e) => setRegisterEmail(e.currentTarget.value)} />
-            <input type={"password"} placeholder={"Придумайте пароль (мин. 8 символов)"} value={registerPassword} onChange={(e) => setRegisterPassword(e.currentTarget.value)} />
+            <div className={`${DEFAULT_CLASSNAME}_login-container`}>
+                <input type={showPasswordRegister ? "text" : "password"} placeholder={"Придумайте пароль (мин. 8 символов)"} value={registerPassword} onChange={(e) => setRegisterPassword(e.currentTarget.value)} />
+                <img src={!showPasswordRegister ? eye : eyeClose} onClick={() => setShowPasswordRegister(!showPasswordRegister)} />
+            </div>
             <input type={"password"} placeholder={"Подтвердите пароль"} value={registerPasswordRep} onChange={(e) => setRegisterPasswordRep(e.currentTarget.value)} />
 
             <div className={`${DEFAULT_CLASSNAME}_footer`}>
@@ -162,9 +176,6 @@ export const Login = ({ setIsRegisterMode, isRegisterMode = true }) => {
                 <div className={`${DEFAULT_CLASSNAME}_title`}>{isRegisterMode ? "Регистрация" : "Вход"}</div>
 
                 {isRegisterMode ? <RegisterContent setIsRegisterMode={setIsRegisterMode} /> : <LoginContent />}
-
-
-                <button className={`${DEFAULT_CLASSNAME}_btn google-btn`}><img src={yandex} alt={'google-logo'} /> {"Войдите через Yandex"}</button>
 
                 <img className={`${DEFAULT_CLASSNAME}_trifecta`} src={trifecta} alt={'trifecta'} />
             </div>

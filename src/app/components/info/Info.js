@@ -37,9 +37,17 @@ export const Info = () => {
                         <img src={doc} alt={'doc'} />
                         <div className={`${DEFAULT_CLASSNAME}_docs_item_text`}>{"Кодекс партнёра"}</div>
                     </a>
+                    <a className={`${DEFAULT_CLASSNAME}_docs_item`} target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Pers.pdf"}>
+                        <img src={doc} alt={'doc'} />
+                        <div className={`${DEFAULT_CLASSNAME}_docs_item_text`}>{"Обработка персональных данных"}</div>
+                    </a>
                     <a className={`${DEFAULT_CLASSNAME}_docs_item`} target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Sogl.pdf"}>
                         <img src={doc} alt={'doc'} />
                         <div className={`${DEFAULT_CLASSNAME}_docs_item_text`}>{"Партнерское соглашение"}</div>
+                    </a>
+                    <a className={`${DEFAULT_CLASSNAME}_docs_item`} target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Conf.pdf"}>
+                        <img src={doc} alt={'doc'} />
+                        <div className={`${DEFAULT_CLASSNAME}_docs_item_text`}>{"Политика конфиденциальности"}</div>
                     </a>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_text`}>

@@ -14,7 +14,7 @@ export const Charges = ({ isVerified }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (isVerified) {
+        if (!isVerified) {
             navigate('/app/settings');
         }
     }, [isVerified])

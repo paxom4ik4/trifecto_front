@@ -276,7 +276,7 @@ export const Settings = ({ userInfo }) => {
         )
     }
 
-    const Docs = () => {
+    const Docs = iterable => {
         const [bankRegion, setBankRegion] = useState('');
         const [bankLocality, setBankLocality] = useState('');
         const [bankStreet, setBankStreet] = useState('');
@@ -326,6 +326,7 @@ export const Settings = ({ userInfo }) => {
         const [passportCertificateDateIssue, setPassportCertificateDateIssue] = useState("");
 
         const [userAlreadyUpload, setUserAlreadyUpload] = useState(false);
+        const [userData, setUserData] = useState(null);
 
         const TOKEN = sessionStorage.getItem('accessToken');
 
@@ -364,9 +365,25 @@ export const Settings = ({ userInfo }) => {
                 .then(data => {
                     if (!(data.success === false)) {
                         setUserAlreadyUpload(true);
+                        setUserData(data);
                     }
                 });
         }, [])
+
+        const [currentUserData, setCurrentUserData] = useState(null);
+
+        useEffect(() => {
+            fetch(`https://trifecta.by/api/UserProfile/GetProfileInfo?userId=${USER_ID}`, {
+                headers: {
+                    'Accept': '*/*',
+                    'Authorization': `Bearer ${TOKEN}`
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    setCurrentUserData(data)
+                });
+        }, []);
 
         const passportData = <>
             <div className={`${DEFAULT_CLASSNAME}_documents_item`}>
@@ -808,24 +825,46 @@ export const Settings = ({ userInfo }) => {
                 })
         }
 
+        console.log(currentUserData)
+        console.log(userAlreadyUpload)
+
+        let abjArr;
+
+        if (userData) {
+            abjArr = Object.entries(userData);
+        }
+
         return (
             <div className={`${DEFAULT_CLASSNAME}_documents`}>
-                <div className={`${DEFAULT_CLASSNAME}_documents_header`}>
-                    <select onChange={(e) => setCurrentType(e.currentTarget.value)}>
-                        <option>Физическое лицо</option>
-                        <option>ИП</option>
-                        <option>Юридическое лицо</option>
-                    </select>
-                    <select onChange={(e) => setCurrentCountry(e.currentTarget.value)}>
-                        <option defaultChecked={true}>Беларусь</option>
-                        <option>Россия</option>
-                        <option>Казахстан</option>
-                    </select>
-                </div>
-                {currentType === "Физическое лицо" && individual}
-                {currentType === "ИП" && individualEntrepreneur}
-                {currentType === "Юридическое лицо" && legalEntity}
-                <button disabled={userAlreadyUpload} className={`${DEFAULT_CLASSNAME}_btn`} onClick={() => verifyHandler()}>{userAlreadyUpload ? "Документы на верификации" : "Отправить на верификацию"}</button>
+                {(userAlreadyUpload && userData) ?
+                    <>
+                        <div className={`${DEFAULT_CLASSNAME}_documents_header`}>{"Список документов"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_documents_verified`} style={{ fontSize: "16px", color: currentUserData?.isVerifiedUser ? "green" : "red"}}>{currentUserData?.isVerifiedUser ? "Документы подтверждены" : "Документы на верификации"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_documents_list`}>
+                            {abjArr.map(([key, value]) => {
+                                return key === "image" ? <div style={{ flexDirection: "column"}} className={`${DEFAULT_CLASSNAME}_documents_list_item`}><span>Фото документа</span><img src={`https://trifecta.by${value}`}/></div> : <div className={`${DEFAULT_CLASSNAME}_documents_list_item`}>{key} : {value}</div>
+                            })}
+                        </div>
+                    </> :
+                    <>
+                        <div className={`${DEFAULT_CLASSNAME}_documents_header`}>
+                            <select onChange={(e) => setCurrentType(e.currentTarget.value)}>
+                                <option>Физическое лицо</option>
+                                <option>ИП</option>
+                                <option>Юридическое лицо</option>
+                            </select>
+                            <select onChange={(e) => setCurrentCountry(e.currentTarget.value)}>
+                                <option defaultChecked={true}>Беларусь</option>
+                                <option>Россия</option>
+                                <option>Казахстан</option>
+                            </select>
+                        </div>
+                        {currentType === "Физическое лицо" && individual}
+                        {currentType === "ИП" && individualEntrepreneur}
+                        {currentType === "Юридическое лицо" && legalEntity}
+                        <button disabled={userAlreadyUpload} className={`${DEFAULT_CLASSNAME}_btn`} onClick={() => verifyHandler()}>{userAlreadyUpload ? "Документы на верификации" : "Отправить на верификацию"}</button>
+                    </>
+                }
             </div>
         )
     }

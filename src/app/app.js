@@ -45,9 +45,9 @@ import {Docs} from "./components/docs/docs";
 
 const DEFAULT_CLASSNAME = 'trifecta-app';
 
-const CookieApp = ({ setCookieConfirmed }) => {
+const CookieApp = ({ isAdmin, setCookieConfirmed }) => {
     return (
-        <div className={'cookie-app'}>
+        !isAdmin && <div className={'cookie-app'}>
             <div className={'cookie-app-close'} onClick={() => setCookieConfirmed(true)}>
                 <img src={closeIcon} alt={'close-cookie'} />
             </div>
@@ -81,6 +81,63 @@ export const TrifectaApp = () => {
 
     const [menuOpen, setMenuOpen] = useState(true);
 
+    const [adminVerifications, setAdminVerifications] = useState([]);
+    const [adminWithdraws, setAdminWithdraws] = useState([]);
+    const [adminContactInfos, setAdminContactInfos] = useState([]);
+    const [adminPackages, setAdminPackages] = useState([]);
+
+    useEffect(() => {
+        const TOKEN = sessionStorage.getItem("accessToken");
+
+        fetch(`https://trifecta.by/api/Administrator/GetDocumentVerificationList`, {
+            headers: {
+                'Accept': '*/*',
+                'Authorization': `Bearer ${TOKEN}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setAdminVerifications(data));
+    }, [])
+
+    useEffect(() => {
+        const TOKEN = sessionStorage.getItem("accessToken");
+
+        fetch(`https://trifecta.by/api/Administrator/GetWithdrawRequestList`, {
+            headers: {
+                'Accept': '*/*',
+                'Authorization': `Bearer ${TOKEN}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setAdminWithdraws(data));
+    }, [])
+
+    useEffect(() => {
+        const TOKEN = sessionStorage.getItem("accessToken");
+
+        fetch(`https://trifecta.by/api/Administrator/GetUserContactsVerivicationList`, {
+            headers: {
+                'Accept': '*/*',
+                'Authorization': `Bearer ${TOKEN}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setAdminContactInfos(data));
+    }, [])
+
+    useEffect(() => {
+        const TOKEN = sessionStorage.getItem("accessToken");
+
+        fetch(`https://trifecta.by/api/Administrator/GetCashRequests`, {
+            headers: {
+                'Accept': '*/*',
+                'Authorization': `Bearer ${TOKEN}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => setAdminPackages(data));
+    }, [])
+
     useEffect(() => {
         const USER_ID = sessionStorage.getItem('userId');
         const TOKEN = sessionStorage.getItem('accessToken');
@@ -108,7 +165,12 @@ export const TrifectaApp = () => {
             }
         })
             .then(res => res.json())
-            .then(data => setCurrentPackage(data));
+            .then(data => {
+                if ( data.id ) {
+                    setCookieConfirmed(true);
+                }
+                setCurrentPackage(data)
+            });
 
 
         fetch(`https://trifecta.by/api/Home/GetReferralLink?userId=${USER_ID}`, {
@@ -152,13 +214,13 @@ export const TrifectaApp = () => {
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             <img className={`${DEFAULT_CLASSNAME}_burger`} onClick={() => setMenuOpen(!menuOpen)} src={burger} alt={'burger-menu'} />
-            {!cookieConfirmed && <CookieApp setCookieConfirmed={setCookieConfirmed} />}
+            {!cookieConfirmed && <CookieApp isAdmin={isAdmin} setCookieConfirmed={setCookieConfirmed} />}
             <div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_content`}>
                     <div className={`${DEFAULT_CLASSNAME}_side-menu ${!menuOpen && 'menu_closed'}`}>
                         <img className={`${DEFAULT_CLASSNAME}_side-menu_logo`} src={trifecta} alt={'logo'} />
                         <div className={`${DEFAULT_CLASSNAME}_side-menu_profile`}>
-                            <div style={{ backgroundImage: userInfo?.profilePhoto ? `url(https://trifecta.by${userInfo?.profilePhoto})` : `url(${noPhoto})`, width: !userInfo?.profilePhoto && "48px" }} className={`${DEFAULT_CLASSNAME}_side-menu_profile_image`}></div>
+                            <div style={{ backgroundImage: userInfo?.profilePhoto ? `url(https://trifecta.by${userInfo?.profilePhoto})` : `url(${noPhoto})`}} className={`${DEFAULT_CLASSNAME}_side-menu_profile_image`}></div>
                             {!isAdmin ? <div className={`${DEFAULT_CLASSNAME}_side-menu_profile_text`}>
                                 <div>{userInfo?.firstName + " " + userInfo?.lastName}</div>
                                 <div className={'level'}>{userInfo?.level}</div>
@@ -187,10 +249,23 @@ export const TrifectaApp = () => {
                             isAdmin ? <>
                                 <div className={`${DEFAULT_CLASSNAME}_side-menu_item`}>
                                     <div className={`${DEFAULT_CLASSNAME}_side-menu_item-title`}>{"Меню"}</div>
-                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/verification'}><img src={mc} alt={'icon'}/> {"Верификация"}</NavLink>
-                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/withdraw'}><img src={wd} alt={'icon'}/> {"Вывод средств"}</NavLink>
-                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/contact-info'}><img src={nch} alt={'icon'}/> {"Контактные данные"}</NavLink>
+                                    <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`}>
+                                        <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/verification'}><img src={mc} alt={'icon'}/> {"Верификация"}</NavLink>
+                                        <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item_badge`}>{adminVerifications?.length}</div>
+                                    </div>
+                                    <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`}>
+                                        <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/withdraw'}><img src={wd} alt={'icon'}/> {"Вывод средств"}</NavLink>
+                                        <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item_badge`}>{adminWithdraws?.length}</div>
+                                    </div>
+                                    <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`}>
+                                        <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/contact-info'}><img src={nch} alt={'icon'}/> {"Контактные данные"}</NavLink>
+                                        <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item_badge`}>{adminContactInfos?.length}</div>
+                                    </div>
                                     <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/structure'}><img src={st} alt={'icon'}/> {"Структура"}</NavLink>
+                                    <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`}>
+                                        <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/packages'}><img src={mt} alt={'icon'}/> {"Подтверждение пакетов"}</NavLink>
+                                        <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item_badge`}>{adminPackages?.length}</div>
+                                    </div>
                                     <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} onClick={() => logOutHandler()}><img src={exit} alt={'icon'}/> {"Выйти"}</div>
                                 </div>
                             </> : <>
@@ -204,7 +279,7 @@ export const TrifectaApp = () => {
                                     <div className={`${DEFAULT_CLASSNAME}_side-menu_item-title`}>{"Trifecta"}</div>
                                     <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!hasUserPackage && 'disabled'}`} to={'/app/structure'}><img src={st} alt={'icon'}/> {"Структура"}</NavLink>
                                     <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!hasUserPackage && 'disabled'}`} to={'/app/progress'}><img src={pc} alt={'icon'}/> {"Прогресс"}</NavLink>
-                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/marketing'}><img src={mt} alt={'icon'}/> {currentPackage ? "Улучшить пакет" : "Стать партнером"}</NavLink>
+                                    {!currentPackage && <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/marketing'}><img src={mt} alt={'icon'}/> {currentPackage ? "Улучшить пакет" : "Стать партнером"}</NavLink>}
                                     <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!hasUserPackage && 'disabled'}`} to={'/app/newbie'}><img src={lNew} alt={'icon'}/> {"Запуск новичка"}</NavLink>
                                     <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/info'}><img src={inf} alt={'icon'}/> {"Инфо"}</NavLink>
                                 </div>

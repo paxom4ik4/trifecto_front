@@ -31,6 +31,33 @@
     border-radius: 20px;
     box-sizing: border-box !important;
 
+    &_buy-title {
+      font-size: 18px;
+      margin: 20px auto 0;
+    }
+
+    &_btns {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+
+      button {
+        width: 45%;
+        color: #FAFCFD;
+
+        &:disabled {
+          opacity: 0.5;
+        }
+
+        &:disabled:hover {
+          cursor: not-allowed;
+          opacity: 0.5;
+        }
+      }
+    }
+
     &_close {
       position: absolute;
       right: 32px;

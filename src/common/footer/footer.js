@@ -51,13 +51,13 @@ export const Footer = () => {
                         <div className={`${DEFAULT_CLASSNAME}_content_left-logo`}>
                             <img src={logo} alt={'logo'} />
                         </div>
-                        <div className={`${DEFAULT_CLASSNAME}_content_left-text`}>{"Специалисты в области партнёрского маркетинга"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_content_left-text`}>{"Мы в социальных сетях"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_content_left-links`}>
                             <div className={`${DEFAULT_CLASSNAME}_link`}>
                                 <a target={"_blank"} href={"https://www.instagram.com/trifecta_company/"}><img src={instagram} alt={'footer-link'}/></a>
                             </div>
                             <div className={`${DEFAULT_CLASSNAME}_link`}>
-                                <img src={telegram} alt={'footer-link'}/>
+                                <a target={"_blank"} href={"https://t.me/Trifectacompany"}><img src={telegram} alt={'footer-link'}/></a>
                             </div>
                         </div>
                     </div>

@@ -8,6 +8,7 @@ import logo from '../../../assets/logo.png';
 import inst from '../../../common/footer/inst.png';
 import tg from '../../../common/footer/telegram.png';
 import { useNavigate } from "react-router-dom";
+import instagram from "../../../common/footer/inst.png";
 
 const DEFAULT_CLASSNAME = 'trifecta-app-footer';
 
@@ -24,10 +25,10 @@ export const TrifectaFooter = () => {
                     <div className={`${DEFAULT_CLASSNAME}_content_mg`}>{"Зарегистрированы Минским горисполкомом 05.07.2022"}</div>
                     <div className={`${DEFAULT_CLASSNAME}_content_links`}>
                         <div className={`${DEFAULT_CLASSNAME}_content_links_item`}>
-                            <img src={inst} alt={"img"} />
+                            <a target={"_blank"} href={"https://www.instagram.com/trifecta_company/"}><img src={inst} alt={"img"} /></a>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_content_links_item`}>
-                            <img src={tg} alt={"img"} />
+                            <a target={"_blank"} href={"https://t.me/Trifectacompany"}><img src={tg} alt={"img"} /></a>
                         </div>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_content_text`}>

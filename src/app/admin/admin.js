@@ -5,6 +5,7 @@ import { Verification } from "./components/verification/verification";
 import { Withdraw } from "./components/withdraw/withdraw";
 import { ContactInfo } from "./components/contactInfo/contactInfo";
 import { Structure } from "../components/structure/structure";
+import { Packages } from "./components/packages/packages";
 
 const DEFAULT_CLASSNAME = 'admin';
 
@@ -16,6 +17,7 @@ export const Admin = () => {
                 <Route path={'/withdraw'} element={<Withdraw />} />
                 <Route path={'/contact-info'} element={<ContactInfo />} />
                 <Route path={'/structure'} element={<Structure isAdmin />} />
+                <Route path={'/packages'} element={<Packages />} />
             </Routes>
         </div>
     )

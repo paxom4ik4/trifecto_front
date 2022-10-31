@@ -398,13 +398,16 @@
   }
 
   .goal_item-title {
+    margin: 12px 0;
     font-size: 20px !important;
   }
 
   .goal_item {
     box-sizing: border-box;
     font-size: 16px;
+    margin: 0 0 48px;
     img {
+      display: none;
       width: 80%;
     }
     width: 100%;

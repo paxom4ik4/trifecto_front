@@ -91,6 +91,8 @@ export const Verification = () => {
                 .then(data => setUserData(data));
         }, []);
 
+        const [photoFullSize, setPhotoFullSize] = useState(false);
+
         return (
             <div className={`${DEFAULT_CLASSNAME}_item`}>
                 <div className={`${DEFAULT_CLASSNAME}_item_controls`}>
@@ -106,18 +108,42 @@ export const Verification = () => {
                     <div>{"Статус лица"}</div>
                     <div>{getPersonStatus(user?.typeOfEmployment)}</div>
                     <br />
-                    <div>{"BIC/SWIFT"}</div>
-                    <div>{userData?.swift || user?.swift}</div>
+                    <div>{"Идентификационный номер"}</div>
+                    <div>{user?.identityNumber}</div>
                 </div>
+                {(!user?.identityNumber || user?.certificateDateIssue) && <div className={`${DEFAULT_CLASSNAME}_item_account`}>
+                    <>
+                        <div>{"Дата выдачи паспорта"}</div>
+                        <div>{user?.certificateDateIssue}</div>
+                    </>
+                    <br />
+                    <>
+                        <div>{"Серия и номер пасспорта"}</div>
+                        <div>{user?.certificateNumber}</div>
+                    </>
+                </div>}
                 {(userData?.checkingAccount || user?.checkingAccount) && <div className={`${DEFAULT_CLASSNAME}_item_account`}>
                     {userData?.headFullName && <>
                         <div>{"Полное наименование"}</div>
                         <div>{userData?.headFullName}</div>
+                        <br />
                     </>
                     }
-                    <br />
                     <div>{"Номер счета"}</div>
                     <div>{userData?.checkingAccount || user?.checkingAccount}</div>
+                    <br/>
+                    <div>{"BIC/SWIFT"}</div>
+                    <div>{userData?.swift || user?.swift}</div>
+                </div>}
+                {user?.verivicationPhoto && <div className={`${DEFAULT_CLASSNAME}_item_photo`}>
+                    {photoFullSize &&
+                        <div className={`${DEFAULT_CLASSNAME}_photoFullSize`}>
+                            <img className={photoFullSize && 'photo-full-size'}
+                                 onClick={() => setPhotoFullSize(!photoFullSize)}
+                                 src={`https://trifecta.by${user?.verivicationPhoto}`}/>
+                        </div>
+                    }
+                    <img onClick={() => setPhotoFullSize(!photoFullSize)} src={`https://trifecta.by${user?.verivicationPhoto}`}/>
                 </div>}
                 {userData?.unp && <div className={`${DEFAULT_CLASSNAME}_item_svid`}>
                     {userData?.certificateNumber && <>

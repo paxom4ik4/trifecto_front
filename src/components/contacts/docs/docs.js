@@ -18,7 +18,7 @@ export const Docs = () => {
                     <div className={`${DEFAULT_CLASSNAME}_item`}>
                         <a href={"https://trifecta.by/trifecto_Documents/Sogl.pdf"} target={"_blank"}>
                             <img src={file} alt={'docs-item'} />
-                            <div className={`${DEFAULT_CLASSNAME}_item-text`}>{"Пользовательское соглашение"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_item-text`}>{"Пользовательское (партнёрское) соглашение"}</div>
                         </a>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_item`}>
@@ -41,7 +41,7 @@ export const Docs = () => {
                         {"Адрес: 220035, Республика Беларусь, г. Минск,"} <br /> <br />
                         {"ул. Тимирязева 72, пом.48в"} <br /> <br />
                         {"Свидетельство о государственной регистрации № 193634118 от 05.07.2022 выдано Минским горисполкомом"} <br /> <br />
-                        {"ел. +375 (44) 533-80-26"} <br /> <br />
+                        {"Тел. +375 (44) 533-80-26"} <br /> <br />
                         {"e-mail: trifectacompany@mail.ru"}</div>
                 </div>
             </div>

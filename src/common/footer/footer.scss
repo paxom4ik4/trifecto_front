@@ -43,10 +43,20 @@
     align-items: center;
     border: 1px solid #fff;
     border-radius: 50%;
-    width: 56px;
-    height: 56px;
+    width: 48px;
+    height: 48px;
     margin-right: 16px;
     transition: .3s;
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 18px;
+      }
+    }
 
     &:hover {
       cursor: pointer;
@@ -105,7 +115,7 @@
       }
 
       &-links {
-        margin-top: 64px;
+        margin-top: 32px;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -310,6 +320,8 @@
     }
 
     div:first-child {
+      display: flex;
+      flex-direction: column;
       width: 220px;
       margin-right: 42px;
     }

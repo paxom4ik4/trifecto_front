@@ -1,4 +1,25 @@
+.photo-full-size {
+  position: absolute;
+  right: 24px;
+  width: 440px !important;
+  height: auto !important;
+  transition: 0.3s;
+}
+
+
 .verification {
+  &_photoFullSize {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 10;
+  }
+
   width: 100%;
   height: 100%;
   display: flex;
@@ -14,16 +35,29 @@
   }
 
   &_item {
+    font-size: 14px;
     position: relative;
     padding: 50px 50px 75px 25px;
     margin: 25px 0;
     width: 95%;
     display: grid;
-    grid-template-columns: 24% 19% 19% 19% 19%;
+    grid-template-columns: 20% 19% 19% 19% 24%;
     gap: 8px;
     align-items: center;
     background: #252C40;
     border-radius: 20px;
+
+    &_photo {
+      box-sizing: border-box;
+      margin-left: 12px;
+      width: calc(100% - 12px);
+
+      img {
+        border-radius: 12px;
+        width: 100%;
+        cursor: pointer;
+      }
+    }
 
     &_controls {
       position: absolute;

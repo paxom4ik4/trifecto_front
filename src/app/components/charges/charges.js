@@ -13,12 +13,6 @@ export const Charges = ({ isVerified }) => {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!isVerified) {
-            navigate('/app/settings');
-        }
-    }, [isVerified])
-
     const [withdraws, setWithdraws] = useState([]);
 
     useEffect(() => {
@@ -182,7 +176,7 @@ export const Charges = ({ isVerified }) => {
                         </div>
                     )): <div className={`${DEFAULT_CLASSNAME}_table-empty`}>{"Начислений не совершалось"}</div>}
                 </div>
-                {!!selectedCharges.length && <div onClick={() => withdrawCharges()} className={`charges_withdraw`}>{"Вывести выбранное"}</div>}
+                {!!selectedCharges.length && <div onClick={() => isVerified ? withdrawCharges() : navigate('/app/settings')} className={`charges_withdraw`}>{isVerified ? "Вывести выбранное" : "Для вывода средств требуется верификация"}</div>}
             </div> </> : <div className={`trifecta-app_loading`}>{"Loading..."}</div>}
         </div>
     )

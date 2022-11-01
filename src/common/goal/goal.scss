@@ -64,3 +64,9 @@
     }
   }
 }
+
+@media (max-width: 600px) {
+  .goal_item:first-child {
+    flex-direction: column !important;
+  }
+}

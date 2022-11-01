@@ -15,7 +15,7 @@
 }
 
 .trifecta-app_content_cabinet .trifecta-app_content_cabinet_withdraw {
-  width: 105% !important;
+  width: 110% !important;
 }
 
 .trifecta-app_side-menu {
@@ -462,6 +462,7 @@
       }
 
       &_withdraw {
+        box-sizing: border-box;
         width: 100%;
         padding: 25px;
         border-radius: 30px;
@@ -480,6 +481,10 @@
     width: 100%;
   }
 
+  .trifecta-app_burger {
+    display: initial;
+  }
+
   .trifecta-app_content_cabinet {
     box-sizing: border-box;
     width: 100% !important;
@@ -487,7 +492,7 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1020px) {
   .trifecta-app_content {
     box-sizing: border-box !important;
     justify-content: center;

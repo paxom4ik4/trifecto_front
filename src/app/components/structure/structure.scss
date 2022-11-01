@@ -15,12 +15,15 @@
   border-radius: 12px;
 }
 
-.hide_scroll_bar::-webkit-scrollbar-track {
+.hide_scroll_bar::-webkit-scrollbar {
   background: none;
+  display: none;
 }
 
 .structure_row::-webkit-scrollbar {
   width: 2px;
+  background: #0f2467;
+  border-radius: 12px;
 }
 
 .structure_row::-webkit-scrollbar-thumb {

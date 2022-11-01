@@ -273,7 +273,7 @@ export const TrifectaApp = () => {
                                     <div className={`${DEFAULT_CLASSNAME}_side-menu_item-title`}>{"Меню"}</div>
                                     <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/'}><img src={mc} alt={'icon'}/> {"Мой кабинет"}</NavLink>
                                     <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!hasUserPackage && 'disabled'}`} to={'/app/withdraw'}><img src={wd} alt={'icon'}/> {"Вывод средств"}</NavLink>
-                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!IS_VERIFIED && 'disabled'}`} to={'/app/charges'}><img src={nch} alt={'icon'}/> {"Мои начисления"}</NavLink>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!hasUserPackage && 'disabled'}`} to={'/app/charges'}><img src={nch} alt={'icon'}/> {"Мои начисления"}</NavLink>
                                 </div>
                                 <div className={`${DEFAULT_CLASSNAME}_side-menu_item`}>
                                     <div className={`${DEFAULT_CLASSNAME}_side-menu_item-title`}>{"Trifecta"}</div>
@@ -297,7 +297,7 @@ export const TrifectaApp = () => {
                         <Route path={'/marketing'} element={<Marketing currentPackage={currentPackage} />} />
                         <Route path={!hasUserPackage ? '#' : '/newbie'} element={<Newbie isVerified={hasUserPackage} />} />
                         <Route path={!hasUserPackage ? '#' : '/withdraw'} element={<Withdraw isVerified={hasUserPackage} />} />
-                        <Route path={!IS_VERIFIED ? '#' : '/charges'} element={<Charges isVerified={IS_VERIFIED} />} />
+                        <Route path={!hasUserPackage ? '#' : '/charges'} element={<Charges isVerified={IS_VERIFIED} />} />
                         <Route path={!hasUserPackage ? '#' : '/structure'} element={<Structure isVerified={hasUserPackage} />} />
                         <Route path={!hasUserPackage ? '#' : '/progress'} element={<Progress isVerified={hasUserPackage} />} />
                         <Route path={'/info'} element={<Info />} />

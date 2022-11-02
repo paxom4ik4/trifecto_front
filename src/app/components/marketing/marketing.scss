@@ -28,7 +28,6 @@
     align-items: flex-start;
     background: linear-gradient(157.26deg, #13162C 10.6%, #09156B 91.3%);
     padding: 50px;
-    border-radius: 20px;
     box-sizing: border-box !important;
 
     &_buy-title {
@@ -112,6 +111,10 @@
       flex-direction: row;
       justify-content: space-between;
       font-weight: 400;
+
+      input {
+        z-index: 100 !important;
+      }
 
       a {
         font-weight: 900;

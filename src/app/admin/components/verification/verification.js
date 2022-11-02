@@ -111,7 +111,7 @@ export const Verification = () => {
                     <div>{"Идентификационный номер"}</div>
                     <div>{user?.identityNumber}</div>
                 </div>
-                {(!user?.identityNumber || user?.certificateDateIssue) && <div className={`${DEFAULT_CLASSNAME}_item_account`}>
+                {(!user?.number || user?.certificateDateIssue) && <div className={`${DEFAULT_CLASSNAME}_item_account`}>
                     <>
                         <div>{"Дата выдачи паспорта"}</div>
                         <div>{user?.certificateDateIssue}</div>
@@ -119,7 +119,7 @@ export const Verification = () => {
                     <br />
                     <>
                         <div>{"Серия и номер пасспорта"}</div>
-                        <div>{user?.certificateNumber}</div>
+                        <div>{user?.number}</div>
                     </>
                 </div>}
                 {(userData?.checkingAccount || user?.checkingAccount) && <div className={`${DEFAULT_CLASSNAME}_item_account`}>

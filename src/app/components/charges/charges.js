@@ -131,7 +131,6 @@ export const Charges = ({ isVerified }) => {
                 <div className={`trifecta-app_withdraw_card`}>
                     <div className={`trifecta-app_withdraw_card_title`}>{"Доход за всё время"}</div>
                     <div className={`trifecta-app_withdraw_card_amount`}>{userData?.allTimeIncome + "$"}</div>
-                    <div className={`trifecta-app_withdraw_card_sub-amount`}>{(userData?.allTimeIncome * CURRENT_CURRENCY).toFixed(2) + " BYN"}</div>
                 </div>
             </div>
             <div className={DEFAULT_CLASSNAME}>

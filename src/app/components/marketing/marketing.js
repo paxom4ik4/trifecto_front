@@ -95,7 +95,7 @@ export const Marketing = ({ currentPackage }) => {
                     <div className={`${DEFAULT_CLASSNAME}_modal`}>
                         <div className={`${DEFAULT_CLASSNAME}_modal_close`} onClick={() => setPackageToBuy(null)}>{"x"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_modal_title`}>{"Оформление заказа"}</div>
-                        <div className={`${DEFAULT_CLASSNAME}_modal_text`}>{"Сумма заказа:"} <span>{(packageToBuy.price * CURRENT_CURRENCY).toFixed(2)}</span> {"бел. руб."}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_modal_text`}>{"Сумма заказа:"} <span>{(packageToBuy.price * CURRENT_CURRENCY).toFixed(0)}</span> {"бел. руб."}</div>
                         <div className={`${DEFAULT_CLASSNAME}_modal_text`}>{"Товар:"} <span>{packageToBuy.name}</span></div>
 
                         <div className={`${DEFAULT_CLASSNAME}_modal_agreement`}>

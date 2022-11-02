@@ -55,7 +55,6 @@ export const Cabinet = ({ currentPackage }) => {
                         <div className={`${DEFAULT_CLASSNAME}_withdraw_card`}>
                             <div className={`${DEFAULT_CLASSNAME}_withdraw_card_title`}>{"Доход за всё время"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_withdraw_card_amount`}>{userData?.allTimeIncome + "$"}</div>
-                            <div className={`${DEFAULT_CLASSNAME}_withdraw_card_sub-amount`}>{(userData?.allTimeIncome * CURRENT_CURRENCY).toFixed(2) + " BYN"}</div>
                         </div>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_content_cabinet_level`}>

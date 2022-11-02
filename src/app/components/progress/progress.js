@@ -59,8 +59,6 @@ export const Progress = ({ isVerified }) => {
                     <div className={`trifecta-app_withdraw_card`}>
                         <div className={`trifecta-app_withdraw_card_title`}>{"Доход за всё время"}</div>
                         <div className={`trifecta-app_withdraw_card_amount`}>{userData?.allTimeIncome + "$"}</div>
-                        <div
-                            className={`trifecta-app_withdraw_card_sub-amount`}>{(userData?.allTimeIncome * CURRENT_CURRENCY).toFixed(2) + " BYN"}</div>
                     </div>
                 </div>
                 <div className={DEFAULT_CLASSNAME}>
@@ -101,25 +99,34 @@ export const Progress = ({ isVerified }) => {
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_content_item`}>
                             <div className={`${DEFAULT_CLASSNAME}_content_item_title`}>{`Auto`}</div>
-                            <div className={`${DEFAULT_CLASSNAME}_bar`}>
-                                <div
-                                    className={`${DEFAULT_CLASSNAME}_bar_title`}>{"Базовый уровень"}</div>
-                                <div className={`${DEFAULT_CLASSNAME}_bar_content`}>
-                                    <div className={`${DEFAULT_CLASSNAME}_bar_content_progress`}
-                                         style={{width: `${userData?.autoBonusProgress.baseLevel.level / 10 * 100}%`}}/>
-                                </div>
-                                <div
-                                    className={`${DEFAULT_CLASSNAME}_bar_subtitle`}>{`${userData?.autoBonusProgress.baseLevel.level} / 10`}</div>
-                            </div>
-                            <div className={`${DEFAULT_CLASSNAME}_bar`}>
-                                <div className={`${DEFAULT_CLASSNAME}_bar_title`}>{"Оборот текущего месяца"}</div>
-                                <div className={`${DEFAULT_CLASSNAME}_bar_content`}>
-                                    <div className={`${DEFAULT_CLASSNAME}_bar_content_progress`}
-                                         style={{width: `${userData?.autoBonusProgress.currentMonthlyTurnover / userData?.autoBonusProgress.requiredMonthlyTurnoverToNextLevel * 100}%`}}/>
-                                </div>
-                                <div
-                                    className={`${DEFAULT_CLASSNAME}_bar_subtitle`}>{`${userData?.autoBonusProgress.currentMonthlyTurnover}.00$ / ${userData?.autoBonusProgress.requiredMonthlyTurnoverToNextLevel}.00$`}</div>
-                            </div>
+                            {userData?.autoBonusProgress.baseLevel.level >= 5 ?
+                                <>
+                                    <div className={`${DEFAULT_CLASSNAME}_bar`}>
+                                        <div
+                                            className={`${DEFAULT_CLASSNAME}_bar_title`}>{"Базовый уровень"}</div>
+                                        <div className={`${DEFAULT_CLASSNAME}_bar_content`}>
+                                            <div className={`${DEFAULT_CLASSNAME}_bar_content_progress`}
+                                                 style={
+                                                    { width: `${userData?.autoBonusProgress.baseLevel.level / 10 * 100}%`, background: userData?.autoBonusProgress.baseLevel.level / 10 * 100 === 100 && "linear-gradient(87.57deg, #3F87F6 0%, #4CE9C1 94.44%)"}
+                                                }
+                                            />
+                                        </div>
+                                        <div className={`${DEFAULT_CLASSNAME}_bar_subtitle`}>{`${userData?.autoBonusProgress.baseLevel.level} / 10`}</div>
+                                    </div>
+                                    <div className={`${DEFAULT_CLASSNAME}_bar`}>
+                                        <div className={`${DEFAULT_CLASSNAME}_bar_title`}>{"Оборот текущего месяца"}</div>
+                                        <div className={`${DEFAULT_CLASSNAME}_bar_content`}>
+                                            <div className={`${DEFAULT_CLASSNAME}_bar_content_progress`}
+                                                 style={
+                                                    { width: `${userData?.autoBonusProgress.currentMonthlyTurnover / userData?.autoBonusProgress.requiredMonthlyTurnoverToNextLevel * 100}%`, background: userData?.autoBonusProgress.currentMonthlyTurnover / userData?.autoBonusProgress.requiredMonthlyTurnoverToNextLevel * 100 && "linear-gradient(87.57deg, #3F87F6 0%, #4CE9C1 94.44%)"}
+                                                }
+                                            />
+                                        </div>
+                                        <div
+                                            className={`${DEFAULT_CLASSNAME}_bar_subtitle`}>{`${userData?.autoBonusProgress.currentMonthlyTurnover}.00$ / ${userData?.autoBonusProgress.requiredMonthlyTurnoverToNextLevel}.00$`}</div>
+                                    </div>
+                                </> : <div className={`${DEFAULT_CLASSNAME}_bar_title`}>{"Необходимо достичь 5 уровня"}</div>
+                            }
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_content_item`}>
                             <div className={`${DEFAULT_CLASSNAME}_content_item_title`}>{`Travel`}</div>
@@ -127,7 +134,7 @@ export const Progress = ({ isVerified }) => {
                                 <div className={`${DEFAULT_CLASSNAME}_bar_title`}>{"Личный оборот текущего месяца"}</div>
                                 <div className={`${DEFAULT_CLASSNAME}_bar_content`}>
                                     <div className={`${DEFAULT_CLASSNAME}_bar_content_progress`}
-                                         style={{width: `${(userData?.travelBonusInfo.userPersonalMonthlyTurnover / userData?.travelBonusInfo.travelBonusTurnover * 100)}%`}}/>
+                                         style={{width: `${(userData?.travelBonusInfo.userPersonalMonthlyTurnover / userData?.travelBonusInfo.travelBonusTurnover * 100)}%`, background: (userData?.travelBonusInfo.userPersonalMonthlyTurnover / userData?.travelBonusInfo.travelBonusTurnover * 100) === 100 && "linear-gradient(87.57deg, #3F87F6 0%, #4CE9C1 94.44%)"}}/>
                                 </div>
                                 <div
                                     className={`${DEFAULT_CLASSNAME}_bar_subtitle`}>{`${userData?.travelBonusInfo.userPersonalMonthlyTurnover}.00$ / ${userData?.travelBonusInfo.travelBonusTurnover}.00$`}</div>

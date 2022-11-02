@@ -42,6 +42,7 @@ import {Charges} from "./components/charges/charges";
 import {Progress} from "./components/progress/progress";
 import {Admin} from "./admin/admin";
 import {Docs} from "./components/docs/docs";
+import {toast} from "react-toastify";
 
 const DEFAULT_CLASSNAME = 'trifecta-app';
 
@@ -233,7 +234,10 @@ export const TrifectaApp = () => {
                                 currentPackage?.name ?
                                     <div
                                         className={`${DEFAULT_CLASSNAME}_side-menu_partner`}
-                                        onClick={() => navigator.clipboard.writeText(userInfo?.personalReferral)}
+                                        onClick={() => {
+                                            navigator.clipboard.writeText(userInfo?.personalReferral);
+                                            toast.info("Ссылка скопирована");
+                                        }}
                                     >{"Ссылка реферала"}
                                     </div> :
                                     <div

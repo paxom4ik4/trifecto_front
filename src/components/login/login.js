@@ -131,7 +131,7 @@ const RegisterContent = ({ setIsRegisterMode }) => {
             <div className={`${DEFAULT_CLASSNAME}_header`}>
                 <input type={"text"} placeholder={"Фамилия"} value={registerSecondName} onChange={(e) => setRegisterSecondName(e.currentTarget.value)} />
                 <input type={"text"} placeholder={"Имя"} value={registerFirstName} onChange={(e) => setRegisterFirstName(e.currentTarget.value)} />
-                <input type={"text"} placeholder={"Отвечтво"} value={registerPatronymic} onChange={(e) => setRegisterPatronymic(e.currentTarget.value)} />
+                <input type={"text"} placeholder={"Отчество"} value={registerPatronymic} onChange={(e) => setRegisterPatronymic(e.currentTarget.value)} />
             </div>
 
             <input type={"tel"} placeholder={"Номер телефона"} value={registerPhoneNumber} onChange={(e) => setRegisterPhoneNumber(e.currentTarget.value)} />
@@ -156,7 +156,7 @@ const RegisterContent = ({ setIsRegisterMode }) => {
             <div className={`${DEFAULT_CLASSNAME}_agreement`}>
                 <div className={`${DEFAULT_CLASSNAME}_agreement_item`}>
                     <div><input value={agreement1} onChange={() => setAgreement1(!agreement1)} type={"checkbox"} /></div>
-                    <p>Я ознакомился с <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Pers.pdf"}>Политикой обработки данных</a> и <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Sogl.pdf"}>Пользовательским соглашением</a> и согласен с их условиями</p>
+                    <p>Я ознакомился с <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Pers.pdf"}>Политикой обработки данных</a> и <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Sogl.pdf"}>Пользовательским (партнёрским) соглашением</a> и согласен с их условиями</p>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_agreement_item`}>
                     <div><input value={agreement2} onChange={() => setAgreement2(!agreement2)} type={"checkbox"} style={{ width: '16px', height: "16px" }}/></div>

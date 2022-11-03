@@ -16,11 +16,11 @@ export const Goal = () => {
                 <div className={`${DEFAULT_CLASSNAME}_item`}>
                     <img src={trophy} alt={'item-image'} />
                     <div className={`${DEFAULT_CLASSNAME}_item-title`}>{'Наша Цель'}</div>
-                    <div className={`${DEFAULT_CLASSNAME}_item-text`}>{'создать крупнейшую партнерскую сеть, где каждый с помощью полученных знаний может стать успешным'}</div>
+                    <div className={`${DEFAULT_CLASSNAME}_item-text`}>{'Создать крупнейшую партнерскую сеть, где каждый с помощью полученных знаний может стать успешным'}</div>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_item`}>
                     <div className={`${DEFAULT_CLASSNAME}_item-title`}>{'Наша Миссия'}</div>
-                    <div className={`${DEFAULT_CLASSNAME}_item-text`}>{'стать лучшими, чтобы с помощью инструментов компании раскрыть потенциал, цели каждого и реализовать их'}</div>
+                    <div className={`${DEFAULT_CLASSNAME}_item-text`}>{'Стать лучшими, чтобы с помощью инструментов компании раскрыть потенциал, цели каждого и реализовать их'}</div>
                     <img src={target} alt={'item-image'} />
                 </div>
             </div>

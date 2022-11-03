@@ -364,6 +364,10 @@
     background: #252C40;
     border-radius: 20px;
 
+    &_photo div {
+      background-size: cover;
+    }
+
     &_right {
       display: flex;
       flex-direction: column;

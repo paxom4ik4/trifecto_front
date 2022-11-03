@@ -54,6 +54,12 @@
       align-self: flex-start;
       height: fit-content;
       width: 60%;
+      margin-top: 24px;
+
+      img {
+        margin-right: 12px;
+        width: 40%;
+      }
     }
 
     &_content {

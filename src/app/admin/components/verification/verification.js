@@ -168,10 +168,9 @@ export const Verification = () => {
                     </div>}
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_item_photos`}>
-                    <img src={`trifecta.by${userData?.verivicationPhoto2}`} alt={'/'} />
-                    <img src={`trifecta.by${userData?.verivicationPhoto3}`} alt={'/'} />
-                    <img src={`trifecta.by${userData?.verivicationPhoto4}`} alt={'/'} />
-
+                    <img src={`https://trifecta.by${user?.verivicationPhoto2}`} alt={'/'} />
+                    <img src={`https://trifecta.by${user?.verivicationPhoto3}`} alt={'/'} />
+                    <img src={`https://trifecta.by${user?.verivicationPhoto4}`} alt={'/'} />
                 </div>
             </div>
         )

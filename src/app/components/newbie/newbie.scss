@@ -37,13 +37,42 @@
   }
 
   &_wrapper {
-    margin: 0 0 50px 26%;
+    margin: 0 0 50px 360px;
     height: 100%;
-    width: calc(100% - 460px);
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     z-index: 10;
+  }
+}
+
+@media (max-width: 1400px) {
+  .newbie_wrapper {
+    margin: 0 0 50px 48px;
+  }
+}
+
+@media (max-width: 600px) {
+  .newbie_item {
+    padding: 24px 16px;
+    flex-direction: column;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .newbie_item_text {
+    margin: 32px 0 0;
+  }
+
+  .newbie_item_title {
+    font-size: 16px;
+  }
+
+  .newbie_item_text_content {
+    font-size: 12px;
   }
 }

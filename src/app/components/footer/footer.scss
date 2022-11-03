@@ -54,6 +54,12 @@
         padding: 12px;
         margin: 0 4px;
 
+        a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
         &:hover {
           cursor: pointer;
         }
@@ -90,5 +96,62 @@
     left: 50%;
     transform: translateX(-50%);
     position: absolute;
+  }
+}
+
+@media (max-width: 768px) {
+  .trifecta-app-footer_copyright {
+    display: none;
+  }
+
+  .trifecta-app-footer {
+    box-sizing: border-box;
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 600px) {
+ .trifecta-app-footer {
+   box-sizing: border-box;
+    padding: 24px;
+   width: 100%;
+   align-items: center;
+   flex-direction: row;
+ }
+
+  .trifecta-app-footer_content_links {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .trifecta-app-footer_content_text {
+    text-align: center;
+  }
+
+  .trifecta-app-footer_content_text span {
+    margin: 12px 0 32px !important;
+  }
+
+  .trifecta-app-footer_content {
+    display: flex;
+    justify-content: center;
+    width: 100% !important;
+    font-size: 12px;
+
+    img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-self: center;
+    }
+  }
+
+  .trifecta-app-footer_partners {
+    margin-top: 32px;
+
+    img {
+      width: 100%;
+    }
   }
 }

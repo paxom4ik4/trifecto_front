@@ -176,10 +176,84 @@
 
   &_wrapper {
     width: 100%;
-    margin: 50px 0 50px 26%;
+    margin: 50px 0 50px 360px;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 10;
+  }
+}
+
+@media (max-width: 1400px) {
+  .help_wrapper {
+    margin: 50px 0 50px 48px;
+  }
+}
+
+@media (max-width: 600px) {
+  .help {
+    width: 100%;
+    padding: 64px 32px 0;
+  }
+
+  .help_header_info {
+    display: none;
+  }
+
+  .help_header {
+    font-size: 16px;
+    width: 90%;
+    margin-top: -32px;
+    align-self: center;
+    flex-direction: column;
+  }
+
+  .help_card_title {
+    font-size: 16px;
+  }
+
+  .help_card_text {
+    font-size: 14px;
+  }
+
+  .help_card {
+    width: 100%;
+    padding: 24px 16px;
+  }
+
+  .help_card img {
+    width: 30%;
+  }
+
+  .help_faq {
+    font-size: 16px !important;
+  }
+
+  .help_faq_title {
+    padding: 12px 24px;
+  }
+
+  .help_faq_title span {
+    font-size: 18px;
+  }
+
+  .help_faq_item span {
+    font-size: 12px;
+  }
+
+  .help_faq_item_content {
+    width: 100%;
+    padding: 12px 24px;
+
+    img {
+      width: 16px;
+    }
+  }
+
+  .help_faq_item_text.opened {
+    font-size: 12px;
+    width: 100%;
+    padding: 24px;
+    box-sizing: border-box;
   }
 }

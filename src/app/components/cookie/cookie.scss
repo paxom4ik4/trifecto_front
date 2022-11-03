@@ -4,7 +4,7 @@
 
 
   &_wrapper {
-    margin: 0 0 0 26%;
+    margin: 0 0 0 360px;
     height: 100%;
     width: 100%;
     display: flex;
@@ -52,5 +52,38 @@
   &_text_title {
     font-size: 24px;
     font-weight: 700;
+  }
+}
+
+@media (max-width: 1400px) {
+  .cookie_wrapper {
+    margin: 0 0 0 48px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cookie_wrapper {
+    padding: 28px;
+  }
+
+  .cookie_text {
+    font-size: 14px;
+  }
+
+  .cookie_text_title {
+    font-size: 20px;
+  }
+
+  .cookie_text.colored {
+    width: 100% !important;
+  }
+
+  .cookie {
+    box-sizing: border-box;
+    width: 100%;
+
+    img {
+      display: none;
+    }
   }
 }

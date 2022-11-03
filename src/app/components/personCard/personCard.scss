@@ -10,7 +10,6 @@
 
 .person-card.expanded {
   animation: loyal 0.5s ease-in-out;
-  width: fit-content;
   display: flex;
   flex-direction: row;
 }
@@ -27,7 +26,10 @@
   font-weight: 700;
   transition: 0.5s;
   animation: loyal 0.5 ease-in-out;
-  margin: 20px 20px 20px 0;
+  margin: 8px;
+  min-width: 320px;
+  width: fit-content;
+  height: 180px;
 
   &_expand.expanded {
     transform: rotate(180deg);
@@ -38,7 +40,8 @@
   }
 
   &_wrapper {
-    width: 280px;
+    margin: 0 4px;
+    width: 320px;
   }
 
   &_additional {
@@ -78,7 +81,10 @@
   }
 
   &_text {
-    font-size: 16px;
+    width: 100%;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: #ffffff;
   }
 
@@ -92,5 +98,15 @@
 
   &_wrapper.expanded {
     width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .person-card_text {
+    font-size: 12px;
+  }
+
+  .person-card_text.colored {
+    font-size: 16px;
   }
 }

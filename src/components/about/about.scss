@@ -86,3 +86,67 @@
     overflow: hidden;
   }
 }
+
+@media (max-width: 1200px) {
+  .about {
+    width: 100%;
+
+    &_wrapper {
+      padding: 0 16px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+  }
+}
+
+@media (max-width: 760px) {
+  .about_why {
+    margin-top: 64px;
+    font-size: 32px;
+    margin-bottom: -64px;
+  }
+
+  .about_pros {
+    padding: 0 16px;
+  }
+
+  .about_wrapper {
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .about_pros-item img {
+    display: none;
+  }
+
+  .about_logo-text {
+    display: flex;
+    justify-content: center;
+  }
+
+  .about_logo-text img {
+    display: flex;
+    width: 80%;
+    align-self: center;
+    justify-self: center;
+  }
+
+  .about_pros-image {
+    position: absolute;
+    right: -60px;
+    height: 240px;
+    width: auto;
+  }
+
+  .about_pros-item {
+    margin: 12px 0;
+    font-size: 12px;
+    width: 60%;
+    line-height: 14px;
+
+    img {
+      margin-right: 25px;
+    }
+  }
+}

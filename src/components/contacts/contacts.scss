@@ -28,39 +28,19 @@
     align-items: center;
     position: relative;
     overflow: hidden;
-  }
-
-  &_background {
-    z-index: -10;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 120%;
-    width: fit-content;
-    position: absolute;
-    opacity: 1;
-  }
-  
-  &_trif {
-    position: absolute;
-    right: 34%;
-    top: 12px;
-  }
-  
-  &_vect {
-    position: absolute;
-    right: 16%;
-    top: 12%;
-    width: 18%;
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    object-fit: contain;
   }
 
   &_sally {
-    z-index: -1;
+    z-index: 0;
     position: absolute;
     bottom: 0;
-    transform: translateY(38%);
-    left: 14%;
-    width: 50%;
+    transform: translateY(40%);
+    left: 20%;
+    width: 700px;
   }
 
   &_block {
@@ -150,4 +130,89 @@
       position: absolute;
     }
   }
+}
+
+@media (max-width: 1200px) {
+  .contacts {
+    width: 100%;
+
+    &_wrapper {
+      background-position: 0%;
+      box-sizing: border-box;
+      padding: 0 20px;
+    }
+  }
+
+  .contacts_block {
+    z-index: 2;
+    width: 240px;
+    height: 200px;
+
+    .contacts_email-image, .contacts_hash-image {
+      width: 30%;
+    }
+
+    .contacts_block-email {
+      margin-top: 20px;
+      padding-left: 80px;
+    }
+  }
+
+  .contacts_sally {
+    width: 600px;
+  }
+}
+
+@media (max-width: 1020px) {
+  .contacts_block-title-center {
+    font-size: 18px;
+  }
+
+  .contacts_block-text {
+    margin-top: 20px;
+  }
+
+  .contacts_block-links {
+    margin-top: 20px;
+  }
+
+  .contacts_block-btn {
+    margin-top: 20px;
+    font-size: 12px;
+  }
+
+  .contacts_sally {
+    display: none;
+  }
+
+  .contacts {
+    flex-direction: row;
+  }
+
+  .contacts_block {
+    font-size: 14px;
+    padding: 48px 32px 72px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contacts_block-email {
+    font-size: 16px;
+  }
+
+  .contacts .block-right {
+    margin: 80px 0 !important;
+  }
+
+  .contacts {
+    padding: 0 12px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .contacts_wrapper {
+    background-size: 300% 150%;
+  }
+
 }

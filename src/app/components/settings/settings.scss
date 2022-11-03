@@ -1,10 +1,75 @@
 .settings {
+  box-sizing: border-box;
+
+  .passport_upload {
+    width: fit-content;
+    max-width: 800px;
+    display: flex;
+    flex-direction: row;
+
+    div {
+      position: relative;
+      width: 100%;
+      margin: 0 8px !important;
+
+      label {
+        font-size: 14px;
+      }
+
+      input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+      }
+
+      img {
+        margin-top: 8px;
+        width: 100%;
+      }
+    }
+  }
+
   button:disabled {
     opacity: 0.8;
     cursor: not-allowed;
 
     &:hover {
       opacity: 0.8;
+    }
+  }
+
+  &_profile_photo {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 360px;
+    width: 360px;
+
+    &_image {
+      width: 90%;
+      height: 90%;
+      background-size: 100% 100%;
+      background-position: center;
+      border-radius: 50%;
+    }
+
+    img {
+      object-fit: contain !important;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+    }
+
+    input {
+      opacity: 0;
+      height: 100%;
+      width: 120%;
+      border: none !important;
+      border-radius: 100% !important;
+      position: absolute;
     }
   }
 
@@ -24,6 +89,29 @@
   &_documents {
     display: flex;
     flex-direction: column;
+
+    &_list {
+      display: flex;
+      flex-direction: column;
+
+      img {
+        margin-top: 12px;
+        border-radius: 12px;
+        background: #252C40;
+        width: 30%;
+      }
+
+      &_item {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        font-size: 16px !important;
+        margin: 8px 0 !important;
+        background: #252C40;
+        padding: 12px;
+        border-radius: 12px !important;
+      }
+    }
 
     .settings_btn {
       align-self: flex-end;
@@ -301,9 +389,9 @@
   }
 
   &_wrapper {
-    margin: 0 0 50px 30%;
+    margin: 0 0 50px 390px;
     height: 100%;
-    width: calc(100% - 460px);
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -312,4 +400,209 @@
   }
 
   margin-top: 0 !important;
+}
+
+@media (max-width: 1400px) {
+  .settings {
+    width: 95%;
+  }
+
+  .settings_wrapper {
+    margin: 0 0 50px 48px
+  }
+}
+
+@media (max-width: 600px) {
+  .settings {
+    .hide-small {
+      display: none;
+    }
+
+    .passport_upload {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    box-sizing: border-box !important;
+
+    .upload-photo-input {
+      width: fit-content;
+    }
+  }
+
+  .settings_sections {
+    width: 90%;
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    box-sizing: border-box;
+    flex-direction: column;
+    margin: 24px auto 48px;
+
+    div {
+      width: 80%;
+      margin: 12px 0;
+    }
+
+    div:first-child {
+      margin-top: 0;
+    }
+
+    div:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .settings_documents_content {
+    flex-direction: column;
+
+    .settings_documents_item_left, .settings_documents_item_right {
+      width: 100%;
+    }
+
+    .settings_documents_item_right {
+      margin-left: 0;
+    }
+
+    input {
+      width: 100%;
+    }
+  }
+
+  .settings {
+    width: 100%;
+  }
+
+  .settings_profile {
+    width: calc(100% - 40px);
+    margin-left: 0px;
+    padding: 20px;
+    flex-direction: column;
+  }
+
+  .settings_security {
+    width: 100%;
+    margin-left: -32px;
+    padding: 32px;
+    flex-direction: column;
+  }
+
+  .settings_security_password {
+    flex-direction: column
+  }
+
+  .settings_security_password_left {
+    width: 100% !important;
+    margin-bottom: 32px;
+  }
+
+  .settings_profile_right {
+    width: 100%;
+  }
+
+  .settings_profile_photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 280px;
+    max-height: 280px;
+    width: 204px;
+    height: 204px;
+    margin: 0 auto;
+
+    &_image {
+      display: flex;
+      align-self: center;
+      justify-self: center;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .settings_security_contacts_item {
+    margin: 24px 12px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .settings_security_btn {
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .settings_security_contacts {
+    padding: 24px;
+  }
+
+  .settings_documents_header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+
+    select {
+      margin: 0;
+      padding: 12px 12px;
+      font-size: 16px;
+    }
+
+    select:first-child {
+      margin: 0;
+      width: fit-content;
+    }
+
+    select:last-child {
+      width: fit-content;
+    }
+  }
+
+  .settings {
+    padding: 24px;
+  }
+
+  .settings_documents_content {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  .settings_documents_content input {
+    width: 80% !important;
+  }
+
+  .settings_documents_item {
+    width: 100%;
+    box-sizing: border-box !important;
+    padding: 16px;
+  }
+
+  .settings_sections_item {
+    font-size: 12px;
+  }
+
+  .settings_documents_header select {
+    font-size: 12px;
+  }
+
+  .settings_documents_title {
+    font-size: 18px !important;
+  }
+
+  .settings_documents_content label {
+    font-size: 12px !important;
+  }
+
+  .settings {
+    padding: 12px;
+  }
+
+  .settings_security_password {
+    padding: 24px 16px;
+  }
 }

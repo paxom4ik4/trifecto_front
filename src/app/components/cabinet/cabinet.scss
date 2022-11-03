@@ -1,0 +1,20 @@
+.bonus_data {
+  font-size: 16px !important;
+  color: #FAFCFD;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  margin-left: 32px;
+
+  div {
+    margin: 12px 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .bonus_data {
+    margin: 24px 0 0;
+  }
+}

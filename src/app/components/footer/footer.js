@@ -7,8 +7,8 @@ import logo from '../../../assets/logo.png';
 
 import inst from '../../../common/footer/inst.png';
 import tg from '../../../common/footer/telegram.png';
-import twitter from '../../../common/footer/twitter.png';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import instagram from "../../../common/footer/inst.png";
 
 const DEFAULT_CLASSNAME = 'trifecta-app-footer';
 
@@ -21,17 +21,14 @@ export const TrifectaFooter = () => {
                 <span className={`${DEFAULT_CLASSNAME}_copyright`}>{"Ⓒ Trifecta company, 2022"}</span>
                 <div className={`${DEFAULT_CLASSNAME}_content`}>
                     <img className={`${DEFAULT_CLASSNAME}_logo`} src={logo} alt={'footer-logo'} />
-                    <div>{"ООО \"Мебель плюс\", УНП 191123456, 220019, Республика Беларусь, г. Минск, ул. Тимирязева 72к2, 11 этаж, офис 907"}</div>
-                    <div className={`${DEFAULT_CLASSNAME}_content_mg`}>{"Зарегистрированы Минским горисполкомом 21.07.2014"}</div>
+                    <div>{"ООО \"Онлайн прогресс\", УНП 193634118 , 220035, Республика Беларусь, г. Минск, ул. Тимирязева 72-48в"}</div>
+                    <div className={`${DEFAULT_CLASSNAME}_content_mg`}>{"Зарегистрированы Минским горисполкомом 05.07.2022"}</div>
                     <div className={`${DEFAULT_CLASSNAME}_content_links`}>
                         <div className={`${DEFAULT_CLASSNAME}_content_links_item`}>
-                            <img src={inst} alt={"img"} />
+                            <a target={"_blank"} href={"https://www.instagram.com/trifecta_company/"}><img src={inst} alt={"img"} /></a>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_content_links_item`}>
-                            <img src={tg} alt={"img"} />
-                        </div>
-                        <div className={`${DEFAULT_CLASSNAME}_content_links_item`}>
-                            <img src={twitter} alt={"img"} />
+                            <a target={"_blank"} href={"https://t.me/Trifectacompany"}><img src={tg} alt={"img"} /></a>
                         </div>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_content_text`}>

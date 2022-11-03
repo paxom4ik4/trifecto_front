@@ -14,7 +14,7 @@ export const Info = () => {
     useEffect(() => {
         const TOKEN = sessionStorage.getItem('accessToken');
 
-        fetch('http://trifecta.by:5000/api/Info/GetThumbnails?userId=31703f65-5a6d-400e-ab87-d0d93981f34f', {
+        fetch('https://trifecta.by/api/Info/GetThumbnails?userId=31703f65-5a6d-400e-ab87-d0d93981f34f', {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -29,17 +29,25 @@ export const Info = () => {
             <div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_title`}>{"Инфо"}</div>
                 <div className={`${DEFAULT_CLASSNAME}_docs`}>
-                    <a className={`${DEFAULT_CLASSNAME}_docs_item`} target={"_blank"} href={docs[0]?.thumbnailFullPath} download={docs[0]?.thumbnailName}>
+                    <a className={`${DEFAULT_CLASSNAME}_docs_item`} target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Marketing.pdf"}>
                         <img src={doc} alt={'doc'} />
-                        <div className={`${DEFAULT_CLASSNAME}_docs_item_text`}>{"Информационная программа пакетов"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_docs_item_text`}>{"Маркетинг-план"}</div>
                     </a>
-                    <a className={`${DEFAULT_CLASSNAME}_docs_item`} target={"_blank"} href={docs[1]?.thumbnailFullPath} download={docs[1]?.thumbnailName}>
+                    <a className={`${DEFAULT_CLASSNAME}_docs_item`} target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Codex.pdf"}>
                         <img src={doc} alt={'doc'} />
                         <div className={`${DEFAULT_CLASSNAME}_docs_item_text`}>{"Кодекс партнёра"}</div>
                     </a>
-                    <a className={`${DEFAULT_CLASSNAME}_docs_item`} target={"_blank"} href={docs[2]?.thumbnailFullPath} download={docs[2]?.thumbnailName}>
+                    <a className={`${DEFAULT_CLASSNAME}_docs_item`} target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Pers.pdf"}>
                         <img src={doc} alt={'doc'} />
-                        <div className={`${DEFAULT_CLASSNAME}_docs_item_text`}>{"Партнерское соглашение"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_docs_item_text`}>{"Обработка персональных данных"}</div>
+                    </a>
+                    <a className={`${DEFAULT_CLASSNAME}_docs_item`} target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Sogl.pdf"}>
+                        <img src={doc} alt={'doc'} />
+                        <div className={`${DEFAULT_CLASSNAME}_docs_item_text`}>{"Пользовательское (партнёрское) соглашение"}</div>
+                    </a>
+                    <a className={`${DEFAULT_CLASSNAME}_docs_item`} target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Conf.pdf"}>
+                        <img src={doc} alt={'doc'} />
+                        <div className={`${DEFAULT_CLASSNAME}_docs_item_text`}>{"Политика конфиденциальности"}</div>
                     </a>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_text`}>

@@ -1,0 +1,41 @@
+.admin-packages {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #FAFCFD;
+
+  .admin-withdraw_left {
+    width: 100%;
+  }
+
+  .admin-withdraw_approve, .admin-withdraw_reject {
+    width: 200px;
+    text-align: center;
+  }
+
+  &_wrapper {
+    padding: 50px;
+    width: 70%;
+    margin: 0 0 0 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    background: #171A2F;
+    border-radius: 30px;
+  }
+
+  .admin-withdraw_list {
+    display: flex;
+    flex-direction: row;
+    margin-top: 24px;
+    justify-content: initial !important;
+  }
+
+  .admin-withdraw_item {
+    margin-right: 24px;
+    width: 36%;
+  }
+}

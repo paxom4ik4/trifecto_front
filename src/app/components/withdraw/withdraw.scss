@@ -1,4 +1,6 @@
 .withdraw {
+  box-sizing: border-box;
+  overflow: scroll;
   margin-top: 50px;
   height: 100%;
   padding: 50px;
@@ -45,6 +47,13 @@
       font-size: 28px;
       font-weight: 700;
       color: #FFF;
+      margin-bottom: 8px;
+
+      p {
+        font-size: 14px;
+        margin-bottom: 0;
+        color: rgba(250, 252, 253, 0.8);
+      }
     }
 
     &_controls {
@@ -52,6 +61,7 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      align-self: flex-end;
 
       div {
         margin-left: 30px;
@@ -75,9 +85,9 @@
   }
 
   &_wrapper {
-    margin: 0 0 50px 30%;
+    margin: 0 0 50px 28%;
     height: 100%;
-    width: calc(100% - 460px);
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -89,5 +99,54 @@
       width: 105% !important;
     }
 
+  }
+}
+
+@media (max-width: 1400px) {
+  .withdraw_wrapper {
+    margin: 0 0 50px 72px;
+  }
+
+  .withdraw {
+    overflow: scroll;
+  }
+}
+
+@media (max-width: 600px) {
+  .withdraw {
+    margin-left: -24px;
+    padding: 12px;
+    font-size: 10px !important;
+  }
+
+  .withdraw_table {
+    width: 150% !important;
+    padding: 12px 18px;
+    overflow: scroll;
+    font-size: 8px;
+  }
+
+  .withdraw_table_header {
+    font-size: 10px !important;
+  }
+
+  .withdraw_header_title {
+    padding: 12px;
+    font-size: 8px;
+  }
+
+  .withdraw_header_controls {
+    select {
+      width: 80px !important;
+    }
+  }
+
+  .withdraw_header_controls div {
+    margin: 0 4px !important;
+  }
+
+  .trifecta-app_content_cabinet_withdraw {
+    margin: 0 0 0 -24px;
+    width: 100%;
   }
 }

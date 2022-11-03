@@ -1,0 +1,143 @@
+.admin-withdraw_item_expand.expanded {
+  transform: rotate(360deg) !important;
+  transition: 0.3s;
+}
+
+.admin-withdraw {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #FAFCFD;
+
+  &_approve {
+    padding: 4px 16px;
+    color: #FAFCFD;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    background: linear-gradient(87.57deg, #3F87F6 0%, #4CE9C1 94.44%);
+    border-radius: 32px;
+    transition: 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
+
+  &_reject {
+    padding: 4px 16px;
+    color: #FAFCFD;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 12px;
+    background: linear-gradient(87.57deg, #3F87F6 0%, #E94C4C 94.44%);
+    border-radius: 32px;
+    transition: 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
+
+  &_list {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &_item {
+    height: fit-content;
+    z-index: 1;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 25px 50px 65px;
+    background: #252C40;
+    border-radius: 20px;
+    margin-bottom: 20px;
+
+    &_full.hidden {
+      top: 80%;
+      opacity: 0;
+      transition: 0.1s;
+    }
+
+
+    &_full {
+      position: absolute;
+      top: calc(100% - 50px);
+      z-index: -1;
+      background: #323B55;
+      border-radius: 20px;
+      padding: 25px;
+      left: 0;
+      width: calc(100% - 50px);
+      height: fit-content;
+      transition: 0.3s;
+
+      div {
+        margin: 8px 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+      }
+    }
+
+    &_expand {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      transform: rotate(180deg);
+      transition: 0.3s;
+
+      &:hover {
+        cursor: pointer;
+        opacity: 0.5;
+      }
+    }
+  }
+
+  &_left {
+    width: 48%;
+    font-size: 14px;
+  }
+
+  &_right {
+    width: 48%;
+    font-size: 14px;
+  }
+
+  &_title {
+    font-weight: 700;
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  &_wrapper {
+    padding: 50px;
+    width: 70%;
+    margin: 0 0 0 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    background: #171A2F;
+    border-radius: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-withdraw_wrapper {
+    margin: 0 8%;
+  }
+}

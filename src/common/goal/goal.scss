@@ -21,6 +21,10 @@
     flex-direction: column;
     align-items: flex-end;
 
+    img {
+      width: 80%;
+    }
+
     &-title {
       text-transform: uppercase;
       background: linear-gradient(88.43deg, #53CDEF 0%, #467CD7 100%);
@@ -34,8 +38,8 @@
     &-text {
       font-style: normal;
       font-weight: 400;
-      font-size: 21px;
-      line-height: 29px;
+      font-size: 19px;
+      line-height: 24px;
       display: flex;
       align-items: center;
       text-transform: uppercase;
@@ -56,11 +60,34 @@
       }
     }
 
-    &:last-child {
+    &:first-child {
       margin-bottom: 120px;
       img {
         margin-bottom: 80px;
       }
     }
+  }
+}
+
+@media (max-width: 600px) {
+  .goal_item:first-child {
+    flex-direction: column !important;
+  }
+
+  .goal_wrapper {
+    margin-top: -40px;
+    background-image: none !important;
+  }
+
+  .goal_item-title {
+    font-size: 24px !important;
+  }
+
+  .goal_item-text {
+    font-size: 14px !important;
+  }
+
+  .goal_item:last-child {
+    margin-bottom: 80px !important;
   }
 }

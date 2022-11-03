@@ -1,7 +1,38 @@
-.charges_table_header {
+.charges_withdraw {
+  background: linear-gradient(87.57deg, #3F87F6 0%, #4CE9C1 94.44%);
+  border-radius: 32px;
+  padding: 4px 16px;
+
+  font-weight: 700;
   font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  color: #FAFCFD;
+  width: fit-content;
+
+  margin-left: auto;
+  margin-top: 20px;
+
+  transition: 0.3s;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}
+
+.alreadyWithdraw {
+  border-radius: 50% !important;
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.charges_table_header {
+  font-size: 10px;
   display: grid;
-  grid-template-columns: 20% 18% 5% 10% 12% 12% 10% !important;
+  grid-template-columns: 2% 14% 24% 5% 12% 10% 12% 10% !important;
   gap: 16px;
   color: #898B96;
   margin: 20px 0;
@@ -11,11 +42,50 @@
   flex-direction: row;
   display: grid;
   gap: 16px;
-  grid-template-columns: 20% 18% 5% 10% 12% 12% 12% !important;
+  grid-template-columns: 2% 14% 24% 5% 12% 10% 12% 10% !important;
   font-size: 14px;
   margin: 16px 0;
+  text-overflow: ellipsis;
+
+  &_select {
+    border: 1px solid #467CD7;
+    height: 12px;
+    width: 12px;
+    align-self: center !important;
+    border-radius: 2px;
+    transition: 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      background: #0f2467;
+    }
+  }
+
+  &_select.selected {
+    position: relative;
+    background: #467CD7;
+
+    &:before {
+      bottom: 5px;
+      right: 2px;
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      content: '\2713';
+      font-size: 14px;
+    }
+  }
 
   div {
     align-self: flex-end;
+    overflow: hidden;
+    font-size: 12px;
+    text-overflow: ellipsis !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .charges_table_item div {
+    font-size: 8px !important;
   }
 }

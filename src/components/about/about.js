@@ -6,12 +6,12 @@ import logo from './assets/logo.png';
 import logoText from './assets/logo-text.png';
 import background from './assets/background.png';
 import pros from './assets/pros.png';
-import plus from './assets/plus.png';
+import plus from './assets/tick.png';
 import {Goal} from "../../common/goal/goal";
 
 const DEFAULT_CLASSNAME = 'about';
 
-const prosItems = ['Начьнёшь развиваться в трендовом и прибыльным бизнесе', 'Поднимешь свою личную эффективность', 'Окружишь себя амбициозными и целеустремлёнными людьми', 'Изменишь свою жизнь к лучшему'];
+const prosItems = ['Начнёшь развиваться в трендовом и прибыльным бизнесе', 'Поднимешь свою личную эффективность', 'Окружишь себя амбициозными и целеустремлёнными людьми', 'Изменишь свою жизнь к лучшему'];
 
 export const About = () => {
     return (
@@ -24,9 +24,6 @@ export const About = () => {
                 <div className={`${DEFAULT_CLASSNAME}_logo-text`}>
                     <img src={logoText} alt={'about-logo-text'} />
                 </div>
-                {/*<div className={`${DEFAULT_CLASSNAME}_partners`}>{"Наши Партнеры"}</div>*/}
-                {/*<img src={alfaTest} alt={'alfa-test'} className={`${DEFAULT_CLASSNAME}_alfa`} />*/}
-
                 <div className={`${DEFAULT_CLASSNAME}_why`}>{"C нами ты"}</div>
                 <div className={`${DEFAULT_CLASSNAME}_pros`}>
                     <div className={`${DEFAULT_CLASSNAME}_pros_items`}>

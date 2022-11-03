@@ -4,15 +4,22 @@ import './newbie.scss';
 
 import newbie from './newbie.png';
 import { useEffect } from "react";
+import {useNavigate} from "react-router-dom";
 
 const DEFAULT_CLASSNAME = 'newbie';
 
-export const Newbie = () => {
-    // const [videos, setVideos] = useState([]);
+export const Newbie = ({ isVerified }) => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isVerified) {
+            navigate('/app/settings');
+        }
+    }, [isVerified])
 
     useEffect(() => {
         const TOKEN = sessionStorage.getItem('accessToken');
-        fetch('http://trifecta.by:5000/api/VideoTemplate/GetVideos', {
+        fetch('https://trifecta.by/api/VideoTemplate/GetVideos', {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
@@ -29,21 +36,21 @@ export const Newbie = () => {
                 <div className={`${DEFAULT_CLASSNAME}_item`}>
                     <img src={newbie} alt={'video'} />
                     <div className={`${DEFAULT_CLASSNAME}_item_text`}>
-                        <div className={`${DEFAULT_CLASSNAME}_item_title`}>{"Название видео"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_item_title`}>{"День 1"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_item_text_content`}>{"Описание ролика (Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer tookLetraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.)"}</div>
                     </div>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_item`}>
                     <img src={newbie} alt={'video'} />
                     <div className={`${DEFAULT_CLASSNAME}_item_text`}>
-                        <div className={`${DEFAULT_CLASSNAME}_item_title`}>{"Название видео"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_item_title`}>{"День 2"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_item_text_content`}>{"Описание ролика (Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer tookLetraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.)"}</div>
                     </div>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_item`}>
                     <img src={newbie} alt={'video'} />
                     <div className={`${DEFAULT_CLASSNAME}_item_text`}>
-                        <div className={`${DEFAULT_CLASSNAME}_item_title`}>{"Название видео"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_item_title`}>{"День 3"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_item_text_content`}>{"Описание ролика (Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer tookLetraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.)"}</div>
                     </div>
                 </div>

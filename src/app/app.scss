@@ -350,6 +350,7 @@
     font-size: 32px;
     line-height: 24px;
     color: #ffffff;
+    margin-right: 40px;
     transition: 0.3s;
 
     &:hover {
@@ -528,12 +529,8 @@
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 600px) {
   .trifecta-app_content_cabinet_packages {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 16px 0 16px 16px;
   }
 
@@ -585,7 +582,6 @@
 
 .menu_closed {
   opacity: 0;
-  left: -450px;
+  left: -320px;
   transition: 0.3s;
-  padding: 0;
 }

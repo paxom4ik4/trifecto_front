@@ -81,20 +81,6 @@ export const Withdraw = ({ isVerified }) => {
             .then(data => setUserData(data));
     }, []);
 
-    const translateObj = {
-        "Принято": "Accept",
-        "В обработке": "Pending",
-        "Отклонено": "Failed",
-        "Готово к выводу": "ReadyForWithdraw",
-    }
-
-    const translateObj2 = {
-        "Accept": "Принято",
-        "Pending": "В обработке",
-        "Failed": "Отклонено",
-        "ReadyForWithdraw": "Готово к выводу",
-    };
-
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             {userData ? <>
@@ -124,10 +110,10 @@ export const Withdraw = ({ isVerified }) => {
                         <div className={`${DEFAULT_CLASSNAME}_header_controls`}>
                             <div>
                                 <label htmlFor={'status'}>{"status"}</label>
-                                <select onChange={(e) => setTransactionStatus(e.currentTarget.value === "Все" ? null : translateObj[e.currentTarget.value])} id={"status"}>
+                                <select onChange={(e) => setTransactionStatus(e.currentTarget.value === "Все" ? null : e.currentTarget.value)} id={"status"}>
                                     <option value={null}>{"Все"}</option>
-                                    <option value={"Принято"}>{"Приянто"}</option>
-                                    <option value={"Отклонено"}>{"Отклонено"}</option>
+                                    <option value={1}>{"Accept"}</option>
+                                    <option value={2}>{"Failed"}</option>
                                 </select>
                             </div>
                             <div>
@@ -152,7 +138,7 @@ export const Withdraw = ({ isVerified }) => {
                         {withdraws.length ? withdraws.map(item => (
                             <div className={`${DEFAULT_CLASSNAME}_table_item`}>
                                 <div>{item.cardCode}</div>
-                                <div>{translateObj2[item.status]}</div>
+                                <div>{item.status}</div>
                                 <div>{item.amount}</div>
                                 <div>{item.dateTime.slice(0, 10)}</div>
                             </div>

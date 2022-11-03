@@ -107,7 +107,7 @@ export const Progress = ({ isVerified }) => {
                                         <div className={`${DEFAULT_CLASSNAME}_bar_content`}>
                                             <div className={`${DEFAULT_CLASSNAME}_bar_content_progress`}
                                                  style={
-                                                    { width: `${userData?.autoBonusProgress.baseLevel.level / 10 * 100}%`, background: userData?.autoBonusProgress.baseLevel.level / 10 * 100 >= 100 && "linear-gradient(87.57deg, #3F87F6 0%, #4CE9C1 94.44%)"}
+                                                    { width: `${userData?.autoBonusProgress.baseLevel.level / 10 * 100}%`, background: userData?.autoBonusProgress.baseLevel.level / 10 * 100 === 100 && "linear-gradient(87.57deg, #3F87F6 0%, #4CE9C1 94.44%)"}
                                                 }
                                             />
                                         </div>
@@ -118,7 +118,7 @@ export const Progress = ({ isVerified }) => {
                                         <div className={`${DEFAULT_CLASSNAME}_bar_content`}>
                                             <div className={`${DEFAULT_CLASSNAME}_bar_content_progress`}
                                                  style={
-                                                    { width: `${userData?.autoBonusProgress.currentMonthlyTurnover / userData?.autoBonusProgress.requiredMonthlyTurnoverToNextLevel * 100}%`, background: userData?.autoBonusProgress.currentMonthlyTurnover / userData?.autoBonusProgress.requiredMonthlyTurnoverToNextLevel * 100 >= 100 && "linear-gradient(87.57deg, #3F87F6 0%, #4CE9C1 94.44%)"}
+                                                    { width: `${userData?.autoBonusProgress.currentMonthlyTurnover / userData?.autoBonusProgress.requiredMonthlyTurnoverToNextLevel * 100}%`, background: userData?.autoBonusProgress.currentMonthlyTurnover / userData?.autoBonusProgress.requiredMonthlyTurnoverToNextLevel * 100 && "linear-gradient(87.57deg, #3F87F6 0%, #4CE9C1 94.44%)"}
                                                 }
                                             />
                                         </div>
@@ -134,7 +134,7 @@ export const Progress = ({ isVerified }) => {
                                 <div className={`${DEFAULT_CLASSNAME}_bar_title`}>{"Личный оборот текущего месяца"}</div>
                                 <div className={`${DEFAULT_CLASSNAME}_bar_content`}>
                                     <div className={`${DEFAULT_CLASSNAME}_bar_content_progress`}
-                                         style={{width: `${(userData?.travelBonusInfo.userPersonalMonthlyTurnover / userData?.travelBonusInfo.travelBonusTurnover * 100)}%`, background: (userData?.travelBonusInfo.userPersonalMonthlyTurnover / userData?.travelBonusInfo.travelBonusTurnover * 100) >= 100 && "linear-gradient(87.57deg, #3F87F6 0%, #4CE9C1 94.44%)"}}/>
+                                         style={{width: `${(userData?.travelBonusInfo.userPersonalMonthlyTurnover / userData?.travelBonusInfo.travelBonusTurnover * 100)}%`, background: (userData?.travelBonusInfo.userPersonalMonthlyTurnover / userData?.travelBonusInfo.travelBonusTurnover * 100) === 100 && "linear-gradient(87.57deg, #3F87F6 0%, #4CE9C1 94.44%)"}}/>
                                 </div>
                                 <div
                                     className={`${DEFAULT_CLASSNAME}_bar_subtitle`}>{`${userData?.travelBonusInfo.userPersonalMonthlyTurnover}.00$ / ${userData?.travelBonusInfo.travelBonusTurnover}.00$`}</div>

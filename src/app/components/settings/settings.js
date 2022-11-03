@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 
+import Moment from 'react-moment';
 import moment from 'moment';
 
 import './settings.scss';
@@ -336,55 +337,7 @@ export const Settings = ({ userInfo }) => {
             formData.append('ProfilePhoto', event.target.files[0]);
             formData.append('UserId', USER_ID);
 
-            fetch('https://trifecta.by/api/UserDocument/SendPhotoForVerification2', {
-                method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                mode: 'cors', // no-cors, *cors, same-origin
-                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-                credentials: 'same-origin', // include, *same-origin, omit
-                headers: {
-                    'Authorization': `Bearer ${TOKEN}`
-                },
-                redirect: 'follow', // manual, *follow, error
-                referrerPolicy: 'origin', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-                body: formData,
-            })
-                .finally(() => {
-                    toast.info("Фото успешно загружено.")
-                })
-        }
-
-        const uploadCertificate2 = (event) => {
-            const USER_ID = sessionStorage.getItem('userId');
-
-            const formData = new FormData();
-            formData.append('ProfilePhoto', event.target.files[0]);
-            formData.append('UserId', USER_ID);
-
-            fetch('https://trifecta.by/api/UserDocument/SendPhotoForVerification3', {
-                method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                mode: 'cors', // no-cors, *cors, same-origin
-                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-                credentials: 'same-origin', // include, *same-origin, omit
-                headers: {
-                    'Authorization': `Bearer ${TOKEN}`
-                },
-                redirect: 'follow', // manual, *follow, error
-                referrerPolicy: 'origin', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-                body: formData,
-            })
-                .finally(() => {
-                    toast.info("Фото успешно загружено.")
-                })
-        }
-
-        const uploadCertificate3 = (event) => {
-            const USER_ID = sessionStorage.getItem('userId');
-
-            const formData = new FormData();
-            formData.append('ProfilePhoto', event.target.files[0]);
-            formData.append('UserId', USER_ID);
-
-            fetch('https://trifecta.by/api/UserDocument/SendPhotoForVerification4', {
+            fetch('https://trifecta.by/api/UserDocument/SendPhotoForVerification', {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, *cors, same-origin
                 cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -411,6 +364,7 @@ export const Settings = ({ userInfo }) => {
             }).then(res => res.json())
                 .then(data => {
                     if (!(data.success === false)) {
+                        setUserAlreadyUpload(true);
                         setUserData(data);
                     }
                 });
@@ -444,6 +398,11 @@ export const Settings = ({ userInfo }) => {
                             <label>{"Идентификационный номер"}</label>
                             <input value={passportIdentityNumber} onChange={(e) => setPassportIdentityNumber(e.currentTarget.value)} type={"text"} id={"obl"} />
                         </div>
+                        <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
+                            <label >{"Фото паспорта"}</label>
+                            <img src={photoUpload} alt={'upload-photo'} />
+                            <input className={'upload-photo-input'} type={"file"} onChange={(e) => uploadCertificate(e)}/>
+                        </div>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_documents_item_right`}>
                         <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
@@ -454,23 +413,6 @@ export const Settings = ({ userInfo }) => {
                             <label>{"Дата выдачи"}</label>
                             <input value={passportCertificateDateIssue} onChange={(e) => setPassportCertificateDateIssue(e.currentTarget.value)} type={"text"} id={"obl"} />
                         </div>
-                    </div>
-                </div>
-                <div className={`${DEFAULT_CLASSNAME}_profile_item passport_upload`}>
-                    <div>
-                        <label >{"Ваше фото с паспортом"}</label>
-                        <img src={photoUpload} alt={'upload-photo'} />
-                        <input className={'upload-photo-input'} type={"file"} onChange={(e) => uploadCertificate(e)}/>
-                    </div>
-                    <div>
-                        <label >{"Фото 31 страницы"}</label>
-                        <img src={photoUpload} alt={'upload-photo'} />
-                        <input className={'upload-photo-input'} type={"file"} onChange={(e) => uploadCertificate2(e)}/>
-                    </div>
-                    <div>
-                        <label >{"Фото прописки"}</label>
-                        <img src={photoUpload} alt={'upload-photo'} />
-                        <input className={'upload-photo-input'} type={"file"} onChange={(e) => uploadCertificate3(e)}/>
                     </div>
                 </div>
             </div>
@@ -883,49 +825,24 @@ export const Settings = ({ userInfo }) => {
                 })
         }
 
+        console.log(currentUserData)
+        console.log(userAlreadyUpload)
+
         let abjArr;
 
         if (userData) {
             abjArr = Object.entries(userData);
         }
 
-        let uploadImage, uploadImage2, uploadImage3;
-
-        if (userData) {
-            uploadImage = userData?.image;
-            uploadImage2 = userData?.image2;
-            uploadImage3 = userData?.image3;
-        }
-
-        const translateUserData = {
-            "region": "Регион",
-            "locality": "Населенный пункт",
-            "bankStreet": "Улица (банка)",
-            "bankHouseNumber": "Номер дома (банка)",
-            "beneficiaryBankName": "Название банка",
-            "checkingAccount": "Номер счета",
-            "swift": "SWIFT",
-            "disctrict": "Район",
-            "city": "Город",
-            "index": "Индекс",
-            "street": "Улица",
-            "houseNumber": "Номер дома",
-            "flat": "Квартира",
-            "number": "Номер пасспорта",
-            "identityNumber": "Идентификационный номер",
-            "registrationAuthority": "Регистрирующий орган",
-            "certificateDateIssue": "Срок действия документа",
-        }
-
         return (
             <div className={`${DEFAULT_CLASSNAME}_documents`}>
-                {(currentType === "Физическое лицо" && !!uploadImage && !!uploadImage2 && !!uploadImage3) && userData ?
+                {(userAlreadyUpload && userData) ?
                     <>
                         <div className={`${DEFAULT_CLASSNAME}_documents_header`}>{"Список документов"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_documents_verified`} style={{ fontSize: "16px", color: currentUserData?.isVerifiedUser ? "green" : "red"}}>{currentUserData?.isVerifiedUser ? "Документы подтверждены" : "Документы на верификации"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_documents_list`}>
                             {abjArr.map(([key, value]) => {
-                                return key === "image" ? <div style={{ flexDirection: "column"}} className={`${DEFAULT_CLASSNAME}_documents_list_item`}><span>Фото документа</span><img src={`https://trifecta.by${value}`}/></div> : <div className={`${DEFAULT_CLASSNAME}_documents_list_item`}>{translateUserData[key]} : {value}</div>
+                                return key === "image" ? <div style={{ flexDirection: "column"}} className={`${DEFAULT_CLASSNAME}_documents_list_item`}><span>Фото документа</span><img src={`https://trifecta.by${value}`}/></div> : <div className={`${DEFAULT_CLASSNAME}_documents_list_item`}>{key} : {value}</div>
                             })}
                         </div>
                     </> :

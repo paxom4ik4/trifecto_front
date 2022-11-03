@@ -12,11 +12,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-input[type="checkbox"] { -webkit-appearance: checkbox; }
-input[type="radio"] { -webkit-appearance: radio; }
-input[type="submit"], input[type="button"] { -webkit-appearance: button; }
-select { -webkit-appearance:textfield; }
-
 ::-webkit-scrollbar {
     width: 0;
     background-color: #3F87F6;

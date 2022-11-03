@@ -99,80 +99,72 @@ export const Verification = () => {
                     <button className={`${DEFAULT_CLASSNAME}_item_controls_approve`} onClick={() => verifyPerson(user?.userId, user?.requestId)}>{"Подтвердить"}</button>
                     <button className={`${DEFAULT_CLASSNAME}_item_controls_reject`} onClick={() => rejectPerson(user?.userId, user?.requestId)}>{"Отказать"}</button>
                 </div>
-                <div className={`${DEFAULT_CLASSNAME}_item_content`}>
-                    <div className={`${DEFAULT_CLASSNAME}_item_default`}>
-                        <div className={'colored'}>{user?.name}</div>
-                        <div className={`${DEFAULT_CLASSNAME}_item_email`}>{user?.email}</div>
-                        <div>{user?.phoneNumber || "+375 (44) 777-77-77"}</div>
-                    </div>
-                    <div className={`${DEFAULT_CLASSNAME}_item_status`}>
-                        <div>{"Статус лица"}</div>
-                        <div>{getPersonStatus(user?.typeOfEmployment)}</div>
-                        <br />
-                        <div>{"Идентификационный номер"}</div>
-                        <div>{user?.identityNumber}</div>
-                    </div>
-                    {(!user?.number || user?.certificateDateIssue) && <div className={`${DEFAULT_CLASSNAME}_item_account`}>
-                        <>
-                            <div>{"Дата выдачи паспорта"}</div>
-                            <div>{user?.certificateDateIssue}</div>
-                        </>
-                        <br />
-                        <>
-                            <div>{"Серия и номер пасспорта"}</div>
-                            <div>{user?.number}</div>
-                        </>
-                    </div>}
-                    {(userData?.checkingAccount || user?.checkingAccount) && <div className={`${DEFAULT_CLASSNAME}_item_account`}>
-                        {userData?.headFullName && <>
-                            <div>{"Полное наименование"}</div>
-                            <div>{userData?.headFullName}</div>
-                            <br />
-                        </>
-                        }
-                        <div>{"Номер счета"}</div>
-                        <div>{userData?.checkingAccount || user?.checkingAccount}</div>
-                        <br/>
-                        <div>{"BIC/SWIFT"}</div>
-                        <div>{userData?.swift || user?.swift}</div>
-                    </div>}
-                    {user?.verivicationPhoto && <div className={`${DEFAULT_CLASSNAME}_item_photo`}>
-                        {photoFullSize &&
-                            <div className={`${DEFAULT_CLASSNAME}_photoFullSize`}>
-                                <img className={photoFullSize && 'photo-full-size'}
-                                     onClick={() => setPhotoFullSize(!photoFullSize)}
-                                     src={`https://trifecta.by${user?.verivicationPhoto}`}/>
-                            </div>
-                        }
-                        <img onClick={() => setPhotoFullSize(!photoFullSize)} src={`https://trifecta.by${user?.verivicationPhoto}`}/>
-                    </div>}
-                    {userData?.unp && <div className={`${DEFAULT_CLASSNAME}_item_svid`}>
-                        {userData?.certificateNumber && <>
-                            <div>{"На основании"}</div>
-                            <div>{userData?.certificateNumber && "Свидетельства"}</div>
-                        </>
-                        }
-                        <br />
-                        <div>{"УНП"}</div>
-                        <div>{userData?.unp}</div>
-                    </div>}
-                    {userData?.registrationAuthority && <div className={`${DEFAULT_CLASSNAME}_item_svid`}>
-                        {userData?.certificateNumber && <>
-                            <div>{"Регистрирующий орган"}</div>
-                            <div>{userData?.registrationAuthority}</div>
-                        </>
-                        }
-                        <br />
-                        <div>{"Номер свидетельства"}</div>
-                        <div>{userData?.certificateNumber}</div>
-                    </div>}
+                <div className={`${DEFAULT_CLASSNAME}_item_default`}>
+                    <div className={'colored'}>{user?.name}</div>
+                    <div className={`${DEFAULT_CLASSNAME}_item_email`}>{user?.email}</div>
+                    <div>{user?.phoneNumber || "+375 (44) 777-77-77"}</div>
                 </div>
-                <div className={`${DEFAULT_CLASSNAME}_item_photos`}>
-                    <img src={`trifecta.by${userData?.verivicationPhoto2}`} alt={'/'} />
-                    <img src={`trifecta.by${userData?.verivicationPhoto3}`} alt={'/'} />
-                    <img src={`trifecta.by${userData?.verivicationPhoto4}`} alt={'/'} />
-
+                <div className={`${DEFAULT_CLASSNAME}_item_status`}>
+                    <div>{"Статус лица"}</div>
+                    <div>{getPersonStatus(user?.typeOfEmployment)}</div>
+                    <br />
+                    <div>{"Идентификационный номер"}</div>
+                    <div>{user?.identityNumber}</div>
                 </div>
+                {(!user?.number || user?.certificateDateIssue) && <div className={`${DEFAULT_CLASSNAME}_item_account`}>
+                    <>
+                        <div>{"Дата выдачи паспорта"}</div>
+                        <div>{user?.certificateDateIssue}</div>
+                    </>
+                    <br />
+                    <>
+                        <div>{"Серия и номер пасспорта"}</div>
+                        <div>{user?.number}</div>
+                    </>
+                </div>}
+                {(userData?.checkingAccount || user?.checkingAccount) && <div className={`${DEFAULT_CLASSNAME}_item_account`}>
+                    {userData?.headFullName && <>
+                        <div>{"Полное наименование"}</div>
+                        <div>{userData?.headFullName}</div>
+                        <br />
+                    </>
+                    }
+                    <div>{"Номер счета"}</div>
+                    <div>{userData?.checkingAccount || user?.checkingAccount}</div>
+                    <br/>
+                    <div>{"BIC/SWIFT"}</div>
+                    <div>{userData?.swift || user?.swift}</div>
+                </div>}
+                {user?.verivicationPhoto && <div className={`${DEFAULT_CLASSNAME}_item_photo`}>
+                    {photoFullSize &&
+                        <div className={`${DEFAULT_CLASSNAME}_photoFullSize`}>
+                            <img className={photoFullSize && 'photo-full-size'}
+                                 onClick={() => setPhotoFullSize(!photoFullSize)}
+                                 src={`https://trifecta.by${user?.verivicationPhoto}`}/>
+                        </div>
+                    }
+                    <img onClick={() => setPhotoFullSize(!photoFullSize)} src={`https://trifecta.by${user?.verivicationPhoto}`}/>
+                </div>}
+                {userData?.unp && <div className={`${DEFAULT_CLASSNAME}_item_svid`}>
+                    {userData?.certificateNumber && <>
+                        <div>{"На основании"}</div>
+                        <div>{userData?.certificateNumber && "Свидетельства"}</div>
+                    </>
+                    }
+                    <br />
+                    <div>{"УНП"}</div>
+                    <div>{userData?.unp}</div>
+                </div>}
+                {userData?.registrationAuthority && <div className={`${DEFAULT_CLASSNAME}_item_svid`}>
+                    {userData?.certificateNumber && <>
+                        <div>{"Регистрирующий орган"}</div>
+                        <div>{userData?.registrationAuthority}</div>
+                    </>
+                    }
+                    <br />
+                    <div>{"Номер свидетельства"}</div>
+                    <div>{userData?.certificateNumber}</div>
+                </div>}
             </div>
         )
     }

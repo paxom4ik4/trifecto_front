@@ -113,6 +113,20 @@ export const Charges = ({ isVerified }) => {
             .then(data => setWithdraws(data));
     }, [transactionStatus])
 
+    const translateObj = {
+        "Принято": "Accept",
+        "В обработке": "Pending",
+        "Отклонено": "Failed",
+        "Готово к выводу": "ReadyForWithdraw",
+    }
+
+    const translateObj2 = {
+        "Accept": "Принято",
+        "Pending": "В обработке",
+        "Failed": "Отклонено",
+        "ReadyForWithdraw": "Готово к выводу",
+    }
+
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             {userData ? <>
@@ -142,11 +156,12 @@ export const Charges = ({ isVerified }) => {
                     <div className={`${DEFAULT_CLASSNAME}_header_controls`}>
                         <div>
                             <label htmlFor={'status'}>{"Статус"}</label>
-                            <select onChange={(e) => setTransactionStatus(e.currentTarget.value === "Все" ? null : e.currentTarget.value)} id={"status"}>
+                            <select onChange={(e) => setTransactionStatus(e.currentTarget.value === "Все" ? null : translateObj[e.currentTarget.value])} id={"status"}>
                                 <option>{"Все"}</option>
-                                <option value={1}>{"Accept"}</option>
-                                <option value={2}>{"Failed"}</option>
-                                <option value={4}>{"ReadyForWithdraw"}</option>
+                                <option value={"Принято"}>{"Принято"}</option>
+                                <option value={"Отклонено"}>{"Отклонено"}</option>
+                                <option value={"В обработке"}>{"В обработке"}</option>
+                                <option value={"Готово к выводу"}>{"Готово к выводу"}</option>
                             </select>
                         </div>
                     </div>
@@ -168,7 +183,7 @@ export const Charges = ({ isVerified }) => {
                             <div>{item.accuralName}</div>
                             <div>{item.referralName}</div>
                             <div>{item.accuralPercent}</div>
-                            <div>{item.transactionStatus}</div>
+                            <div>{translateObj2[item.transactionStatus]}</div>
                             <div>{item.initialAmount}</div>
                             <div>{item.accuralAmount}</div>
                             <div>{item.accuralDate.slice(0, 10)}</div>

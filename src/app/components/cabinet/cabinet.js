@@ -44,18 +44,18 @@ export const Cabinet = ({ currentPackage }) => {
                     <div className={`${DEFAULT_CLASSNAME}_content_cabinet_withdraw`}>
                         <div className={`${DEFAULT_CLASSNAME}_withdraw_card`}>
                             <div className={`${DEFAULT_CLASSNAME}_withdraw_card_title`}>{"Доступно к выводу"}</div>
-                            <div className={`${DEFAULT_CLASSNAME}_withdraw_card_amount`}>{userData?.availableForWithdrawal.toFixed(2) + "$" || "0"}</div>
-                            <div className={`${DEFAULT_CLASSNAME}_withdraw_card_sub-amount`}>{(userData?.availableForWithdrawal.toFixed(2) * CURRENT_CURRENCY).toFixed(2) + " BYN" || "0"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_withdraw_card_amount`}>{(userData?.availableForWithdrawal.toFixed(2) / CURRENT_CURRENCY.toFixed(2)).toFixed(2) + "$" || "0"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_withdraw_card_sub-amount`}>{userData?.availableForWithdrawal.toFixed(2)+ " BYN" || "0"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_withdraw_card_withdraw`} onClick={() => navigate('/app/withdraw')}>{"Вывести"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_withdraw_card`}>
                             <div className={`${DEFAULT_CLASSNAME}_withdraw_card_title`}>{"Ожидает начисления"}</div>
-                            <div className={`${DEFAULT_CLASSNAME}_withdraw_card_amount`}>{userData?.awaitingAccrual.toFixed(2) + "$"}</div>
-                            <div className={`${DEFAULT_CLASSNAME}_withdraw_card_sub-amount`}>{(userData?.awaitingAccrual.toFixed(2) * CURRENT_CURRENCY).toFixed(2) + " BYN"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_withdraw_card_amount`}>{(userData?.awaitingAccrual.toFixed(2) / CURRENT_CURRENCY.toFixed(2)).toFixed(2) + "$"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_withdraw_card_sub-amount`}>{userData?.awaitingAccrual.toFixed(2) + " BYN"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_withdraw_card`}>
                             <div className={`${DEFAULT_CLASSNAME}_withdraw_card_title`}>{"Доход за всё время"}</div>
-                            <div className={`${DEFAULT_CLASSNAME}_withdraw_card_amount`}>{userData?.allTimeIncome.toFixed(2) + "$"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_withdraw_card_amount`}>{(userData?.allTimeIncome.toFixed(2) / CURRENT_CURRENCY.toFixed(2)).toFixed(2) + "$"}</div>
                         </div>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_content_cabinet_level`}>

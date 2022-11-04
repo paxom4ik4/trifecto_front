@@ -92,6 +92,8 @@ export const Verification = () => {
         }, []);
 
         const [photoFullSize, setPhotoFullSize] = useState(false);
+        const [photoFullSize2, setPhotoFullSize2] = useState(false);
+        const [photoFullSize3, setPhotoFullSize3] = useState(false);
 
         return (
             <div className={`${DEFAULT_CLASSNAME}_item`}>
@@ -168,9 +170,9 @@ export const Verification = () => {
                     </div>}
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_item_photos`}>
-                    <img src={`https://trifecta.by${user?.verivicationPhoto2}`} alt={'/'} />
-                    <img src={`https://trifecta.by${user?.verivicationPhoto3}`} alt={'/'} />
-                    <img src={`https://trifecta.by${user?.verivicationPhoto4}`} alt={'/'} />
+                    <img className={photoFullSize && "photo-full-size"} onClick={() => setPhotoFullSize(!photoFullSize)} src={`https://trifecta.by${user?.verivicationPhoto2}`} alt={'/'} />
+                    <img className={photoFullSize2 && "photo-full-size"} onClick={() => setPhotoFullSize(!photoFullSize2)} src={`https://trifecta.by${user?.verivicationPhoto3}`} alt={'/'} />
+                    <img className={photoFullSize3 && "photo-full-size"} onClick={() => setPhotoFullSize(!photoFullSize3)} src={`https://trifecta.by${user?.verivicationPhoto4}`} alt={'/'} />
                 </div>
             </div>
         )

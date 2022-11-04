@@ -24,12 +24,12 @@ export const TrifectaFooter = () => {
                     <div>{"ООО \"Онлайн прогресс\", УНП 193634118 , 220035, Республика Беларусь, г. Минск, ул. Тимирязева 72-48в"}</div>
                     <div className={`${DEFAULT_CLASSNAME}_content_mg`}>{"Зарегистрированы Минским горисполкомом 05.07.2022"}</div>
                     <div className={`${DEFAULT_CLASSNAME}_content_links`}>
-                        <div className={`${DEFAULT_CLASSNAME}_content_links_item`}>
-                            <a target={"_blank"} href={"https://www.instagram.com/trifecta_company/"}><img src={inst} alt={"img"} /></a>
-                        </div>
-                        <div className={`${DEFAULT_CLASSNAME}_content_links_item`}>
-                            <a target={"_blank"} href={"https://t.me/Trifectacompany"}><img src={tg} alt={"img"} /></a>
-                        </div>
+                        <a target={"_blank"} href={"https://www.instagram.com/trifecta_company/"}><div className={`${DEFAULT_CLASSNAME}_content_links_item`}>
+                            <img src={inst} alt={"img"} />
+                        </div></a>
+                        <a target={"_blank"} href={"https://t.me/Trifectacompany"}><div className={`${DEFAULT_CLASSNAME}_content_links_item`}>
+                            <img src={tg} alt={"img"} />
+                        </div></a>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_content_text`}>
                         <span onClick={() => navigate('/app/cookie')}>{"Cookie-файлы"}</span>

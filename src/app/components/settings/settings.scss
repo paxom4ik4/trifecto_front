@@ -1,6 +1,11 @@
 .settings {
   box-sizing: border-box;
 
+  .upload_hint {
+    margin-top: 12px;
+    font-size: 12px;
+  }
+
   .passport_upload {
     width: fit-content;
     max-width: 800px;

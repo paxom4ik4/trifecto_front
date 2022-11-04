@@ -130,23 +130,23 @@ export const Charges = ({ isVerified }) => {
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             {userData ? <>
-            <div className={`trifecta-app_content_cabinet_withdraw`}>
-                <div className={`trifecta-app_withdraw_card`}>
-                    <div className={`trifecta-app_withdraw_card_title`}>{"Доступно к выводу"}</div>
-                    <div className={`trifecta-app_withdraw_card_amount`}>{userData?.availableForWithdrawal.toFixed(2) + "$" || "0"}</div>
-                    <div className={`trifecta-app_withdraw_card_sub-amount`}>{(userData?.availableForWithdrawal.toFixed(2) * CURRENT_CURRENCY).toFixed(2) + " BYN" || "0"}</div>
-                    <div className={`trifecta-app_withdraw_card_withdraw`}>{"Вывести"}</div>
+                <div className={`trifecta-app_content_cabinet_withdraw`}>
+                    <div className={`trifecta-app_withdraw_card`}>
+                        <div className={`trifecta-app_withdraw_card_title`}>{"Доступно к выводу"}</div>
+                        <div className={`trifecta-app_withdraw_card_amount`}>{(userData?.availableForWithdrawal.toFixed(2) / CURRENT_CURRENCY.toFixed(2)).toFixed(2) + "$" || "0"}</div>
+                        <div className={`trifecta-app_withdraw_card_sub-amount`}>{userData?.availableForWithdrawal.toFixed(2) + " BYN" || "0"}</div>
+                        <div className={`trifecta-app_withdraw_card_withdraw`}>{"Вывести"}</div>
+                    </div>
+                    <div className={`trifecta-app_withdraw_card`}>
+                        <div className={`trifecta-app_withdraw_card_title`}>{"Ожидает начисления"}</div>
+                        <div className={`trifecta-app_withdraw_card_amount`}>{(userData?.awaitingAccrual.toFixed(2) / CURRENT_CURRENCY.toFixed(2)).toFixed(2) + "$"}</div>
+                        <div className={`trifecta-app}_withdraw_card_sub-amount`}>{userData?.awaitingAccrual.toFixed(2) + " BYN"}</div>
+                    </div>
+                    <div className={`trifecta-app_withdraw_card`}>
+                        <div className={`trifecta-app_withdraw_card_title`}>{"Доход за всё время"}</div>
+                        <div className={`trifecta-app_withdraw_card_amount`}>{(userData?.allTimeIncome.toFixed(2) / CURRENT_CURRENCY.toFixed(2)).toFixed(2) + "$"}</div>
+                    </div>
                 </div>
-                <div className={`trifecta-app_withdraw_card`}>
-                    <div className={`trifecta-app_withdraw_card_title`}>{"Ожидает начисления"}</div>
-                    <div className={`trifecta-app_withdraw_card_amount`}>{userData?.awaitingAccrual.toFixed(2) + "$"}</div>
-                    <div className={`trifecta-app}_withdraw_card_sub-amount`}>{(userData?.awaitingAccrual.toFixed(2) * CURRENT_CURRENCY).toFixed(2) + " BYN"}</div>
-                </div>
-                <div className={`trifecta-app_withdraw_card`}>
-                    <div className={`trifecta-app_withdraw_card_title`}>{"Доход за всё время"}</div>
-                    <div className={`trifecta-app_withdraw_card_amount`}>{userData?.allTimeIncome.toFixed(2) + "$"}</div>
-                </div>
-            </div>
             <div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_header`}>
                     <div className={`${DEFAULT_CLASSNAME}_header_title`}>
@@ -173,8 +173,8 @@ export const Charges = ({ isVerified }) => {
                         <div>{"ЗА КОГО"}</div>
                         <div>{"%"}</div>
                         <div>{"СТАТУС"}</div>
-                        <div>{"ИСХОДНАЯ СУММА"}</div>
-                        <div>{"К НАЧИСЛЕНИЮ"}</div>
+                        <div>{"ИСХОДНАЯ СУММА, $"}</div>
+                        <div>{"К НАЧИСЛЕНИЮ, BYN"}</div>
                         <div>{"ДАТА"}</div>
                     </div>
                     {withdraws.length ? withdraws.map(item => (

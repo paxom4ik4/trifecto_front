@@ -28,6 +28,8 @@ export const Settings = ({ userInfo }) => {
 
     const sections = ["Профиль", "Безопасность и вход", "Проверка документов"];
 
+    const [dataChanges, setDataChanges] = useState(1);
+
     useEffect(() => {
         const TOKEN = sessionStorage.getItem('accessToken');
 
@@ -45,7 +47,7 @@ export const Settings = ({ userInfo }) => {
                 body: uploadedFile,
             })
                 .then(res => res.json())
-                .then(data => console.log(data))
+                .then(data => setDataChanges(dataChanges))
                 .finally(() => {
                     setUploadedFile(null);
                 })
@@ -65,7 +67,7 @@ export const Settings = ({ userInfo }) => {
         const dateOfBirth = moment(new Date(userInfo?.dateOfBirth)).format("DD / MM / YYYY");
 
         return (
-            <div className={`${DEFAULT_CLASSNAME}_profile`}>
+            !!dataChanges && <div className={`${DEFAULT_CLASSNAME}_profile`}>
                 <div className={`${DEFAULT_CLASSNAME}_profile_left`}>
                     <div className={`${DEFAULT_CLASSNAME}_profile_photo`}>
                         <div style={{ backgroundImage: userInfo?.profilePhoto ? `url(https://trifecta.by${userInfo?.profilePhoto})` : `url(${noPhoto})` }} className={`${DEFAULT_CLASSNAME}_profile_photo_image`}></div>
@@ -473,6 +475,7 @@ export const Settings = ({ userInfo }) => {
                         <input className={'upload-photo-input'} type={"file"} onChange={(e) => uploadCertificate3(e)}/>
                     </div>
                 </div>
+                <div className={`${DEFAULT_CLASSNAME}_profile_item upload_hint`}>{"*На всех фото информация должна быть видна и разборчива"}</div>
             </div>
         </>
 
@@ -925,7 +928,7 @@ export const Settings = ({ userInfo }) => {
                         <div className={`${DEFAULT_CLASSNAME}_documents_verified`} style={{ fontSize: "16px", color: currentUserData?.isVerifiedUser ? "green" : "red"}}>{currentUserData?.isVerifiedUser ? "Документы подтверждены" : "Документы на верификации"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_documents_list`}>
                             {abjArr.map(([key, value]) => {
-                                return key === "image" ? <div style={{ flexDirection: "column"}} className={`${DEFAULT_CLASSNAME}_documents_list_item`}><span>Фото документа</span><img src={`https://trifecta.by${value}`}/></div> : <div className={`${DEFAULT_CLASSNAME}_documents_list_item`}>{translateUserData[key]} : {value}</div>
+                                return ["image", "image2", "image3"].includes(key) ? <div style={{ flexDirection: "column"}} className={`${DEFAULT_CLASSNAME}_documents_list_item`}><span>Фото документа</span><img src={`https://trifecta.by${value}`}/></div> : <div className={`${DEFAULT_CLASSNAME}_documents_list_item`}>{translateUserData[key]} : {value}</div>
                             })}
                         </div>
                     </> :

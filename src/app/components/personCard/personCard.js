@@ -66,16 +66,16 @@ export const PersonCard = ({setStructureExpanded, setStructureIds, structureIds,
                             <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Вид пакета"}</div>
                             <div>{userPackage}</div>
                         </div>
-                        <div className={`${DEFAULT_CLASSNAME}_additional_info`}>
-                            <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Личный оборот"}</div>
-                            <div>{turnover + ".00$"}</div>
-                        </div>
                         {/*<div className={`${DEFAULT_CLASSNAME}_additional_info`}>*/}
-                        {/*    <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Оборот первой линии, $"}</div>*/}
-                        {/*    <div>{firstTurnover + ".00$"}</div>*/}
+                        {/*    <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Личный оборот"}</div>*/}
+                        {/*    <div>{turnover + ".00$"}</div>*/}
                         {/*</div>*/}
                         <div className={`${DEFAULT_CLASSNAME}_additional_info`}>
-                            <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Групповой оборот, $"}</div>
+                           <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Месячный оборот"}</div>
+                           <div>{turnover + ".00$"}</div>
+                        </div>
+                        <div className={`${DEFAULT_CLASSNAME}_additional_info`}>
+                            <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Групповой оборот"}</div>
                             <div>{groupTurnover + ".00$"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_additional_info`}>

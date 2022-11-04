@@ -269,7 +269,7 @@ export const Settings = ({ userInfo }) => {
                             <label htmlFor={'email'}>{"Электронный адрес"}</label>
                             <input value={newEmail} onChange={(e) => setNewEmail(e.currentTarget.value)} placeholder={currentUserData?.email} type={"email"} id={"email"} />
                         </div>
-                        <button onClick={() => changeEmailHandler()} disabled={!newEmail.includes('@')} className={`${DEFAULT_CLASSNAME}_security_btn`}>{"Сменить E-male"}</button>
+                        <button onClick={() => changeEmailHandler()} disabled={!newEmail.includes('@')} className={`${DEFAULT_CLASSNAME}_security_btn`}>{"Сменить E-mail"}</button>
                         <div className={'hide-small'}>{"После прохождения модерации данные будут изменены."}</div>
                     </div>
                 </div>

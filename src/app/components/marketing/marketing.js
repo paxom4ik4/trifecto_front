@@ -151,7 +151,7 @@ export const Marketing = ({ currentPackage }) => {
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_modal_buy-title`}>{"Способ оплаты:"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_modal_btns`}>
-                            <button disabled={!agreement || !agreement2 || !agreement3} onClick={() => buyPackageHandlerCash()} className={`${DEFAULT_CLASSNAME}_modal_btn`} >{"НАЛИЧНЫМИ"}</button>
+                            <button disabled={!agreement || !agreement2} onClick={() => buyPackageHandlerCash()} className={`${DEFAULT_CLASSNAME}_modal_btn`} >{"НАЛИЧНЫМИ"}</button>
                             <button onClick={() => {}} disabled={true} className={`${DEFAULT_CLASSNAME}_modal_btn`} >{"КАРТОЙ"}</button>
                         </div>
 

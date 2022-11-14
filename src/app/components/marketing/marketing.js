@@ -21,7 +21,6 @@ export const Marketing = ({ currentPackage }) => {
 
     const [agreement, setAgreement] = useState(false);
     const [agreement2, setAgreement2] = useState(false);
-    const [agreement3, setAgreement3] = useState(false);
 
     const [CURRENT_CURRENCY, setCurrentCurrency] = useState(2.5);
 
@@ -65,7 +64,7 @@ export const Marketing = ({ currentPackage }) => {
     const buyPackageHandlerCash = () => {
         const TOKEN = sessionStorage.getItem('accessToken');
 
-        if (agreement && agreement2 && agreement3 && packageToBuy.price && packageToBuy.name && packageToBuy.id) {
+        if (agreement && agreement2 && packageToBuy.price && packageToBuy.name && packageToBuy.id) {
             fetch("https://trifecta.by/api/Packages/BuyPackageByCash", {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, *cors, same-origin
@@ -147,16 +146,9 @@ export const Marketing = ({ currentPackage }) => {
                         <div className={`${DEFAULT_CLASSNAME}_modal_agreement`}>
                             <input checked={agreement2} onClick={() => setAgreement2(!agreement2)} type={"checkbox"} id={'agreement'} />
                             <label htmlFor={'agreement'}>
-                                <div>{"Я ознакомился с политикой обработки данных и Пользовательским (Партнёрским) соглашением и согласен с их условиями"}</div>
+                                <div>{"Я ознакомился с Пользовательским (Партнёрским) соглашением и согласен с его условиями"}</div>
                             </label>
                         </div>
-                        <div className={`${DEFAULT_CLASSNAME}_modal_agreement`}>
-                            <input checked={agreement3} onClick={() => setAgreement3(!agreement3)} type={"checkbox"} id={'agreement'} />
-                            <label htmlFor={'agreement'}>
-                                <div>{"Я ознакомился с Политикой конфиденциальности компании"}</div>
-                            </label>
-                        </div>
-
                         <div className={`${DEFAULT_CLASSNAME}_modal_buy-title`}>{"Способ оплаты:"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_modal_btns`}>
                             <button disabled={!agreement || !agreement2 || !agreement3} onClick={() => buyPackageHandlerCash()} className={`${DEFAULT_CLASSNAME}_modal_btn`} >{"НАЛИЧНЫМИ"}</button>

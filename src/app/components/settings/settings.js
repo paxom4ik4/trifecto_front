@@ -30,6 +30,8 @@ export const Settings = ({ userInfo }) => {
 
     const [dataChanges, setDataChanges] = useState(1);
 
+    const [uploadedPhoto, setUploadedPhoto] = useState(null);
+
     useEffect(() => {
         const TOKEN = sessionStorage.getItem('accessToken');
 
@@ -57,6 +59,8 @@ export const Settings = ({ userInfo }) => {
     const uploadUserPhoto = (event) => {
         const USER_ID = sessionStorage.getItem('userId');
 
+        setUploadedPhoto(URL.createObjectURL(event.target.files[0]));
+
         const formData = new FormData();
         formData.append('ProfilePhoto', event.target.files[0]);
         formData.append('UserId', USER_ID);
@@ -70,7 +74,7 @@ export const Settings = ({ userInfo }) => {
             !!dataChanges && <div className={`${DEFAULT_CLASSNAME}_profile`}>
                 <div className={`${DEFAULT_CLASSNAME}_profile_left`}>
                     <div className={`${DEFAULT_CLASSNAME}_profile_photo`}>
-                        <div style={{ backgroundImage: userInfo?.profilePhoto ? `url(https://trifecta.by${userInfo?.profilePhoto})` : `url(${noPhoto})` }} className={`${DEFAULT_CLASSNAME}_profile_photo_image`}></div>
+                        <div style={{ backgroundImage: userInfo?.profilePhoto ? `url(https://trifecta.by${userInfo?.profilePhoto})` : `url(${uploadedPhoto ? uploadedPhoto : noPhoto})` }} className={`${DEFAULT_CLASSNAME}_profile_photo_image`}></div>
                         <input type={'file'} alt={'profile-info'} onChange={(event) => uploadUserPhoto(event)}/>
                     </div>
                     {userInfo?.packageName &&
@@ -331,7 +335,13 @@ export const Settings = ({ userInfo }) => {
 
         const TOKEN = sessionStorage.getItem('accessToken');
 
+        const [uploadedCert1, setUploadedCert1] = useState(null);
+        const [uploadedCert2, setUploadedCert2] = useState(null);
+        const [uploadedCert3, setUploadedCert3] = useState(null);
+
         const uploadCertificate = (event) => {
+            setUploadedCert1(URL.createObjectURL(event.target.files[0]));
+
             const USER_ID = sessionStorage.getItem('userId');
 
             const formData = new FormData();
@@ -356,6 +366,8 @@ export const Settings = ({ userInfo }) => {
         }
 
         const uploadCertificate2 = (event) => {
+            setUploadedCert2(URL.createObjectURL(event.target.files[0]));
+
             const USER_ID = sessionStorage.getItem('userId');
 
             const formData = new FormData();
@@ -380,6 +392,8 @@ export const Settings = ({ userInfo }) => {
         }
 
         const uploadCertificate3 = (event) => {
+            setUploadedCert3(URL.createObjectURL(event.target.files[0]));
+
             const USER_ID = sessionStorage.getItem('userId');
 
             const formData = new FormData();
@@ -461,17 +475,17 @@ export const Settings = ({ userInfo }) => {
                 <div className={`${DEFAULT_CLASSNAME}_profile_item passport_upload`}>
                     <div>
                         <label >{"Ваше фото с паспортом"}</label>
-                        <img src={photoUpload} alt={'upload-photo'} />
+                        <img src={uploadedCert1 ? uploadedCert1 : photoUpload} alt={'upload-photo'} />
                         <input className={'upload-photo-input'} type={"file"} onChange={(e) => uploadCertificate(e)}/>
                     </div>
                     <div>
                         <label >{"Фото 31 страницы"}</label>
-                        <img src={photoUpload} alt={'upload-photo'} />
+                        <img src={uploadedCert2 ? uploadedCert2 : photoUpload} alt={'upload-photo'} />
                         <input className={'upload-photo-input'} type={"file"} onChange={(e) => uploadCertificate2(e)}/>
                     </div>
                     <div>
                         <label >{"Фото прописки"}</label>
-                        <img src={photoUpload} alt={'upload-photo'} />
+                        <img src={uploadedCert3 ? uploadedCert3 : photoUpload} alt={'upload-photo'} />
                         <input className={'upload-photo-input'} type={"file"} onChange={(e) => uploadCertificate3(e)}/>
                     </div>
                 </div>

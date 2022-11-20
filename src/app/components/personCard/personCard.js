@@ -7,7 +7,7 @@ import expand from './expand.png';
 
 const DEFAULT_CLASSNAME = 'person-card';
 
-export const PersonCard = ({setStructureExpanded, setStructureIds, structureIds, parentStructureIds, currentLevel, id, userPackage, turnover, groupTurnover, baseLevel}) => {
+export const PersonCard = ({setStructureExpanded, setStructureIds, structureIds, parentStructureIds, currentLevel, id, userPackage, turnover, groupTurnover, mounthlyTurnover, baseLevel}) => {
     const [personData, setPersonData] = useState(null);
     const [expanded, setExpanded] = useState(false);
 
@@ -66,13 +66,13 @@ export const PersonCard = ({setStructureExpanded, setStructureIds, structureIds,
                             <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Вид пакета"}</div>
                             <div>{userPackage}</div>
                         </div>
-                        {/*<div className={`${DEFAULT_CLASSNAME}_additional_info`}>*/}
-                        {/*    <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Личный оборот"}</div>*/}
-                        {/*    <div>{turnover + ".00$"}</div>*/}
-                        {/*</div>*/}
+                        <div className={`${DEFAULT_CLASSNAME}_additional_info`}>
+                            <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Личный оборот"}</div>
+                            <div>{turnover + ".00$"}</div>
+                        </div>
                         <div className={`${DEFAULT_CLASSNAME}_additional_info`}>
                            <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Месячный оборот"}</div>
-                           <div>{turnover + ".00$"}</div>
+                           <div>{mounthlyTurnover + ".00$"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_additional_info`}>
                             <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Групповой оборот"}</div>

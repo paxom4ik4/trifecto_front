@@ -33,7 +33,7 @@ export const Structure = ({ isAdmin }) => {
                 id={currentStructure?.groupOwner.userId}
                 userPackage={currentStructure?.groupOwner.packageType}
                 turnover={currentStructure?.groupOwner.personalTurnover}
-                firstTurnover={currentStructure?.groupOwner.firstLineTurnover}
+                mounthlyTurnover={currentStructure?.groupOwner.mounthlyTurnover}
                 groupTurnover={currentStructure?.groupOwner.groupTurnover}
                 baseLevel={currentStructure?.groupOwner.baseLevel}
                 setStructureExpanded={setStructureExpanded}
@@ -56,7 +56,7 @@ export const Structure = ({ isAdmin }) => {
                             id={item?.groupOwner.userId}
                             userPackage={item?.groupOwner.packageType}
                             turnover={item?.groupOwner.personalTurnover}
-                            firstTurnover={item?.groupOwner.firstLineTurnover}
+                            mounthlyTurnover={item?.groupOwner.mounthlyTurnover}
                             groupTurnover={item?.groupOwner.groupTurnover}
                             baseLevel={item?.groupOwner.baseLevel}
                             setStructureExpanded={() => {}}

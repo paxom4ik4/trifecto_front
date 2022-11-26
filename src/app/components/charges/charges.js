@@ -173,8 +173,8 @@ export const Charges = ({ isVerified }) => {
                         <div>{"ЗА КОГО"}</div>
                         <div>{"%"}</div>
                         <div>{"СТАТУС"}</div>
-                        <div>{"ИСХОДНАЯ СУММА, $"}</div>
-                        <div>{"К НАЧИСЛЕНИЮ, BYN"}</div>
+                        <div>{"ИСХОДНАЯ СУММА ($ / BYN)"}</div>
+                        <div>{"К НАЧИСЛЕНИЮ ($ / BYN)"}</div>
                         <div>{"ДАТА"}</div>
                     </div>
                     {withdraws.length ? withdraws.map(item => (
@@ -184,8 +184,8 @@ export const Charges = ({ isVerified }) => {
                             <div>{item.referralName}</div>
                             <div>{item.accuralPercent}</div>
                             <div>{translateObj2[item.transactionStatus]}</div>
-                            <div>{item.initialAmount}</div>
-                            <div>{item.accuralAmount}</div>
+                            <div>{item.initialAmount + '/' + (item.initialAmount * CURRENT_CURRENCY).toFixed(1)}</div>
+                            <div>{item.accuralAmount.toFixed(0) + '/' + (item.accuralAmount * CURRENT_CURRENCY).toFixed(1)}</div>
                             <div>{item.accuralDate.slice(0, 10)}</div>
                         </div>
                     )): <div className={`${DEFAULT_CLASSNAME}_table-empty`}>{"Начислений не совершалось"}</div>}

@@ -8,6 +8,7 @@ import back from './assets/Subtract.png';
 import start from './assets/start.png';
 import classic from './assets/classic.png';
 import premium from './assets/premium.png';
+import rocket from './assets/rocket.svg';
 
 import trifectaSmall from './assets/trifectaSmall.png';
 import {toast} from "react-toastify";
@@ -164,23 +165,37 @@ export const Marketing = ({ currentPackage }) => {
                 <div className={`${DEFAULT_CLASSNAME}_item`}>
                     <img className={`${DEFAULT_CLASSNAME}_item_background`} src={back} alt={'back'} />
                     <div className={`${DEFAULT_CLASSNAME}_item_content`}>
-                        <div className={`${DEFAULT_CLASSNAME}_item_title`}>{"Пакет СТАРТОВЫЙ"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_item_title`}>{"Пакет Мини"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_item_description`}>
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Team Bonus"}</div>
-                            <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Start Bonus"}</div>
-                            <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Travel Bonus"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_item_footer`}>
-                            <button disabled={['Start', 'Classic', 'Premium'].includes(currentPackage?.name)} className={`${DEFAULT_CLASSNAME}_item_buy`} onClick={() => setPackageToBuy({ price: "199", name: "Пробный", id: "00f1967f-a1f4-706d-7e57-453d605c4747"})}>{['Start', 'Classic', 'Premium'].includes(currentPackage?.name) ? "Купите пакет выше" : "Приобрести"}</button>
-                            <div className={`${DEFAULT_CLASSNAME}_item_price`}>{"399$"}</div>
+                            <button disabled={['Mini', 'Start', 'Classic', 'Premium'].includes(currentPackage?.name)} className={`${DEFAULT_CLASSNAME}_item_buy`} onClick={() => setPackageToBuy({ price: "199", name: "Mini", id: ""})}>{['Mini', 'Start', 'Classic', 'Premium'].includes(currentPackage?.name) ? "Купите пакет выше" : "Приобрести"}</button>
+                            <div className={`${DEFAULT_CLASSNAME}_item_price`}>{"199$"}</div>
                         </div>
                         <img className={`${DEFAULT_CLASSNAME}_item_image`} src={start} alt={'item'} />
                     </div>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_item`}>
                     <img className={`${DEFAULT_CLASSNAME}_item_background`} src={back} alt={'back'} />
+                    <div className={`${DEFAULT_CLASSNAME}_item_content`}>
+                        <div className={`${DEFAULT_CLASSNAME}_item_title`}>{"Пакет Пробный"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_item_description`}>
+                            <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Team Bonus"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Start Bonus"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Travel Bonus"}</div>
+                        </div>
+                        <div className={`${DEFAULT_CLASSNAME}_item_footer`}>
+                            <button disabled={['Start', 'Classic', 'Premium'].includes(currentPackage?.name)} className={`${DEFAULT_CLASSNAME}_item_buy`} onClick={() => setPackageToBuy({ price: "399", name: "Пробный", id: "00f1967f-a1f4-706d-7e57-453d605c4747"})}>{['Start', 'Classic', 'Premium'].includes(currentPackage?.name) ? "Купите пакет выше" : "Приобрести"}</button>
+                            <div className={`${DEFAULT_CLASSNAME}_item_price`}>{"399$"}</div>
+                        </div>
+                        <img className={`${DEFAULT_CLASSNAME}_item_image`} src={classic} alt={'item'} />
+                    </div>
+                </div>
+                <div className={`${DEFAULT_CLASSNAME}_item`}>
+                    <img className={`${DEFAULT_CLASSNAME}_item_background`} src={back} alt={'back'} />
                         <div className={`${DEFAULT_CLASSNAME}_item_content`}>
-                        <div className={`${DEFAULT_CLASSNAME}_item_title`}>{"Пакет КЛАССИК"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_item_title`}>{"Пакет Классик"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_item_description`}>
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Team Bonus"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Level Bonus 50%"}</div>
@@ -190,16 +205,16 @@ export const Marketing = ({ currentPackage }) => {
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Travel Bonus"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_item_footer`}>
-                            <button disabled={['Classic', 'Premium'].includes(currentPackage?.name)} className={`${DEFAULT_CLASSNAME}_item_buy`} onClick={() => setPackageToBuy({ price: "999", name: "Классик", id: "3decbb76-bbc7-e035-e53c-ea10a3d54b16"})}>{['Classic', 'Premium'].includes(currentPackage?.name) ? "Купите пакет выше" : "Приобрести"}</button>
+                            <button disabled={['Classic', 'Premium'].includes(currentPackage?.name)} className={`${DEFAULT_CLASSNAME}_item_buy`} onClick={() => setPackageToBuy({ price: "1199", name: "Классик", id: "3decbb76-bbc7-e035-e53c-ea10a3d54b16"})}>{['Classic', 'Premium'].includes(currentPackage?.name) ? "Купите пакет выше" : "Приобрести"}</button>
                             <div className={`${DEFAULT_CLASSNAME}_item_price`}>{"1199$"}</div>
                         </div>
-                        <img className={`${DEFAULT_CLASSNAME}_item_image`} src={classic} alt={'item'} />
+                        <img className={`${DEFAULT_CLASSNAME}_item_image`} src={premium} alt={'item'} />
                     </div>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_item`}>
                     <img className={`${DEFAULT_CLASSNAME}_item_background`} src={back} alt={'back'} />
                     <div className={`${DEFAULT_CLASSNAME}_item_content`}>
-                        <div className={`${DEFAULT_CLASSNAME}_item_title`}>{"Пакет ПРЕМИУМ"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_item_title`}>{"Пакет Премиум"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_item_description`}>
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Team Bonus"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Level Bonus 100%"}</div>
@@ -211,10 +226,10 @@ export const Marketing = ({ currentPackage }) => {
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Bonus Overall"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_item_footer bigger-margin`}>
-                            <button disabled={['Premium'].includes(currentPackage?.name)} className={`${DEFAULT_CLASSNAME}_item_buy`} onClick={() => setPackageToBuy({ price: "1999", name: "Премиум", id: "0ff93d94-077f-ea49-34f0-3214704f5dbf"})}>{['Premium'].includes(currentPackage?.name) ? "Приобритён" : "Приобрести"}</button>
+                            <button disabled={['Premium'].includes(currentPackage?.name)} className={`${DEFAULT_CLASSNAME}_item_buy`} onClick={() => setPackageToBuy({ price: "2199", name: "Премиум", id: "0ff93d94-077f-ea49-34f0-3214704f5dbf"})}>{['Premium'].includes(currentPackage?.name) ? "Приобритён" : "Приобрести"}</button>
                             <div className={`${DEFAULT_CLASSNAME}_item_price`}>{"2199$"}</div>
                         </div>
-                        <img className={`${DEFAULT_CLASSNAME}_item_image`} src={premium} alt={'item'} />
+                        <img className={`${DEFAULT_CLASSNAME}_item_image`} src={rocket} alt={'item'} />
                     </div>
                 </div>
             </div>

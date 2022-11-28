@@ -270,6 +270,9 @@ export const TrifectaApp = () => {
                                         <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/packages'}><img src={mt} alt={'icon'}/> {"Подтверждение пакетов"}</NavLink>
                                         <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item_badge`}>{adminPackages?.length}</div>
                                     </div>
+                                    <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`}>
+                                        <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/charges'}><img src={nch} alt={'icon'}/> {"Начисления"}</NavLink>
+                                    </div>
                                     <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} onClick={() => logOutHandler()}><img src={exit} alt={'icon'}/> {"Выйти"}</div>
                                 </div>
                             </> : <>

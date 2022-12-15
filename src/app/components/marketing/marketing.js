@@ -31,11 +31,11 @@ export const Marketing = ({ currentPackage }) => {
             .then(data => setCurrentCurrency(data.Cur_OfficialRate))
     }, [])
 
-    useEffect(() => {
-        if ( currentPackage ) {
-            navigate('/app');
-        }
-    }, [currentPackage])
+    // useEffect(() => {
+    //     if ( currentPackage ) {
+    //         navigate('/app');
+    //     }
+    // }, [currentPackage])
 
     const buyPackageHandler = () => {
         const TOKEN = sessionStorage.getItem('accessToken');
@@ -170,7 +170,7 @@ export const Marketing = ({ currentPackage }) => {
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Team Bonus"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_item_footer`}>
-                            <button disabled={['Mini', 'Start', 'Classic', 'Premium'].includes(currentPackage?.name)} className={`${DEFAULT_CLASSNAME}_item_buy`} onClick={() => setPackageToBuy({ price: "199", name: "Mini", id: ""})}>{['Mini', 'Start', 'Classic', 'Premium'].includes(currentPackage?.name) ? "Купите пакет выше" : "Приобрести"}</button>
+                            <button disabled={['Mini', 'Start', 'Classic', 'Premium'].includes(currentPackage?.name)} className={`${DEFAULT_CLASSNAME}_item_buy`} onClick={() => setPackageToBuy({ price: "199", name: "mini", id: "52a45162-08ab-45ba-a94c-5db090806385"})}>{['Mini', 'Start', 'Classic', 'Premium'].includes(currentPackage?.name) ? "Купите пакет выше" : "Приобрести"}</button>
                             <div className={`${DEFAULT_CLASSNAME}_item_price`}>{"199$"}</div>
                         </div>
                         <img className={`${DEFAULT_CLASSNAME}_item_image`} src={start} alt={'item'} />

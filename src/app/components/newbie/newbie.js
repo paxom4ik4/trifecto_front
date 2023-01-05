@@ -1,7 +1,5 @@
 import * as React from 'react';
-
 import './newbie.scss';
-
 import newbie from './newbie.png';
 import { useEffect } from "react";
 import {useNavigate} from "react-router-dom";
@@ -30,9 +28,7 @@ export const Newbie = ({ isVerified }) => {
 
     }, [])
 
-    const openLink = link => {
-        window.open(link, "_blank");
-    }
+    const openLink = link => window.open(link, "_blank");
 
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>

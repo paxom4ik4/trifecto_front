@@ -4,15 +4,23 @@
   border-radius: 30px;
 
   &_item {
+    object-fit: contain;
     padding: 50px;
     margin-bottom: 50px;
     background: #171A2F;
     border-radius: 30px;
     display: flex;
     flex-direction: row;
+    transition: 0.3s;
     justify-content: space-between;
 
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+
     img {
+      object-fit: contain;
       height: 200px;
     }
 

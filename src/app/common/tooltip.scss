@@ -1,0 +1,23 @@
+.tooltip {
+
+  transition: 0.3s;
+
+  &:hover {
+    .tooltip_hovered {
+      top: -24px;
+      padding: 4px;
+      z-index: 1000;
+      background: #171A2F;
+      color: #FAFCFD;
+      left: 40%;
+      width: fit-content;
+      opacity: 1;
+      visibility: initial;
+    }
+  }
+
+  &_hovered {
+    position: absolute;
+    visibility: hidden;
+  }
+}

@@ -178,14 +178,14 @@ export const Charges = ({ isVerified }) => {
                         <div>{"ДАТА"}</div>
                     </div>
                     {withdraws.length ? withdraws.map(item => (
-                        <div className={`charges_table_item`} style={ !item.isAvailable && { pointerEvents: "none", opacity: '0.5'}}>
+                        <div className={`charges_table_item`} style={{ pointerEvents: !item.isAvailable && "none", opacity: !item.isAvailable && '0.5'}}>
                                 <div className={`charges_table_item_select ${!!selectedCharges.includes(item.id) && 'selected'} ${item.transactionStatus === 'Accept' && 'alreadyWithdraw selected'}`} onClick={() => chargeHandler(item)}/>
                             <div>{item.accuralName}</div>
                             <div>{item.referralName}</div>
                             <div>{item.accuralPercent}</div>
                             <div>{translateObj2[item.transactionStatus]}</div>
                             <div>{item.initialAmount + '/' + (item.initialAmount * CURRENT_CURRENCY).toFixed(1)}</div>
-                            <div>{item.accuralAmount.toFixed(0) + '/' + (item.accuralAmount * CURRENT_CURRENCY).toFixed(1)}</div>
+                            <div>{(item?.accuralAmountUSD).toFixed(1) + '/' + item.accuralAmount.toFixed(0)}</div>
                             <div>{item.accuralDate.slice(0, 10)}</div>
                         </div>
                     )): <div className={`${DEFAULT_CLASSNAME}_table-empty`}>{"Начислений не совершалось"}</div>}

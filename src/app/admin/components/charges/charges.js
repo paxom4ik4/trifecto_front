@@ -3,6 +3,7 @@ import * as React from 'react';
 import './charges.scss';
 import {useEffect, useState} from "react";
 import {toast} from "react-toastify";
+import {Tooltip} from "../../../common/tooltip";
 
 const DEFAULT_CLASSNAME = 'admin-charges';
 
@@ -10,6 +11,7 @@ export const AdminCharges = () => {
     const TOKEN = sessionStorage.getItem('accessToken');
 
     const [withdraws, setWithdraws] = useState([]);
+    const [CURRENT_CURRENCY, setCurrentCurrency] = useState(2.5);
 
     useEffect(() => {
         fetch(`https://trifecta.by/api/Administrator/GetAccuralHistory`, {
@@ -20,6 +22,10 @@ export const AdminCharges = () => {
         })
             .then(res => res.json())
             .then(data => setWithdraws(data));
+
+        fetch("https://www.nbrb.by/api/exrates/rates/431")
+          .then(res => res.json())
+          .then(data => setCurrentCurrency(data.Cur_OfficialRate))
     }, [])
 
     const [selectedCharges, setSelectedCharges] = useState([]);
@@ -77,10 +83,10 @@ export const AdminCharges = () => {
                                 <div className={`charges_table_item_select ${item.selected && 'confirmed'} ${!!selectedCharges.includes(item.id) && 'selected'}`} onClick={() => chargeHandler(item)}/>
                                 <div>{item.accuralName}</div>
                                 <div>{item.userEmail}</div>
-                                <div>{item.referralName}</div>
+                                <Tooltip text={item.referralName}><div>{item.referralName}</div></Tooltip>
                                 <div>{item.accuralPercent}</div>
-                                <div>{item.initialAmount}</div>
-                                <div>{item.accuralAmount}</div>
+                                <div>{item.initialAmount + ' / ' + (item.initialAmount * CURRENT_CURRENCY).toFixed(1)}</div>
+                                <div>{(item?.accuralAmountUSD).toFixed(1) + ' / ' + item.accuralAmount.toFixed(0)}</div>
                                 <div>{item.accuralDate.slice(0, 10)}</div>
                             </div>
                         )): <div className={`${DEFAULT_CLASSNAME}_table-empty`}>{"Начислений не совершалось"}</div>}

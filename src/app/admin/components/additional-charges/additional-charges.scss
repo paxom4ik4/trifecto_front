@@ -1,0 +1,101 @@
+.additional-charges {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #FAFCFD;
+
+
+  .withdraw_table {
+    padding: 25px 50px;
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+    background: #252C40;
+    border-radius: 20px;
+    margin-top: 24px;
+    font-size: 14px !important;
+
+    &_item {
+      flex-direction: row;
+      display: grid;
+      grid-template-columns: 20% 25% 7% 18% 18% 20%;
+      margin: 16px 0;
+    }
+
+    &_header {
+      font-size: 14px;
+      display: grid;
+      grid-template-columns: 20% 25% 7% 18% 18% 20%;
+      color: #898B96;
+      margin: 20px 0;
+    }
+  }
+
+  &_panel {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    background: #252C40;
+    border-radius: 20px;
+    padding: 12px 24px 20px;
+
+    &_bonus {
+      width: 25%;
+      background: linear-gradient(92.97deg, #0F2467 0%, #1D5CAC 100%);
+      border-radius: 10px;
+      color: #FAFCFD;
+      padding: 4px 24px;
+      font-size: 12px;
+      height: 26px !important;
+      box-sizing: border-box;
+      margin-right: 24px;
+    }
+
+    &_input {
+      width: 25%;
+
+      input {
+        border-radius: 10px;
+        border: 1px solid #467CD7;
+        background: transparent;
+        padding: 4px 12px;
+        margin-top: 10px;
+        color: #FAFCFD;
+      }
+
+      label {
+        font-size: 14px;
+      }
+    }
+
+    &_confirm {
+      width: 18%;
+      background: linear-gradient(87.57deg, #3F87F6 0%, #4CE9C1 94.44%);
+      border-radius: 32px;
+      height: 30px;
+      color: #FAFCFD;
+      padding: 4px 24px;
+    }
+  }
+
+  &_title {
+    font-weight: 700;
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  &_wrapper {
+    padding: 50px;
+    width: 70%;
+    margin: 0 0 0 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    background: #171A2F;
+    border-radius: 30px;
+  }
+}

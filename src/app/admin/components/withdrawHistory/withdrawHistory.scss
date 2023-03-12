@@ -1,17 +1,18 @@
-.admin-withdraw_item_expand.expanded {
+.admin-withdrawHistory_item_expand.expanded {
   transform: rotate(360deg) !important;
   transition: 0.3s;
 }
 
-.admin-withdraw {
+.admin-withdrawHistory {
   width: 100%;
-  height: 100%;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   color: #FAFCFD;
 
   &_approve {
+    text-align: center;
     padding: 4px 16px;
     color: #FAFCFD;
     font-weight: 700;
@@ -28,6 +29,7 @@
   }
 
   &_reject {
+    text-align: center;
     padding: 4px 16px;
     color: #FAFCFD;
     font-weight: 700;
@@ -57,39 +59,53 @@
     z-index: 1;
     position: relative;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    box-sizing: border-box;
     justify-content: space-between;
     padding: 20px 80px 70px 30px;
     background: #252C40;
     border-radius: 20px;
-    margin-bottom: 20px;
+    width: 100%;
+    margin: 0 0 32px;
+    transition: 0.3s;
+
+    div:first-child {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
 
     &_full.hidden {
-      top: 80%;
-      opacity: 0;
+      display: none !important;
+      top: 0;
       transition: 0.1s;
     }
 
 
     &_full {
-      position: absolute;
-      top: calc(100% - 50px);
+      display: flex !important;
+      flex-direction: column !important;
+      width: 100% !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      margin-top: 20px;
       z-index: -1;
       background: #323B55;
       border-radius: 20px;
       padding: 25px;
       left: 0;
-      width: calc(100% - 50px);
-      height: fit-content;
       transition: 0.3s;
 
       div {
-        display: grid;
-        grid-template-columns: 34% 37% 18% 12%;
-        margin: 8px 0;
-        font-size: 12px;
+        width: 100% !important;
+        display: grid !important;
+        grid-template-columns: 34% 37% 18% 12% !important;
+        margin: 8px 0 !important;
+        font-size: 12px !important;
 
         span {
+          text-align: left !important;
           white-space: nowrap;
           text-overflow: ellipsis;
           overflow: hidden;
@@ -137,6 +153,7 @@
     z-index: 10;
     background: #171A2F;
     border-radius: 30px;
+    height: 100% !important;
   }
 }
 

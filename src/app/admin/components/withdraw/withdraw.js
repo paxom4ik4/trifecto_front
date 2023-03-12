@@ -80,7 +80,8 @@ export const Withdraw = () => {
                                         return (
                                             <div>
                                                 <span>{accural.accuralName}</span>
-                                                <span>{item.email}</span>
+                                                <span>{accural?.referralName}</span>
+                                                <span>{new Date(accural?.accuralDate).toLocaleDateString()}</span>
                                                 <span>{accural.accuralAmount + " BYN"}</span>
                                             </div>
                                         )
@@ -104,7 +105,7 @@ export const Withdraw = () => {
                                     <div>{item.checkingAccount}</div>
                                     <br />
                                     <div>{"Дата инициализации вывода"}</div>
-                                    <div>{item.date}</div>
+                                    <div>{new Date(item.date).toDateString()}</div>
                                 </div>
                             </div>
                         )

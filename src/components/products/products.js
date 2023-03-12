@@ -52,8 +52,11 @@ export const Products = () => {
                     <div className={`${DEFAULT_CLASSNAME}_item_box`}>
                         <img src={bubbles} alt={'bubbles'} className={`${DEFAULT_CLASSNAME}_bubbles`}/>
                         <div>
-                            <div className={`${DEFAULT_CLASSNAME}_item_box_title`}>{"Marketрlace"}</div>
-                            <div className={`${DEFAULT_CLASSNAME}_item_box_text`}>{"Платформа самых современных направлений в сфере онлайн образования, с помощью которой ты сможешь развиваться и зарабатывать."}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_item_box_title`}>{"Crypto"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_item_box_text`}>{"Оффлайн обучение в направлении самой\n" +
+                              "актуальной ниши в 21 веке, инвестиций в\n" +
+                              "криптовалюту. Информация , с помощью которой\n" +
+                              "ты сможешь развиваться и зарабатывать."}</div>
                         </div>
                     </div>
                     <img src={marketplace} alt={'img'} />

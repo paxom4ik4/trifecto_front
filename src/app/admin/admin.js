@@ -7,6 +7,8 @@ import { ContactInfo } from "./components/contactInfo/contactInfo";
 import { Structure } from "../components/structure/structure";
 import { Packages } from "./components/packages/packages";
 import { AdminCharges } from "./components/charges/charges";
+import { WithdrawHistory } from "./components/withdrawHistory/withdrawHistory";
+import {AdditionalCharges} from "./components/additional-charges/additional-charges";
 
 const DEFAULT_CLASSNAME = 'admin';
 
@@ -16,10 +18,12 @@ export const Admin = () => {
             <Routes>
                 <Route path={'/verification'} element={<Verification />} />
                 <Route path={'/withdraw'} element={<Withdraw />} />
+                <Route path={'/withdraw-history'} element={<WithdrawHistory />} />
                 <Route path={'/contact-info'} element={<ContactInfo />} />
                 <Route path={'/structure'} element={<Structure isAdmin />} />
                 <Route path={'/packages'} element={<Packages />} />
                 <Route path={'/charges'} element={<AdminCharges />} />
+                <Route path={'/additional-charges'} element={<AdditionalCharges />} />
             </Routes>
         </div>
     )

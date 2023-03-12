@@ -211,6 +211,7 @@ export const TrifectaApp = () => {
     }, [isAdmin])
 
     const hasUserPackage = !!userInfo?.packageName;
+    const isCryptoUser = userInfo?.packageName === "Crypto";
 
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
@@ -230,6 +231,12 @@ export const TrifectaApp = () => {
                             </div>}
                         </div>
                         {!isAdmin && <>
+                            {currentPackage?.name && <div
+                              className={`${DEFAULT_CLASSNAME}_side-menu_partner`}
+                              onClick={() => navigate('/app/marketing')}
+                            >
+                                {"Улучшить пакет"}
+                            </div>}
                             {
                                 currentPackage?.name ?
                                     <div
@@ -262,6 +269,9 @@ export const TrifectaApp = () => {
                                         <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item_badge`}>{adminWithdraws?.length}</div>
                                     </div>
                                     <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`}>
+                                        <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/withdraw-history'}><img src={wd} alt={'icon'}/> {"История вывода"}</NavLink>
+                                    </div>
+                                    <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`}>
                                         <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/contact-info'}><img src={nch} alt={'icon'}/> {"Контактные данные"}</NavLink>
                                         <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item_badge`}>{adminContactInfos?.length}</div>
                                     </div>
@@ -273,21 +283,24 @@ export const TrifectaApp = () => {
                                     <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`}>
                                         <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/charges'}><img src={nch} alt={'icon'}/> {"Начисления"}</NavLink>
                                     </div>
+                                    <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`}>
+                                        <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/additional-charges'}><img src={nch} alt={'icon'}/> {"Доначисления"}</NavLink>
+                                    </div>
                                     <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} onClick={() => logOutHandler()}><img src={exit} alt={'icon'}/> {"Выйти"}</div>
                                 </div>
                             </> : <>
                                 <div className={`${DEFAULT_CLASSNAME}_side-menu_item`}>
                                     <div className={`${DEFAULT_CLASSNAME}_side-menu_item-title`}>{"Меню"}</div>
                                     <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/'}><img src={mc} alt={'icon'}/> {"Мой кабинет"}</NavLink>
-                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!hasUserPackage && 'disabled'}`} to={'/app/withdraw'}><img src={wd} alt={'icon'}/> {"Вывод средств"}</NavLink>
-                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!hasUserPackage && 'disabled'}`} to={'/app/charges'}><img src={nch} alt={'icon'}/> {"Мои начисления"}</NavLink>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${(!hasUserPackage || isCryptoUser) && 'disabled'}`} to={'/app/withdraw'}><img src={wd} alt={'icon'}/> {"Вывод средств"}</NavLink>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${(!hasUserPackage || isCryptoUser) && 'disabled'}`} to={'/app/charges'}><img src={nch} alt={'icon'}/> {"Мои начисления"}</NavLink>
                                 </div>
                                 <div className={`${DEFAULT_CLASSNAME}_side-menu_item`}>
                                     <div className={`${DEFAULT_CLASSNAME}_side-menu_item-title`}>{"Trifecta"}</div>
-                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!hasUserPackage && 'disabled'}`} to={'/app/structure'}><img src={st} alt={'icon'}/> {"Структура"}</NavLink>
-                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!hasUserPackage && 'disabled'}`} to={'/app/progress'}><img src={pc} alt={'icon'}/> {"Прогресс"}</NavLink>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${(!hasUserPackage || isCryptoUser) && 'disabled'}`} to={'/app/structure'}><img src={st} alt={'icon'}/> {"Структура"}</NavLink>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${(!hasUserPackage || isCryptoUser) && 'disabled'}`} to={'/app/progress'}><img src={pc} alt={'icon'}/> {"Прогресс"}</NavLink>
                                     {!currentPackage && <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/marketing'}><img src={mt} alt={'icon'}/> {currentPackage ? "Улучшить пакет" : "Стать партнером"}</NavLink>}
-                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!hasUserPackage && 'disabled'}`} to={'/app/newbie'}><img src={lNew} alt={'icon'}/> {"Запуск новичка"}</NavLink>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!hasUserPackage && 'disabled'}`} to={'/app/newbie'}><img src={lNew} alt={'icon'}/> {"Обучающий материал"}</NavLink>
                                     <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/info'}><img src={inf} alt={'icon'}/> {"Инфо"}</NavLink>
                                 </div>
                                 <div className={`${DEFAULT_CLASSNAME}_side-menu_item`}>
@@ -303,10 +316,10 @@ export const TrifectaApp = () => {
                         <Route path={'/'} element={<Cabinet currentPackage={currentPackage} />} />
                         <Route path={'/marketing'} element={<Marketing currentPackage={currentPackage} />} />
                         <Route path={!hasUserPackage ? '#' : '/newbie'} element={<Newbie isVerified={hasUserPackage} />} />
-                        <Route path={!hasUserPackage ? '#' : '/withdraw'} element={<Withdraw isVerified={hasUserPackage} />} />
-                        <Route path={!hasUserPackage ? '#' : '/charges'} element={<Charges isVerified={IS_VERIFIED} />} />
-                        <Route path={!hasUserPackage ? '#' : '/structure'} element={<Structure isVerified={hasUserPackage} />} />
-                        <Route path={!hasUserPackage ? '#' : '/progress'} element={<Progress isVerified={hasUserPackage} />} />
+                        <Route path={(!hasUserPackage || isCryptoUser) ? '/app/' : '/withdraw'} element={<Withdraw isVerified={hasUserPackage} />} />
+                        <Route path={(!hasUserPackage || isCryptoUser) ? '/app/' : '/charges'} element={<Charges isVerified={IS_VERIFIED} />} />
+                        <Route path={(!hasUserPackage || isCryptoUser) ? '/app/' : '/structure'} element={<Structure isVerified={hasUserPackage} />} />
+                        <Route path={(!hasUserPackage || isCryptoUser) ? '/app/' : '/progress'} element={<Progress isVerified={hasUserPackage} />} />
                         <Route path={'/info'} element={<Info />} />
                         <Route path={'/settings'} element={<Settings userInfo={userInfo} />} />
                         <Route path={'/help'} element={<Help />} />

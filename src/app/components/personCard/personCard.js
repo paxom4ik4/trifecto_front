@@ -67,7 +67,7 @@ export const PersonCard = ({setStructureExpanded, setStructureIds, structureIds,
                             <div>{userPackage}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_additional_info`}>
-                            <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Личный оборот"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Групповой оборот"}</div>
                             <div>{turnover + ".00$"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_additional_info`}>
@@ -75,7 +75,7 @@ export const PersonCard = ({setStructureExpanded, setStructureIds, structureIds,
                            <div>{mounthlyTurnover + ".00$"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_additional_info`}>
-                            <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Групповой оборот"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Личный оборот"}</div>
                             <div>{groupTurnover + ".00$"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_additional_info`}>

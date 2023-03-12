@@ -102,7 +102,7 @@ export const AdditionalCharges = () => {
             <div className={`withdraw_table_item`}>
               <div>{item?.bonusName}</div>
               <div>{item?.email}</div>
-              <div>{"40 %"}</div>
+              <div>{`${item?.percent || 40 }%`}</div>
               <div>{item?.baseSum}</div>
               <div>{item?.finalSum}</div>
               <div>{new Date(item?.date).toLocaleDateString()}</div>

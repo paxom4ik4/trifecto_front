@@ -7,9 +7,9 @@ import expand from './expand.png';
 
 const DEFAULT_CLASSNAME = 'person-card';
 
-export const PersonCard = ({setStructureExpanded, setStructureIds, structureIds, parentStructureIds, currentLevel, id, userPackage, turnover, groupTurnover, mounthlyTurnover, baseLevel}) => {
+export const PersonCard = ({setStructureExpanded, cardExpanded = false, setStructureIds, structureIds, parentStructureIds, currentLevel, id, userPackage, turnover, groupTurnover, mounthlyTurnover, baseLevel}) => {
     const [personData, setPersonData] = useState(null);
-    const [expanded, setExpanded] = useState(false);
+    const [expanded, setExpanded] = useState(cardExpanded);
 
     const TOKEN = sessionStorage.getItem('accessToken');
 

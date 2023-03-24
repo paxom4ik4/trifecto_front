@@ -3,13 +3,15 @@ import './newbie.scss';
 import firstDay from '../../assets/firstDay.png';
 import secondDay from '../../assets/secondDay.png';
 import thirdDay from '../../assets/trirdDay.png';
-import { useEffect } from "react";
+import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 
 const DEFAULT_CLASSNAME = 'newbie';
 
-export const Newbie = ({ isVerified }) => {
+export const Newbie = ({ isVerified, isCryptoUser }) => {
     const navigate = useNavigate();
+
+    const [cryptoMaterials, setCryptoMaterials] = useState([]);
 
     useEffect(() => {
         if (!isVerified) {
@@ -19,16 +21,15 @@ export const Newbie = ({ isVerified }) => {
 
     useEffect(() => {
         const TOKEN = sessionStorage.getItem('accessToken');
-        fetch('https://trifecta.by/api/VideoTemplate/GetVideos', {
+        fetch('https://trifecta.by/api/VideoTemplate/GetCryptoLessons', {
             headers: {
                 'Accept': '*/*',
                 'Authorization': `Bearer ${TOKEN}`
             }
         })
-            .then(res => res.json())
-            .then(data => console.log(data));
-
-    }, [])
+          .then(res => res.json())
+          .then(data => setCryptoMaterials(data));
+    }, []);
 
     const openLink = link => window.open(link, "_blank");
 
@@ -57,6 +58,19 @@ export const Newbie = ({ isVerified }) => {
                     </div>
                 </div>
             </div>
+
+            {isCryptoUser && <>
+                <div className={`${DEFAULT_CLASSNAME}_material-title`}>Crypto Обучение</div>
+                <div className={`${DEFAULT_CLASSNAME}_crypto-material`}>
+                    {cryptoMaterials.length >= 1 && cryptoMaterials.map((item) => {
+                        return (
+                          <div className={`${DEFAULT_CLASSNAME}_item`} onClick={() => openLink(item?.item2)}>
+                              <img src={item?.item1} alt={`${item?.item1}_Crypto_material`} />
+                          </div>
+                        )
+                    })}
+                </div>
+            </>}
         </div>
     )
 }

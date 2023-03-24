@@ -21,6 +21,8 @@ const DEFAULT_CLASSNAME = 'settings';
 
 export const Settings = ({ userInfo }) => {
 
+    console.log(userInfo);
+
     const [activeSection, setActiveSection] = useState("Профиль");
 
     const [uploadedFile, setUploadedFile] = useState(null);
@@ -107,7 +109,7 @@ export const Settings = ({ userInfo }) => {
         )
     }
 
-    const Security = () => {
+    const Security = ({ userInfo }) => {
         const USER_ID = sessionStorage.getItem('userId');
         const TOKEN = sessionStorage.getItem('accessToken');
 
@@ -177,8 +179,8 @@ export const Settings = ({ userInfo }) => {
                 })
         }
 
-        const [newPhoneNumber, setNewPhoneNumber] = useState("");
-        const [newEmail, setNewEmail] = useState("");
+        const [newPhoneNumber, setNewPhoneNumber] = useState(userInfo?.phoneNumber || "");
+        const [newEmail, setNewEmail] = useState(userInfo?.email || "");
 
         const changePhoneHandler = () => {
             fetch(`https://trifecta.by/api/UserProfile/UploadPhoneNumber`, {
@@ -984,7 +986,7 @@ export const Settings = ({ userInfo }) => {
                     }
                 </div>
                 {activeSection === "Профиль" && <Profile />}
-                {activeSection === "Безопасность и вход" && <Security />}
+                {activeSection === "Безопасность и вход" && <Security userInfo={userInfo} />}
                 {activeSection === "Проверка документов" && <Docs />}
             </div>
         </div>

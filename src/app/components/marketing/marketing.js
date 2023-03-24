@@ -17,7 +17,7 @@ import {useNavigate} from "react-router-dom";
 
 const DEFAULT_CLASSNAME = 'marketing';
 
-export const Marketing = ({ currentPackage }) => {
+export const Marketing = ({ currentPackage, hasCryptoPackage }) => {
     const navigate = useNavigate();
     const [packageToBuy, setPackageToBuy] = useState(null);
     const [showDangerScreen, setShowDangerScreen] = useState(false);
@@ -148,6 +148,8 @@ export const Marketing = ({ currentPackage }) => {
           </div>
         )
     }
+
+    console.log(currentPackage);
 
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
@@ -287,7 +289,7 @@ export const Marketing = ({ currentPackage }) => {
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Программа обучения"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_item_footer bigger-margin`}>
-                            <button className={`${DEFAULT_CLASSNAME}_item_buy`} onClick={() => setPackageToBuy({ price: packagesInfo[4].price, name: "Crypto", id: "acf53964-869b-4e04-8ba4-a0f8e8e91625"})}>{['Crypto'].includes(currentPackage?.name) ? "Приобритён" : "Приобрести"}</button>
+                            <button disabled={hasCryptoPackage} className={`${DEFAULT_CLASSNAME}_item_buy`} onClick={() => setPackageToBuy({ price: packagesInfo[4].price, name: "Crypto", id: "6f0b68dc-f55a-4e76-a9a0-f056d5ba814b"})}>{hasCryptoPackage ? "Приобритён" : "Приобрести"}</button>
                             <div className={`${DEFAULT_CLASSNAME}_item_price`}>{`${packagesInfo[4]?.price} $`}</div>
                         </div>
                         <img className={`${DEFAULT_CLASSNAME}_item_image`} src={crypto} alt={'item'} />

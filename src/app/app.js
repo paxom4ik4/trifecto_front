@@ -77,6 +77,7 @@ export const TrifectaApp = () => {
     const [userInfo, setUserInfo] = useState(null);
     const [userReferral, setUserReferral] = useState('');
     const [currentPackage, setCurrentPackage] = useState(null);
+    const [currentCryptoPackage, setCurrentCryptoPackage] = useState(null);
 
     const [IS_VERIFIED, setIsVerified] = useState(false);
 
@@ -173,6 +174,20 @@ export const TrifectaApp = () => {
                 setCurrentPackage(data)
             });
 
+        fetch(`https://trifecta.by/api/Packages/GetUserCryptoPackage?userId=${USER_ID}`, {
+            headers: {
+                'Accept': '*/*',
+                'Authorization': `Bearer ${TOKEN}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if ( data.id ) {
+                    setCookieConfirmed(true);
+                    setCurrentCryptoPackage(data)
+                }
+            });
+
 
         fetch(`https://trifecta.by/api/Home/GetReferralLink?userId=${USER_ID}`, {
             headers: {
@@ -210,8 +225,14 @@ export const TrifectaApp = () => {
         }
     }, [isAdmin])
 
+    const hasUserCryptoPackage = () => {
+        if (!!currentCryptoPackage) return currentCryptoPackage?.name === "Crypto";
+
+        return currentPackage?.name === "Crypto";
+    }
+
     const hasUserPackage = !!userInfo?.packageName;
-    const isCryptoUser = userInfo?.packageName === "Crypto";
+    const isCryptoUser = hasUserCryptoPackage();
 
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
@@ -292,13 +313,13 @@ export const TrifectaApp = () => {
                                 <div className={`${DEFAULT_CLASSNAME}_side-menu_item`}>
                                     <div className={`${DEFAULT_CLASSNAME}_side-menu_item-title`}>{"Меню"}</div>
                                     <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/'}><img src={mc} alt={'icon'}/> {"Мой кабинет"}</NavLink>
-                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${(!hasUserPackage || isCryptoUser) && 'disabled'}`} to={'/app/withdraw'}><img src={wd} alt={'icon'}/> {"Вывод средств"}</NavLink>
-                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${(!hasUserPackage || isCryptoUser) && 'disabled'}`} to={'/app/charges'}><img src={nch} alt={'icon'}/> {"Мои начисления"}</NavLink>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${(!hasUserPackage || currentPackage?.name === "Crypto") && 'disabled'}`} to={'/app/withdraw'}><img src={wd} alt={'icon'}/> {"Вывод средств"}</NavLink>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${(!hasUserPackage || currentPackage?.name === "Crypto") && 'disabled'}`} to={'/app/charges'}><img src={nch} alt={'icon'}/> {"Мои начисления"}</NavLink>
                                 </div>
                                 <div className={`${DEFAULT_CLASSNAME}_side-menu_item`}>
                                     <div className={`${DEFAULT_CLASSNAME}_side-menu_item-title`}>{"Trifecta"}</div>
-                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${(!hasUserPackage || isCryptoUser) && 'disabled'}`} to={'/app/structure'}><img src={st} alt={'icon'}/> {"Структура"}</NavLink>
-                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${(!hasUserPackage || isCryptoUser) && 'disabled'}`} to={'/app/progress'}><img src={pc} alt={'icon'}/> {"Прогресс"}</NavLink>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${(!hasUserPackage || currentPackage?.name === "Crypto") && 'disabled'}`} to={'/app/structure'}><img src={st} alt={'icon'}/> {"Структура"}</NavLink>
+                                    <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${(!hasUserPackage || currentPackage?.name === "Crypto") && 'disabled'}`} to={'/app/progress'}><img src={pc} alt={'icon'}/> {"Прогресс"}</NavLink>
                                     {!currentPackage && <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/marketing'}><img src={mt} alt={'icon'}/> {currentPackage ? "Улучшить пакет" : "Стать партнером"}</NavLink>}
                                     <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item ${!hasUserPackage && 'disabled'}`} to={'/app/newbie'}><img src={lNew} alt={'icon'}/> {"Обучающий материал"}</NavLink>
                                     <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/info'}><img src={inf} alt={'icon'}/> {"Инфо"}</NavLink>
@@ -314,12 +335,12 @@ export const TrifectaApp = () => {
                     </div>
                     <Routes>
                         <Route path={'/'} element={<Cabinet currentPackage={currentPackage} />} />
-                        <Route path={'/marketing'} element={<Marketing currentPackage={currentPackage} />} />
-                        <Route path={!hasUserPackage ? '#' : '/newbie'} element={<Newbie isVerified={hasUserPackage} />} />
-                        <Route path={(!hasUserPackage || isCryptoUser) ? '/app/' : '/withdraw'} element={<Withdraw isVerified={hasUserPackage} />} />
-                        <Route path={(!hasUserPackage || isCryptoUser) ? '/app/' : '/charges'} element={<Charges isVerified={IS_VERIFIED} />} />
-                        <Route path={(!hasUserPackage || isCryptoUser) ? '/app/' : '/structure'} element={<Structure isVerified={hasUserPackage} />} />
-                        <Route path={(!hasUserPackage || isCryptoUser) ? '/app/' : '/progress'} element={<Progress isVerified={hasUserPackage} />} />
+                        <Route path={'/marketing'} element={<Marketing currentPackage={currentPackage} hasCryptoPackage={isCryptoUser} />} />
+                        <Route path={!hasUserPackage ? '#' : '/newbie'} element={<Newbie isCryptoUser={isCryptoUser} isVerified={hasUserPackage} />} />
+                        <Route path={(!hasUserPackage || currentPackage?.name === "Crypto") ? '/app/' : '/withdraw'} element={<Withdraw isVerified={hasUserPackage} />} />
+                        <Route path={(!hasUserPackage || currentPackage?.name === "Crypto") ? '/app/' : '/charges'} element={<Charges isVerified={IS_VERIFIED} />} />
+                        <Route path={(!hasUserPackage || currentPackage?.name === "Crypto") ? '/app/' : '/structure'} element={<Structure isVerified={hasUserPackage} />} />
+                        <Route path={(!hasUserPackage || currentPackage?.name === "Crypto") ? '/app/' : '/progress'} element={<Progress isVerified={hasUserPackage} />} />
                         <Route path={'/info'} element={<Info />} />
                         <Route path={'/settings'} element={<Settings userInfo={userInfo} />} />
                         <Route path={'/help'} element={<Help />} />

@@ -10,6 +10,7 @@ const DEFAULT_CLASSNAME = 'withdraw';
 
 export const Charges = ({ isVerified }) => {
     const [CURRENT_CURRENCY, setCurrentCurrency] = useState(2.5);
+    const [dataChanges, setDataChanges] = useState(1);
 
     const navigate = useNavigate();
 
@@ -32,7 +33,7 @@ export const Charges = ({ isVerified }) => {
         fetch("https://www.nbrb.by/api/exrates/rates/431")
             .then(res => res.json())
             .then(data => setCurrentCurrency(data.Cur_OfficialRate))
-    }, [])
+    }, [dataChanges]);
 
     const [userData, setUserData] = useState(null);
 
@@ -87,6 +88,7 @@ export const Charges = ({ isVerified }) => {
             .then(data => console.log(data))
             .finally(() => {
                 toast.success("Запрос на вывод средств создан");
+                setDataChanges((data) => data + 1);
                 setSelectedCharges([]);
             })
     }
@@ -125,6 +127,7 @@ export const Charges = ({ isVerified }) => {
         "Pending": "В обработке",
         "Failed": "Отклонено",
         "ReadyForWithdraw": "Готово к выводу",
+        "AdministratorReview": "В обработке"
     }
 
     return (

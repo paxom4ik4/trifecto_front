@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
 import './withdrawHistory.scss';
-import {toast} from "react-toastify";
 
 import arrow from '../withdraw/arrow.png';
 

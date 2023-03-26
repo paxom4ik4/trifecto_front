@@ -42,7 +42,7 @@ export const WithdrawHistory = () => {
                     div>{item.email}</div>
                     <div>{item.phoneNumber}</div>
                     <br />
-                    {item?.approved ?
+                    {item?.status === "Подтверждено" ?
                       <div className={`${DEFAULT_CLASSNAME}_approve`}>{"Подтверждено"}</div>
                       : <div className={`${DEFAULT_CLASSNAME}_reject`} >{"Отказано"}</div>
                     }

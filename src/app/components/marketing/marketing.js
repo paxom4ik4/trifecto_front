@@ -149,15 +149,16 @@ export const Marketing = ({ currentPackage, hasCryptoPackage }) => {
         )
     }
 
-    console.log(currentPackage);
-
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             {
                 showDangerScreen &&
                 <div className={`${DEFAULT_CLASSNAME}_modal_wrapper`}>
                     <div className={`${DEFAULT_CLASSNAME}_modal confirm_modal`}>
-                        <div className={`${DEFAULT_CLASSNAME}_modal_title`}>{"Без труда, не вытянешь"} <br/> {"рыбку из пруда"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_modal_title`}>
+                            {packageToBuy.name === "Crypto" && <><div>{"Этот момент можно считать"}</div> <br/> <div>{"точкой отсчета твоего пути в крипте"}</div></>}
+                            {packageToBuy.name !== "Crypto" && <><div>{"Без труда, не вытянешь"}</div> <br/> <div>{"рыбку из пруда"}</div></>}
+                        </div>
                         <div className={`${DEFAULT_CLASSNAME}_modal_text`}>{"Участие в партнерской (бонусной) программе не гарантирует 100% доход. Ваш успех зависит только от вас."}</div>
 
                         <div className={`${DEFAULT_CLASSNAME}_modal_btns`}>

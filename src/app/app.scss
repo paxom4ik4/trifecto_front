@@ -351,6 +351,8 @@
     line-height: 24px;
     color: #ffffff;
     transition: 0.3s;
+    margin-right: 12px;
+    margin-bottom: 12px;
 
     &:hover {
       cursor: pointer;
@@ -449,10 +451,14 @@
         }
       }
 
+      &_package {
+        margin-right: 20px;
+      }
+
       &_packages {
         box-sizing: border-box;
         width: 100%;
-        padding: 25px 60px;
+        padding: 20px 20px;
         border-radius: 30px;
         background: #171A2F;
         display: flex;

@@ -103,8 +103,8 @@ export const AdditionalCharges = () => {
               <div>{item?.bonusName}</div>
               <div>{item?.email}</div>
               <div>{`${item?.percent || 40 }%`}</div>
-              <div>{item?.baseSum}$ / {item?.BaseSumBYN || 100} BYN</div>
-              <div>{item?.finalSum}$ / {item?.BynSum || 100} BYN</div>
+              <div>{item?.baseSum}$ / {item?.baseSumBYN || "-"} BYN</div>
+              <div>{item?.finalSum}$ / {item?.bynSum || "-"} BYN</div>
               <div>{new Date(item?.date).toLocaleDateString()}</div>
             </div>
           )) : <div className={`withdraw_table-empty`}>{"Доначислений не совершалось"}</div>}

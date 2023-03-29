@@ -156,7 +156,7 @@ const RegisterContent = ({ setIsRegisterMode }) => {
             <div className={`${DEFAULT_CLASSNAME}_agreement`}>
                 <div className={`${DEFAULT_CLASSNAME}_agreement_item`}>
                     <div><input value={agreement1} onChange={() => setAgreement1(!agreement1)} type={"checkbox"} /></div>
-                    <p>Я ознакомился с <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Pers.pdf"}>Политикой обработки данных</a> и <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Sogl.pdf"}>Пользовательским (Партнёрским) соглашением</a> и согласен с их условиями</p>
+                    <p>Я ознакомился с <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Pers.pdf"}>Политикой обработки данных</a> и <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Sogl.pdf"}>Пользовательским соглашением</a> и согласен с их условиями</p>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_agreement_item`}>
                     <div><input value={agreement2} onChange={() => setAgreement2(!agreement2)} type={"checkbox"} style={{ width: '16px', height: "16px" }}/></div>

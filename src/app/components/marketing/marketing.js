@@ -159,7 +159,7 @@ export const Marketing = ({ currentPackage, hasCryptoPackage }) => {
                             {packageToBuy.name === "Crypto" && <><div>{"Этот момент можно считать"}</div> <br/> <div>{"точкой отсчета твоего пути в крипте"}</div></>}
                             {packageToBuy.name !== "Crypto" && <><div>{"Без труда, не вытянешь"}</div> <br/> <div>{"рыбку из пруда"}</div></>}
                         </div>
-                        <div className={`${DEFAULT_CLASSNAME}_modal_text`}>{"Участие в партнерской (бонусной) программе не гарантирует 100% доход. Ваш успех зависит только от вас."}</div>
+                        {packageToBuy.name !== "Crypto" && <div className={`${DEFAULT_CLASSNAME}_modal_text`}>{"Участие в партнерской (бонусной) программе не гарантирует 100% доход. Ваш успех зависит только от вас."}</div>}
 
                         <div className={`${DEFAULT_CLASSNAME}_modal_btns`}>
                             <button onClick={() => {
@@ -197,7 +197,7 @@ export const Marketing = ({ currentPackage, hasCryptoPackage }) => {
                         <div className={`${DEFAULT_CLASSNAME}_modal_agreement`}>
                             <input checked={agreement2} onClick={() => setAgreement2(!agreement2)} type={"checkbox"} id={'agreement'} />
                             <label htmlFor={'agreement'}>
-                                <div>{"Я ознакомился с Пользовательским (Партнёрским) соглашением и согласен с его условиями"}</div>
+                                <div>{"Я ознакомился с Пользовательским соглашением и согласен с его условиями"}</div>
                             </label>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_modal_buy-title`}>{"Способ оплаты:"}</div>

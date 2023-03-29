@@ -951,7 +951,7 @@ export const Settings = ({ userInfo }) => {
                     <>
                         <div className={`${DEFAULT_CLASSNAME}_documents_header`}>
                             <select onChange={(e) => setCurrentType(e.currentTarget.value)}>
-                                <option>Физическое лицо</option>
+                                <option value={"Физическое лицо"}>Физическое лицо / Проф. деятельнсоть</option>
                                 <option>ИП</option>
                                 <option>Юридическое лицо</option>
                             </select>

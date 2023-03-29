@@ -293,7 +293,7 @@ export const TrifectaApp = () => {
                                         <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/withdraw-history'}><img src={wd} alt={'icon'}/> {"История вывода"}</NavLink>
                                     </div>
                                     <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`}>
-                                        <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/contact-info'}><img src={nch} alt={'icon'}/> {"Контактные данные"}</NavLink>
+                                        <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/contact-info'}><img src={mc} alt={'icon'}/> {"Контактные данные"}</NavLink>
                                         <div className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item_badge`}>{adminContactInfos?.length}</div>
                                     </div>
                                     <NavLink className={`${DEFAULT_CLASSNAME}_side-menu_item-sub-item`} to={'/app/admin/structure'}><img src={st} alt={'icon'}/> {"Структура"}</NavLink>

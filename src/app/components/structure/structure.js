@@ -53,6 +53,7 @@ export const Structure = ({ isAdmin }) => {
                 {structureExpanded && <div className={`${DEFAULT_CLASSNAME}_row`}>
                     {!!currentStructure?.partnersGroups.length && currentStructure.partnersGroups.map(item => {
                         return <PersonCard
+                            currentStructure={currentStructure}
                             cardExpanded={false}
                             id={item?.groupOwner.userId}
                             userPackage={item?.groupOwner.packageType}

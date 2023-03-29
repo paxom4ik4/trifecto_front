@@ -52,6 +52,11 @@
       height: 26px !important;
       box-sizing: border-box;
       margin-right: 24px;
+
+      option {
+        background: #0F2467 !important;
+        color: #FAFCFD !important;
+      }
     }
 
     &_input {

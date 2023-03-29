@@ -5,7 +5,7 @@ import './cabinet.scss';
 import bag from "../../../assets/packeges/bag.png";
 import fire from "../../../assets/packeges/fire.png";
 import crown from "../../../assets/packeges/crown.png";
-import crypto from "../marketing/assets/crypto.png";
+import crypto from "./eth-dynamic-premium.png";
 import mini from '../marketing/assets/start.png';
 import { useNavigate } from "react-router-dom";
 import {useEffect, useState} from "react";
@@ -121,8 +121,8 @@ export const Cabinet = ({ currentPackage, isCryptoUser }) => {
                             <div>{"Премиум"}</div>
                         </div>}
                         {(currentPackage?.name === "Crypto" || (currentPackage?.name !== "Crypto" && isCryptoUser)) && <div className={`${DEFAULT_CLASSNAME}_package`} onClick={() => navigate("/app/marketing")}>
-                            <img style={{ paddingBottom: "2px"}} src={crypto} alt={"img"} />
-                            <div style={{ paddingTop: "2px"}}>{"Crypto"}</div>
+                            <img src={crypto} alt={"img"} />
+                            <div>{"Crypto"}</div>
                         </div>}
                         <div className={`bonus_data`}>
                             <div>Start Bonus активен ещё: <br /> {userData?.startBonusExpTime === null ? "" : userData?.startBonusExpTime} дней</div>

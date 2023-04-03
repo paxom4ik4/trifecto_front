@@ -68,6 +68,7 @@ export const PersonCard = ({ currentStructure, setStructureExpanded, cardExpande
                         <div className={`${DEFAULT_CLASSNAME}_additional_info`}>
                             <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Вид пакета"}</div>
                             <div>{userPackage}</div>
+                            {}
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_additional_info`}>
                             <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Групповой оборот"}</div>

@@ -15,7 +15,7 @@ export const Docs = () => {
                 <div className={`${DEFAULT_CLASSNAME}_items`}>
                     <div className={`${DEFAULT_CLASSNAME}_item`}>
                         <img src={file} alt={'docs-item'} />
-                        <div className={`${DEFAULT_CLASSNAME}_item-text`}>{"Пользовательское соглашение"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_item-text`}>{"Партнёрское соглашение"}</div>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_item`}>
                         <img src={file} alt={'docs-item'} />

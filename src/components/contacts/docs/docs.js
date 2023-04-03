@@ -18,7 +18,7 @@ export const Docs = () => {
                     <div className={`${DEFAULT_CLASSNAME}_item`}>
                         <a href={"https://trifecta.by/trifecto_Documents/Sogl.pdf"} target={"_blank"}>
                             <img src={file} alt={'docs-item'} />
-                            <div className={`${DEFAULT_CLASSNAME}_item-text`}>{"Пользовательское (Партнёрское) соглашение"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_item-text`}>{"Партнёрское соглашение"}</div>
                         </a>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_item`}>

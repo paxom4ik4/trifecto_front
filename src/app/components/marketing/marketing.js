@@ -191,13 +191,13 @@ export const Marketing = ({ currentPackage, hasCryptoPackage }) => {
                         <div className={`${DEFAULT_CLASSNAME}_modal_agreement`}>
                             <input checked={agreement} onClick={() => setAgreement(!agreement)} type={"checkbox"} id={'agreement'} />
                             <label htmlFor={'agreement'}>
-                                <div>{"Я ознакомился с"} <a href={'/app/info'}>Кодексом партнёра</a> {"и"} <a href={'/app/info'}>Маркетинг планом</a> {"и согласен со всеми условиями"}</div>
+                                <div>{"Я ознакомился с"} <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Codex.pdf"}>Кодексом партнёра</a> {"и"} <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Marketing.pdf"}>Маркетинг планом</a> {"и согласен со всеми условиями"}</div>
                             </label>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_modal_agreement`}>
                             <input checked={agreement2} onClick={() => setAgreement2(!agreement2)} type={"checkbox"} id={'agreement'} />
                             <label htmlFor={'agreement'}>
-                                <div>{"Я ознакомился с Пользовательским соглашением и согласен с его условиями"}</div>
+                                <div>{"Я ознакомился с"} <a href={"https://trifecta.by/trifecto_Documents/Sogl.pdf"} target={"_blank"}>Партнёрским соглашением</a> {" и согласен с его условиями"}</div>
                             </label>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_modal_buy-title`}>{"Способ оплаты:"}</div>

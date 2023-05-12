@@ -37,7 +37,7 @@ export const Contacts = () => {
                 <div className={`${DEFAULT_CLASSNAME}_block block-right`}>
                     <div className={`${DEFAULT_CLASSNAME}_block-title-center`}>{"Где нас найти?"}</div>
 
-                    <div className={`${DEFAULT_CLASSNAME}_block-text`}>{"Республика Беларусь, г. Минск, ул. Тимирязева 72 - 48в"}</div>
+                    <div className={`${DEFAULT_CLASSNAME}_block-text`}>{"Республика Беларусь, г. Минск, ул. Коллекторная 3а-10, каб.19"}</div>
 
                     <div className={`${DEFAULT_CLASSNAME}_block-links`}>
                         <img src={instagram} alt={'contacts-link'}/>

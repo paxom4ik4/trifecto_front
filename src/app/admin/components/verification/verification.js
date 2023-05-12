@@ -69,7 +69,7 @@ export const Verification = () => {
 
     const getPersonStatus = (status) => {
         switch (status) {
-            case 'LegalEntity': return 'Физ. лицо';
+            case 'LegalEntity': return 'НПД';
             case 'IndividualEntity': return 'Юр. лицо';
             case 'IndividualEntrepreneur': return 'ИП';
         }

@@ -127,8 +127,8 @@ export const AdminCharges = () => {
                                 <div>{item.userEmail}</div>
                                 <Tooltip text={item.referralName}><div>{item.referralName}</div></Tooltip>
                                 <div>{item.accuralPercent}</div>
-                                <div>{item.initialAmount + ' / ' + (Math.ceil((item.initialAmount * CURRENT_CURRENCY) / 5)) * 5}</div>
-                                <div>{(item?.accuralAmountUSD).toFixed(1) + ' / ' + item.accuralAmount.toFixed(0)}</div>
+                                <div>{item.initialAmountUSD  + ' / ' + item.initialAmount}</div>
+                                <div>{item?.accuralAmountUSD + ' / ' + item.accuralAmount}</div>
                                 <div>{item.accuralDate.slice(0, 10)}</div>
                             </div>
                         )): <div className={`${DEFAULT_CLASSNAME}_table-empty`}>{"Начислений не совершалось"}</div>}

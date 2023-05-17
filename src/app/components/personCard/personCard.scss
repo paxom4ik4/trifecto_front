@@ -96,6 +96,14 @@
     margin-bottom: 24px;
   }
 
+  &_text.colored.verified {
+    background: linear-gradient(87.57deg, #00FFC2 0%, #15d7a6 90.44%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+
   &_wrapper.expanded {
     width: 100%;
   }

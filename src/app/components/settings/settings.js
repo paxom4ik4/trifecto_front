@@ -291,6 +291,7 @@ export const Settings = ({ userInfo }) => {
         const [beneficiaryBankName, setBeneficiaryBankName] = useState('');
         const [checkingAccount, setCheckingAccount] = useState('');
         const [swift, setSwift] = useState('');
+        const [UNP, setUNP] = useState('');
 
         const [liveObl, setLiveObl] = useState('');
         const [liveUlb, setLiveUlb] = useState('');
@@ -529,6 +530,10 @@ export const Settings = ({ userInfo }) => {
                         <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
                             <label>{"BIC/SWIFT"}</label>
                             <input value={swift} onChange={(e) => setSwift(e.currentTarget.value)} type={"text"} id={"bs"}/>
+                        </div>
+                        <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
+                            <label>{"УНП"}</label>
+                            <input value={UNP} onChange={(e) => setUNP(e.currentTarget.value)} type={"text"} id={"unp"}/>
                         </div>
                     </div>
                 </div>
@@ -792,6 +797,7 @@ export const Settings = ({ userInfo }) => {
                     beneficiaryBankName: beneficiaryBankName,
                     checkingAccount: checkingAccount,
                     swift: swift,
+                    unp: UNP || "",
                 },
                 legallyAddressModel: {
                     region: region,
@@ -951,7 +957,7 @@ export const Settings = ({ userInfo }) => {
                     <>
                         <div className={`${DEFAULT_CLASSNAME}_documents_header`}>
                             <select onChange={(e) => setCurrentType(e.currentTarget.value)}>
-                                <option value={"Физическое лицо"}>Физическое лицо / Проф. деятельнсоть</option>
+                                <option value={"Физическое лицо"}>{`${currentCountry !== "Беларусь" ? "Физическое лицо" : "НПД"} / Проф. деятельнсоть`}</option>
                                 <option>ИП</option>
                                 <option>Юридическое лицо</option>
                             </select>

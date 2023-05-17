@@ -7,7 +7,7 @@ import expand from './expand.png';
 
 const DEFAULT_CLASSNAME = 'person-card';
 
-export const PersonCard = ({ currentStructure, setStructureExpanded, cardExpanded = false, setStructureIds, structureIds, parentStructureIds, currentLevel, id, userPackage, turnover, groupTurnover, mounthlyTurnover, baseLevel}) => {
+export const PersonCard = ({ currentStructure, setStructureExpanded, cardExpanded = false, setStructureIds, structureIds, parentStructureIds, currentLevel, id, userPackage, turnover, groupTurnover, mounthlyTurnover, baseLevel, groupLevel = '1'}) => {
     const [personData, setPersonData] = useState(null);
     const [expanded, setExpanded] = useState(false);
 
@@ -58,7 +58,7 @@ export const PersonCard = ({ currentStructure, setStructureExpanded, cardExpande
         <div className={`${DEFAULT_CLASSNAME}_wrapper ${expanded && 'expanded'}`}>
             {personData ? <div className={`${DEFAULT_CLASSNAME} loyal-card expanded`}>
                 <div>
-                    <div className={`${DEFAULT_CLASSNAME}_text colored`}>{personData?.firstName + " " + personData?.lastName}</div>
+                    <div className={`${DEFAULT_CLASSNAME}_text colored ${personData.isVerifiedUser && "verified"}`}>{personData?.firstName + " " + personData?.lastName}</div>
                     <div className={`${DEFAULT_CLASSNAME}_text`}>{personData?.email}</div>
                     <div className={`${DEFAULT_CLASSNAME}_text`}>{personData?.phoneNumber}</div>
                 </div>
@@ -83,8 +83,8 @@ export const PersonCard = ({ currentStructure, setStructureExpanded, cardExpande
                             <div>{groupTurnover + ".00$"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_additional_info`}>
-                            <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Базовый уровень"}</div>
-                            <div>{baseLevel}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Уровень"}</div>
+                            <div>{baseLevel} / {personData.mounthlyLevel ?? 1}</div>
                         </div>
                     </div>
                 }

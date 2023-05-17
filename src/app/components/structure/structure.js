@@ -39,6 +39,7 @@ export const Structure = ({ isAdmin }) => {
                 setStructureExpanded={setStructureExpanded}
                 parentStructureIds={structureIds}
                 setStructureIds={setStructureIds}
+                groupLevel={currentStructure?.groupOwner.groupLevel}
             />
         )
     }, [currentStructure]);

@@ -187,8 +187,8 @@ export const Charges = ({ isVerified }) => {
                             <div>{item.referralName}</div>
                             <div>{item.accuralPercent}</div>
                             <div>{translateObj2[item.transactionStatus]}</div>
-                            <div>{item.initialAmount + '/' + (item.initialAmount * CURRENT_CURRENCY).toFixed(1)}</div>
-                            <div>{(item?.accuralAmountUSD).toFixed(1) + '/' + item.accuralAmount.toFixed(0)}</div>
+                            <div>{item.initialAmount + '/' + (item.initialAmountByn)}</div>
+                            <div>{(item?.accuralAmountUSD) + '/' + item.accuralAmount}</div>
                             <div>{item.accuralDate.slice(0, 10)}</div>
                         </div>
                     )): <div className={`${DEFAULT_CLASSNAME}_table-empty`}>{"Начислений не совершалось"}</div>}

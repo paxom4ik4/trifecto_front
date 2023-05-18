@@ -53,6 +53,9 @@ export const WithdrawHistory = () => {
                     div>{"Номер счета"}</div>
                     <div>{item.checkingAccount}</div>
                     <br />
+                    <div>{"УНП"}</div>
+                    <div>{item.unp ?? "0000"}</div>
+                    <br />
                     <div>{"Дата инициализации вывода"}</div>
                     <div>{new Date(item.date).toDateString()}</div>
                   </div>

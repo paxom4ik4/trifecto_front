@@ -463,6 +463,10 @@ export const Settings = ({ userInfo }) => {
                             <label>{"Идентификационный номер"}</label>
                             <input value={passportIdentityNumber} onChange={(e) => setPassportIdentityNumber(e.currentTarget.value)} type={"text"} id={"obl"} />
                         </div>
+                        <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
+                            <label>{"УНП"}</label>
+                            <input value={UNP} onChange={(e) => setUNP(e.currentTarget.value)} type={"text"} id={"unp"}/>
+                        </div>
                     </div>
                     <div className={`${DEFAULT_CLASSNAME}_documents_item_right`}>
                         <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
@@ -530,10 +534,6 @@ export const Settings = ({ userInfo }) => {
                         <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
                             <label>{"BIC/SWIFT"}</label>
                             <input value={swift} onChange={(e) => setSwift(e.currentTarget.value)} type={"text"} id={"bs"}/>
-                        </div>
-                        <div className={`${DEFAULT_CLASSNAME}_profile_item`}>
-                            <label>{"УНП"}</label>
-                            <input value={UNP} onChange={(e) => setUNP(e.currentTarget.value)} type={"text"} id={"unp"}/>
                         </div>
                     </div>
                 </div>
@@ -957,7 +957,7 @@ export const Settings = ({ userInfo }) => {
                     <>
                         <div className={`${DEFAULT_CLASSNAME}_documents_header`}>
                             <select onChange={(e) => setCurrentType(e.currentTarget.value)}>
-                                <option value={"Физическое лицо"}>{`${currentCountry !== "Беларусь" ? "Физическое лицо" : "НПД"} / Проф. деятельнсоть`}</option>
+                                <option value={"Физическое лицо"}>{`${currentCountry !== "Беларусь" ? "Физическое лицо" : "НПД"}`}</option>
                                 <option>ИП</option>
                                 <option>Юридическое лицо</option>
                             </select>

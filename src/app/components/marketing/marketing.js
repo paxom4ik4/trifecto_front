@@ -195,8 +195,8 @@ export const Marketing = ({ currentPackage, hasCryptoPackage }) => {
                             </label>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_modal_agreement`}>
-                            <input checked={agreement2} onClick={() => setAgreement2(!agreement2)} type={"checkbox"} id={'agreement'} />
-                            <label htmlFor={'agreement'}>
+                            <input checked={agreement2} onClick={() => setAgreement2(!agreement2)} type={"checkbox"} id={'agreement2'} />
+                            <label htmlFor={'agreement2'}>
                                 <div>{"Я ознакомился с"} <a href={"https://trifecta.by/trifecto_Documents/Sogl.pdf"} target={"_blank"}>Партнёрским соглашением</a> {" и согласен с его условиями"}</div>
                             </label>
                         </div>

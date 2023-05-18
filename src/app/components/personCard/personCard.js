@@ -84,7 +84,7 @@ export const PersonCard = ({ currentStructure, setStructureExpanded, cardExpande
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_additional_info`}>
                             <div className={`${DEFAULT_CLASSNAME}_text colored`}>{"Уровень"}</div>
-                            <div>{baseLevel} / {personData.mounthlyLevel ?? 1}</div>
+                            <div>{personData.level.slice(0, -7)} / {personData.mouthlyLevel.slice(0, -7)}</div>
                         </div>
                     </div>
                 }

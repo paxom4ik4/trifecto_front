@@ -18,7 +18,7 @@ export const TrifectaFooter = () => {
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             <div className={DEFAULT_CLASSNAME}>
-                <span className={`${DEFAULT_CLASSNAME}_copyright`}>{"Ⓒ Trifecta company, 2022"}</span>
+                <span className={`${DEFAULT_CLASSNAME}_copyright`}>{"Ⓒ Trifecta company, 2023"}</span>
                 <div className={`${DEFAULT_CLASSNAME}_content`}>
                     <img className={`${DEFAULT_CLASSNAME}_logo`} src={logo} alt={'footer-logo'} />
                     <div>{"ООО \"Онлайн прогресс\", УНП 193634118 , 220004, Республика Беларусь, г. Минск, ул. Коллекторная 3а-10, каб.19"}</div>

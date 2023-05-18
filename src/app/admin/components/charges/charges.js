@@ -127,7 +127,7 @@ export const AdminCharges = () => {
                                 <div>{item.userEmail}</div>
                                 <Tooltip text={item.referralName}><div>{item.referralName}</div></Tooltip>
                                 <div>{item.accuralPercent}</div>
-                                <div>{item.initialAmountUSD  + ' / ' + item.initialAmount}</div>
+                                <div>{item.initialAmount  + ' / ' + item.initialAmountByn}</div>
                                 <div>{item?.accuralAmountUSD + ' / ' + item.accuralAmount}</div>
                                 <div>{item.accuralDate.slice(0, 10)}</div>
                             </div>

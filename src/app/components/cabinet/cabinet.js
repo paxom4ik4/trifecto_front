@@ -48,7 +48,7 @@ export const Cabinet = ({ currentPackage, isCryptoUser }) => {
                             <div className={`${DEFAULT_CLASSNAME}_withdraw_card_title`}>{"Доступно к выводу"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_withdraw_card_amount`}>{(userData?.availableForWithdrawal.toFixed(2) / CURRENT_CURRENCY.toFixed(2)).toFixed(2) + "$" || "0"}</div>
                             <div className={`${DEFAULT_CLASSNAME}_withdraw_card_sub-amount`}>{userData?.availableForWithdrawal.toFixed(2)+ " BYN" || "0"}</div>
-                            <div className={`${DEFAULT_CLASSNAME}_withdraw_card_withdraw`} onClick={() => navigate('/app/withdraw')}>{"Вывести"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_withdraw_card_withdraw`} onClick={() => navigate('/app/charges')}>{"Вывести"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_withdraw_card`}>
                             <div className={`${DEFAULT_CLASSNAME}_withdraw_card_title`}>{"Ожидает начисления"}</div>

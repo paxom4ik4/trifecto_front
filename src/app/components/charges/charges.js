@@ -188,7 +188,7 @@ export const Charges = ({ isVerified }) => {
                             <div>{translateObj2[item.transactionStatus]}</div>
                             <div>{item.initialAmount + '/' + (item.initialAmountByn)}</div>
                             <div>{(item?.accuralAmountUSD) + '/' + item.accuralAmount}</div>
-                            <div>{item.accuralDate.slice(0, 10)}</div>
+                            <div>{new Date(item?.accuralDate).toLocaleDateString('ru')}</div>
                         </div>
                     )): <div className={`${DEFAULT_CLASSNAME}_table-empty`}>{"Начислений не совершалось"}</div>}
                 </div>

@@ -53,11 +53,13 @@ export const WithdrawHistory = () => {
                     div>{"Номер счета"}</div>
                     <div>{item.checkingAccount}</div>
                     <br />
-                    <div>{"УНП"}</div>
-                    <div>{item.unp ?? "0000"}</div>
+                    {item.unp && <><div>{"УНП"}</div>
+                    <div>{item.unp ?? "0000"}</div></>}
                     <br />
+                    {item?.swift && <><div>{"БИК"}</div>
+                      <div>{item.swift ?? "0000"}</div></>}
                     <div>{"Дата инициализации вывода"}</div>
-                    <div>{new Date(item.date).toDateString()}</div>
+                    <div>{new Date(item.date).toLocaleDateString('ru')}</div>
                   </div>
                 </div>
                 <div>
@@ -67,7 +69,7 @@ export const WithdrawHistory = () => {
                         <div>
                           <span>{accural.accuralName}</span>
                           <span>{accural?.referralName}</span>
-                          <span>{new Date(accural?.accuralDate).toLocaleDateString()}</span>
+                          <span>{new Date(accural?.accuralDate).toLocaleDateString('ru')}</span>
                           <span>{accural.accuralAmount + " BYN"}</span>
                         </div>
                       )

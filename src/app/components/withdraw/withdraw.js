@@ -151,7 +151,7 @@ export const Withdraw = ({ isVerified }) => {
                                 <div>{item.cardCode}</div>
                                 <div>{translateObj2[item.status]}</div>
                                 <div>{item.amount}</div>
-                                <div>{item.dateTime.slice(0, 10)}</div>
+                                <div>{new Date(item?.dateTime).toLocaleDateString('ru')}</div>
                             </div>
                         )) : <div className={`${DEFAULT_CLASSNAME}_table-empty`}>{"Выводов не совершалось"}</div>}
                     </div>

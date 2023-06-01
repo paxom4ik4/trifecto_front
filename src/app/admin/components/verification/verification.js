@@ -171,8 +171,8 @@ export const Verification = () => {
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_item_photos`}>
                     <img className={photoFullSize && "photo-full-size"} onClick={() => setPhotoFullSize(!photoFullSize)} src={`https://trifecta.by${user?.verivicationPhoto2}`} alt={'/'} />
-                    <img className={photoFullSize2 && "photo-full-size"} onClick={() => setPhotoFullSize(!photoFullSize2)} src={`https://trifecta.by${user?.verivicationPhoto3}`} alt={'/'} />
-                    <img className={photoFullSize3 && "photo-full-size"} onClick={() => setPhotoFullSize(!photoFullSize3)} src={`https://trifecta.by${user?.verivicationPhoto4}`} alt={'/'} />
+                    <img className={photoFullSize2 && "photo-full-size"} onClick={() => setPhotoFullSize2(!photoFullSize2)} src={`https://trifecta.by${user?.verivicationPhoto3}`} alt={'/'} />
+                    <img className={photoFullSize3 && "photo-full-size"} onClick={() => setPhotoFullSize3(!photoFullSize3)} src={`https://trifecta.by${user?.verivicationPhoto4}`} alt={'/'} />
                 </div>
             </div>
         )

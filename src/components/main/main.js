@@ -48,7 +48,7 @@ export const Main = () => {
                     <div className={`${DEFAULT_CLASSNAME}_right`}>
                         <Canvas style={{ width: "400px", height: "400px"}} shadows dpr={[1, 2]} camera={{ fov: 40 }}>
                             <Suspense fallback={null}>
-                                <Stage environment={"night"} controls={ref} preset="soft" intensity={1} shadows={true}>
+                                <Stage environment={null} controls={ref} preset="soft" intensity={1} shadows={true}>
                                     <Diamond />
                                 </Stage>
                             </Suspense>

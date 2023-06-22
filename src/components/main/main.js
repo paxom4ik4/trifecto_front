@@ -51,7 +51,6 @@ export const Main = () => {
                                 <Stage controls={ref} preset="rembrandt" intensity={1} shadows={true}>
                                     false
                                     <Diamond />
-                                    false
                                 </Stage>
                             </Suspense>
                             <OrbitControls ref={ref} autoRotate enableZoom={false} />

@@ -18,6 +18,7 @@ const WithdrawHistoryItem = (props) => {
           <div className={`${DEFAULT_CLASSNAME}_left`}>
             <div>{item.name}</div>
             <div>{item.surname}</div>
+            <div>{item?.patronymic || "Отчество"}</div>
             <br /><
               div>{item.email}</div>
             <div>{item.phoneNumber}</div>

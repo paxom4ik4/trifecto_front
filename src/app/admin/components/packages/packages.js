@@ -12,6 +12,8 @@ export const Packages = () => {
     const [packages, setPackages] = useState([]);
     const [dataChanges, setDataChanges] = useState(0);
 
+    const [CURRENT_CURRENCY, setCurrentCurrency] = useState(2.5);
+
     useEffect(() => {
         fetch(`https://trifecta.by/api/Administrator/GetCashRequests`, {
             headers: {
@@ -21,6 +23,12 @@ export const Packages = () => {
         })
             .then(res => res.json())
             .then(data => setPackages(data));
+
+
+        fetch("https://www.nbrb.by/api/exrates/rates/431")
+            .then(res => res.json())
+            .then(data => setCurrentCurrency(data.Cur_OfficialRate))
+
     }, [dataChanges])
 
     const acceptRequest = (userId, requestId, packageId) => {
@@ -67,7 +75,7 @@ export const Packages = () => {
                                 <br />
                                 <div>{"Тип пакета:"} {item.packageName}</div>
                                 <br />
-                                <div>{"Цена:"} {item.packagePriceUSD + "$"} / {item?.packagePriceBYN + "BYN"}</div>
+                                <div>{"Цена:"} {item.packagePriceUSD + "$"} / {Math.round((+(item.packagePriceUSD) * CURRENT_CURRENCY) / 5) * 5 + "BYN"}</div>
                                 <br />
                                 <div className={`admin-withdraw_approve`} onClick={() => acceptRequest(item.userId, item.requestId, item.packageId)}>{"Подтвердить"}</div>
                                 <div className={`admin-withdraw_reject`} onClick={() => rejectRequest(item.requestId)}>{"Отказать"}</div>

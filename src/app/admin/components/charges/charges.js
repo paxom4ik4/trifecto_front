@@ -121,7 +121,7 @@ export const AdminCharges = () => {
                             <div>{"ДАТА"}</div>
                         </div>
                         {withdraws.length ? withdraws.map(item => (
-                            <div className={`charges_table_item`} style={{ pointerEvents: (item.selected || !item.isAvailable) && "none", opacity: (item.selected || !item.isAvailable) && '0.5'}}>
+                            <div className={`charges_table_item`} style={{ pointerEvents: (item.selected) && "none", opacity: (item.selected) && '0.5'}}>
                                 <div className={`charges_table_item_select ${item.selected && 'confirmed'} ${!!selectedCharges.includes(item.id) && 'selected'}`} onClick={() => chargeHandler(item)}/>
                                 <div>{item.accuralName}</div>
                                 <div>{item.userEmail}</div>

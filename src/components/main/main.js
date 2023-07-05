@@ -24,7 +24,7 @@ const DEFAULT_CLASSNAME = 'main';
 export const Main = () => {
     const navigate = useNavigate();
 
-    const ref = useRef()
+    const ref = useRef();
 
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
@@ -48,10 +48,8 @@ export const Main = () => {
                     <div className={`${DEFAULT_CLASSNAME}_right`}>
                         <Canvas style={{ width: "400px", height: "400px"}} shadows dpr={[1, 2]} camera={{ fov: 40 }}>
                             <Suspense fallback={null}>
-                                <Stage controls={ref} preset="rembrandt" intensity={1} shadows={true}>
-                                    false
+                                <Stage environment={null} controls={ref} preset="soft" intensity={1} shadows={true}>
                                     <Diamond />
-                                    false
                                 </Stage>
                             </Suspense>
                             <OrbitControls ref={ref} autoRotate enableZoom={false} />

@@ -90,6 +90,7 @@ export const Withdraw = () => {
                                 <div className={`${DEFAULT_CLASSNAME}_left`}>
                                     <div>{item.name}</div>
                                     <div>{item.surname}</div>
+                                    <div>{item?.patronymic || "Отчество"}</div>
                                     <br /><
                                     div>{item.email}</div>
                                     <div>{item.phoneNumber}</div>
@@ -99,7 +100,7 @@ export const Withdraw = () => {
                                 </div>
                                 <div className={`${DEFAULT_CLASSNAME}_right`}>
                                     <div>{"Запрашиваемая сумма"}</div>
-                                    <div>{item.withdrawSum}</div>
+                                    <div>{item.withdrawSum + " BYN"}</div>
                                     <br /><
                                     div>{"Номер счета"}</div>
                                     <div>{item.checkingAccount}</div>

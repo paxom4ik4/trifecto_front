@@ -8,8 +8,9 @@ import back from './assets/Subtract.png';
 import start from './assets/start.png';
 import classic from './assets/classic.png';
 import premium from './assets/premium.png';
-import rocket from './assets/rocket.svg';
+import rocket from './assets/rocket.png';
 import crypto from './assets/crypto.png';
+import exclusive from './assets/exclisuve.png';
 
 import trifectaSmall from './assets/trifectaSmall.png';
 import {toast} from "react-toastify";
@@ -51,30 +52,30 @@ export const Marketing = ({ currentPackage, hasCryptoPackage }) => {
           .then(data => setPackagesInfo(data));
     }, [])
 
-    const buyPackageHandler = () => {
-        const TOKEN = sessionStorage.getItem('accessToken');
-
-        if (agreement && packageToBuy.price && packageToBuy.name && packageToBuy.id) {
-            fetch(`https://trifecta.by/api/Packages/BuyPackage`, {
-                method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                mode: 'cors', // no-cors, *cors, same-origin
-                cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-                credentials: 'same-origin', // include, *same-origin, omit
-                redirect: 'follow', // manual, *follow, error
-                referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${TOKEN}`
-                },
-                body: JSON.stringify({ packageId: packageToBuy.id })
-            })
-                .finally(() => {
-                    setPackageToBuy(null)
-                    toast.success('Пакет успешно приобретен');
-                    navigate('/app');
-                })
-        }
-    }
+    // const buyPackageHandler = () => {
+    //     const TOKEN = sessionStorage.getItem('accessToken');
+    //
+    //     if (agreement && packageToBuy.price && packageToBuy.name && packageToBuy.id) {
+    //         fetch(`https://trifecta.by/api/Packages/BuyPackage`, {
+    //             method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    //             mode: 'cors', // no-cors, *cors, same-origin
+    //             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    //             credentials: 'same-origin', // include, *same-origin, omit
+    //             redirect: 'follow', // manual, *follow, error
+    //             referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 'Authorization': `Bearer ${TOKEN}`
+    //             },
+    //             body: JSON.stringify({ packageId: packageToBuy.id })
+    //         })
+    //             .finally(() => {
+    //                 setPackageToBuy(null)
+    //                 toast.success('Пакет успешно приобретен');
+    //                 navigate('/app');
+    //             })
+    //     }
+    // }
 
     const buyPackageHandlerCash = () => {
         const TOKEN = sessionStorage.getItem('accessToken');
@@ -196,8 +197,8 @@ export const Marketing = ({ currentPackage, hasCryptoPackage }) => {
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Travel Bonus"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_item_footer`}>
-                            <button disabled={['Start', 'Classic', 'Premium'].includes(currentPackage?.name)} className={`${DEFAULT_CLASSNAME}_item_buy`} onClick={() => setPackageToBuy({ price: packagesInfo[1].price, name: "Пробный", id: "00f1967f-a1f4-706d-7e57-453d605c4747"})}>{['Start', 'Classic', 'Premium'].includes(currentPackage?.name) ? "Купите пакет выше" : "Приобрести"}</button>
-                            {!['Start', 'Classic', 'Premium'].includes(currentPackage?.name) && <div className={`${DEFAULT_CLASSNAME}_item_price`}>{`${packagesInfo[1]?.price} $`}</div>}
+                            <button disabled={['Start', 'Classic', 'Premium', 'Exclusive'].includes(currentPackage?.name)} className={`${DEFAULT_CLASSNAME}_item_buy`} onClick={() => setPackageToBuy({ price: packagesInfo[1].price, name: "Пробный", id: "00f1967f-a1f4-706d-7e57-453d605c4747"})}>{['Start', 'Classic', 'Premium'].includes(currentPackage?.name) ? "Купите пакет выше" : "Приобрести"}</button>
+                            {!['Start', 'Classic', 'Premium', 'Exclusive'].includes(currentPackage?.name) && <div className={`${DEFAULT_CLASSNAME}_item_price`}>{`${packagesInfo[1]?.price} $`}</div>}
                         </div>
                         <img className={`${DEFAULT_CLASSNAME}_item_image`} src={classic} alt={'item'} />
                     </div>
@@ -215,8 +216,8 @@ export const Marketing = ({ currentPackage, hasCryptoPackage }) => {
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Travel Bonus"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_item_footer`}>
-                            <button disabled={['Classic', 'Premium'].includes(currentPackage?.name)} className={`${DEFAULT_CLASSNAME}_item_buy`} onClick={() => setPackageToBuy({ price: packagesInfo[2].price, name: "Классик", id: "3decbb76-bbc7-e035-e53c-ea10a3d54b16"})}>{['Classic', 'Premium'].includes(currentPackage?.name) ? "Купите пакет выше" : "Приобрести"}</button>
-                            {!['Classic', 'Premium'].includes(currentPackage?.name) && <div className={`${DEFAULT_CLASSNAME}_item_price`}>{`${packagesInfo[2]?.price} $`}</div>}
+                            <button disabled={['Classic', 'Premium', 'Exclusive'].includes(currentPackage?.name)} className={`${DEFAULT_CLASSNAME}_item_buy`} onClick={() => setPackageToBuy({ price: packagesInfo[2].price, name: "Классик", id: "3decbb76-bbc7-e035-e53c-ea10a3d54b16"})}>{['Classic', 'Premium'].includes(currentPackage?.name) ? "Купите пакет выше" : "Приобрести"}</button>
+                            {!['Classic', 'Premium', 'Exclusive'].includes(currentPackage?.name) && <div className={`${DEFAULT_CLASSNAME}_item_price`}>{`${packagesInfo[2]?.price} $`}</div>}
                         </div>
                         <img className={`${DEFAULT_CLASSNAME}_item_image`} src={premium} alt={'item'} />
                     </div>
@@ -236,10 +237,31 @@ export const Marketing = ({ currentPackage, hasCryptoPackage }) => {
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Bonus Overall"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_item_footer bigger-margin`}>
-                            <button disabled={['Premium'].includes(currentPackage?.name)} className={`${DEFAULT_CLASSNAME}_item_buy`} onClick={() => setPackageToBuy({ price: packagesInfo[3].price, name: "Премиум", id: "0ff93d94-077f-ea49-34f0-3214704f5dbf"})}>{['Premium'].includes(currentPackage?.name) ? "Приобритён" : "Приобрести"}</button>
-                            {!['Premium'].includes(currentPackage?.name) && <div className={`${DEFAULT_CLASSNAME}_item_price`}>{`${packagesInfo[3]?.price} $`}</div>}
+                            <button disabled={['Premium', 'Exclusive'].includes(currentPackage?.name)} className={`${DEFAULT_CLASSNAME}_item_buy`} onClick={() => setPackageToBuy({ price: packagesInfo[3].price, name: "Премиум", id: "0ff93d94-077f-ea49-34f0-3214704f5dbf"})}>{['Premium'].includes(currentPackage?.name) ? "Приобритён" : "Приобрести"}</button>
+                            {!['Premium', 'Exclusive'].includes(currentPackage?.name) && <div className={`${DEFAULT_CLASSNAME}_item_price`}>{`${packagesInfo[3]?.price} $`}</div>}
                         </div>
                         <img className={`${DEFAULT_CLASSNAME}_item_image`} src={rocket} alt={'item'} />
+                    </div>
+                </div>
+                <div className={`${DEFAULT_CLASSNAME}_item`}>
+                    <img className={`${DEFAULT_CLASSNAME}_item_background`} src={back} alt={'back'} />
+                    <div className={`${DEFAULT_CLASSNAME}_item_content`}>
+                        <div className={`${DEFAULT_CLASSNAME}_item_title`}>{"Пакет Эксклюзив"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_item_description`}>
+                            <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Team Bonus"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Level Bonus 150%"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Start Bonus"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Dynamic Bonus"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Auto Bonus с 5 уровня"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Travel Bonus"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Bun Bonus"}</div>
+                            <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Bonus Overall"}</div>
+                        </div>
+                        <div className={`${DEFAULT_CLASSNAME}_item_footer bigger-margin`}>
+                            <button disabled={['Exclusive'].includes(currentPackage?.name)} className={`${DEFAULT_CLASSNAME}_item_buy`} onClick={() => setPackageToBuy({ price: packagesInfo[4].price, name: "Эксклюзив", id: "3928d50f-8aae-4403-b10d-6b1da398e601"})}>{['Exclusive'].includes(currentPackage?.name) ? "Приобритён" : "Приобрести"}</button>
+                            {!['Exclusive'].includes(currentPackage?.name) && <div className={`${DEFAULT_CLASSNAME}_item_price`}>{`${packagesInfo[4]?.price} $`}</div>}
+                        </div>
+                        <img className={`${DEFAULT_CLASSNAME}_item_image`} src={exclusive} alt={'item'} />
                     </div>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_item`}>
@@ -250,8 +272,8 @@ export const Marketing = ({ currentPackage, hasCryptoPackage }) => {
                             <div className={`${DEFAULT_CLASSNAME}_item_description-item`}>{"Программа обучения"}</div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_item_footer bigger-margin`}>
-                            <button disabled={hasCryptoPackage} className={`${DEFAULT_CLASSNAME}_item_buy`} onClick={() => setPackageToBuy({ price: packagesInfo[4].price, name: "Crypto", id: "6f0b68dc-f55a-4e76-a9a0-f056d5ba814b"})}>{hasCryptoPackage ? "Приобритён" : "Приобрести"}</button>
-                            <div className={`${DEFAULT_CLASSNAME}_item_price`}>{`${packagesInfo[4]?.price} $`}</div>
+                            <button disabled={hasCryptoPackage} className={`${DEFAULT_CLASSNAME}_item_buy`} onClick={() => setPackageToBuy({ price: packagesInfo[5].price, name: "Crypto", id: "6f0b68dc-f55a-4e76-a9a0-f056d5ba814b"})}>{hasCryptoPackage ? "Приобритён" : "Приобрести"}</button>
+                            <div className={`${DEFAULT_CLASSNAME}_item_price`}>{`${packagesInfo[5]?.price} $`}</div>
                         </div>
                         <img className={`${DEFAULT_CLASSNAME}_item_image`} src={crypto} alt={'item'} />
                     </div>

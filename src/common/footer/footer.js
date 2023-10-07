@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 
 import logo from '../../assets/logo.png'
 
-import tg from './tg.svg';
+import send from './send.png';
 
 import telegram from './telegram.png';
 import instagram from './inst.png';
@@ -38,7 +38,7 @@ export const Footer = () => {
                         </div>
                         <div>
                             <div className={`${DEFAULT_CLASSNAME}_header-btn`}>
-                            <img src={tg} alt={'telegram'} />
+                            <img src={send} alt={'telegram'} />
                         </div>
                     </div>
                     </div>

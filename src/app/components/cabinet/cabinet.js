@@ -2,13 +2,14 @@ import * as React from 'react'
 
 import '../../app.scss';
 import './cabinet.scss';
-import bag from "../../../assets/packeges/bag.png";
+import rocket from '../marketing/assets/rocket.png';
 import fire from "../../../assets/packeges/fire.png";
 import crown from "../../../assets/packeges/crown.png";
+import exclusive from "../marketing/assets/exclisuve.png";
 import crypto from "./eth-dynamic-premium.png";
 import mini from '../marketing/assets/start.png';
 import { useNavigate } from "react-router-dom";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 import { GradientCircularProgress } from "react-circular-gradient-progress";
 const DEFAULT_CLASSNAME = 'trifecta-app';
@@ -109,16 +110,20 @@ export const Cabinet = ({ currentPackage, isCryptoUser }) => {
                             <div>{"Мини"}</div>
                         </div>}
                         {currentPackage?.name === "Start" && <div className={`${DEFAULT_CLASSNAME}_package`} onClick={() => navigate("/app/marketing")}>
-                            <img src={bag} alt={"img"} />
+                            <img src={fire} alt={"img"} />
                             <div>{"Пробный"}</div>
                         </div>}
                         {currentPackage?.name === "Classic" && <div className={`${DEFAULT_CLASSNAME}_package`} onClick={() => navigate("/app/marketing")}>
-                            <img src={fire} alt={"img"} />
+                            <img src={crown} alt={"img"} />
                             <div>{"Классик"}</div>
                         </div>}
                         {currentPackage?.name === "Premium" && <div className={`${DEFAULT_CLASSNAME}_package`} onClick={() => navigate("/app/marketing")}>
-                            <img src={crown} alt={"img"} />
+                            <img src={rocket} alt={"img"} />
                             <div>{"Премиум"}</div>
+                        </div>}
+                        {currentPackage?.name === "Exclusive" && <div className={`${DEFAULT_CLASSNAME}_package`} onClick={() => navigate("/app/marketing")}>
+                            <img src={exclusive} alt={"img"} />
+                            <div>{"Эксклюзив"}</div>
                         </div>}
                         {(currentPackage?.name === "Crypto" || (currentPackage?.name !== "Crypto" && isCryptoUser)) && <div className={`${DEFAULT_CLASSNAME}_package`} onClick={() => navigate("/app/marketing")}>
                             <img src={crypto} alt={"img"} />

@@ -34,8 +34,8 @@ const App = () => {
             <Header setIsRegisterMode={setIsRegisterMode} />
             <div className="trifecta">
                 <Routes>
-                    <Route path={"/login"} element={<Login setIsRegisterMode={setIsRegisterMode} isRegisterMode={isRegisterMode} />} />
-                    <Route path={"/register"} element={<Login setIsRegisterMode={setIsRegisterMode} isRegisterMode={true} />} />
+                    <Route path={"/login"} element={<Login isRegisterMode={isRegisterMode} />} />
+                    <Route path={"/register"} element={<Login isRegisterMode={true} />} />
                     <Route path="/" element={<Main />} />
                     <Route path="about" element={<About />} />
                     <Route path="products" element={<Products />} />

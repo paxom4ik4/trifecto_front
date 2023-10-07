@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import './login.scss';
-import yandex from './assets/yandex.png'
 import trifecta from './assets/trifecto.png';
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
@@ -55,7 +54,7 @@ const LoginContent = () => {
             <input type={"text"} placeholder={"E-mail"} value={loginEmail} onChange={(e) => setLoginEmail(e.currentTarget.value)} />
             <div className={`${DEFAULT_CLASSNAME}_login-container`}>
                 <input type={!showPassword ? "password" : "text"} placeholder={"Введите пароль"} value={loginPassword} onChange={(e) => setLoginPassword(e.currentTarget.value)} />
-                <img src={!showPassword ? eye : eyeClose} onClick={() => setShowPassword(!showPassword)} />
+                <img alt={'password-eye'} src={!showPassword ? eye : eyeClose} onClick={() => setShowPassword(!showPassword)} />
             </div>
 
             <button onClick={() => handleLogin()} className={`${DEFAULT_CLASSNAME}_btn`}>{"Войти"}</button>
@@ -69,7 +68,7 @@ const countries = {
     'Казахстан': 3,
 }
 
-const RegisterContent = ({ setIsRegisterMode }) => {
+const RegisterContent = () => {
 
     const navigate = useNavigate();
 
@@ -140,7 +139,7 @@ const RegisterContent = ({ setIsRegisterMode }) => {
             <input type={"text"} placeholder={"E-mail"} value={registerEmail} onChange={(e) => setRegisterEmail(e.currentTarget.value)} />
             <div className={`${DEFAULT_CLASSNAME}_login-container`}>
                 <input type={showPasswordRegister ? "text" : "password"} placeholder={"Придумайте пароль (мин. 8 символов)"} value={registerPassword} onChange={(e) => setRegisterPassword(e.currentTarget.value)} />
-                <img src={!showPasswordRegister ? eye : eyeClose} onClick={() => setShowPasswordRegister(!showPasswordRegister)} />
+                <img alt={'password-login-eye'} src={!showPasswordRegister ? eye : eyeClose} onClick={() => setShowPasswordRegister(!showPasswordRegister)} />
             </div>
             <input type={"password"} placeholder={"Подтвердите пароль"} value={registerPasswordRep} onChange={(e) => setRegisterPasswordRep(e.currentTarget.value)} />
 
@@ -169,13 +168,13 @@ const RegisterContent = ({ setIsRegisterMode }) => {
     )
 }
 
-export const Login = ({ setIsRegisterMode, isRegisterMode = true }) => {
+export const Login = ({ isRegisterMode = true }) => {
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             <div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_title`}>{isRegisterMode ? "Регистрация" : "Вход"}</div>
 
-                {isRegisterMode ? <RegisterContent setIsRegisterMode={setIsRegisterMode} /> : <LoginContent />}
+                {isRegisterMode ? <RegisterContent /> : <LoginContent />}
 
                 <img className={`${DEFAULT_CLASSNAME}_trifecta`} src={trifecta} alt={'trifecta'} />
             </div>

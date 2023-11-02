@@ -420,8 +420,8 @@
     min-height: 1200px;
 
     &_cabinet {
-      width: 100%;
-      margin-left: 40%;
+      width: fit-content;
+      margin-left: 42%;
       display: flex;
       justify-content: space-between;
       flex-direction: column;
@@ -474,7 +474,7 @@
         background: #171A2F;
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        gap: 24px;
         align-items: center;
       }
     }

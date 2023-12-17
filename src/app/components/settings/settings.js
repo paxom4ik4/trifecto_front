@@ -338,6 +338,20 @@ export const Settings = ({ userInfo }) => {
 
         const TOKEN = sessionStorage.getItem('accessToken');
 
+        const [commonUNP, setCommonUNP] = useState('');
+
+        useEffect(() => {
+            setCommonUNP(UNP);
+        }, [UNP])
+
+        useEffect(() => {
+            setCommonUNP(eUnp);
+        }, [eUnp])
+
+        useEffect(() => {
+            setCommonUNP(unp);
+        }, [unp])
+
         const [uploadedCert1, setUploadedCert1] = useState(null);
         const [uploadedCert2, setUploadedCert2] = useState(null);
         const [uploadedCert3, setUploadedCert3] = useState(null);
@@ -780,7 +794,7 @@ export const Settings = ({ userInfo }) => {
                     headFullName: eHeadFullName || headFullName,
                     legalEntityAbbreviatedName: eLegalEntityAbbreviatedName || legalEntityAbbreviatedName,
                     headPosition: eHeadPosition || headPosition,
-                    unp: eUnp || unp,
+                    unp: commonUNP,
                     baseOrganization: eBaseOrganization || baseOrganization,
                     accountantName: eAccountantName || accountantName,
                 },
@@ -797,7 +811,6 @@ export const Settings = ({ userInfo }) => {
                     beneficiaryBankName: beneficiaryBankName,
                     checkingAccount: checkingAccount,
                     swift: swift,
-                    unp: UNP || "",
                 },
                 legallyAddressModel: {
                     region: region,

@@ -138,6 +138,10 @@ export const Verification = () => {
                         <div>{"BIC/SWIFT"}</div>
                         <div>{userData?.swift || user?.swift}</div>
                     </div>}
+                    {(user.unp) && <div className={`${DEFAULT_CLASSNAME}_item_account`}>
+                        <div>{"УНП"}</div>
+                        <div>{user?.unp}</div>
+                    </div>}
                     {user?.verivicationPhoto && <div className={`${DEFAULT_CLASSNAME}_item_photo`}>
                         {photoFullSize &&
                             <div className={`${DEFAULT_CLASSNAME}_photoFullSize`}>
@@ -147,16 +151,6 @@ export const Verification = () => {
                             </div>
                         }
                         <img onClick={() => setPhotoFullSize(!photoFullSize)} src={`https://trifecta.by${user?.verivicationPhoto}`}/>
-                    </div>}
-                    {userData?.unp && <div className={`${DEFAULT_CLASSNAME}_item_svid`}>
-                        {userData?.certificateNumber && <>
-                            <div>{"На основании"}</div>
-                            <div>{userData?.certificateNumber && "Свидетельства"}</div>
-                        </>
-                        }
-                        <br />
-                        <div>{"УНП"}</div>
-                        <div>{userData?.unp}</div>
                     </div>}
                     {userData?.registrationAuthority && <div className={`${DEFAULT_CLASSNAME}_item_svid`}>
                         {userData?.certificateNumber && <>

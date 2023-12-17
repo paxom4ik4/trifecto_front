@@ -17,7 +17,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    z-index: 10;
+    z-index: 1000000 !important;
   }
 
   width: 100%;

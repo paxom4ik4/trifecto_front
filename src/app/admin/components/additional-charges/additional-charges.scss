@@ -104,3 +104,56 @@
     border-radius: 30px;
   }
 }
+
+@media (max-width: 525px) {
+  .additional-charges {
+    width: 100%;
+
+    .additional-charges_panel {
+      width: 240%;
+    }
+
+    .withdraw_table {
+      width: 225% !important;
+    }
+
+    .charges_table_item {
+      grid-template-columns: 2% 14% 15% 10% 10% 12% 12% 10% !important;;
+    }
+
+    &_wrapper {
+      overflow: scroll;
+      margin: 16px;
+      width: 100%;
+      padding: 16px;
+    }
+
+    .admin-charges_table {
+      width: 150%;
+    }
+
+    &_item {
+      gap: 12px;
+      padding: 16px;
+
+      &_full {
+        max-width: fit-content !important;
+
+        div {
+          font-size: 8px !important;
+        }
+      }
+
+      &_cont {
+        gap: 16px;
+        align-items: flex-start !important;
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100%;
+      }
+
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

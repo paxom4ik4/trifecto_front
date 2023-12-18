@@ -162,3 +162,38 @@
     margin: 0 8%;
   }
 }
+
+@media (max-width: 500px) {
+  .admin-withdrawHistory {
+    width: 100%;
+    &_wrapper {
+      margin: 16px;
+      width: calc(100% - 16px);
+      padding: 16px;
+    }
+
+    &_item {
+      gap: 12px;
+      padding: 16px;
+
+      &_full {
+        max-width: fit-content !important;
+
+        div {
+          font-size: 8px !important;
+        }
+      }
+
+      &_cont {
+        gap: 16px;
+        align-items: flex-start !important;
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100%;
+      }
+
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

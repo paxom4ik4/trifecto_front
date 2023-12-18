@@ -13,7 +13,7 @@ const WithdrawHistoryItem = (props) => {
 
   return (
       !!item && <div className={`${DEFAULT_CLASSNAME}_item`}>
-        <div>
+        <div className={`${DEFAULT_CLASSNAME}_item_cont`}>
           <img onClick={() => setCardExpanded(!cardExpanded)} className={`${DEFAULT_CLASSNAME}_item_expand ${cardExpanded && "expanded"}`} src={arrow} />
           <div className={`${DEFAULT_CLASSNAME}_left`}>
             <div>{item.name}</div>

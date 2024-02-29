@@ -77,6 +77,8 @@ export const Packages = () => {
                                 <br />
                                 <div>{"Цена:"} {item.packagePriceUSD + "$"} / {Math.round((+(item.packagePriceUSD) * CURRENT_CURRENCY) / 5) * 5 + "BYN"}</div>
                                 <br />
+                                {item?.unp && <div>{"УНП:"} {item?.unp ?? ''}</div>}
+                                <br />
                                 <div className={`admin-withdraw_approve`} onClick={() => acceptRequest(item.userId, item.requestId, item.packageId)}>{"Подтвердить"}</div>
                                 <div className={`admin-withdraw_reject`} onClick={() => rejectRequest(item.requestId)}>{"Отказать"}</div>
                             </div>

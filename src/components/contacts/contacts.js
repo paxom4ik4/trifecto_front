@@ -25,7 +25,6 @@ export const Contacts = () => {
                     <div className={`${DEFAULT_CLASSNAME}_block-title`}>{"Контакты"}</div>
 
                     <div className={`${DEFAULT_CLASSNAME}_block-phones`}>{"Телефоны:"}</div>
-                    <span>{"+375 (25) 533-80-26"}</span>
                     <span>{"+375 (29) 519-09-88"}</span>
 
                     <div className={`${DEFAULT_CLASSNAME}_block-email`}>
@@ -37,7 +36,7 @@ export const Contacts = () => {
                 <div className={`${DEFAULT_CLASSNAME}_block block-right`}>
                     <div className={`${DEFAULT_CLASSNAME}_block-title-center`}>{"Где нас найти?"}</div>
 
-                    <div className={`${DEFAULT_CLASSNAME}_block-text`}>{"Республика Беларусь, г. Минск, ул. Коллекторная 3а-10, каб.19"}</div>
+                    <div className={`${DEFAULT_CLASSNAME}_block-text`}>{"Республика Беларусь, г. Минск, ул. Коллекторная 3, каб.509"}</div>
 
                     <div className={`${DEFAULT_CLASSNAME}_block-links`}>
                         <img src={instagram} alt={'contacts-link'}/>

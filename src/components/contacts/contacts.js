@@ -43,7 +43,7 @@ export const Contacts = () => {
                         <img src={telegram} alt={'contacts-link'}/>
                     </div>
 
-                    <a href={"https://goo.gl/maps/4Ut8DYajKsuEYfFf9"} target={"_blank"} className={`${DEFAULT_CLASSNAME}_block-btn`}>{"Показать на карте"}</a>
+                    <a href={"https://www.google.com/maps/place/vulica+Kaliektarnaja+3,+Minsk,+Minskaja+voblas%C4%87/"} target={"_blank"} className={`${DEFAULT_CLASSNAME}_block-btn`}>{"Показать на карте"}</a>
                 </div>
             </div>
         </div>

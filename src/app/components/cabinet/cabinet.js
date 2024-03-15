@@ -130,7 +130,7 @@ export const Cabinet = ({ currentPackage, isCryptoUser }) => {
                             <div>{"Crypto"}</div>
                         </div>}
                         <div className={`bonus_data`}>
-                            <div>Start Bonus активен ещё: <br /> {userData?.startBonusExpTime === null ? "" : userData?.startBonusExpTime} дней</div>
+                            {currentPackage?.name === "Exclusive" && <div>Start Bonus <br /> активен постоянно</div>}
                             {userData?.dynamicBonusExpTime === 999 ? <div>Dynamic Bonus <br /> Активен постоянно</div> : <div>Dynamic Bonus активен ещё: <br /> {userData?.startBonusExpTime} дней</div>}
                         </div>
                     </div>

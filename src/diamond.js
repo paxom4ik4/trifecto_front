@@ -8,9 +8,9 @@ export function Diamond(props) {
             <group rotation={[-Math.PI / 2, 0, 0]}>
                 <group rotation={[Math.PI / 2, 0, 0]}>
                     <mesh
-                        castShadow
-                        receiveShadow
-                        geometry={nodes?.pCone1_DiamondOutside_0.geometry}
+                        castShadow={true}
+                        receiveShadow={true}
+                        geometry={nodes?.pCone1_DiamondOutside_0?.geometry}
                         material={materials?.DiamondOutside}
                     />
                 </group>

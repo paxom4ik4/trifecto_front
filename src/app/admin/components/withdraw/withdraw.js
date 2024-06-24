@@ -64,7 +64,15 @@ export const Withdraw = () => {
             })
     }
 
-    const [cardExpanded, setCardExpanded] = useState(false);
+    const [expandedCards, setExpandedCards] = useState([]);
+
+    const handleSelectCard = (id) => {
+        if (expandedCards.includes(id)) {
+            setExpandedCards((prev) => prev.filter((item) => item !== id));
+        } else {
+            setExpandedCards([...expandedCards, id]);
+        }
+    }
 
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
@@ -74,8 +82,8 @@ export const Withdraw = () => {
                     {withdraws.length ? withdraws.map(item => {
                         return (
                             <div className={`${DEFAULT_CLASSNAME}_item`}>
-                                <img onClick={() => setCardExpanded(!cardExpanded)} className={`${DEFAULT_CLASSNAME}_item_expand ${cardExpanded && "expanded"}`} src={arrow} />
-                                <div className={`${DEFAULT_CLASSNAME}_item_full ${!cardExpanded && 'hidden'}`}>
+                                <img onClick={() => handleSelectCard(item.id)} className={`${DEFAULT_CLASSNAME}_item_expand ${expandedCards.includes(item.id) && "expanded"}`} src={arrow} />
+                                <div className={`${DEFAULT_CLASSNAME}_item_full ${!expandedCards.includes(item.id) && 'hidden'}`}>
                                     {item.accurals.map(accural => {
                                         return (
                                             <div>

@@ -39,3 +39,18 @@
     width: 36%;
   }
 }
+
+@media (max-width: 600px) {
+  .admin-packages {
+
+    &_wrapper {
+      margin: 0;
+      margin-left: 20px;
+    }
+
+    .admin-withdraw_item {
+      margin-right: 24px;
+      width: 100%;
+    }
+  }
+}

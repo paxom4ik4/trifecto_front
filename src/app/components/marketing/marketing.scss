@@ -138,6 +138,8 @@
       -webkit-appearance: checkbox;
 
       input {
+        width: 20px;
+        height: 20px;
         -webkit-appearance: checkbox;
         z-index: 1500 !important;
       }
@@ -279,10 +281,6 @@
 }
 
 @media (max-width: 600px) {
-  .marketing_modal_agreement {
-    padding: 0 12px;
-  }
-
    .marketing {
      width: 100%;
      margin-left: -24px;

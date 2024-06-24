@@ -70,6 +70,7 @@ export const AdditionalCharges = () => {
         <div className={`${DEFAULT_CLASSNAME}_panel`}>
           <select className={`${DEFAULT_CLASSNAME}_panel_bonus`} onChange={(e) => setBonusId(e.currentTarget.value === "null" ? null : e.currentTarget.value)}>
             <option value={"null"} defaultChecked={true}>Выберите бонус</option>
+            <option selected={bonusId === "43533604-4ff1-415b-8430-db3463edb008"} value={"43533604-4ff1-415b-8430-db3463edb008"}>Level Bonus</option>
             <option selected={bonusId === "a35856d7-af1f-409a-9148-4babcb28bc3c"} value={"a35856d7-af1f-409a-9148-4babcb28bc3c"}>Sale Travel</option>
             <option selected={bonusId === "0f494531-c1ed-4165-86ba-89fd50a20fa1"} value={"0f494531-c1ed-4165-86ba-89fd50a20fa1"}>Sale Event</option>
           </select>

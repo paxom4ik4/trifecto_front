@@ -19,8 +19,8 @@ export const Contacts = () => {
             <img src={sally} className={`${DEFAULT_CLASSNAME}_sally`} alt={'background-sally'} />
             <div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_block`}>
-                    <img src={hash} className={`${DEFAULT_CLASSNAME}_hash-image`}/>
-                    <img src={email} className={`${DEFAULT_CLASSNAME}_email-image`}/>
+                    <img alt='smart-technology' src={hash} className={`${DEFAULT_CLASSNAME}_hash-image`}/>
+                    <img alt='fast-earning' src={email} className={`${DEFAULT_CLASSNAME}_email-image`}/>
 
                     <div className={`${DEFAULT_CLASSNAME}_block-title`}>{"Контакты"}</div>
 
@@ -36,7 +36,7 @@ export const Contacts = () => {
                 <div className={`${DEFAULT_CLASSNAME}_block block-right`}>
                     <div className={`${DEFAULT_CLASSNAME}_block-title-center`}>{"Где нас найти?"}</div>
 
-                    <div className={`${DEFAULT_CLASSNAME}_block-text`}>{"Республика Беларусь, г. Минск, ул. Коллекторная 3, каб.509"}</div>
+                    <div className={`${DEFAULT_CLASSNAME}_block-text`}>{"Республика Беларусь, г. Минск, 220069, пр. Держинского, д. 3Б-115"}</div>
 
                     <div className={`${DEFAULT_CLASSNAME}_block-links`}>
                         <img src={instagram} alt={'contacts-link'}/>

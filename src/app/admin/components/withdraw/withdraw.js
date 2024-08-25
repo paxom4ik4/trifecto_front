@@ -82,7 +82,39 @@ export const Withdraw = () => {
                     {withdraws.length ? withdraws.map(item => {
                         return (
                             <div className={`${DEFAULT_CLASSNAME}_item`}>
-                                <img onClick={() => handleSelectCard(item.id)} className={`${DEFAULT_CLASSNAME}_item_expand ${expandedCards.includes(item.id) && "expanded"}`} src={arrow} />
+                                <img alt="trifecta-best-company" onClick={() => handleSelectCard(item.id)} className={`${DEFAULT_CLASSNAME}_item_expand ${expandedCards.includes(item.id) && "expanded"}`} src={arrow} />
+
+                                <div className={`${DEFAULT_CLASSNAME}_item_content`}>
+                                    <div className={`${DEFAULT_CLASSNAME}_left`}>
+                                        <div>{item.name}</div>
+                                        <div>{item.surname}</div>
+                                        <div>{item?.patronymic || "Отчество"}</div>
+                                        <br /><
+                                        div>{item.email}</div>
+                                        <div>{item.phoneNumber}</div>
+                                        <br />
+                                        <div className={`${DEFAULT_CLASSNAME}_approve`} onClick={() => acceptTransaction(item.id)}>{"Подтвердить"}</div>
+                                        <div className={`${DEFAULT_CLASSNAME}_reject`} onClick={() => rejectTransaction(item.id)}>{"Отказать"}</div>
+                                    </div>
+                                    <div className={`${DEFAULT_CLASSNAME}_right`}>
+                                        <div>{"Запрашиваемая сумма"}</div>
+                                        <div>{item.withdrawSum + " BYN"}</div>
+                                        <br /><
+                                        div>{"Номер счета"}</div>
+                                        <div>{item.checkingAccount}</div>
+                                        <br />
+                                        {item.unp && <><div>{"УНП"}</div>
+                                            <div>{item.unp}</div></>
+                                        }
+                                        {item.swift && <><div>{"БИК"}</div>
+                                            <div>{item.swift}</div></>
+                                        }
+                                        <br />
+                                        <div>{"Дата инициализации вывода"}</div>
+                                        <div>{new Date(item.date).toDateString()}</div>
+                                    </div>
+                                </div>
+
                                 <div className={`${DEFAULT_CLASSNAME}_item_full ${!expandedCards.includes(item.id) && 'hidden'}`}>
                                     {item.accurals.map(accural => {
                                         return (
@@ -94,34 +126,6 @@ export const Withdraw = () => {
                                             </div>
                                         )
                                     })}
-                                </div>
-                                <div className={`${DEFAULT_CLASSNAME}_left`}>
-                                    <div>{item.name}</div>
-                                    <div>{item.surname}</div>
-                                    <div>{item?.patronymic || "Отчество"}</div>
-                                    <br /><
-                                    div>{item.email}</div>
-                                    <div>{item.phoneNumber}</div>
-                                    <br />
-                                    <div className={`${DEFAULT_CLASSNAME}_approve`} onClick={() => acceptTransaction(item.id)}>{"Подтвердить"}</div>
-                                    <div className={`${DEFAULT_CLASSNAME}_reject`} onClick={() => rejectTransaction(item.id)}>{"Отказать"}</div>
-                                </div>
-                                <div className={`${DEFAULT_CLASSNAME}_right`}>
-                                    <div>{"Запрашиваемая сумма"}</div>
-                                    <div>{item.withdrawSum + " BYN"}</div>
-                                    <br /><
-                                    div>{"Номер счета"}</div>
-                                    <div>{item.checkingAccount}</div>
-                                    <br />
-                                    {item.unp && <><div>{"УНП"}</div>
-                                        <div>{item.unp}</div></>
-                                    }
-                                    {item.swift && <><div>{"БИК"}</div>
-                                        <div>{item.swift}</div></>
-                                    }
-                                    <br />
-                                    <div>{"Дата инициализации вывода"}</div>
-                                    <div>{new Date(item.date).toDateString()}</div>
                                 </div>
                             </div>
                         )

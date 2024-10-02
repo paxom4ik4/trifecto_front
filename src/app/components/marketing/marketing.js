@@ -113,6 +113,31 @@ export const Marketing = ({ currentPackage, hasCryptoPackage }) => {
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
             {
+                !showDangerScreen && packageToBuy.name === "Crypto" &&
+                <div className={`${DEFAULT_CLASSNAME}_modal_wrapper`}>
+                    <div className={`${DEFAULT_CLASSNAME}_modal`}>
+                        <div className={`${DEFAULT_CLASSNAME}_modal_close`} onClick={() => setPackageToBuy(null)}>{"x"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_modal_title`}>{"Оформление заказа"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_modal_text`}>{"Сумма заказа:"} <span>{Math.round((+(packageToBuy.price) * CURRENT_CURRENCY) / 5) * 5}</span> {"бел. руб."}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_modal_text`}>{"Товар:"} <span>{packageToBuy.name}</span></div>
+
+                        <div className={`${DEFAULT_CLASSNAME}_modal_agreement`}>
+                            <input checked={agreement} onClick={() => setAgreement(!agreement)} type={"checkbox"} id={'agreement'} />
+                            <label htmlFor={'agreement'}>
+                                <div>{"Я ознакомился с"} <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/CryptoDoc.pdf"}>Договором</a> {"и согласен со всеми условиями"}</div>
+                            </label>
+                        </div>
+                        <div className={`${DEFAULT_CLASSNAME}_modal_buy-title`}>{"Способ оплаты:"}</div>
+                        <div className={`${DEFAULT_CLASSNAME}_modal_btns`}>
+                            <button disabled={!agreement || !agreement2} onClick={() => setShowDangerScreen(true)} className={`${DEFAULT_CLASSNAME}_modal_btn`} >{"НАЛИЧНЫМИ"}</button>
+                            <button onClick={() => {}} disabled={true} className={`${DEFAULT_CLASSNAME}_modal_btn`} >{"КАРТОЙ"}</button>
+                        </div>
+
+                        <img src={trifectaSmall} alt={'trifecta-buy'} />
+                    </div>
+                </div>
+            }
+            {
                 showDangerScreen &&
                 <div className={`${DEFAULT_CLASSNAME}_modal_wrapper`}>
                     <div className={`${DEFAULT_CLASSNAME}_modal confirm_modal`}>
@@ -121,7 +146,7 @@ export const Marketing = ({ currentPackage, hasCryptoPackage }) => {
                             {packageToBuy.name !== "Crypto" && <><div>{"Без труда, не вытянешь"}</div> <br/> <div>{"рыбку из пруда"}</div></>}
                         </div>
                         {packageToBuy.name !== "Crypto" && <div className={`${DEFAULT_CLASSNAME}_modal_text`}>{"Участие в партнерской (бонусной) программе не гарантирует 100% доход. Ваш успех зависит только от вас."}</div>}
-
+                             {packageToBuy.name !== "Crypto" &&
                         <div className={`${DEFAULT_CLASSNAME}_modal_btns`}>
                             <button onClick={() => {
                                 buyPackageHandlerCash();
@@ -134,12 +159,25 @@ export const Marketing = ({ currentPackage, hasCryptoPackage }) => {
                                 setShowDangerScreen(false);
                             }} className={`${DEFAULT_CLASSNAME}_modal_btn`} >{"ОТМЕНА"}</button>
                         </div>
-
+                                }
+                                {packageToBuy.name == "Crypto" &&
+                        <div className={`${DEFAULT_CLASSNAME}_modal_btns`}>
+                            <button onClick={() => {
+                                buyPackageHandlerCash();
+                                setShowDangerScreen(false);
+                            }} className={`${DEFAULT_CLASSNAME}_modal_btn`} >{"ПОДТВЕРДИТЬ"}</button>
+                            <button onClick={() => {
+                                setAgreement(false)
+                                setPackageToBuy(null);
+                                setShowDangerScreen(false);
+                            }} className={`${DEFAULT_CLASSNAME}_modal_btn`} >{"ОТМЕНА"}</button>
+                        </div>
+                                }
                         <img src={trifectaSmall} alt={'trifecta-buy'} />
                     </div>
                 </div>
             }
-
+            
             {
                 !showDangerScreen && packageToBuy &&
                 <div className={`${DEFAULT_CLASSNAME}_modal_wrapper`}>

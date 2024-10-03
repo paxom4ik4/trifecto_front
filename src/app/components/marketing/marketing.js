@@ -80,6 +80,8 @@ export const Marketing = ({ currentPackage, hasCryptoPackage }) => {
     const buyPackageHandlerCash = () => {
         const TOKEN = sessionStorage.getItem('accessToken');
 
+        setShowDangerScreen(false);
+
         if (agreement && agreement2 && packageToBuy.price && packageToBuy.name && packageToBuy.id) {
             fetch("https://trifecta.by/api/Packages/BuyPackageByCash", {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -125,7 +127,6 @@ export const Marketing = ({ currentPackage, hasCryptoPackage }) => {
                         <div className={`${DEFAULT_CLASSNAME}_modal_btns`}>
                             <button onClick={() => {
                                 buyPackageHandlerCash();
-                                setShowDangerScreen(false);
                             }} className={`${DEFAULT_CLASSNAME}_modal_btn`} >{"ПОДТВЕРДИТЬ"}</button>
                             <button onClick={() => {
                                 setAgreement(false)
@@ -152,18 +153,19 @@ export const Marketing = ({ currentPackage, hasCryptoPackage }) => {
                         <div className={`${DEFAULT_CLASSNAME}_modal_agreement`}>
                             <input checked={agreement} onClick={() => setAgreement(!agreement)} type={"checkbox"} id={'agreement'} />
                             <label htmlFor={'agreement'}>
-                                <div>{"Я ознакомился с"} <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Codex.pdf"}>Кодексом партнёра</a> {"и"} <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Marketing.pdf"}>Маркетинг планом</a> {"и согласен со всеми условиями"}</div>
+                                {packageToBuy.name !== "Crypto" && <div>{"Я ознакомился с"} <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Codex.pdf"}>Кодексом партнёра</a> {"и"} <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Marketing.pdf"}>Маркетинг планом</a> {"и согласен со всеми условиями"}</div>}
+                                {packageToBuy.name === "Crypto" && <div>{"Я ознакомился с"} <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/CryptoProgram.pdf"}>программой обучения</a> {"и"} <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/CryptoDoc.pdf"}>договором оферты</a> {"и согласен со всеми условиями"}</div>}
                             </label>
                         </div>
-                        <div className={`${DEFAULT_CLASSNAME}_modal_agreement`}>
+                        {packageToBuy.name !== "Crypto" &&<div className={`${DEFAULT_CLASSNAME}_modal_agreement`}>
                             <input checked={agreement2} onClick={() => setAgreement2(!agreement2)} type={"checkbox"} id={'agreement2'} />
                             <label htmlFor={'agreement2'}>
                                 <div>{"Я ознакомился с"} <a href={"https://trifecta.by/trifecto_Documents/Sogl.pdf"} target={"_blank"}>Партнёрским соглашением</a> {" и согласен с его условиями"}</div>
                             </label>
-                        </div>
+                        </div>}
                         <div className={`${DEFAULT_CLASSNAME}_modal_buy-title`}>{"Способ оплаты:"}</div>
                         <div className={`${DEFAULT_CLASSNAME}_modal_btns`}>
-                            <button disabled={!agreement || !agreement2} onClick={() => setShowDangerScreen(true)} className={`${DEFAULT_CLASSNAME}_modal_btn`} >{"НАЛИЧНЫМИ"}</button>
+                            <button disabled={!agreement || (packageToBuy.name !== "Crypto" && !agreement2)} onClick={() => setShowDangerScreen(true)} className={`${DEFAULT_CLASSNAME}_modal_btn`} >{"НАЛИЧНЫМИ"}</button>
                             <button onClick={() => {}} disabled={true} className={`${DEFAULT_CLASSNAME}_modal_btn`} >{"КАРТОЙ"}</button>
                         </div>
 

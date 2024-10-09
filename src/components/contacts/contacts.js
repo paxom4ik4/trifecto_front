@@ -36,14 +36,14 @@ export const Contacts = () => {
                 <div className={`${DEFAULT_CLASSNAME}_block block-right`}>
                     <div className={`${DEFAULT_CLASSNAME}_block-title-center`}>{"Где нас найти?"}</div>
 
-                    <div className={`${DEFAULT_CLASSNAME}_block-text`}>{"Республика Беларусь, г. Минск, 220004, пр. Держинского, д. 3Б-115"}</div>
+                    <div className={`${DEFAULT_CLASSNAME}_block-text`}>{"Республика Беларусь, г. Минск, 220004, ул. Коллекторная 3A-10, кабинет 15"}</div>
 
                     <div className={`${DEFAULT_CLASSNAME}_block-links`}>
                         <img src={instagram} alt={'contacts-link'}/>
                         <img src={telegram} alt={'contacts-link'}/>
                     </div>
 
-                    <a href={"https://maps.app.goo.gl/Qe62X9ZarDpxQcyM7"} target={"_blank"} className={`${DEFAULT_CLASSNAME}_block-btn`}>{"Показать на карте"}</a>
+                    <a href={"https://maps.app.goo.gl/6DLWMBjGCEDHH2vV8"} target={"_blank"} className={`${DEFAULT_CLASSNAME}_block-btn`}>{"Показать на карте"}</a>
                 </div>
             </div>
         </div>

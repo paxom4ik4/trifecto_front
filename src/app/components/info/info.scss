@@ -29,6 +29,8 @@
   }
 
   &_docs {
+    max-width: 100%;
+    flex-wrap: wrap;
     margin-top: 20px;
     display: flex;
     flex-direction: row;
@@ -36,7 +38,7 @@
     align-items: center;
 
     &_item {
-      width: 100%;
+      width: 33%;
       height: fit-content;
       display: flex;
       flex-direction: column;

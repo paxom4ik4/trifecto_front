@@ -8,7 +8,7 @@ import {useNavigate} from "react-router-dom";
 
 const DEFAULT_CLASSNAME = 'newbie';
 
-export const Newbie = ({ isVerified, isCryptoUser }) => {
+export const Newbie = ({ isVerified, isCryptoUser, hasUserPackage }) => {
     const navigate = useNavigate();
 
     const [cryptoMaterials, setCryptoMaterials] = useState([]);
@@ -35,7 +35,7 @@ export const Newbie = ({ isVerified, isCryptoUser }) => {
 
     return (
         <div className={`${DEFAULT_CLASSNAME}_wrapper`}>
-            <div className={DEFAULT_CLASSNAME}>
+            {hasUserPackage && <><div className={DEFAULT_CLASSNAME}>
                 <div className={`${DEFAULT_CLASSNAME}_item`} onClick={() => openLink("https://t.me/+GgNg39XQR5M4ZGJi")}>
                     <img src={firstDay} alt={'video'} />
                     <div className={`${DEFAULT_CLASSNAME}_item_text`}>
@@ -57,7 +57,7 @@ export const Newbie = ({ isVerified, isCryptoUser }) => {
                         <div className={`${DEFAULT_CLASSNAME}_item_text_content`}>{"Заканчиваем обучение - https://t.me/+Fn5Of3OrNJFjNGRi"}</div>
                     </div>
                 </div>
-            </div>
+            </div></>}
 
             {isCryptoUser && <>
                 <div className={`${DEFAULT_CLASSNAME}_material-title`}>Crypto Обучение</div>

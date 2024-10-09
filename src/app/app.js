@@ -232,6 +232,7 @@ export const TrifectaApp = () => {
     }
 
     const hasUserPackage = !!userInfo?.packageName;
+    const hasCurrentPackage = !!currentPackage;
     const isCryptoUser = hasUserCryptoPackage();
 
     return (
@@ -336,7 +337,7 @@ export const TrifectaApp = () => {
                     <Routes>
                         <Route path={'/'} element={<Cabinet currentPackage={currentPackage} isCryptoUser={isCryptoUser} />} />
                         <Route path={'/marketing'} element={<Marketing currentPackage={currentPackage} hasCryptoPackage={isCryptoUser} />} />
-                        <Route path={!hasUserPackage ? '#' : '/newbie'} element={<Newbie isCryptoUser={isCryptoUser} isVerified={hasUserPackage} />} />
+                        <Route path={!hasUserPackage ? '#' : '/newbie'} element={<Newbie hasUserPackage={hasCurrentPackage} isCryptoUser={isCryptoUser} isVerified={hasUserPackage} />} />
                         <Route path={(!hasUserPackage || currentPackage?.name === "Crypto") ? '/app/' : '/withdraw'} element={<Withdraw isVerified={hasUserPackage} />} />
                         <Route path={(!hasUserPackage || currentPackage?.name === "Crypto") ? '/app/' : '/charges'} element={<Charges isVerified={IS_VERIFIED} />} />
                         <Route path={(!hasUserPackage || currentPackage?.name === "Crypto") ? '/app/' : '/structure'} element={<Structure isCryptoUser={isCryptoUser} isVerified={hasUserPackage} />} />

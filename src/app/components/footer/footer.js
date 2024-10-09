@@ -20,7 +20,7 @@ export const TrifectaFooter = () => {
                 <span className={`${DEFAULT_CLASSNAME}_copyright`}>{"Ⓒ Trifecta company, 2024"}</span>
                 <div className={`${DEFAULT_CLASSNAME}_content`}>
                     <img className={`${DEFAULT_CLASSNAME}_logo`} src={logo} alt={'footer-logo'} />
-                    <div>{"ООО \"Онлайн прогресс\", УНП 193634118 , 220004, Республика Беларусь, г. Минск, 220069, пр. Держинского, д. 3Б-115"}</div>
+                    <div>{"ООО \"Онлайн прогресс\", УНП 193634118 , 220004, Республика Беларусь, г. Минск, 220004, пр. Держинского, д. 3Б-115"}</div>
                     <div className={`${DEFAULT_CLASSNAME}_content_mg`}>{"Зарегистрированы Минским горисполкомом 05.07.2022"}</div>
                     <div className={`${DEFAULT_CLASSNAME}_content_links`}>
                         <a target={"_blank"} href={"https://www.instagram.com/trifecta_company/"}><div className={`${DEFAULT_CLASSNAME}_content_links_item`}>

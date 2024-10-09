@@ -82,7 +82,7 @@ export const Marketing = ({ currentPackage, hasCryptoPackage }) => {
 
         setShowDangerScreen(false);
 
-        if (agreement && agreement2 && packageToBuy.price && packageToBuy.name && packageToBuy.id) {
+        if (packageToBuy.price && packageToBuy.name && packageToBuy.id) {
             fetch("https://trifecta.by/api/Packages/BuyPackageByCash", {
                 method: 'POST', // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, *cors, same-origin

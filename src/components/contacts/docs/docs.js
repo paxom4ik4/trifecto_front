@@ -33,12 +33,18 @@ export const Docs = () => {
                             <div className={`${DEFAULT_CLASSNAME}_item-text`}>{"Политика конфиденциальности"}</div>
                         </a>
                     </div>
+                    <div className={`${DEFAULT_CLASSNAME}_item`}>
+                        <a href={"https://trifecta.by/trifecto_Documents/CryptoSogl.pdf"} target={"_blank"}>
+                            <img src={file} alt={'docs-item'} />
+                            <div className={`${DEFAULT_CLASSNAME}_item-text`}>{"Договор об оказании услуг"}</div>
+                        </a>
+                    </div>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_text`}>
                     <div className={`${DEFAULT_CLASSNAME}_text-title`}>{"Юр. инфо."}</div>
                     <div className={`${DEFAULT_CLASSNAME}_text-content`}>
                         {"Название компании: ООО \"Онлайн прогресс\" УНП 193634118"} <br /> <br />
-                        {"220004, Республика Беларусь, г. Минск, 220069, пр. Держинского, д. 3Б-115"} <br /> <br />
+                        {"220004, Республика Беларусь, г. Минск, 220004, пр. Держинского, д. 3Б-115"} <br /> <br />
                         {"Свидетельство о государственной регистрации № 193634118 от 05.07.2022 выдано Минским горисполкомом"} <br /> <br />
                         {"Тел. +375 (44) 533-80-26"} <br /> <br />
                         {"e-mail: trifectacompany@mail.ru"}</div>

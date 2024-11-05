@@ -18,7 +18,7 @@ export const Newbie = ({ isVerified, isCryptoUser, hasUserPackage }) => {
     }, [isVerified])
 
     useEffect(() => {
-        if (!isCryptoUser) {
+        if (isCryptoUser) {
             const TOKEN = sessionStorage.getItem('accessToken');
             fetch('https://trifecta.by/api/VideoTemplate/GetCryptoLessons', {
                 headers: {

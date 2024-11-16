@@ -47,7 +47,7 @@ export const Newbie = ({ isVerified, isCryptoUser, hasUserPackage }) => {
                 preload="metadata"
                 playsInline
                 autoPlay={false}
-                src={src}
+                src={`${src}#t=0.5`}
                 width={384}
                 height={216}
                 controls={showControls}

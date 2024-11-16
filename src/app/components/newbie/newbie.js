@@ -44,6 +44,8 @@ export const Newbie = ({ isVerified, isCryptoUser, hasUserPackage }) => {
 
         return (
             <video
+                preload="metadata"
+                playsInline
                 autoPlay={false}
                 src={src}
                 width={384}

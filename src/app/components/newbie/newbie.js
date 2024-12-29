@@ -34,27 +34,17 @@ export const Newbie = ({ isVerified, isCryptoUser, hasUserPackage }) => {
     const openLink = link => window.open(link, "_blank");
 
     const Video = ({ src }) => {
-        const [showControls, setShowControls] = useState(true);
-        const [isLoading, setIsLoading] = useState(true);
-
-        const handleLoadedData = () => {
-            setIsLoading(false);
-            setShowControls(false);
-        }
-
         return (
             <video
                 preload="metadata"
-                playsInline
+                playsInline={true}
                 autoPlay={false}
-                src={`${src}#t=0.5`}
                 width={384}
                 height={216}
-                controls={showControls}
-                onMouseOver={() => !isLoading && setShowControls(true)}
-                onMouseOut={() => !isLoading && setShowControls(false)}
-                onLoadedData={handleLoadedData}
-            />
+                controls={true}
+            >
+                <source src={`${src}#t=0.5`} type='video/mp4' />
+            </video>
         );
     }
 

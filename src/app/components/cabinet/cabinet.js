@@ -79,8 +79,9 @@ export const Cabinet = ({ currentPackage, isCryptoUser }) => {
                             </GradientCircularProgress>
                             <div className={`${DEFAULT_CLASSNAME}_level-item_next`}>
                                 <div className={`${DEFAULT_CLASSNAME}_level-item_next_title`}>{"Требуется для достижения следующего уровня"}</div>
-                                <div>{"Групповой оборот: "}{userData?.nextBasicLevelRequirements.groupTurnover} $</div>
-                                <div>{userData?.nextBasicLevelRequirements.partnersRequirementCount} {"партнера"} {userData?.nextBasicLevelRequirements.partnersRequirementLevel} {"уровня"}</div>
+                                <div>{"Групповой оборот: "}{userData?.nextBasicLevelRequirements.groupTurnover + 1} $</div>
+                                {userData?.nextBasicLevelRequirements.partnersRequirementCount && userData?.nextBasicLevelRequirements.partnersRequirementLevel &&
+                                <div>{userData?.nextBasicLevelRequirements.partnersRequirementCount} {"партнера"} {userData?.nextBasicLevelRequirements.partnersRequirementLevel} {"уровня"}</div>}
                             </div>
                         </div>
                         <div className={`${DEFAULT_CLASSNAME}_level-item`}>
@@ -130,8 +131,9 @@ export const Cabinet = ({ currentPackage, isCryptoUser }) => {
                             <div>{"Crypto"}</div>
                         </div>}
                         <div className={`bonus_data`}>
-                            {currentPackage?.name === "Exclusive" && <div>Start Bonus <br /> активен постоянно</div>}
-                            {userData?.dynamicBonusExpTime === 999 ? <div>Dynamic Bonus <br /> Активен постоянно</div> : <div>Dynamic Bonus активен ещё: <br /> {userData?.startBonusExpTime} дней</div>}
+                            {currentPackage?.name === "Exclusive" ? <div>Start Bonus <br/> активен постоянно</div> :
+                                <div>Start Bonus активен ещё: <br/> {userData?.startBonusExpTime} дней</div>}
+                            {userData?.dynamicBonusExpTime === 999 ? <div>Dynamic Bonus <br /> Активен постоянно</div> : <div>Dynamic Bonus активен ещё: <br /> {userData?.dynamicBonusExpTime} дней</div>}
                         </div>
                     </div>
                 </div>

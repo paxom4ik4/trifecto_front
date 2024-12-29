@@ -11,6 +11,8 @@ export const Newbie = ({ isVerified, isCryptoUser, hasUserPackage }) => {
     const navigate = useNavigate();
     const [cryptoMaterials, setCryptoMaterials] = useState([]);
 
+    const isMobile = window.innerWidth <= 500;
+
     useEffect(() => {
         if (!isVerified) {
             navigate('/app/settings');
@@ -43,7 +45,7 @@ export const Newbie = ({ isVerified, isCryptoUser, hasUserPackage }) => {
                 height={216}
                 controls={true}
             >
-                <source src={`${src}#t=0.5`} type='video/mp4' />
+                <source src={isMobile ? src : `${src}#t=0.5`} type='video/mp4' />
             </video>
         );
     }

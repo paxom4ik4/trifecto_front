@@ -8,6 +8,7 @@ import trifecta from '../assets/trifecta.png';
 
 import closeIcon from '../closeIcon/close_big.png';
 import cookieIcon from './cookie.png';
+import closeModal from './close.png';
 
 import burger from './assets/burger.png';
 
@@ -43,6 +44,8 @@ import {Progress} from "./components/progress/progress";
 import {Admin} from "./admin/admin";
 import {Docs} from "./components/docs/docs";
 import {toast} from "react-toastify";
+import {useForm} from "react-hook-form";
+import axios from "axios";
 
 const DEFAULT_CLASSNAME = 'trifecta-app';
 
@@ -87,6 +90,12 @@ export const TrifectaApp = () => {
     const [adminWithdraws, setAdminWithdraws] = useState([]);
     const [adminContactInfos, setAdminContactInfos] = useState([]);
     const [adminPackages, setAdminPackages] = useState([]);
+
+    const [requestModalOpen, setRequestModalOpen] = useState(false);
+
+    const handleOpenCloseRequestModal = () => {
+        setRequestModalOpen(!requestModalOpen);
+    }
 
     useEffect(() => {
         const TOKEN = sessionStorage.getItem("accessToken");
@@ -254,8 +263,8 @@ export const TrifectaApp = () => {
                         </div>
                         {!isAdmin && <>
                             {currentPackage?.name && <div
-                              className={`${DEFAULT_CLASSNAME}_side-menu_partner`}
-                              onClick={() => navigate('/app/marketing')}
+                                className={`${DEFAULT_CLASSNAME}_side-menu_partner`}
+                                onClick={() => navigate('/app/marketing')}
                             >
                                 {"Улучшить пакет"}
                             </div>}
@@ -276,7 +285,13 @@ export const TrifectaApp = () => {
                                         {"Стать партнером"}
                                     </div>
                             }
-                            </>
+                            <div
+                                className={`${DEFAULT_CLASSNAME}_side-menu_partner`}
+                                onClick={handleOpenCloseRequestModal}
+                            >
+                                {"Оформить заявку"}
+                            </div>
+                        </>
                         }
                         {
                             isAdmin ? <>
@@ -352,7 +367,64 @@ export const TrifectaApp = () => {
                     </Routes>
                 </div>
                 <TrifectaFooter />
+
+                <RequestModal isOpen={requestModalOpen} onClose={handleOpenCloseRequestModal} />
             </div>
         </div>
     )
 }
+
+const RequestModal = ({ isOpen, onClose }) => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        reset,
+    } = useForm();
+
+    const onSubmit = async (data) => {
+        try {
+            await axios.post("https://trifecta.by/api/UserProfile/Telegram", data);
+            toast.success("Заявка успешно отправлена!");
+            reset();
+            onClose();
+        } catch (error) {
+            toast.error("Произошла ошибка во время отправки заявки, пожалуйста, попробйте позже");
+        }
+    };
+
+    if (!isOpen) return null;
+
+    return (
+        <div className="modal-overlay">
+            <div className="modal">
+                <h2 className="modal-title">ЗАЯВКА</h2>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <input {...register("direction", {required: true})} placeholder="Направление" className="input"/>
+                    {errors.direction && <p className="error">Это поле обязательно</p>}
+
+                    <input {...register("lastName", {required: true})} placeholder="Фамилия" className="input"/>
+                    {errors.lastName && <p className="error">Это поле обязательно</p>}
+
+                    <input {...register("firstName", {required: true})} placeholder="Имя" className="input"/>
+                    {errors.firstName && <p className="error">Это поле обязательно</p>}
+
+                    <input {...register("patronymic")} placeholder="Отчество (опционально)" className="input"/>
+
+                    <input {...register("phoneNumber", {required: true})} placeholder="Номер телефона"
+                           className="input"/>
+                    {errors.phone && <p className="error">Введите корректный номер</p>}
+
+                    <textarea rows={5} {...register("comments")} placeholder="Краткая информация о заказе" className="input"/>
+
+                    <div className="modal-actions">
+                        <button type="submit" className="submit-button">Отправить заявку</button>
+                        <button type="button" onClick={onClose} className="close-button"><img style={{ width: 16, height: 16 }} src={closeModal} alt='modal-close'/></button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    );
+};

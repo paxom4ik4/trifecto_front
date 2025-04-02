@@ -124,6 +124,28 @@ const RegisterContent = () => {
     const [agreement1, setAgreement1] = useState(false)
     const [agreement2, setAgreement2] = useState(false)
 
+    const [dataColored, setDataColored] = useState(false);
+    const [licenseColored, setLicenseColored] = useState(false);
+    const [confidenceColored, setConfidenceColored] = useState(false);
+
+    const [dataOpened, setDataOpened] = useState(false);
+    const [licenseOpened, setLicenseOpened] = useState(false);
+    const [confidenceOpened, setConfidenceOpened] = useState(false);
+
+    const handleDataOpened = () => {
+        setDataOpened(true);
+        setDataColored(false);
+    }
+
+    const handleLicenseOpened = () => {
+        setLicenseOpened(true);
+        setLicenseColored(false);
+    }
+
+    const handleConfidenceOpened = () => {
+        setConfidenceOpened(true);
+        setConfidenceColored(false);
+    }
 
     return (
         <>
@@ -154,12 +176,25 @@ const RegisterContent = () => {
 
             <div className={`${DEFAULT_CLASSNAME}_agreement`}>
                 <div className={`${DEFAULT_CLASSNAME}_agreement_item`}>
-                    <div><input value={agreement1} onChange={() => setAgreement1(!agreement1)} type={"checkbox"} /></div>
-                    <p>Я ознакомился с <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Pers.pdf"}>Политикой обработки данных</a> и <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Sogl.pdf"}>Пользовательским соглашением</a> и согласен с их условиями</p>
+                    <div><input checked={agreement1} onChange={() => {
+                        if (!dataOpened || !licenseOpened) {
+                            setDataColored(!dataOpened);
+                            setLicenseColored(!licenseColored);
+                        } else {
+                            setAgreement1(!agreement1)
+                        }
+                    }} type={"checkbox"} /></div>
+                    <p>Я ознакомился с <a style={{ color: dataColored ? 'red' : '#fff'}} onClick={handleDataOpened} target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Pers.pdf"}>Политикой обработки данных</a> и <a style={{ color: licenseColored ? 'red' : '#fff'}} onClick={handleLicenseOpened} target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Sogl.pdf"}>Лицензионным соглашением</a> и согласен с их условиями</p>
                 </div>
                 <div className={`${DEFAULT_CLASSNAME}_agreement_item`}>
-                    <div><input value={agreement2} onChange={() => setAgreement2(!agreement2)} type={"checkbox"} style={{ width: '16px', height: "16px" }}/></div>
-                    <p>Я ознакомился с <a target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Conf.pdf"}>Политикой конфиденциальности</a> компании</p>
+                    <div><input checked={agreement2} onChange={() => {
+                        if (!confidenceOpened) {
+                            setConfidenceColored(!confidenceOpened);
+                        } else {
+                            setAgreement2(!agreement2)
+                        }
+                    }} type={"checkbox"} style={{ width: '16px', height: "16px" }}/></div>
+                    <p>Я ознакомился с <a style={{ color: confidenceColored ? 'red' : '#fff'}} onClick={handleConfidenceOpened} target={"_blank"} href={"https://trifecta.by/trifecto_Documents/Conf.pdf"}>Политикой конфиденциальности</a> компании</p>
                 </div>
             </div>
 

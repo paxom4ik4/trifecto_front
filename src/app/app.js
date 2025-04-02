@@ -46,6 +46,7 @@ import {Docs} from "./components/docs/docs";
 import {toast} from "react-toastify";
 import {useForm} from "react-hook-form";
 import axios from "axios";
+import {userData} from "three/examples/jsm/nodes/accessors/UserDataNode";
 
 const DEFAULT_CLASSNAME = 'trifecta-app';
 
@@ -382,14 +383,16 @@ const RequestModal = ({ isOpen, onClose }) => {
         reset,
     } = useForm();
 
+    const USER_ID = sessionStorage.getItem('userId');
+
     const onSubmit = async (data) => {
         try {
-            await axios.post("https://trifecta.by/api/UserProfile/Telegram", data);
+            await axios.post(`https://trifecta.by/api/UserProfile/Telegram?userId=${USER_ID}`, data);
             toast.success("Заявка успешно отправлена!");
             reset();
             onClose();
         } catch (error) {
-            toast.error("Произошла ошибка во время отправки заявки, пожалуйста, попробйте позже");
+            toast.error("Произошла ошибка во время отправки заявки, пожалуйста, попробуйте позже");
         }
     };
 
